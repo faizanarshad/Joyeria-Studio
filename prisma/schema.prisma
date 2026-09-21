@@ -1,0 +1,173 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  SHIPPED
+  DELIVERED
+  CANCELLED
+}
+
+enum PaymentMethod {
+  COD
+  BANK_TRANSFER
+  JAZZCASH
+  EASYPAISA
+}
+
+enum DiscountType {
+  PERCENT
+  FIXED
+}
+
+model Collection {
+  id          String    @id @default(cuid())
+  name        String
+  slug        String    @unique
+  description String?
+  coverImage  String?
+  featured    Boolean   @default(false)
+  sortOrder   Int       @default(0)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  products    Product[]
+}
+
+model Product {
+  id            String    @id @default(cuid())
+  name          String
+  slug          String    @unique
+  description   String
+  material      String?
+  finish        String?
+  careNote      String?
+
+  // Whole PKR integers — never floats, so no rounding issues.
+  price         Int
+  compareAtPrice Int?
+  costPrice     Int?      // private, admin-only margin tracking, never exposed to storefront
+
+  stock         Int       @default(0)
+  sku           String?   @unique
+
+  category      String?
+  collectionId  String?
+  collection    Collection? @relation(fields: [collectionId], references: [id])
+
+  isActive      Boolean   @default(false) // half-finished products never show until explicitly activated
+  isFeatured    Boolean   @default(false)
+
+  images        ProductImage[]
+  orderItems    OrderItem[]
+
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@index([collectionId])
+  @@index([isActive, isFeatured])
+}
+
+model ProductImage {
+  id        String   @id @default(cuid())
+  productId String
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  url       String
+  alt       String
+  isCover   Boolean  @default(false)
+  sortOrder Int      @default(0)
+
+  @@index([productId])
+}
+
+model DeliveryRate {
+  id        String   @id @default(cuid())
+  city      String   @unique
+  fee       Int
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Coupon {
+  id            String       @id @default(cuid())
+  code          String       @unique
+  discountType  DiscountType
+  value         Int          // percent (0-100) or fixed PKR amount depending on discountType
+  minOrderValue Int?
+  usageLimit    Int?
+  usedCount     Int          @default(0)
+  expiresAt     DateTime?
+  isActive      Boolean      @default(true)
+  createdAt     DateTime     @default(now())
+
+  orders        Order[]
+}
+
+model Order {
+  id              String        @id @default(cuid())
+  orderNumber     String        @unique // short human-friendly reference, e.g. JS-10234
+
+  // Guest checkout — no customer accounts.
+  customerName    String
+  phone           String
+  address         String
+  city            String
+
+  subtotal        Int
+  deliveryFee     Int
+  discount        Int           @default(0)
+  total           Int
+
+  paymentMethod   PaymentMethod @default(COD)
+  paymentProofUrl String?       // Cloudinary URL for bank transfer / JazzCash / Easypaisa screenshot
+
+  status          OrderStatus   @default(PENDING)
+  courierName     String?
+  trackingNumber  String?
+
+  couponId        String?
+  coupon          Coupon?       @relation(fields: [couponId], references: [id])
+
+  note            String?
+
+  items           OrderItem[]
+
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  @@index([phone])
+  @@index([status])
+}
+
+model OrderItem {
+  id          String   @id @default(cuid())
+  orderId     String
+  order       Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  // productId is nullable so a discontinued/deleted product never erases order history.
+  productId   String?
+  product     Product? @relation(fields: [productId], references: [id], onDelete: SetNull)
+
+  // Snapshot of the product at purchase time — editing the product later must never rewrite history.
+  productName String
+  price       Int
+  quantity    Int
+  imageUrl    String?
+
+  @@index([orderId])
+}
+
+model AdminUser {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String
+  createdAt    DateTime @default(now())
+}

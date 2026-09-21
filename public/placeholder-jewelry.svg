@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="500" viewBox="0 0 400 500">
+  <rect width="400" height="500" fill="#f2ece2"/>
+  <circle cx="200" cy="220" r="60" fill="none" stroke="#c9b18f" stroke-width="4"/>
+  <path d="M170 270 L200 320 L230 270" fill="none" stroke="#c9b18f" stroke-width="4"/>
+  <text x="200" y="420" text-anchor="middle" font-family="serif" font-size="18" fill="#a97a3f">Joyeria Studio</text>
+</svg>

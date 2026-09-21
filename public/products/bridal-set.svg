@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="500" viewBox="0 0 400 500">
+  <rect width="400" height="500" fill="#f6dfe0"/>
+  <g stroke="#a8506b" stroke-width="3" fill="none" stroke-linecap="round">
+    <path d="M110 140 Q200 250 290 140"/>
+    <path d="M150 165 Q200 235 250 165"/>
+    <circle cx="170" cy="220" r="6" fill="#a8506b" stroke="none"/>
+    <circle cx="200" cy="238" r="8" fill="#a8506b" stroke="none"/>
+    <circle cx="230" cy="220" r="6" fill="#a8506b" stroke="none"/>
+  </g>
+  <text x="200" y="410" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#24302a">Joyería Studio</text>
+  <text x="200" y="435" text-anchor="middle" font-family="Georgia, serif" font-size="12" letter-spacing="2" fill="#7c7570">BRIDAL SET</text>
+</svg>

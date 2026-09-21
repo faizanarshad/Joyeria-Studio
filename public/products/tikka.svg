@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="500" viewBox="0 0 400 500">
+  <rect width="400" height="500" fill="#d3e3cd"/>
+  <g stroke="#2f4a3a" stroke-width="3" fill="none" stroke-linecap="round">
+    <path d="M140 130 Q200 175 260 130"/>
+    <line x1="200" y1="170" x2="200" y2="220"/>
+    <circle cx="200" cy="236" r="14" fill="#2f4a3a" stroke="none"/>
+  </g>
+  <text x="200" y="410" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#24302a">Joyería Studio</text>
+  <text x="200" y="435" text-anchor="middle" font-family="Georgia, serif" font-size="12" letter-spacing="2" fill="#7c7570">TIKKA</text>
+</svg>

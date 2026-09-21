@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="500" viewBox="0 0 400 500">
+  <rect width="400" height="500" fill="#f6dfe0"/>
+  <g stroke="#a8506b" stroke-width="3" fill="none" stroke-linecap="round">
+    <circle cx="150" cy="170" r="14"/>
+    <line x1="150" y1="184" x2="150" y2="225"/>
+    <circle cx="150" cy="238" r="13"/>
+    <circle cx="250" cy="170" r="14"/>
+    <line x1="250" y1="184" x2="250" y2="225"/>
+    <circle cx="250" cy="238" r="13"/>
+  </g>
+  <text x="200" y="410" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#24302a">Joyería Studio</text>
+  <text x="200" y="435" text-anchor="middle" font-family="Georgia, serif" font-size="12" letter-spacing="2" fill="#7c7570">EARRINGS</text>
+</svg>

@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fdf9f6;
+  --foreground: #24302a;
+  --rose: #a8506b;
+  --rose-dark: #7d3a51;
+  --rose-soft: #f6dfe0;
+  --green: #2f4a3a;
+  --green-dark: #22362a;
+  --green-soft: #d3e3cd;
+  --muted: #7c7570;
+  --border: #ecdfe0;
+  --surface: #ffffff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-rose: var(--rose);
+  --color-rose-dark: var(--rose-dark);
+  --color-rose-soft: var(--rose-soft);
+  --color-green: var(--green);
+  --color-green-dark: var(--green-dark);
+  --color-green-soft: var(--green-soft);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-surface: var(--surface);
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+h1, h2, h3, .font-display {
+  font-family: var(--font-serif);
+}
+
+.arch {
+  border-radius: 999px 999px 0 0;
+}
