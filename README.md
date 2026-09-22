@@ -60,10 +60,14 @@ Motion (Framer Motion)
   that stuck.) Kept restrained everywhere — motion
   durations stay under ~600ms, and the hero parallax respects
   `prefers-reduced-motion`.
-- **Real rose photography** — the Our Story page uses two free-license photos from
-  [Unsplash](https://unsplash.com/s/photos/rose) (`components/motion/PhotoAccent.tsx`),
-  circular-framed with a soft fade-in, hotlinked from Unsplash's CDN per their
-  License (no attribution required). Deliberately static, not the 3D rotation used
+- **Real rose photography** — the Our Story intro hero has one free-license photo
+  from [Unsplash](https://unsplash.com/s/photos/rose) (`components/motion/PhotoAccent.tsx`),
+  circular-framed, fully inset within the section (not bled off the edge — an
+  earlier version clipped part of the circle against the section boundary, which
+  looked broken rather than composed), hotlinked from Unsplash's CDN per their
+  License (no attribution required). Only one placement: a second copy in the
+  bridal callout was redundant next to the real bridal product photo already
+  there and got removed. Deliberately static, not the 3D rotation used
   on the icon illustrations — spinning an actual photograph in 3D reads as a
   gimmick, not a product shot.
 
