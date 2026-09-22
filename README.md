@@ -54,11 +54,10 @@ Motion (Framer Motion)
   — real `rotateX`/`rotateY`/`translateZ` inside a `perspective` container, not a
   flat fake) on the emotionally-led sections only: both hero sections and the
   bridal callouts. Deliberately left off checkout, cart and admin, where decoration
-  would compete with someone trying to finish a task. The Our Story hero also has a
-  small cluster of delicate line-art flowers (`components/motion/ElegantFlorals3D.tsx`,
-  desktop only) rotating gently in 3D — thin-stroke outlines matching the site's
-  existing icon language (see the category art) rather than a solid-filled
-  illustrated bloom, which read as clip-art. Kept restrained everywhere — motion
+  would compete with someone trying to finish a task. (A larger illustrated flower
+  centerpiece was tried and removed twice — a filled bloom read as clip-art, a
+  line-art cluster still wasn't wanted; the small ambient petals are the version
+  that stuck.) Kept restrained everywhere — motion
   durations stay under ~600ms, and the hero parallax respects
   `prefers-reduced-motion`.
 
