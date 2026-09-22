@@ -3,7 +3,7 @@ import Image from "next/image";
 import { prisma } from "@/lib/prisma";
 import Reveal from "@/components/motion/Reveal";
 import FloatingPetals from "@/components/motion/FloatingPetals";
-import BigRose3D from "@/components/motion/BigRose3D";
+import ElegantFlorals3D from "@/components/motion/ElegantFlorals3D";
 
 export const revalidate = 300;
 
@@ -47,8 +47,8 @@ export default async function OurStoryPage() {
       {/* Intro */}
       <section className="relative overflow-hidden bg-rose-soft">
         <FloatingPetals count={12} seed={11} />
-        <div className="pointer-events-none absolute -bottom-20 -right-20 hidden lg:block xl:-right-10">
-          <BigRose3D size={420} />
+        <div className="pointer-events-none absolute -bottom-10 -right-6 hidden lg:block xl:right-6">
+          <ElegantFlorals3D size={260} />
         </div>
         <div className="relative mx-auto max-w-3xl px-4 py-20 text-center sm:px-6">
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-rose">Our Story</p>
