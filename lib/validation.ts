@@ -62,3 +62,12 @@ export const productSchema = z
   });
 
 export type ProductInput = z.infer<typeof productSchema>;
+
+export const chatMessageSchema = z.object({
+  role: z.enum(["user", "assistant"]),
+  content: z.string().trim().min(1).max(2000),
+});
+
+export const chatRequestSchema = z.object({
+  messages: z.array(chatMessageSchema).min(1).max(20),
+});
