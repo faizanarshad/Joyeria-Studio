@@ -2,12 +2,18 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import ProductCard from "@/components/ProductCard";
+import PriceFilterPopover from "@/components/PriceFilterPopover";
 
 export const revalidate = 300;
 
 type Props = {
   params: Promise<{ slug: string }>;
-  searchParams: Promise<{ sort?: string; material?: string }>;
+  searchParams: Promise<{
+    sort?: string;
+    material?: string;
+    minPrice?: string;
+    maxPrice?: string;
+  }>;
 };
 
 async function getCollection(slug: string) {
@@ -26,7 +32,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function CollectionPage({ params, searchParams }: Props) {
   const { slug } = await params;
-  const { sort, material } = await searchParams;
+  const { sort, material, minPrice: minPriceParam, maxPrice: maxPriceParam } = await searchParams;
 
   const collection = await getCollection(slug);
   if (!collection) notFound();
@@ -38,15 +44,11 @@ export default async function CollectionPage({ params, searchParams }: Props) {
         ? { price: "desc" as const }
         : { createdAt: "desc" as const };
 
-  const [products, materials] = await Promise.all([
-    prisma.product.findMany({
-      where: {
-        collectionId: collection.id,
-        isActive: true,
-        ...(material ? { material } : {}),
-      },
-      include: { images: { orderBy: { sortOrder: "asc" }, take: 2 } },
-      orderBy,
+  const [priceBounds, materials] = await Promise.all([
+    prisma.product.aggregate({
+      where: { collectionId: collection.id, isActive: true },
+      _min: { price: true },
+      _max: { price: true },
     }),
     prisma.product.findMany({
       where: { collectionId: collection.id, isActive: true, material: { not: null } },
@@ -54,6 +56,37 @@ export default async function CollectionPage({ params, searchParams }: Props) {
       distinct: ["material"],
     }),
   ]);
+
+  const bounds = {
+    min: priceBounds._min.price ?? 0,
+    max: priceBounds._max.price ?? 0,
+  };
+
+  // Only honor a price param that's a real number within the collection's
+  // actual range — anything else is treated as "no filter" rather than
+  // silently clamped, so a stray/tampered query string can't hide products.
+  const minPrice = parseBoundedPrice(minPriceParam, bounds);
+  const maxPrice = parseBoundedPrice(maxPriceParam, bounds);
+
+  const products = await prisma.product.findMany({
+    where: {
+      collectionId: collection.id,
+      isActive: true,
+      ...(material ? { material } : {}),
+      ...(minPrice !== null || maxPrice !== null
+        ? {
+            price: {
+              ...(minPrice !== null ? { gte: minPrice } : {}),
+              ...(maxPrice !== null ? { lte: maxPrice } : {}),
+            },
+          }
+        : {}),
+    },
+    include: { images: { orderBy: { sortOrder: "asc" }, take: 2 } },
+    orderBy,
+  });
+
+  const otherParams = { sort, material };
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
@@ -63,7 +96,7 @@ export default async function CollectionPage({ params, searchParams }: Props) {
       )}
 
       <div className="mt-6 flex flex-wrap items-center gap-3 text-sm">
-        <FilterLink slug={slug} sort={sort} material={material} label="All" clearMaterial />
+        <FilterLink slug={slug} sort={sort} material={material} minPrice={minPriceParam} maxPrice={maxPriceParam} label="All" clearMaterial />
         {materials.map(
           (m) =>
             m.material && (
@@ -72,13 +105,26 @@ export default async function CollectionPage({ params, searchParams }: Props) {
                 slug={slug}
                 sort={sort}
                 material={m.material}
+                minPrice={minPriceParam}
+                maxPrice={maxPriceParam}
                 label={m.material}
               />
             )
         )}
+
+        {bounds.max > bounds.min && (
+          <PriceFilterPopover
+            basePath={`/collections/${slug}`}
+            bounds={bounds}
+            currentMin={minPrice}
+            currentMax={maxPrice}
+            otherParams={otherParams}
+          />
+        )}
+
         <span className="ml-auto flex gap-2">
-          <SortLink slug={slug} material={material} sort="price-asc" label="Price: Low to High" />
-          <SortLink slug={slug} material={material} sort="price-desc" label="Price: High to Low" />
+          <SortLink slug={slug} material={material} minPrice={minPriceParam} maxPrice={maxPriceParam} sort="price-asc" label="Price: Low to High" />
+          <SortLink slug={slug} material={material} minPrice={minPriceParam} maxPrice={maxPriceParam} sort="price-desc" label="Price: High to Low" />
         </span>
       </div>
 
@@ -104,28 +150,50 @@ export default async function CollectionPage({ params, searchParams }: Props) {
       </div>
 
       {products.length === 0 && (
-        <p className="mt-10 text-sm text-muted">No products in this collection yet.</p>
+        <p className="mt-10 text-sm text-muted">
+          No products match these filters.{" "}
+          <a href={`/collections/${slug}`} className="text-rose hover:underline">
+            Clear filters
+          </a>
+        </p>
       )}
     </div>
   );
+}
+
+function parseBoundedPrice(
+  raw: string | undefined,
+  bounds: { min: number; max: number }
+): number | null {
+  if (!raw) return null;
+  const value = Number(raw);
+  if (!Number.isFinite(value)) return null;
+  if (value < bounds.min || value > bounds.max) return null;
+  return value;
 }
 
 function FilterLink({
   slug,
   sort,
   material,
+  minPrice,
+  maxPrice,
   label,
   clearMaterial,
 }: {
   slug: string;
   sort?: string;
   material?: string;
+  minPrice?: string;
+  maxPrice?: string;
   label: string;
   clearMaterial?: boolean;
 }) {
   const params = new URLSearchParams();
   if (sort) params.set("sort", sort);
   if (!clearMaterial && material) params.set("material", material);
+  if (minPrice) params.set("minPrice", minPrice);
+  if (maxPrice) params.set("maxPrice", maxPrice);
   const active = clearMaterial ? !material : material === label;
   return (
     <a
@@ -142,17 +210,23 @@ function FilterLink({
 function SortLink({
   slug,
   material,
+  minPrice,
+  maxPrice,
   sort,
   label,
 }: {
   slug: string;
   material?: string;
+  minPrice?: string;
+  maxPrice?: string;
   sort: string;
   label: string;
 }) {
   const params = new URLSearchParams();
   params.set("sort", sort);
   if (material) params.set("material", material);
+  if (minPrice) params.set("minPrice", minPrice);
+  if (maxPrice) params.set("maxPrice", maxPrice);
   return (
     <a href={`/collections/${slug}?${params.toString()}`} className="text-muted hover:text-rose">
       {label}
