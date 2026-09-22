@@ -20,8 +20,11 @@ Next.js (App Router) · TypeScript · Tailwind CSS v4 · Prisma · PostgreSQL ·
   win the last piece. Delivery fee is looked up per city (`DeliveryRate`), coupons
   are supported, and a honeypot field + basic rate limiting sit in front of it.
 - **Order tracking** — `/track-order` looks orders up by phone number.
-- **Admin dashboard** (`/admin`, NextAuth-protected) — orders list with status/courier
-  updates, product create/edit/delete, all guarded by `AdminUser` credentials.
+- **Admin panel** (`/admin`, NextAuth-protected) — orders (status/courier updates),
+  products (create/edit/delete), collections (create/edit/delete), delivery rates
+  per city (inline add/edit/delete), coupons (create/toggle/delete), and an
+  analytics dashboard (revenue trend, orders by status, top products by units
+  sold — see `lib/analytics.ts`). All guarded by `AdminUser` credentials.
 - **Customer support chatbot** — a floating widget (storefront only, hidden on
   `/admin`) backed by `/api/chat` and the Claude API. It's grounded in the live
   catalog/collections/delivery data pulled fresh from Postgres on every request

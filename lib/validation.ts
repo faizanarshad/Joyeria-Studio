@@ -71,3 +71,49 @@ export const chatMessageSchema = z.object({
 export const chatRequestSchema = z.object({
   messages: z.array(chatMessageSchema).min(1).max(20),
 });
+
+export const collectionSchema = z.object({
+  name: z.string().trim().min(2, "Name is required").max(100),
+  slug: z
+    .string()
+    .trim()
+    .min(2)
+    .max(100)
+    .regex(/^[a-z0-9-]+$/, "Slug can only contain lowercase letters, numbers and hyphens"),
+  description: z.string().trim().max(500).optional().or(z.literal("")),
+  coverImage: z.string().trim().url("Enter a valid image URL").optional().or(z.literal("")),
+  featured: z.coerce.boolean(),
+  sortOrder: z.coerce.number().int(),
+});
+
+export type CollectionInput = z.infer<typeof collectionSchema>;
+
+export const deliveryRateSchema = z.object({
+  city: z.string().trim().min(2, "City is required").max(100),
+  fee: z.coerce.number().int().nonnegative("Fee can't be negative"),
+  isActive: z.coerce.boolean(),
+});
+
+export type DeliveryRateInput = z.infer<typeof deliveryRateSchema>;
+
+export const couponSchema = z
+  .object({
+    code: z
+      .string()
+      .trim()
+      .min(3, "Code must be at least 3 characters")
+      .max(30)
+      .regex(/^[A-Za-z0-9]+$/, "Code can only contain letters and numbers"),
+    discountType: z.enum(["PERCENT", "FIXED"]),
+    value: z.coerce.number().int().positive("Value must be greater than 0"),
+    minOrderValue: z.coerce.number().int().nonnegative().optional().nullable(),
+    usageLimit: z.coerce.number().int().positive().optional().nullable(),
+    expiresAt: z.string().trim().optional().nullable(),
+    isActive: z.coerce.boolean(),
+  })
+  .refine((data) => data.discountType !== "PERCENT" || data.value <= 100, {
+    message: "A percent discount can't be more than 100",
+    path: ["value"],
+  });
+
+export type CouponInput = z.infer<typeof couponSchema>;

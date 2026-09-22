@@ -26,12 +26,24 @@ export default async function AdminDashboard() {
 
   return (
     <div>
-      <h1 className="font-display text-2xl text-foreground">Dashboard</h1>
+      <div className="flex items-center justify-between">
+        <h1 className="font-display text-2xl text-foreground">Dashboard</h1>
+        <Link href="/admin/analytics" className="text-sm text-rose hover:underline">
+          View full analytics →
+        </Link>
+      </div>
 
       <div className="mt-6 grid gap-4 sm:grid-cols-3">
         <StatCard label="Pending Orders" value={String(pendingCount)} href="/admin/orders?status=PENDING" />
         <StatCard label="Orders Today" value={String(todayOrders.length)} href="/admin/orders" />
         <StatCard label="Revenue Today" value={formatPKR(todayRevenue)} />
+      </div>
+
+      <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
+        <QuickLink href="/admin/products/new" label="+ New Product" />
+        <QuickLink href="/admin/collections" label="Manage Collections" />
+        <QuickLink href="/admin/delivery" label="Manage Delivery" />
+        <QuickLink href="/admin/coupons" label="Manage Coupons" />
       </div>
 
       <div className="mt-8 rounded-lg border border-border bg-surface p-6">
@@ -63,4 +75,15 @@ function StatCard({ label, value, href }: { label: string; value: string; href?:
     </div>
   );
   return href ? <Link href={href}>{content}</Link> : content;
+}
+
+function QuickLink({ href, label }: { href: string; label: string }) {
+  return (
+    <Link
+      href={href}
+      className="rounded-lg border border-dashed border-border bg-surface p-4 text-center text-sm text-foreground hover:border-rose hover:text-rose"
+    >
+      {label}
+    </Link>
+  );
 }

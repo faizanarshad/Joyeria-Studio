@@ -39,17 +39,29 @@ export default async function AdminLayout({ children }: { children: React.ReactN
         ) : (
           <div className="min-h-screen bg-rose-soft/30">
             <header className="border-b border-border bg-surface">
-              <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-4 sm:px-6">
-                <div className="flex items-center gap-6">
+              <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-4 sm:px-6">
+                <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
                   <Link href="/admin" className="font-display text-lg text-foreground">
                     Joyería Studio Admin
                   </Link>
-                  <nav className="flex gap-4 text-sm">
+                  <nav className="flex flex-wrap gap-4 text-sm">
+                    <Link href="/admin/analytics" className="hover:text-rose">
+                      Analytics
+                    </Link>
                     <Link href="/admin/orders" className="hover:text-rose">
                       Orders
                     </Link>
                     <Link href="/admin/products" className="hover:text-rose">
                       Products
+                    </Link>
+                    <Link href="/admin/collections" className="hover:text-rose">
+                      Collections
+                    </Link>
+                    <Link href="/admin/delivery" className="hover:text-rose">
+                      Delivery
+                    </Link>
+                    <Link href="/admin/coupons" className="hover:text-rose">
+                      Coupons
                     </Link>
                   </nav>
                 </div>
@@ -65,7 +77,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
                 </form>
               </div>
             </header>
-            <main className="mx-auto max-w-5xl px-4 py-8 sm:px-6">{children}</main>
+            <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6">{children}</main>
           </div>
         )}
       </body>
