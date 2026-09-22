@@ -2,17 +2,25 @@
 
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 import ChatMessageBubble from "@/components/ChatMessageBubble";
 
 type ChatMessage = { role: "user" | "assistant"; content: string };
+type LinkItem = { name: string; slug: string };
 
 const GREETING: ChatMessage = {
   role: "assistant",
   content: "Hi! I'm the Joyería Studio assistant. Ask me about products, prices, delivery or how to order.",
 };
 
-export default function ChatWidget() {
+export default function ChatWidget({
+  collections = [],
+  featuredProducts = [],
+}: {
+  collections?: LinkItem[];
+  featuredProducts?: LinkItem[];
+}) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([GREETING]);
@@ -75,6 +83,38 @@ export default function ChatWidget() {
             {messages.map((m, i) => (
               <ChatMessageBubble key={i} role={m.role} content={m.content} />
             ))}
+
+            {messages.length === 1 && (collections.length > 0 || featuredProducts.length > 0) && (
+              <div className="space-y-2">
+                {collections.length > 0 && (
+                  <QuickLinkRow label="Browse">
+                    {collections.map((c) => (
+                      <Link
+                        key={c.slug}
+                        href={`/collections/${c.slug}`}
+                        className="rounded-full border border-rose px-3 py-1 text-xs text-rose hover:bg-rose hover:text-white"
+                      >
+                        {c.name}
+                      </Link>
+                    ))}
+                  </QuickLinkRow>
+                )}
+                {featuredProducts.length > 0 && (
+                  <QuickLinkRow label="Popular right now">
+                    {featuredProducts.map((p) => (
+                      <Link
+                        key={p.slug}
+                        href={`/products/${p.slug}`}
+                        className="rounded-full border border-green px-3 py-1 text-xs text-green-dark hover:bg-green hover:text-white"
+                      >
+                        {p.name}
+                      </Link>
+                    ))}
+                  </QuickLinkRow>
+                )}
+              </div>
+            )}
+
             {sending && <div className="max-w-[85%] rounded-2xl bg-rose-soft px-3 py-2 text-sm text-muted">Typing…</div>}
             {fallback && (
               <div className="rounded-2xl bg-zinc-100 px-3 py-2 text-sm text-foreground">
@@ -116,6 +156,15 @@ export default function ChatWidget() {
       >
         {open ? "✕" : "💬"}
       </button>
+    </div>
+  );
+}
+
+function QuickLinkRow({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <div>
+      <p className="mb-1.5 text-xs text-muted">{label}</p>
+      <div className="flex flex-wrap gap-1.5">{children}</div>
     </div>
   );
 }
