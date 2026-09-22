@@ -54,8 +54,11 @@ Motion (Framer Motion)
   — real `rotateX`/`rotateY`/`translateZ` inside a `perspective` container, not a
   flat fake) on the emotionally-led sections only: both hero sections and the
   bridal callouts. Deliberately left off checkout, cart and admin, where decoration
-  would compete with someone trying to finish a task. Kept restrained everywhere —
-  motion durations stay under ~600ms, and the hero parallax respects
+  would compete with someone trying to finish a task. The Our Story hero also has a
+  large centerpiece rose (`components/motion/BigRose3D.tsx`, desktop only) — layered,
+  irregularly-arranged petal paths with per-ring gradients rather than a symmetric
+  flower-icon shape, continuously rotating. Kept restrained everywhere — motion
+  durations stay under ~600ms, and the hero parallax respects
   `prefers-reduced-motion`.
 
 Not built yet: Cloudinary signed uploads (product images currently take a plain
