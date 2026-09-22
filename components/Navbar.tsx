@@ -34,6 +34,9 @@ export default async function Navbar() {
             <Link href="/track-order" className="hover:text-rose">
               Track Order
             </Link>
+            <Link href="/contact" className="hover:text-rose">
+              Contact
+            </Link>
           </nav>
 
           <CartIndicator />

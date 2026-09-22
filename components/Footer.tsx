@@ -55,9 +55,9 @@ export default async function Footer() {
                 </Link>
               </li>
               <li>
-                <a href={buildWhatsAppLink("Hi! I have a question.")} className="hover:text-white">
+                <Link href="/contact" className="hover:text-white">
                   Contact
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
