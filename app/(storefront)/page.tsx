@@ -5,6 +5,7 @@ import ProductCard from "@/components/ProductCard";
 import HeroSection from "@/components/HeroSection";
 import Reveal from "@/components/motion/Reveal";
 import AnimatedDiamondIcon from "@/components/motion/AnimatedDiamondIcon";
+import FloatingPetals from "@/components/motion/FloatingPetals";
 import type { ProductCardData } from "@/lib/types";
 
 export const revalidate = 300;
@@ -188,19 +189,20 @@ export default async function Home() {
             </div>
           )}
         </div>
-        <div className="flex flex-col justify-center bg-rose-soft px-6 py-16 sm:px-10 lg:px-16">
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-rose">
+        <div className="relative flex flex-col justify-center overflow-hidden bg-rose-soft px-6 py-16 sm:px-10 lg:px-16">
+          <FloatingPetals count={8} seed={17} />
+          <p className="relative text-xs font-medium uppercase tracking-[0.2em] text-rose">
             The Bridal Edit
           </p>
-          <h2 className="mt-2 font-display text-3xl text-foreground sm:text-4xl">
+          <h2 className="relative mt-2 font-display text-3xl text-foreground sm:text-4xl">
             For the days you will remember.
           </h2>
-          <p className="mt-4 max-w-md text-sm text-foreground/70">
+          <p className="relative mt-4 max-w-md text-sm text-foreground/70">
             Necklace sets, earrings and matching pieces, ready for nikkah, mehndi and walima.
           </p>
           <Link
             href="/collections/bridal"
-            className="mt-6 inline-block w-fit rounded-full bg-green px-6 py-3 text-sm text-white hover:bg-green-dark"
+            className="relative mt-6 inline-block w-fit rounded-full bg-green px-6 py-3 text-sm text-white hover:bg-green-dark"
           >
             Shop bridal sets
           </Link>

@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { prisma } from "@/lib/prisma";
 import Reveal from "@/components/motion/Reveal";
+import FloatingPetals from "@/components/motion/FloatingPetals";
 
 export const revalidate = 300;
 
@@ -43,8 +44,9 @@ export default async function OurStoryPage() {
   return (
     <div>
       {/* Intro */}
-      <section className="bg-rose-soft">
-        <div className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6">
+      <section className="relative bg-rose-soft">
+        <FloatingPetals count={12} seed={11} />
+        <div className="relative mx-auto max-w-3xl px-4 py-20 text-center sm:px-6">
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-rose">Our Story</p>
           <h1 className="mt-3 font-display text-4xl leading-tight text-foreground sm:text-5xl">
             Jewelry you&apos;ll actually reach for.
@@ -130,19 +132,20 @@ export default async function OurStoryPage() {
 
       {/* Bridal callout */}
       <Reveal as="section" className="grid lg:grid-cols-2">
-        <div className="flex flex-col justify-center bg-rose-soft px-6 py-16 sm:px-10 lg:px-16">
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-rose">For the big days</p>
-          <h2 className="mt-2 font-display text-3xl text-foreground sm:text-4xl">
+        <div className="relative flex flex-col justify-center overflow-hidden bg-rose-soft px-6 py-16 sm:px-10 lg:px-16">
+          <FloatingPetals count={8} seed={23} />
+          <p className="relative text-xs font-medium uppercase tracking-[0.2em] text-rose">For the big days</p>
+          <h2 className="relative mt-2 font-display text-3xl text-foreground sm:text-4xl">
             Bridal is where we slow down.
           </h2>
-          <p className="mt-4 max-w-md text-sm text-foreground/70">
+          <p className="relative mt-4 max-w-md text-sm text-foreground/70">
             Kundan, polki and stone sets don&apos;t get the same fast-turnaround treatment as
             daily wear. They&apos;re chosen for how they photograph under event lighting, not
             just on a plain background — because that&apos;s the one day you don&apos;t get a re-do.
           </p>
           <Link
             href="/collections/bridal"
-            className="mt-6 inline-block w-fit rounded-full bg-green px-6 py-3 text-sm text-white hover:bg-green-dark"
+            className="relative mt-6 inline-block w-fit rounded-full bg-green px-6 py-3 text-sm text-white hover:bg-green-dark"
           >
             Shop the Bridal Edit
           </Link>

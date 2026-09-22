@@ -6,6 +6,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform, useReducedMotion } from "motion/react";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import AnimatedDiamondIcon from "@/components/motion/AnimatedDiamondIcon";
+import FloatingPetals from "@/components/motion/FloatingPetals";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 18 },
@@ -32,8 +33,9 @@ export default function HeroSection({
   const fgY = useTransform(scrollYProgress, [0, 1], reducedMotion ? [0, 0] : [0, 16]);
 
   return (
-    <section className="overflow-hidden bg-rose-soft">
-      <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:py-24">
+    <section className="relative overflow-hidden bg-rose-soft">
+      <FloatingPetals count={10} seed={3} />
+      <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:py-24">
         <motion.div
           initial="hidden"
           animate="visible"

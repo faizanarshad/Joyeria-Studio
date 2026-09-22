@@ -49,8 +49,13 @@ Motion (Framer Motion)
   checkmark morph, a cart-badge bounce, a mobile nav drawer (there was no mobile nav
   before this — links were `hidden md:flex` with no fallback), an animated
   hover-underline on desktop nav, a shimmer skeleton for collection pages
-  (`loading.tsx`), and a click-to-zoom lightbox on product photos. Kept deliberately
-  restrained — motion durations stay under ~600ms, and the hero parallax respects
+  (`loading.tsx`), a click-to-zoom lightbox on product photos, and ambient floating
+  rose/leaf petals genuinely rotated in 3D (`components/motion/FloatingPetals.tsx`
+  — real `rotateX`/`rotateY`/`translateZ` inside a `perspective` container, not a
+  flat fake) on the emotionally-led sections only: both hero sections and the
+  bridal callouts. Deliberately left off checkout, cart and admin, where decoration
+  would compete with someone trying to finish a task. Kept restrained everywhere —
+  motion durations stay under ~600ms, and the hero parallax respects
   `prefers-reduced-motion`.
 
 Not built yet: Cloudinary signed uploads (product images currently take a plain
