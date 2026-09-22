@@ -50,11 +50,11 @@ export async function buildStoreContext(): Promise<string> {
       p.compareAtPrice && p.compareAtPrice > p.price
         ? ` (was ${formatPKR(p.compareAtPrice)})`
         : "";
-    return `- ${p.name} [/products/${p.slug}] — ${formatPKR(p.price)}${saleNote}, ${stockNote}. Category: ${p.category ?? "—"}. Collection: ${p.collection?.name ?? "—"}. Material: ${p.material ?? "—"}. ${p.description}`;
+    return `- [${p.name}](/products/${p.slug}) — ${formatPKR(p.price)}${saleNote}, ${stockNote}. Category: ${p.category ?? "—"}. Collection: ${p.collection?.name ?? "—"}. Material: ${p.material ?? "—"}. ${p.description}`;
   });
 
   const collectionLines = collections.map(
-    (c) => `- ${c.name} [/collections/${c.slug}]${c.description ? `: ${c.description}` : ""}`
+    (c) => `- [${c.name}](/collections/${c.slug})${c.description ? `: ${c.description}` : ""}`
   );
 
   const cityLines = cities.map((c) => `- ${c.city}: ${formatPKR(c.fee)} delivery`);

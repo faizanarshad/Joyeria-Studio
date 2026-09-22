@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
+import ChatMessageBubble from "@/components/ChatMessageBubble";
 
 type ChatMessage = { role: "user" | "assistant"; content: string };
 
@@ -72,16 +73,7 @@ export default function ChatWidget() {
 
           <div ref={scrollRef} className="flex-1 space-y-3 overflow-y-auto p-4">
             {messages.map((m, i) => (
-              <div
-                key={i}
-                className={`max-w-[85%] rounded-2xl px-3 py-2 text-sm ${
-                  m.role === "user"
-                    ? "ml-auto bg-rose text-white"
-                    : "bg-rose-soft text-foreground"
-                }`}
-              >
-                {m.content}
-              </div>
+              <ChatMessageBubble key={i} role={m.role} content={m.content} />
             ))}
             {sending && <div className="max-w-[85%] rounded-2xl bg-rose-soft px-3 py-2 text-sm text-muted">Typing…</div>}
             {fallback && (
