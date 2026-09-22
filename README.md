@@ -60,6 +60,12 @@ Motion (Framer Motion)
   that stuck.) Kept restrained everywhere — motion
   durations stay under ~600ms, and the hero parallax respects
   `prefers-reduced-motion`.
+- **Real rose photography** — the Our Story page uses two free-license photos from
+  [Unsplash](https://unsplash.com/s/photos/rose) (`components/motion/PhotoAccent.tsx`),
+  circular-framed with a soft fade-in, hotlinked from Unsplash's CDN per their
+  License (no attribution required). Deliberately static, not the 3D rotation used
+  on the icon illustrations — spinning an actual photograph in 3D reads as a
+  gimmick, not a product shot.
 
 Not built yet: Cloudinary signed uploads (product images currently take a plain
 URL), bank transfer/JazzCash/Easypaisa screenshot upload (the `Order.paymentProofUrl`

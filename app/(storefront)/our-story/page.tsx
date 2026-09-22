@@ -3,6 +3,17 @@ import Image from "next/image";
 import { prisma } from "@/lib/prisma";
 import Reveal from "@/components/motion/Reveal";
 import FloatingPetals from "@/components/motion/FloatingPetals";
+import PhotoAccent from "@/components/motion/PhotoAccent";
+
+// Free-license Unsplash photos (unsplash.com/s/photos/rose), hotlinked from
+// their CDN per the Unsplash License — attribution isn't required, but see
+// each photo's page for photographer credit if you want to add it anyway:
+// unsplash.com/photos/red-rose-with-droplets-gcWd0ts4RCo and
+// unsplash.com/photos/red-rose-mztt6emadFk
+const ROSE_DROPLETS =
+  "https://images.unsplash.com/photo-1496062031456-07b8f162a322?w=800&q=80&auto=format&fit=crop";
+const ROSE_ON_WHITE =
+  "https://images.unsplash.com/photo-1560939674-b87318b31767?w=800&q=80&auto=format&fit=crop";
 
 export const revalidate = 300;
 
@@ -46,6 +57,9 @@ export default async function OurStoryPage() {
       {/* Intro */}
       <section className="relative overflow-hidden bg-rose-soft">
         <FloatingPetals count={12} seed={11} />
+        <div className="pointer-events-none absolute -bottom-12 -right-12 hidden lg:block xl:right-2">
+          <PhotoAccent src={ROSE_DROPLETS} alt="Red rose with water droplets" size={240} />
+        </div>
         <div className="relative mx-auto max-w-3xl px-4 py-20 text-center sm:px-6">
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-rose">Our Story</p>
           <h1 className="mt-3 font-display text-4xl leading-tight text-foreground sm:text-5xl">
@@ -134,6 +148,9 @@ export default async function OurStoryPage() {
       <Reveal as="section" className="grid lg:grid-cols-2">
         <div className="relative flex flex-col justify-center overflow-hidden bg-rose-soft px-6 py-16 sm:px-10 lg:px-16">
           <FloatingPetals count={8} seed={23} />
+          <div className="pointer-events-none absolute -top-8 right-4 hidden sm:block">
+            <PhotoAccent src={ROSE_ON_WHITE} alt="Single red rose" size={150} objectPosition="center 15%" />
+          </div>
           <p className="relative text-xs font-medium uppercase tracking-[0.2em] text-rose">For the big days</p>
           <h2 className="relative mt-2 font-display text-3xl text-foreground sm:text-4xl">
             Bridal is where we slow down.
