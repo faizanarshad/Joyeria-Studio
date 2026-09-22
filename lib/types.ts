@@ -8,4 +8,8 @@ export type ProductCardData = {
   category: string | null;
   coverImage: string;
   coverImageAlt: string;
+  /** Second product photo, if one exists — crossfades in on hover. */
+  hoverImage?: string;
+  /** Featured pieces get a subtle sparkle on hover. */
+  special?: boolean;
 };

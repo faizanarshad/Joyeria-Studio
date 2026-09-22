@@ -45,7 +45,7 @@ export default async function CollectionPage({ params, searchParams }: Props) {
         isActive: true,
         ...(material ? { material } : {}),
       },
-      include: { images: { orderBy: { sortOrder: "asc" }, take: 1 } },
+      include: { images: { orderBy: { sortOrder: "asc" }, take: 2 } },
       orderBy,
     }),
     prisma.product.findMany({
@@ -94,6 +94,8 @@ export default async function CollectionPage({ params, searchParams }: Props) {
               compareAtPrice: product.compareAtPrice,
               stock: product.stock,
               category: product.category,
+              hoverImage: product.images[1]?.url,
+              special: product.isFeatured,
               coverImage: product.images[0]?.url ?? "/placeholder-jewelry.svg",
               coverImageAlt: product.images[0]?.alt ?? product.name,
             }}

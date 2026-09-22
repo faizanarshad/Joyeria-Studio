@@ -2,7 +2,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { prisma } from "@/lib/prisma";
 import ProductCard from "@/components/ProductCard";
-import WhatsAppButton from "@/components/WhatsAppButton";
+import HeroSection from "@/components/HeroSection";
+import Reveal from "@/components/motion/Reveal";
+import AnimatedDiamondIcon from "@/components/motion/AnimatedDiamondIcon";
 import type { ProductCardData } from "@/lib/types";
 
 export const revalidate = 300;
@@ -17,7 +19,7 @@ const OCCASIONS = [
 async function getFeaturedProducts(): Promise<ProductCardData[]> {
   const products = await prisma.product.findMany({
     where: { isActive: true, isFeatured: true },
-    include: { images: { orderBy: { sortOrder: "asc" }, take: 1 } },
+    include: { images: { orderBy: { sortOrder: "asc" }, take: 2 } },
     orderBy: { createdAt: "desc" },
     take: 8,
   });
@@ -29,6 +31,8 @@ async function getFeaturedProducts(): Promise<ProductCardData[]> {
     compareAtPrice: p.compareAtPrice,
     stock: p.stock,
     category: p.category,
+    hoverImage: p.images[1]?.url,
+    special: true,
     coverImage: p.images[0]?.url ?? "/placeholder-jewelry.svg",
     coverImageAlt: p.images[0]?.alt ?? p.name,
   }));
@@ -77,60 +81,15 @@ export default async function Home() {
 
   return (
     <div>
-      {/* Hero */}
-      <section className="overflow-hidden bg-rose-soft">
-        <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:py-24">
-          <div>
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-rose">
-              Minimalist · Western · Bridal
-            </p>
-            <h1 className="mt-3 font-display text-4xl leading-tight text-foreground sm:text-5xl">
-              Jewelry for the <span className="text-rose italic">everyday</span> you.
-            </h1>
-            <p className="mt-4 max-w-md text-sm text-foreground/70">
-              Minimalist daily wear, western pieces and bridal sets. Chosen with care and
-              delivered to your door.
-            </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <Link
-                href="/collections/daily-wear"
-                className="rounded-full bg-green px-6 py-3 text-sm text-white hover:bg-green-dark"
-              >
-                Shop new arrivals
-              </Link>
-              <WhatsAppButton
-                message="Hi! I'd like to know more about your jewelry."
-                variant="outline"
-              />
-            </div>
-            <p className="mt-4 text-xs text-muted">
-              Cash on delivery · Order on WhatsApp · Gift-ready packaging
-            </p>
-          </div>
-
-          <div className="relative mx-auto aspect-square w-full max-w-sm">
-            <div className="arch absolute inset-x-8 bottom-0 top-8 bg-green-soft" />
-            {secondaryHeroImage && (
-              <div className="absolute right-0 top-0 h-28 w-28 overflow-hidden rounded-full sm:h-36 sm:w-36">
-                <Image src={secondaryHeroImage} alt="" fill className="object-cover" />
-              </div>
-            )}
-            {heroImage ? (
-              <div className="arch absolute inset-x-0 bottom-0 top-16 overflow-hidden">
-                <Image src={heroImage} alt={heroImageAlt} fill className="object-cover" priority />
-              </div>
-            ) : (
-              <div className="arch absolute inset-x-0 bottom-0 top-16 flex items-center justify-center bg-rose-soft">
-                <DiamondIcon className="h-10 w-10 text-rose" />
-              </div>
-            )}
-          </div>
-        </div>
-      </section>
+      <HeroSection
+        heroImage={heroImage}
+        heroImageAlt={heroImageAlt}
+        secondaryHeroImage={secondaryHeroImage}
+      />
 
       {/* Shop by category */}
       {collections.length > 0 && (
-        <section className="bg-rose-soft/40 py-16">
+        <Reveal as="section" className="bg-rose-soft/40 py-16">
           <div className="mx-auto max-w-6xl px-4 text-center sm:px-6">
             <p className="text-xs font-medium uppercase tracking-[0.2em] text-rose">Browse</p>
             <h2 className="mt-2 font-display text-3xl text-foreground">Shop by category</h2>
@@ -151,7 +110,7 @@ export default async function Home() {
                       />
                     ) : (
                       <div className="flex h-full items-center justify-center">
-                        <DiamondIcon
+                        <AnimatedDiamondIcon
                           className={`h-8 w-8 ${i % 2 === 0 ? "text-rose" : "text-green"}`}
                         />
                       </div>
@@ -165,11 +124,11 @@ export default async function Home() {
               ))}
             </div>
           </div>
-        </section>
+        </Reveal>
       )}
 
       {/* New arrivals */}
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+      <Reveal as="section" className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
         <div className="flex items-end justify-between">
           <div>
             <p className="text-xs font-medium uppercase tracking-[0.2em] text-rose">Just In</p>
@@ -189,10 +148,10 @@ export default async function Home() {
             No featured products yet — mark some as featured in the admin, or run the seed script.
           </p>
         )}
-      </section>
+      </Reveal>
 
       {/* Shop by occasion */}
-      <section className="bg-green-soft py-16">
+      <Reveal as="section" className="bg-green-soft py-16">
         <div className="mx-auto max-w-6xl px-4 text-center sm:px-6">
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-green-dark">
             Find Your Piece
@@ -211,10 +170,10 @@ export default async function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </Reveal>
 
       {/* The Bridal Edit */}
-      <section className="grid lg:grid-cols-2">
+      <Reveal as="section" className="grid lg:grid-cols-2">
         <div className="relative aspect-square bg-green lg:aspect-auto">
           {bridalHero?.images[0]?.url ? (
             <Image
@@ -225,7 +184,7 @@ export default async function Home() {
             />
           ) : (
             <div className="flex h-full items-center justify-center">
-              <DiamondIcon className="h-12 w-12 text-white/70" />
+              <AnimatedDiamondIcon className="h-12 w-12 text-white/70" />
             </div>
           )}
         </div>
@@ -246,10 +205,10 @@ export default async function Home() {
             Shop bridal sets
           </Link>
         </div>
-      </section>
+      </Reveal>
 
       {/* Trust bar */}
-      <section className="bg-rose-soft/40 py-12">
+      <Reveal as="section" className="bg-rose-soft/40 py-12">
         <div className="mx-auto grid max-w-6xl gap-8 px-4 sm:grid-cols-3 sm:px-6">
           <TrustItem
             icon={<CashIcon className="h-6 w-6 text-green-dark" />}
@@ -267,11 +226,11 @@ export default async function Home() {
             description="Add a note at checkout and we will wrap it with care."
           />
         </div>
-      </section>
+      </Reveal>
 
       {/* Follow along */}
       {instagramUrl && recentImages.length > 0 && (
-        <section className="mx-auto max-w-6xl px-4 py-16 text-center sm:px-6">
+        <Reveal as="section" className="mx-auto max-w-6xl px-4 py-16 text-center sm:px-6">
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-rose">Follow Along</p>
           <a
             href={instagramUrl}
@@ -294,7 +253,7 @@ export default async function Home() {
               </a>
             ))}
           </div>
-        </section>
+        </Reveal>
       )}
     </div>
   );
@@ -319,20 +278,6 @@ function TrustItem({
         <p className="mt-0.5 text-xs text-muted">{description}</p>
       </div>
     </div>
-  );
-}
-
-function DiamondIcon({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className={className}>
-      <path
-        d="M6 3h12l4 6-10 12L2 9l4-6Z"
-        stroke="currentColor"
-        strokeWidth="1.3"
-        strokeLinejoin="round"
-      />
-      <path d="M2 9h20M8 3l4 6 4-6M12 21 9 9M12 21l3-12" stroke="currentColor" strokeWidth="1" />
-    </svg>
   );
 }
 

@@ -6,7 +6,8 @@ required.
 
 ## Stack
 
-Next.js (App Router) · TypeScript · Tailwind CSS v4 · Prisma · PostgreSQL · Zustand
+Next.js (App Router) · TypeScript · Tailwind CSS v4 · Prisma · PostgreSQL · Zustand ·
+Motion (Framer Motion)
 
 ## What's built
 
@@ -35,6 +36,16 @@ Next.js (App Router) · TypeScript · Tailwind CSS v4 · Prisma · PostgreSQL ·
   search — nothing else depends on how that function is implemented).
 - **SEO basics** — per-page metadata, `sitemap.ts`, `robots.ts`, JSON-LD on product
   pages.
+- **Motion** — fade-up hero on load, scroll parallax + a one-time light-sweep on the
+  hero photo, scroll-triggered section reveals (`components/motion/Reveal.tsx`), a
+  scroll progress bar, product card hover (lift + shadow + crossfade to a second
+  photo when one exists + a subtle sparkle on featured pieces), an "Add to bag"
+  checkmark morph, a cart-badge bounce, a mobile nav drawer (there was no mobile nav
+  before this — links were `hidden md:flex` with no fallback), an animated
+  hover-underline on desktop nav, a shimmer skeleton for collection pages
+  (`loading.tsx`), and a click-to-zoom lightbox on product photos. Kept deliberately
+  restrained — motion durations stay under ~600ms, and the hero parallax respects
+  `prefers-reduced-motion`.
 
 Not built yet: Cloudinary signed uploads (product images currently take a plain
 URL), bank transfer/JazzCash/Easypaisa screenshot upload (the `Order.paymentProofUrl`

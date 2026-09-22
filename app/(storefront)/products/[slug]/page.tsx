@@ -46,7 +46,7 @@ export default async function ProductPage({ params }: Props) {
           isActive: true,
           id: { not: product.id },
         },
-        include: { images: { orderBy: { sortOrder: "asc" }, take: 1 } },
+        include: { images: { orderBy: { sortOrder: "asc" }, take: 2 } },
         take: 4,
       })
     : [];
@@ -154,6 +154,8 @@ export default async function ProductPage({ params }: Props) {
                   compareAtPrice: p.compareAtPrice,
                   stock: p.stock,
                   category: p.category,
+                  hoverImage: p.images[1]?.url,
+                  special: p.isFeatured,
                   coverImage: p.images[0]?.url ?? "/placeholder-jewelry.svg",
                   coverImageAlt: p.images[0]?.alt ?? p.name,
                 }}

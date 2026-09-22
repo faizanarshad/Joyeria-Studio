@@ -4,6 +4,7 @@ import "../globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ChatWidgetServer from "@/components/ChatWidgetServer";
+import ScrollProgressBar from "@/components/motion/ScrollProgressBar";
 
 const sans = Jost({
   variable: "--font-sans",
@@ -31,6 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${sans.variable} ${serif.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-background text-foreground">
+        <ScrollProgressBar />
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

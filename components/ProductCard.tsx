@@ -1,23 +1,63 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "motion/react";
 import { formatPKR } from "@/lib/format";
 import type { ProductCardData } from "@/lib/types";
 import AddToBagButton from "@/components/AddToBagButton";
+
+const SPARKLES = [
+  { top: "18%", left: "22%", delay: 0 },
+  { top: "62%", left: "68%", delay: 0.15 },
+  { top: "38%", left: "78%", delay: 0.3 },
+];
 
 export default function ProductCard({ product }: { product: ProductCardData }) {
   const onSale = product.compareAtPrice && product.compareAtPrice > product.price;
 
   return (
-    <div className="group">
+    <motion.div
+      className="group"
+      whileHover={{ y: -2 }}
+      transition={{ duration: 0.25, ease: "easeOut" }}
+    >
       <Link href={`/products/${product.slug}`} className="block">
-        <div className="relative aspect-4/5 overflow-hidden rounded-lg bg-rose-soft">
+        <div className="relative aspect-4/5 overflow-hidden rounded-lg bg-rose-soft shadow-none transition-shadow duration-300 group-hover:shadow-lg">
           <Image
             src={product.coverImage}
             alt={product.coverImageAlt}
             fill
             sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
-            className="object-cover transition duration-300 group-hover:scale-105"
+            className={`object-cover transition-[transform,opacity] duration-300 group-hover:scale-105 ${
+              product.hoverImage ? "group-hover:opacity-0" : ""
+            }`}
           />
+          {product.hoverImage && (
+            <Image
+              src={product.hoverImage}
+              alt=""
+              aria-hidden
+              fill
+              sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
+              className="object-cover opacity-0 transition-opacity duration-300 group-hover:scale-105 group-hover:opacity-100"
+            />
+          )}
+
+          {product.special && (
+            <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              {SPARKLES.map((s, i) => (
+                <motion.span
+                  key={i}
+                  className="absolute h-1.5 w-1.5 rounded-full bg-white"
+                  style={{ top: s.top, left: s.left, boxShadow: "0 0 6px 1px rgba(255,255,255,0.8)" }}
+                  animate={{ opacity: [0, 0.9, 0], scale: [0.4, 1, 0.4] }}
+                  transition={{ duration: 1.6, delay: s.delay, repeat: Infinity, repeatDelay: 0.6 }}
+                />
+              ))}
+            </div>
+          )}
+
           {onSale && (
             <span className="absolute left-2 top-2 rounded-full bg-rose px-2 py-1 text-xs text-white">
               Sale
@@ -58,6 +98,6 @@ export default function ProductCard({ product }: { product: ProductCardData }) {
           />
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { AnimatePresence, motion } from "motion/react";
 import { useCartStore } from "@/lib/cart-store";
 
 export default function AddToCartControls({
@@ -61,9 +62,20 @@ export default function AddToCartControls({
             setAdded(true);
             setTimeout(() => setAdded(false), 1500);
           }}
-          className="flex-1 rounded-full bg-rose px-6 py-3 text-sm text-white hover:bg-rose-dark"
+          className="relative flex-1 overflow-hidden rounded-full bg-rose px-6 py-3 text-sm text-white hover:bg-rose-dark"
         >
-          {added ? "Added ✓" : "Add to Cart"}
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.span
+              key={added ? "added" : "add"}
+              initial={{ y: 14, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -14, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="block"
+            >
+              {added ? "Added ✓" : "Add to Cart"}
+            </motion.span>
+          </AnimatePresence>
         </button>
       </div>
       <button
