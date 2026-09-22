@@ -15,6 +15,7 @@ export default async function Navbar() {
 
   const links = [
     ...collections.map((c) => ({ href: `/collections/${c.slug}`, label: c.name })),
+    { href: "/our-story", label: "Our Story" },
     { href: "/track-order", label: "Track Order" },
     { href: "/contact", label: "Contact" },
   ];

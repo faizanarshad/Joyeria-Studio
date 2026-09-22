@@ -21,6 +21,9 @@ export default async function Footer() {
             <p className="mt-3 max-w-xs text-sm text-white/70">
               Everyday jewelry, thoughtfully chosen. Minimalist, western and bridal pieces.
             </p>
+            <Link href="/our-story" className="mt-3 inline-block text-sm text-white/80 underline hover:text-white">
+              Our Story
+            </Link>
           </div>
 
           <div>

@@ -1,10 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="400" height="500" viewBox="0 0 400 500">
-  <rect width="400" height="500" fill="#d3e3cd"/>
-  <g stroke="#2f4a3a" stroke-width="3" fill="none" stroke-linecap="round">
-    <path d="M140 130 Q200 175 260 130"/>
-    <line x1="200" y1="170" x2="200" y2="220"/>
-    <circle cx="200" cy="236" r="14" fill="#2f4a3a" stroke="none"/>
+  <defs>
+    <radialGradient id="bg-tikka" cx="50%" cy="42%" r="75%">
+      <stop offset="0%" stop-color="#e6efe1"/>
+      <stop offset="100%" stop-color="#c6d9be"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="500" fill="url(#bg-tikka)"/>
+  <g stroke="#2f4a3a" stroke-width="1.75" fill="none" stroke-linecap="round">
+    <path d="M155 165 Q200 202 245 165"/>
+    <line x1="200" y1="198" x2="200" y2="242"/>
+    <circle cx="200" cy="256" r="12" fill="#2f4a3a" stroke="none"/>
   </g>
-  <text x="200" y="410" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#24302a">Joyería Studio</text>
-  <text x="200" y="435" text-anchor="middle" font-family="Georgia, serif" font-size="12" letter-spacing="2" fill="#7c7570">TIKKA</text>
+  <text x="200" y="398" text-anchor="middle" font-family="Georgia, serif" font-size="15" letter-spacing="1" fill="#3c463f">Joyería Studio</text>
+  <text x="200" y="419" text-anchor="middle" font-family="Georgia, serif" font-size="9.5" letter-spacing="3" fill="#2f4a3a" opacity="0.75">TIKKA</text>
 </svg>

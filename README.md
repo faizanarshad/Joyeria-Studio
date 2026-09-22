@@ -15,6 +15,10 @@ Motion (Framer Motion)
   price range slider (bounded to that collection's actual min/max, composes with
   material filter and sort rather than resetting them), product pages with gallery,
   related products, and `Product` JSON-LD for SEO.
+- **Our Story** (`/our-story`) — brand narrative, values, and a bridal callout. The
+  copy is placeholder-quality writing, not placeholder-quality *content* — but the
+  specifics (founding year, founder, real numbers) are generic on purpose. Replace
+  them with the real story before launch.
 - **Cart & guest checkout** — Zustand cart persisted to `localStorage`, checkout form
   (name, phone, address, city, payment method), free delivery above a configurable
   threshold, plus an "Order on WhatsApp" button everywhere a customer might want one.

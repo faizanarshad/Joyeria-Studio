@@ -1,9 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="400" height="500" viewBox="0 0 400 500">
-  <rect width="400" height="500" fill="#f6dfe0"/>
-  <g stroke="#a8506b" stroke-width="3" fill="none">
-    <ellipse cx="200" cy="200" rx="90" ry="45"/>
-    <ellipse cx="200" cy="200" rx="70" ry="32" stroke-width="2"/>
+  <defs>
+    <radialGradient id="bg-bracelet" cx="50%" cy="42%" r="75%">
+      <stop offset="0%" stop-color="#fbeeef"/>
+      <stop offset="100%" stop-color="#f2d3d6"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="500" fill="url(#bg-bracelet)"/>
+  <g stroke="#a8506b" stroke-width="1.75" fill="none">
+    <ellipse cx="200" cy="220" rx="82" ry="40"/>
+    <ellipse cx="200" cy="220" rx="64" ry="29" stroke-width="1.1" opacity="0.7"/>
   </g>
-  <text x="200" y="410" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#24302a">Joyería Studio</text>
-  <text x="200" y="435" text-anchor="middle" font-family="Georgia, serif" font-size="12" letter-spacing="2" fill="#7c7570">BRACELET</text>
+  <text x="200" y="398" text-anchor="middle" font-family="Georgia, serif" font-size="15" letter-spacing="1" fill="#5b4a4d">Joyería Studio</text>
+  <text x="200" y="419" text-anchor="middle" font-family="Georgia, serif" font-size="9.5" letter-spacing="3" fill="#a8506b" opacity="0.75">BRACELET</text>
 </svg>

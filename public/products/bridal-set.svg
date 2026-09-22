@@ -1,12 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="400" height="500" viewBox="0 0 400 500">
-  <rect width="400" height="500" fill="#f6dfe0"/>
-  <g stroke="#a8506b" stroke-width="3" fill="none" stroke-linecap="round">
-    <path d="M110 140 Q200 250 290 140"/>
-    <path d="M150 165 Q200 235 250 165"/>
-    <circle cx="170" cy="220" r="6" fill="#a8506b" stroke="none"/>
-    <circle cx="200" cy="238" r="8" fill="#a8506b" stroke="none"/>
-    <circle cx="230" cy="220" r="6" fill="#a8506b" stroke="none"/>
+  <defs>
+    <radialGradient id="bg-bridal" cx="50%" cy="40%" r="78%">
+      <stop offset="0%" stop-color="#fbeeef"/>
+      <stop offset="100%" stop-color="#f0cfd2"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="500" fill="url(#bg-bridal)"/>
+  <g stroke="#a8506b" stroke-width="1.75" fill="none" stroke-linecap="round">
+    <path d="M125 165 Q200 258 275 165"/>
+    <path d="M160 188 Q200 246 240 188"/>
+    <circle cx="172" cy="224" r="5.5" fill="#a8506b" stroke="none"/>
+    <circle cx="200" cy="240" r="7" fill="#a8506b" stroke="none"/>
+    <circle cx="228" cy="224" r="5.5" fill="#a8506b" stroke="none"/>
   </g>
-  <text x="200" y="410" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#24302a">Joyería Studio</text>
-  <text x="200" y="435" text-anchor="middle" font-family="Georgia, serif" font-size="12" letter-spacing="2" fill="#7c7570">BRIDAL SET</text>
+  <text x="200" y="398" text-anchor="middle" font-family="Georgia, serif" font-size="15" letter-spacing="1" fill="#5b4a4d">Joyería Studio</text>
+  <text x="200" y="419" text-anchor="middle" font-family="Georgia, serif" font-size="9.5" letter-spacing="3" fill="#a8506b" opacity="0.75">BRIDAL SET</text>
 </svg>
