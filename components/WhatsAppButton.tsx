@@ -3,6 +3,9 @@ import { buildWhatsAppLink } from "@/lib/whatsapp";
 const VARIANTS = {
   solid: "bg-[#25D366] text-white hover:brightness-95",
   outline: "border border-foreground/20 text-foreground hover:bg-black/5",
+  // For a photo-background hero — "outline" reads as dark-on-light and
+  // disappears against a dark backdrop.
+  outlineLight: "border border-white/40 text-white hover:bg-white/10",
 };
 
 export default function WhatsAppButton({

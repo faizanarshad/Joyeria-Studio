@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { prisma } from "@/lib/prisma";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 
@@ -15,7 +16,8 @@ export default async function Footer() {
       <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <p className="font-display text-lg">
+            <p className="flex items-center gap-2 font-display text-lg">
+              <Image src="/logo/icon.png" alt="" width={32} height={24} className="h-6 w-auto" />
               Joyería <span className="text-xs tracking-[0.3em] text-white/60">STUDIO</span>
             </p>
             <p className="mt-3 max-w-xs text-sm text-white/70">

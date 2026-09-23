@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 import ChatMessageBubble from "@/components/ChatMessageBubble";
 
@@ -73,7 +74,10 @@ export default function ChatWidget({
       {open && (
         <div className="mb-3 flex h-[28rem] w-80 flex-col overflow-hidden rounded-2xl border border-border bg-surface shadow-xl sm:w-96">
           <div className="flex items-center justify-between bg-green px-4 py-3 text-white">
-            <span className="text-sm font-medium">Joyería Studio Assistant</span>
+            <span className="flex items-center gap-2 text-sm font-medium">
+              <Image src="/logo/icon.png" alt="" width={28} height={21} className="h-5 w-auto" />
+              Joyería Studio Assistant
+            </span>
             <button onClick={() => setOpen(false)} aria-label="Close chat" className="text-white/80 hover:text-white">
               ✕
             </button>

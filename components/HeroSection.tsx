@@ -13,6 +13,12 @@ const fadeUp = {
   visible: { opacity: 1, y: 0 },
 };
 
+// Free-license Unsplash photo (unsplash.com/s/photos/rose), hotlinked from
+// their CDN per the Unsplash License.
+const ROSE_BACKGROUND =
+  // unsplash.com/photos/a-group-of-red-roses-7OK4tVm9s0k — Mohamed Anemiche
+  "https://images.unsplash.com/photo-1667663685255-2b17c26157e7?w=1600&q=80&auto=format&fit=crop";
+
 export default function HeroSection({
   heroImage,
   heroImageAlt,
@@ -34,6 +40,10 @@ export default function HeroSection({
 
   return (
     <section className="relative overflow-hidden bg-rose-soft">
+      <Image src={ROSE_BACKGROUND} alt="" fill priority className="object-cover" />
+      {/* Dark scrim so the light-on-pastel text this section was built for
+          still reads against a busy, dark photo instead of a flat color. */}
+      <div className="absolute inset-0 bg-black/55" />
       <FloatingPetals count={10} seed={3} />
       <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:py-24">
         <motion.div
@@ -44,21 +54,21 @@ export default function HeroSection({
           <motion.p
             variants={fadeUp}
             transition={{ duration: 0.5 }}
-            className="text-xs font-medium uppercase tracking-[0.2em] text-rose"
+            className="text-xs font-medium uppercase tracking-[0.2em] text-rose-soft"
           >
             Minimalist · Western · Bridal
           </motion.p>
           <motion.h1
             variants={fadeUp}
             transition={{ duration: 0.55 }}
-            className="mt-3 font-display text-4xl leading-tight text-foreground sm:text-5xl"
+            className="mt-3 font-display text-4xl leading-tight text-white sm:text-5xl"
           >
-            Jewelry for the <span className="text-rose italic">everyday</span> you.
+            Jewelry for the <span className="text-rose-soft italic">everyday</span> you.
           </motion.h1>
           <motion.p
             variants={fadeUp}
             transition={{ duration: 0.5 }}
-            className="mt-4 max-w-md text-sm text-foreground/70"
+            className="mt-4 max-w-md text-sm text-white/80"
           >
             Minimalist daily wear, western pieces and bridal sets. Chosen with care and
             delivered to your door.
@@ -70,9 +80,9 @@ export default function HeroSection({
             >
               Shop new arrivals
             </Link>
-            <WhatsAppButton message="Hi! I'd like to know more about your jewelry." variant="outline" />
+            <WhatsAppButton message="Hi! I'd like to know more about your jewelry." variant="outlineLight" />
           </motion.div>
-          <motion.p variants={fadeUp} transition={{ duration: 0.5 }} className="mt-4 text-xs text-muted">
+          <motion.p variants={fadeUp} transition={{ duration: 0.5 }} className="mt-4 text-xs text-white/70">
             Cash on delivery · Order on WhatsApp · Gift-ready packaging
           </motion.p>
         </motion.div>

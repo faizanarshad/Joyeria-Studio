@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Jost, Playfair_Display } from "next/font/google";
 import Link from "next/link";
+import Image from "next/image";
 import "../globals.css";
 import { auth, signOut } from "@/lib/auth";
 
@@ -41,7 +42,8 @@ export default async function AdminLayout({ children }: { children: React.ReactN
             <header className="border-b border-border bg-surface">
               <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-4 sm:px-6">
                 <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
-                  <Link href="/admin" className="font-display text-lg text-foreground">
+                  <Link href="/admin" className="flex items-center gap-2 font-display text-lg text-foreground">
+                    <Image src="/logo/icon.png" alt="" width={28} height={21} className="h-5 w-auto" />
                     Joyería Studio Admin
                   </Link>
                   <nav className="flex flex-wrap gap-4 text-sm">

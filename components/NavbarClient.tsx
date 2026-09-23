@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { AnimatePresence, motion } from "motion/react";
 import CartIndicator from "@/components/CartIndicator";
 
@@ -40,7 +41,8 @@ export default function NavbarClient({ links }: { links: NavLink[] }) {
             scrolled ? "py-2.5" : "py-4"
           }`}
         >
-          <Link href="/" className="font-display text-xl tracking-wide text-foreground">
+          <Link href="/" className="flex items-center gap-2 font-display text-xl tracking-wide text-foreground">
+            <Image src="/logo/icon.png" alt="" width={32} height={24} className="h-6 w-auto" priority />
             Joyería <span className="text-xs tracking-[0.3em] text-muted">STUDIO</span>
           </Link>
 

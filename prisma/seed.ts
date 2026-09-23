@@ -28,12 +28,24 @@ const collections = [
   },
 ];
 
-// Placeholder-only: plain-background line-art icons per category, carrying the
-// brand name, so seed products never depend on guessed stock-photo URLs (which
-// turned out to include model/body shots, a mismatched branded bag, and a dead
-// link). Swap these for real product photography via the admin as it's shot.
+// One real, free-license Unsplash photo per category (verified: jewelry
+// alone, no one wearing it — see each URL's own page for the photographer).
+// "ring" and "tikka" have no verified match yet (a maang tikka in particular
+// is worn on the forehead/hair part, so an unworn product shot is hard to
+// find) and fall back to the plain-background line-art icon used before any
+// of this was sourced — swap those for real photography via the admin once
+// it's shot.
+const CATEGORY_IMAGE: Record<string, { url: string } | null> = {
+  earrings: { url: "https://images.unsplash.com/photo-1634390618228-2fe329fc7546?w=1000&q=80&auto=format&fit=crop" },
+  necklace: { url: "https://images.unsplash.com/photo-1602527418517-f33773c47f8a?w=1000&q=80&auto=format&fit=crop" },
+  bracelet: { url: "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=1000&q=80&auto=format&fit=crop" },
+  "bridal-set": { url: "https://images.unsplash.com/photo-1722410180687-b05b50922362?w=1000&q=80&auto=format&fit=crop" },
+  ring: null,
+  tikka: null,
+};
+
 const img = (category: "earrings" | "necklace" | "bracelet" | "ring" | "tikka" | "bridal-set", alt: string) => ({
-  url: `/products/${category}.svg`,
+  url: CATEGORY_IMAGE[category]?.url ?? `/products/${category}.svg`,
   alt,
 });
 
@@ -91,7 +103,7 @@ const products: Array<{
     stock: 8,
     category: "Bracelets",
     collectionSlug: "daily-wear",
-    images: [img("bracelet", "Thin gold chain bracelet on plain background")],
+    images: [img("bracelet", "Bracelet on a dark reflective surface")],
   },
   {
     name: "Oxidized Stud Set",
@@ -119,7 +131,7 @@ const products: Array<{
     category: "Necklaces",
     collectionSlug: "western",
     isFeatured: true,
-    images: [img("necklace", "Layered gold chain necklace on plain background")],
+    images: [img("necklace", "Gold necklace displayed on neutral fabric")],
   },
   {
     name: "Statement Hoop Earrings",
@@ -145,7 +157,7 @@ const products: Array<{
     stock: 5,
     category: "Bracelets",
     collectionSlug: "western",
-    images: [img("bracelet", "Chunky gold cuff bracelet on plain background")],
+    images: [img("bracelet", "Bracelet on a dark reflective surface")],
   },
   {
     name: "Crystal Drop Necklace",
@@ -158,7 +170,7 @@ const products: Array<{
     stock: 7,
     category: "Necklaces",
     collectionSlug: "western",
-    images: [img("necklace", "Crystal drop pendant necklace on plain background")],
+    images: [img("necklace", "Gold necklace displayed on neutral fabric")],
   },
   {
     name: "Kundan Choker Set",
@@ -174,7 +186,7 @@ const products: Array<{
     category: "Sets",
     collectionSlug: "bridal",
     isFeatured: true,
-    images: [img("bridal-set", "Kundan choker necklace set on plain background")],
+    images: [img("bridal-set", "Bridal necklace and earring set displayed on a mannequin bust")],
   },
   {
     name: "Polki Jhumka Earrings",
@@ -215,7 +227,7 @@ const products: Array<{
     category: "Sets",
     collectionSlug: "bridal",
     isFeatured: true,
-    images: [img("bridal-set", "Emerald stone necklace set on plain background")],
+    images: [img("bridal-set", "Bridal necklace and earring set displayed on a mannequin bust")],
   },
 ];
 

@@ -3,15 +3,13 @@ import Image from "next/image";
 import { prisma } from "@/lib/prisma";
 import Reveal from "@/components/motion/Reveal";
 import FloatingPetals from "@/components/motion/FloatingPetals";
-import PhotoAccent from "@/components/motion/PhotoAccent";
-import TiltPhoto from "@/components/motion/TiltPhoto";
 
 // Free-license Unsplash photos (unsplash.com/s/photos/rose), hotlinked from
 // their CDN per the Unsplash License — attribution isn't required, but see
 // each photo's own page for credit if you want to add it anyway.
-const ROSE_DROPLETS =
-  // unsplash.com/photos/red-rose-with-droplets-gcWd0ts4RCo
-  "https://images.unsplash.com/photo-1496062031456-07b8f162a322?w=800&q=80&auto=format&fit=crop";
+const ROSE_BED =
+  // unsplash.com/photos/bed-of-red-roses-in-bloom-dv7cSiHurKM — Nikita Tikhomirov
+  "https://images.unsplash.com/photo-1530906622963-8a60586a49c7?w=1600&q=80&auto=format&fit=crop";
 const ROSE_BOUQUET =
   // unsplash.com/photos/red-roses-OsHqxjVV0HE — Cody Chan
   "https://images.unsplash.com/photo-1578439231583-9eca0a363860?w=800&q=80&auto=format&fit=crop";
@@ -57,16 +55,17 @@ export default async function OurStoryPage() {
     <div>
       {/* Intro */}
       <section className="relative overflow-hidden bg-rose-soft">
+        <Image src={ROSE_BED} alt="" fill priority className="object-cover" />
+        {/* Dark scrim — this section's text was designed for a light pastel
+            background, not a busy, dark photo. */}
+        <div className="absolute inset-0 bg-black/50" />
         <FloatingPetals count={12} seed={11} />
-        <div className="pointer-events-none absolute bottom-10 right-10 hidden lg:block">
-          <PhotoAccent src={ROSE_DROPLETS} alt="Red rose with water droplets" size={220} />
-        </div>
-        <div className="relative mx-auto max-w-3xl px-4 py-20 text-center sm:px-6">
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-rose">Our Story</p>
-          <h1 className="mt-3 font-display text-4xl leading-tight text-foreground sm:text-5xl">
+        <div className="relative mx-auto max-w-3xl px-4 py-24 text-center sm:px-6">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-rose-soft">Our Story</p>
+          <h1 className="mt-3 font-display text-4xl leading-tight text-white sm:text-5xl">
             Jewelry you&apos;ll actually reach for.
           </h1>
-          <p className="mx-auto mt-5 max-w-xl text-foreground/70">
+          <p className="mx-auto mt-5 max-w-xl text-white/80">
             Joyería Studio started with a simple frustration: most affordable jewelry looks
             cheap, and most jewelry that doesn&apos;t is priced for a special occasion, not a
             Tuesday. We set out to close that gap — pieces considered enough for a photo,
@@ -138,18 +137,19 @@ export default async function OurStoryPage() {
       </Reveal>
 
       {/* Pull quote */}
-      <Reveal as="section" className="mx-auto max-w-5xl px-4 py-20 sm:px-6">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
-          <TiltPhoto
-            src={ROSE_BOUQUET}
-            alt="Close-up of deep red roses in bloom"
-            className="mx-auto w-full max-w-sm"
-          />
-          <p className="font-display text-2xl leading-relaxed text-foreground sm:text-3xl">
-            &ldquo;We&apos;re not trying to be everything to everyone. We&apos;re trying to be
-            the jewelry drawer you actually open.&rdquo;
-          </p>
-        </div>
+      <Reveal as="section" className="relative overflow-hidden bg-rose-soft py-24">
+        <Image
+          src={ROSE_BOUQUET}
+          alt=""
+          fill
+          className="object-cover"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-black/55" />
+        <p className="relative mx-auto max-w-3xl px-4 text-center font-display text-2xl leading-relaxed text-white sm:px-6 sm:text-3xl">
+          &ldquo;We&apos;re not trying to be everything to everyone. We&apos;re trying to be
+          the jewelry drawer you actually open.&rdquo;
+        </p>
       </Reveal>
 
       {/* Bridal callout */}
