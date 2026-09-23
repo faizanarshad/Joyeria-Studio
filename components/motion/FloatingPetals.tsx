@@ -106,10 +106,10 @@ function RosePetal() {
     <svg viewBox="0 0 32 32" className="h-full w-full drop-shadow-sm">
       <path
         d="M16 2c6 3 10 8 10 14 0 7-5 13-10 14C11 29 6 23 6 16 6 10 10 5 16 2Z"
-        fill="#c1607a"
+        fill="#d9b23c"
         opacity="0.85"
       />
-      <path d="M16 6c3.5 2.2 6 5.6 6 10 0 4.8-3 9-6 9.6" stroke="#8a3d56" strokeWidth="0.6" fill="none" opacity="0.5" />
+      <path d="M16 6c3.5 2.2 6 5.6 6 10 0 4.8-3 9-6 9.6" stroke="#9c7d1e" strokeWidth="0.6" fill="none" opacity="0.5" />
     </svg>
   );
 }

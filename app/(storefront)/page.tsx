@@ -210,25 +210,37 @@ export default async function Home() {
       </Reveal>
 
       {/* Trust bar */}
-      <Reveal as="section" className="bg-rose-soft/40 py-12">
-        <div className="mx-auto grid max-w-6xl gap-8 px-4 sm:grid-cols-3 sm:px-6">
-          <TrustItem
-            icon={<CashIcon className="h-6 w-6 text-green-dark" />}
-            title="Cash on delivery"
-            description="Pay when your order reaches you."
-          />
-          <TrustItem
-            icon={<ChatIcon className="h-6 w-6 text-rose" />}
-            title="Order on WhatsApp"
-            description="Message us to order or ask about a piece."
-          />
-          <TrustItem
-            icon={<GiftIcon className="h-6 w-6 text-green-dark" />}
-            title="Gift-ready packaging"
-            description="Add a note at checkout and we will wrap it with care."
-          />
+      <section className="py-12">
+        <div className="mx-auto grid max-w-6xl gap-6 px-4 sm:grid-cols-3 sm:px-6">
+          <Reveal delay={0}>
+            <TrustItem
+              icon={<CashIcon className="h-6 w-6 text-green-dark" />}
+              title="Cash on delivery"
+              description="Pay when your order reaches you."
+              className="bg-rose-soft"
+              badgeShape="rounded-full"
+            />
+          </Reveal>
+          <Reveal delay={0.1}>
+            <TrustItem
+              icon={<ChatIcon className="h-6 w-6 text-green-dark" />}
+              title="Order on WhatsApp"
+              description="Message us to order or ask about a piece."
+              className="bg-green-soft"
+              badgeShape="rounded-2xl"
+            />
+          </Reveal>
+          <Reveal delay={0.2}>
+            <TrustItem
+              icon={<GiftIcon className="h-6 w-6 text-rose" />}
+              title="Gift-ready packaging"
+              description="Add a note at checkout and we will wrap it with care."
+              className="border border-dashed border-rose/40 bg-surface"
+              badgeShape="rounded-full ring-1 ring-rose/30"
+            />
+          </Reveal>
         </div>
-      </Reveal>
+      </section>
 
       {/* Follow along */}
       {instagramUrl && recentImages.length > 0 && (
@@ -265,14 +277,20 @@ function TrustItem({
   icon,
   title,
   description,
+  className = "",
+  badgeShape = "rounded-full",
 }: {
   icon: React.ReactNode;
   title: string;
   description: string;
+  className?: string;
+  badgeShape?: string;
 }) {
   return (
-    <div className="flex items-start gap-3">
-      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-surface">
+    <div
+      className={`flex h-full items-start gap-3 rounded-2xl p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md ${className}`}
+    >
+      <div className={`flex h-11 w-11 shrink-0 items-center justify-center bg-surface ${badgeShape}`}>
         {icon}
       </div>
       <div>

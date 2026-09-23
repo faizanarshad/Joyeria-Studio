@@ -13,11 +13,11 @@ const fadeUp = {
   visible: { opacity: 1, y: 0 },
 };
 
-// Free-license Unsplash photo (unsplash.com/s/photos/rose), hotlinked from
-// their CDN per the Unsplash License.
+// Free-license Unsplash photo (unsplash.com/s/photos/yellow-rose), hotlinked
+// from their CDN per the Unsplash License.
 const ROSE_BACKGROUND =
-  // unsplash.com/photos/a-group-of-red-roses-7OK4tVm9s0k — Mohamed Anemiche
-  "https://images.unsplash.com/photo-1667663685255-2b17c26157e7?w=1600&q=80&auto=format&fit=crop";
+  // unsplash.com/photos/a-bunch-of-yellow-roses-with-green-leaves-CfzNNc7NsnQ — Aleyna Çatak
+  "https://images.unsplash.com/photo-1712258091854-ac9460506a76?w=1600&q=80&auto=format&fit=crop";
 
 export default function HeroSection({
   heroImage,
@@ -43,7 +43,10 @@ export default function HeroSection({
       <Image src={ROSE_BACKGROUND} alt="" fill priority className="object-cover" />
       {/* Dark scrim so the light-on-pastel text this section was built for
           still reads against a busy, dark photo instead of a flat color. */}
-      <div className="absolute inset-0 bg-black/55" />
+      {/* Yellow petals are much brighter than the red roses this overlay was
+          tuned for — bright enough that even /65 left a washed-out patch
+          behind the trust line. Gone darker rather than tune to one crop. */}
+      <div className="absolute inset-0 bg-black/75" />
       <FloatingPetals count={10} seed={3} />
       <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:py-24">
         <motion.div
@@ -68,7 +71,7 @@ export default function HeroSection({
           <motion.p
             variants={fadeUp}
             transition={{ duration: 0.5 }}
-            className="mt-4 max-w-md text-sm text-white/80"
+            className="mt-4 max-w-md text-sm text-white/90"
           >
             Minimalist daily wear, western pieces and bridal sets. Chosen with care and
             delivered to your door.
@@ -82,7 +85,7 @@ export default function HeroSection({
             </Link>
             <WhatsAppButton message="Hi! I'd like to know more about your jewelry." variant="outlineLight" />
           </motion.div>
-          <motion.p variants={fadeUp} transition={{ duration: 0.5 }} className="mt-4 text-xs text-white/70">
+          <motion.p variants={fadeUp} transition={{ duration: 0.5 }} className="mt-4 text-xs text-white/85">
             Cash on delivery · Order on WhatsApp · Gift-ready packaging
           </motion.p>
         </motion.div>

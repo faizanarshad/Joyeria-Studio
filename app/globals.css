@@ -3,9 +3,13 @@
 :root {
   --background: #fdf9f6;
   --foreground: #24302a;
-  --rose: #a8506b;
-  --rose-dark: #7d3a51;
-  --rose-soft: #f6dfe0;
+  /* Named "rose" from the original pink/mauve palette — kept as-is rather
+     than renamed to "gold" across every `text-rose`/`bg-rose`/etc. usage
+     site-wide, since only the color value changed, not what it means (the
+     brand's primary accent). */
+  --rose: #c9a227;
+  --rose-dark: #9c7d1e;
+  --rose-soft: #faf0d7;
   --green: #2f4a3a;
   --green-dark: #22362a;
   --green-soft: #d3e3cd;

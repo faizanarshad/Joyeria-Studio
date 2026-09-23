@@ -4,15 +4,15 @@ import { prisma } from "@/lib/prisma";
 import Reveal from "@/components/motion/Reveal";
 import FloatingPetals from "@/components/motion/FloatingPetals";
 
-// Free-license Unsplash photos (unsplash.com/s/photos/rose), hotlinked from
-// their CDN per the Unsplash License — attribution isn't required, but see
-// each photo's own page for credit if you want to add it anyway.
+// Free-license Unsplash photos (unsplash.com/s/photos/yellow-rose), hotlinked
+// from their CDN per the Unsplash License — attribution isn't required, but
+// see each photo's own page for credit if you want to add it anyway.
 const ROSE_BED =
-  // unsplash.com/photos/bed-of-red-roses-in-bloom-dv7cSiHurKM — Nikita Tikhomirov
-  "https://images.unsplash.com/photo-1530906622963-8a60586a49c7?w=1600&q=80&auto=format&fit=crop";
+  // unsplash.com/photos/a-yellow-rose-with-a-black-background-VrBL28xxWiw — Hydra 4x
+  "https://images.unsplash.com/photo-1705735777179-2731fc647f3a?w=1600&q=80&auto=format&fit=crop";
 const ROSE_BOUQUET =
-  // unsplash.com/photos/red-roses-OsHqxjVV0HE — Cody Chan
-  "https://images.unsplash.com/photo-1578439231583-9eca0a363860?w=800&q=80&auto=format&fit=crop";
+  // unsplash.com/photos/yellow-rose-in-close-up-photography-QwgW_KChuY8 — Rithika Gopal
+  "https://images.unsplash.com/photo-1585498207679-0a496e32b7f0?w=800&q=80&auto=format&fit=crop";
 
 export const revalidate = 300;
 
