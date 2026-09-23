@@ -60,8 +60,14 @@ Motion (Framer Motion)
   products (create/edit/delete), collections (create/edit/delete), delivery rates
   per city (inline add/edit/delete), coupons (create/toggle/delete), review
   moderation (approve/delete), and an analytics dashboard (revenue trend, orders
-  by status, top products by units sold — see `lib/analytics.ts`). All guarded by
-  `AdminUser` credentials.
+  by status, top products by units sold, grouped by product ID so a rename
+  doesn't split a product's own history into two rows — see `lib/analytics.ts`).
+  Login itself is rate-limited (5 attempts / 5 min per IP) — it's the one endpoint
+  where a correct guess gets straight into the admin panel, unlike everywhere
+  else guarded by `AdminUser` credentials. Cancelling an order restores the stock
+  it reserved at checkout (and re-reserves it, gated the same way a fresh
+  checkout is, if un-cancelled) — cancellation is the normal way a refused or
+  fake COD order gets filtered out, so this runs constantly, not as an edge case.
 - **Customer support chatbot** — a floating widget (storefront only, hidden on
   `/admin`) backed by `/api/chat` and the Claude API. It's grounded in the live
   catalog/collections/delivery data pulled fresh from Postgres on every request

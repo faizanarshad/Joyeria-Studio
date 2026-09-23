@@ -2,6 +2,7 @@ import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/prisma";
+import { checkRateLimit } from "@/lib/rate-limit";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   session: { strategy: "jwt" },
@@ -12,10 +13,18 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         email: { label: "Email", type: "email" },
         password: { label: "Password", type: "password" },
       },
-      authorize: async (credentials) => {
+      authorize: async (credentials, request) => {
         const email = credentials?.email;
         const password = credentials?.password;
         if (typeof email !== "string" || typeof password !== "string") return null;
+
+        // The one endpoint in this app with no other layer of defense — a
+        // wrong guess here gets straight into the admin panel, unlike a
+        // wrong checkout guess which just fails a form. Everything else
+        // (checkout, chat, track-order) is already rate-limited; this was
+        // the gap.
+        const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
+        if (await checkRateLimit(`admin-login:${ip}`, 5, 5 * 60_000)) return null;
 
         const admin = await prisma.adminUser.findUnique({ where: { email } });
         if (!admin) return null;

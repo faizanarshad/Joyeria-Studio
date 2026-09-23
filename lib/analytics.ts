@@ -83,18 +83,32 @@ export async function getOrdersByStatus(): Promise<StatusCount[]> {
 
 export async function getTopProducts(limit = 5): Promise<TopProduct[]> {
   const items = await prisma.orderItem.findMany({
-    select: { productName: true, quantity: true, price: true, product: { select: { slug: true } } },
+    select: {
+      productId: true,
+      productName: true,
+      quantity: true,
+      price: true,
+      product: { select: { name: true, slug: true } },
+    },
   });
 
+  // Keyed by productId when the product still exists, not by the snapshotted
+  // name — OrderItem.productName is frozen at purchase time on purpose (see
+  // schema), so renaming a product would otherwise split its history into
+  // two separate rows here, one per name it's ever had. Orphaned items
+  // (productId null — the product was deleted) fall back to grouping by
+  // name, same as before.
   const totals = new Map<string, TopProduct>();
   for (const item of items) {
-    const existing = totals.get(item.productName);
+    const key = item.productId ?? item.productName;
+    const displayName = item.product?.name ?? item.productName;
+    const existing = totals.get(key);
     if (existing) {
       existing.quantity += item.quantity;
       existing.revenue += item.price * item.quantity;
     } else {
-      totals.set(item.productName, {
-        name: item.productName,
+      totals.set(key, {
+        name: displayName,
         slug: item.product?.slug ?? null,
         quantity: item.quantity,
         revenue: item.price * item.quantity,

@@ -1,12 +1,14 @@
 import { prisma } from "@/lib/prisma";
 import { formatPKR } from "@/lib/format";
 import { FREE_DELIVERY_THRESHOLD, listCities } from "@/lib/delivery";
+import { ADVANCE_PAYMENT_THRESHOLD } from "@/lib/payment";
 
 const STORE_POLICIES = `
 STORE POLICIES
-- Payment: Cash on Delivery (pay when the order arrives), or Bank Transfer / JazzCash / Easypaisa (customer sends a screenshot of the payment after ordering).
+- Payment: Cash on Delivery for orders under ${formatPKR(ADVANCE_PAYMENT_THRESHOLD)}. Orders at or above that need advance payment — Bank Transfer, JazzCash or Easypaisa, with the customer sending a screenshot of the payment after ordering — cash on delivery is not offered above that amount.
 - Every order starts as PENDING and is confirmed by the store over WhatsApp before it ships — this is normal, not a delay tactic.
 - Delivery fee depends on city and is shown at checkout; orders above ${formatPKR(FREE_DELIVERY_THRESHOLD)} get free delivery.
+- Returns: exchanges only (not refunds), for a manufacturing defect reported within 3 days of delivery, piece unworn and in original packaging.
 - Customers can track an order anytime at /track-order using the phone number they checked out with.
 - Gift-ready packaging is available — customers can add a note at checkout.
 - No customer accounts are needed — checkout is guest-only (name, phone, address, city).
