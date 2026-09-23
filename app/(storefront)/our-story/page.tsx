@@ -4,13 +4,17 @@ import { prisma } from "@/lib/prisma";
 import Reveal from "@/components/motion/Reveal";
 import FloatingPetals from "@/components/motion/FloatingPetals";
 import PhotoAccent from "@/components/motion/PhotoAccent";
+import TiltPhoto from "@/components/motion/TiltPhoto";
 
-// Free-license Unsplash photo (unsplash.com/s/photos/rose), hotlinked from
+// Free-license Unsplash photos (unsplash.com/s/photos/rose), hotlinked from
 // their CDN per the Unsplash License — attribution isn't required, but see
-// the photo's own page for credit if you want to add it anyway:
-// unsplash.com/photos/red-rose-with-droplets-gcWd0ts4RCo
+// each photo's own page for credit if you want to add it anyway.
 const ROSE_DROPLETS =
+  // unsplash.com/photos/red-rose-with-droplets-gcWd0ts4RCo
   "https://images.unsplash.com/photo-1496062031456-07b8f162a322?w=800&q=80&auto=format&fit=crop";
+const ROSE_BOUQUET =
+  // unsplash.com/photos/red-roses-OsHqxjVV0HE — Cody Chan
+  "https://images.unsplash.com/photo-1578439231583-9eca0a363860?w=800&q=80&auto=format&fit=crop";
 
 export const revalidate = 300;
 
@@ -134,11 +138,18 @@ export default async function OurStoryPage() {
       </Reveal>
 
       {/* Pull quote */}
-      <Reveal as="section" className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6">
-        <p className="font-display text-2xl leading-relaxed text-foreground sm:text-3xl">
-          &ldquo;We&apos;re not trying to be everything to everyone. We&apos;re trying to be
-          the jewelry drawer you actually open.&rdquo;
-        </p>
+      <Reveal as="section" className="mx-auto max-w-5xl px-4 py-20 sm:px-6">
+        <div className="grid items-center gap-12 lg:grid-cols-2">
+          <TiltPhoto
+            src={ROSE_BOUQUET}
+            alt="Close-up of deep red roses in bloom"
+            className="mx-auto w-full max-w-sm"
+          />
+          <p className="font-display text-2xl leading-relaxed text-foreground sm:text-3xl">
+            &ldquo;We&apos;re not trying to be everything to everyone. We&apos;re trying to be
+            the jewelry drawer you actually open.&rdquo;
+          </p>
+        </div>
       </Reveal>
 
       {/* Bridal callout */}
