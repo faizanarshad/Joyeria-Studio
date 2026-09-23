@@ -107,6 +107,7 @@ export default async function Home() {
                         src={c.image}
                         alt={c.name}
                         fill
+                        sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
                         className="object-cover transition duration-300 group-hover:scale-105"
                       />
                     ) : (
@@ -181,6 +182,7 @@ export default async function Home() {
               src={bridalHero.images[0].url}
               alt={bridalHero.images[0].alt}
               fill
+              sizes="(min-width: 1024px) 50vw, 100vw"
               className="object-cover"
             />
           ) : (
@@ -263,7 +265,13 @@ export default async function Home() {
                 rel="noopener noreferrer"
                 className="relative aspect-square overflow-hidden rounded-md"
               >
-                <Image src={img.url} alt={img.alt} fill className="object-cover" />
+                <Image
+                  src={img.url}
+                  alt={img.alt}
+                  fill
+                  sizes="(min-width: 640px) 16vw, 33vw"
+                  className="object-cover"
+                />
               </a>
             ))}
           </div>

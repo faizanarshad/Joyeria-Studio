@@ -40,7 +40,7 @@ export default function HeroSection({
 
   return (
     <section className="relative overflow-hidden bg-rose-soft">
-      <Image src={ROSE_BACKGROUND} alt="" fill priority className="object-cover" />
+      <Image src={ROSE_BACKGROUND} alt="" fill priority sizes="100vw" className="object-cover" />
       {/* Dark scrim so the light-on-pastel text this section was built for
           still reads against a busy, dark photo instead of a flat color. */}
       {/* Yellow petals are much brighter than the red roses this overlay was
@@ -103,12 +103,25 @@ export default function HeroSection({
               style={{ y: fgY }}
               className="absolute right-0 top-0 h-28 w-28 overflow-hidden rounded-full sm:h-36 sm:w-36"
             >
-              <Image src={secondaryHeroImage} alt="" fill className="object-cover" />
+              <Image
+                src={secondaryHeroImage}
+                alt=""
+                fill
+                sizes="(min-width: 640px) 144px, 112px"
+                className="object-cover"
+              />
             </motion.div>
           )}
           {heroImage ? (
             <motion.div style={{ y: fgY }} className="arch absolute inset-x-0 bottom-0 top-16 overflow-hidden">
-              <Image src={heroImage} alt={heroImageAlt} fill className="object-cover" priority />
+              <Image
+                src={heroImage}
+                alt={heroImageAlt}
+                fill
+                sizes="(min-width: 640px) 384px, 100vw"
+                className="object-cover"
+                priority
+              />
               {/* A one-time light sweep across the piece, like a glint catching the metal. */}
               <motion.div
                 initial={{ x: "-120%" }}

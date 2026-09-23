@@ -3,16 +3,14 @@ import Image from "next/image";
 import { prisma } from "@/lib/prisma";
 import Reveal from "@/components/motion/Reveal";
 import FloatingPetals from "@/components/motion/FloatingPetals";
+import AnimatedQuoteMark from "@/components/motion/AnimatedQuoteMark";
 
-// Free-license Unsplash photos (unsplash.com/s/photos/yellow-rose), hotlinked
-// from their CDN per the Unsplash License — attribution isn't required, but
-// see each photo's own page for credit if you want to add it anyway.
+// Free-license Unsplash photo (unsplash.com/s/photos/yellow-rose), hotlinked
+// from its CDN per the Unsplash License — attribution isn't required, but
+// see the photo's own page for credit if you want to add it anyway.
 const ROSE_BED =
   // unsplash.com/photos/a-yellow-rose-with-a-black-background-VrBL28xxWiw — Hydra 4x
   "https://images.unsplash.com/photo-1705735777179-2731fc647f3a?w=1600&q=80&auto=format&fit=crop";
-const ROSE_BOUQUET =
-  // unsplash.com/photos/yellow-rose-in-close-up-photography-QwgW_KChuY8 — Rithika Gopal
-  "https://images.unsplash.com/photo-1585498207679-0a496e32b7f0?w=800&q=80&auto=format&fit=crop";
 
 export const revalidate = 300;
 
@@ -55,7 +53,7 @@ export default async function OurStoryPage() {
     <div>
       {/* Intro */}
       <section className="relative overflow-hidden bg-rose-soft">
-        <Image src={ROSE_BED} alt="" fill priority className="object-cover" />
+        <Image src={ROSE_BED} alt="" fill priority sizes="100vw" className="object-cover" />
         {/* Dark scrim — this section's text was designed for a light pastel
             background, not a busy, dark photo. */}
         <div className="absolute inset-0 bg-black/50" />
@@ -107,6 +105,7 @@ export default async function OurStoryPage() {
                 src={storyProduct.images[0].url}
                 alt={storyProduct.images[0].alt}
                 fill
+                sizes="(min-width: 1024px) 384px, 100vw"
                 className="object-cover"
               />
             )}
@@ -137,19 +136,18 @@ export default async function OurStoryPage() {
       </Reveal>
 
       {/* Pull quote */}
-      <Reveal as="section" className="relative overflow-hidden bg-rose-soft py-24">
-        <Image
-          src={ROSE_BOUQUET}
-          alt=""
-          fill
-          className="object-cover"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-black/55" />
-        <p className="relative mx-auto max-w-3xl px-4 text-center font-display text-2xl leading-relaxed text-white sm:px-6 sm:text-3xl">
-          &ldquo;We&apos;re not trying to be everything to everyone. We&apos;re trying to be
-          the jewelry drawer you actually open.&rdquo;
-        </p>
+      <Reveal
+        as="section"
+        className="relative overflow-hidden bg-gradient-to-br from-rose-soft via-background to-green-soft py-24"
+      >
+        <FloatingPetals count={10} seed={31} />
+        <div className="relative mx-auto max-w-3xl px-4 text-center sm:px-6">
+          <AnimatedQuoteMark className="text-4xl sm:text-5xl" />
+          <p className="-mt-4 font-display text-2xl leading-relaxed text-foreground sm:text-3xl">
+            We&apos;re not trying to be everything to everyone. We&apos;re trying to be
+            the jewelry drawer you actually open.
+          </p>
+        </div>
       </Reveal>
 
       {/* Bridal callout */}
@@ -172,15 +170,18 @@ export default async function OurStoryPage() {
             Shop the Bridal Edit
           </Link>
         </div>
-        <div className="relative aspect-square bg-green lg:aspect-auto">
-          {bridalProduct?.images[0]?.url && (
-            <Image
-              src={bridalProduct.images[0].url}
-              alt={bridalProduct.images[0].alt}
-              fill
-              className="object-cover"
-            />
-          )}
+        <div className="relative flex items-center justify-center bg-green-soft px-6 py-16 sm:px-10 lg:px-16">
+          <div className="relative aspect-4/5 w-full max-w-sm overflow-hidden rounded-lg shadow-lg">
+            {bridalProduct?.images[0]?.url && (
+              <Image
+                src={bridalProduct.images[0].url}
+                alt={bridalProduct.images[0].alt}
+                fill
+                sizes="(min-width: 1024px) 384px, 100vw"
+                className="object-cover"
+              />
+            )}
+          </div>
         </div>
       </Reveal>
 
