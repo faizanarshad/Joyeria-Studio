@@ -66,12 +66,33 @@ model Product {
 
   images        ProductImage[]
   orderItems    OrderItem[]
+  reviews       Review[]
 
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 
   @@index([collectionId])
   @@index([isActive, isFeatured])
+}
+
+model Review {
+  id           String   @id @default(cuid())
+  productId    String
+  product      Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  customerName String
+  rating       Int      // 1-5
+  comment      String
+
+  // Unmoderated reviews are a spam/abuse vector like any other public
+  // free-text field on the site — held back from the storefront until an
+  // admin approves them, same principle as the honeypot/rate-limit pair
+  // guarding checkout and chat.
+  isApproved   Boolean  @default(false)
+
+  createdAt    DateTime @default(now())
+
+  @@index([productId, isApproved])
 }
 
 model ProductImage {

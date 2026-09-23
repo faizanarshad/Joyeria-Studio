@@ -11,9 +11,11 @@ type PaymentMethod = "COD" | "BANK_TRANSFER" | "JAZZCASH" | "EASYPAISA";
 export default function CheckoutForm({
   cities,
   freeDeliveryThreshold,
+  advancePaymentThreshold,
 }: {
   cities: { city: string; fee: number }[];
   freeDeliveryThreshold: number;
+  advancePaymentThreshold: number;
 }) {
   const router = useRouter();
   const { items, subtotal, clear } = useCartStore();
@@ -25,7 +27,7 @@ export default function CheckoutForm({
   const [city, setCity] = useState(cities[0]?.city ?? "");
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>("COD");
   const [note, setNote] = useState("");
-  const [website, setWebsite] = useState(""); // honeypot
+  const [hpConfirm, setHpConfirm] = useState(""); // honeypot
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -33,6 +35,13 @@ export default function CheckoutForm({
   const freeDelivery = subtotal() >= freeDeliveryThreshold;
   const deliveryFee = freeDelivery ? 0 : baseDeliveryFee;
   const total = subtotal() + deliveryFee;
+  const codAllowed = total < advancePaymentThreshold;
+
+  // Derived, not stored: if the cart grows past the threshold while COD is
+  // selected, this is what actually gets submitted and styled as "selected"
+  // — no need to sync `paymentMethod` itself via an effect. The server
+  // re-checks the same rule on the real, re-priced total regardless.
+  const effectivePaymentMethod = !codAllowed && paymentMethod === "COD" ? "BANK_TRANSFER" : paymentMethod;
 
   if (!mounted) return null;
 
@@ -55,9 +64,9 @@ export default function CheckoutForm({
           phone,
           address,
           city,
-          paymentMethod,
+          paymentMethod: effectivePaymentMethod,
           note,
-          website,
+          hp_confirm: hpConfirm,
         }),
       });
 
@@ -79,14 +88,17 @@ export default function CheckoutForm({
   return (
     <form onSubmit={handleSubmit} className="mt-8 grid gap-10 lg:grid-cols-3">
       <div className="space-y-4 lg:col-span-2">
-        {/* Honeypot: hidden from real users via CSS, catches naive bots that fill every field */}
+        {/* Honeypot: real users never see or fill this. Off-screen rather than
+            display:none — some autofill tools still fill display:none inputs
+            that match common field-name heuristics, which "website" did. */}
         <input
           type="text"
-          name="website"
-          value={website}
-          onChange={(e) => setWebsite(e.target.value)}
-          className="hidden"
+          name="hp_confirm"
+          value={hpConfirm}
+          onChange={(e) => setHpConfirm(e.target.value)}
+          style={{ position: "absolute", left: "-9999px", width: 1, height: 1, overflow: "hidden" }}
           tabIndex={-1}
+          aria-hidden="true"
           autoComplete="off"
         />
 
@@ -134,24 +146,40 @@ export default function CheckoutForm({
                 ["JAZZCASH", "JazzCash"],
                 ["EASYPAISA", "Easypaisa"],
               ] as [PaymentMethod, string][]
-            ).map(([value, label]) => (
-              <button
-                type="button"
-                key={value}
-                onClick={() => setPaymentMethod(value)}
-                className={`rounded-md border px-3 py-2 text-left text-sm ${
-                  paymentMethod === value ? "border-rose bg-rose/10" : "border-border"
-                }`}
-              >
-                {label}
-              </button>
-            ))}
+            ).map(([value, label]) => {
+              const disabled = value === "COD" && !codAllowed;
+              return (
+                <button
+                  type="button"
+                  key={value}
+                  disabled={disabled}
+                  onClick={() => setPaymentMethod(value)}
+                  className={`rounded-md border px-3 py-2 text-left text-sm ${
+                    disabled
+                      ? "cursor-not-allowed border-border text-muted opacity-50"
+                      : effectivePaymentMethod === value
+                        ? "border-rose bg-rose/10"
+                        : "border-border"
+                  }`}
+                >
+                  {label}
+                </button>
+              );
+            })}
           </div>
-          {paymentMethod !== "COD" && (
+          {!codAllowed ? (
             <p className="mt-2 text-xs text-muted">
-              Account details will be shared on WhatsApp after you place the order — send a
-              screenshot of the transfer to confirm.
+              Orders of {formatPKR(advancePaymentThreshold)} or more need advance payment — cash
+              on delivery isn&apos;t available above that. Account details will be shared on
+              WhatsApp after you place the order — send a screenshot of the transfer to confirm.
             </p>
+          ) : (
+            paymentMethod !== "COD" && (
+              <p className="mt-2 text-xs text-muted">
+                Account details will be shared on WhatsApp after you place the order — send a
+                screenshot of the transfer to confirm.
+              </p>
+            )
           )}
         </Field>
         <Field label="Order Note (optional)">

@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import Anthropic from "@anthropic-ai/sdk";
 import { chatRequestSchema } from "@/lib/validation";
 import { buildStoreContext } from "@/lib/chat-context";
-import { isRateLimited } from "@/lib/rate-limit";
+import { checkRateLimit } from "@/lib/rate-limit";
 
 const SYSTEM_PROMPT_PREFIX = `You are the shopping assistant for Joyería Studio, an online artificial jewelry store in Pakistan (daily wear, western and bridal pieces).
 
@@ -26,7 +26,7 @@ export async function POST(req: NextRequest) {
   }
 
   const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
-  if (isRateLimited(`chat:${ip}`, 20, 60_000)) {
+  if (await checkRateLimit(`chat:${ip}`, 20, 60_000)) {
     return NextResponse.json(
       { error: "Too many messages. Please wait a moment and try again." },
       { status: 429 }

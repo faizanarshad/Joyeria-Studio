@@ -12,7 +12,9 @@ export const checkoutItemSchema = z.object({
 });
 
 export const checkoutSchema = z.object({
-  items: z.array(checkoutItemSchema).min(1, "Your cart is empty"),
+  // Capped so a crafted payload can't force a huge `IN (...)` lookup — a real
+  // cart from this catalog is never going to have dozens of distinct items.
+  items: z.array(checkoutItemSchema).min(1, "Your cart is empty").max(50),
   customerName: z.string().trim().min(2, "Enter your full name").max(100),
   phone: pakistaniPhoneSchema,
   address: z.string().trim().min(10, "Enter your complete delivery address").max(500),
@@ -21,7 +23,13 @@ export const checkoutSchema = z.object({
   couponCode: z.string().trim().max(50).optional().nullable(),
   note: z.string().trim().max(500).optional().nullable(),
   // Honeypot — real users never fill this; bots that autofill every field will.
-  website: z.string().max(0, "Spam detected").optional(),
+  // Named away from common autofill-heuristic targets like "website" or
+  // "company", which some password managers fill even in a display:none field.
+  // Deliberately unconstrained here: a Zod-level rejection would surface this
+  // field's name and "Spam detected" in the 400 response body, handing a bot
+  // exactly the signal a honeypot exists to deny it. The route checks its
+  // value itself and returns the same generic error every other failure does.
+  hp_confirm: z.string().optional(),
 });
 
 export type CheckoutInput = z.infer<typeof checkoutSchema>;
@@ -117,3 +125,16 @@ export const couponSchema = z
   });
 
 export type CouponInput = z.infer<typeof couponSchema>;
+
+export const reviewSchema = z.object({
+  productId: z.string().min(1),
+  customerName: z.string().trim().min(2, "Enter your name").max(100),
+  rating: z.coerce.number().int().min(1, "Pick a rating").max(5, "Pick a rating"),
+  comment: z.string().trim().min(10, "Tell us a bit more (at least 10 characters)").max(1000),
+  // Honeypot — same pattern and same reasoning as checkout's hp_confirm:
+  // left unconstrained here so a Zod-level rejection can't hand a bot the
+  // field name and confirmation that it tripped a trap.
+  hp_confirm: z.string().optional(),
+});
+
+export type ReviewInput = z.infer<typeof reviewSchema>;

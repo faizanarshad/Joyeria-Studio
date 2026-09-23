@@ -8,7 +8,7 @@ export default async function AdminDashboard() {
   const startOfToday = new Date();
   startOfToday.setHours(0, 0, 0, 0);
 
-  const [pendingCount, todayOrders, lowStock] = await Promise.all([
+  const [pendingCount, todayOrders, lowStock, pendingReviews] = await Promise.all([
     prisma.order.count({ where: { status: "PENDING" } }),
     prisma.order.findMany({
       where: { createdAt: { gte: startOfToday } },
@@ -20,6 +20,7 @@ export default async function AdminDashboard() {
       orderBy: { stock: "asc" },
       take: 5,
     }),
+    prisma.review.count({ where: { isApproved: false } }),
   ]);
 
   const todayRevenue = todayOrders.reduce((sum, o) => sum + o.total, 0);
@@ -33,10 +34,11 @@ export default async function AdminDashboard() {
         </Link>
       </div>
 
-      <div className="mt-6 grid gap-4 sm:grid-cols-3">
+      <div className="mt-6 grid gap-4 sm:grid-cols-4">
         <StatCard label="Pending Orders" value={String(pendingCount)} href="/admin/orders?status=PENDING" />
         <StatCard label="Orders Today" value={String(todayOrders.length)} href="/admin/orders" />
         <StatCard label="Revenue Today" value={formatPKR(todayRevenue)} />
+        <StatCard label="Reviews Awaiting Approval" value={String(pendingReviews)} href="/admin/reviews" />
       </div>
 
       <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
@@ -44,6 +46,7 @@ export default async function AdminDashboard() {
         <QuickLink href="/admin/collections" label="Manage Collections" />
         <QuickLink href="/admin/delivery" label="Manage Delivery" />
         <QuickLink href="/admin/coupons" label="Manage Coupons" />
+        <QuickLink href="/admin/reviews" label="Moderate Reviews" />
       </div>
 
       <div className="mt-8 rounded-lg border border-border bg-surface p-6">

@@ -22,16 +22,46 @@ Motion (Framer Motion)
 - **Cart & guest checkout** — Zustand cart persisted to `localStorage`, checkout form
   (name, phone, address, city, payment method), free delivery above a configurable
   threshold, plus an "Order on WhatsApp" button everywhere a customer might want one.
+  Cash on delivery is only offered below a configurable order total
+  (`ADVANCE_PAYMENT_THRESHOLD`, default Rs 5,000) — above it, the COD option is
+  disabled in the form and rejected server-side on the re-priced total (`lib/payment.ts`),
+  and the customer prepays via bank transfer, JazzCash or Easypaisa instead. There's no
+  payment gateway, so this is full prepayment, not a partial deposit with COD for the
+  rest — the simplest version of "advance payment required" this app can actually
+  enforce without building real payment processing.
+- **Product reviews** — a star rating + comment form on every product page
+  (`components/ReviewForm.tsx`), guarded by the same honeypot pattern as checkout.
+  Reviews are held back from the storefront (`Review.isApproved`, default `false`)
+  until approved in `/admin/reviews` — unmoderated public free text is a spam vector
+  like any other, and the admin dashboard surfaces a pending-review count the same
+  way it does pending orders. Approved reviews feed a product's average rating,
+  shown next to its title and folded into its `Product` JSON-LD as `aggregateRating`.
+- **Return policy, jewelry care & payment terms** — a collapsible info section on
+  every product page (`components/ProductPolicies.tsx`) covering exchanges (defects
+  only, within 3 days, unworn), general jewelry care plus a product's own `careNote`
+  when set, and the COD/advance-payment split above. Copy lives in `lib/policies.ts` —
+  real writing, but placeholder specifics (day counts etc.) like the Our Story page;
+  replace with your actual policy before launch.
 - **Stock-safe orders** — `/api/checkout` re-prices the cart server-side inside a
   single Prisma transaction that also decrements stock, so two buyers can never both
-  win the last piece. Delivery fee is looked up per city (`DeliveryRate`), coupons
-  are supported, and a honeypot field + basic rate limiting sit in front of it.
-- **Order tracking** — `/track-order` looks orders up by phone number.
+  win the last piece. Coupon usage limits are enforced the same way (`updateMany`
+  with the limit folded into the WHERE clause, not a read-then-write). Order
+  numbers retry up to 3 times on the rare collision (`orderNumber` is `@unique`)
+  rather than failing the whole checkout. Delivery fee is looked up per city
+  (`DeliveryRate`), and a honeypot field + rate limiting (`lib/rate-limit.ts` —
+  in-memory by default, switches to a shared Upstash Redis count when
+  `UPSTASH_REDIS_REST_URL`/`_TOKEN` are set, since in-memory undercounts across
+  Vercel's separate serverless instances) sit in front of it.
+- **Order tracking** — `/track-order` looks orders up by phone number and returns
+  only what the tracking page renders (status, items, city, courier info) — not
+  the full row. Phone numbers aren't secret, so a lookup keyed only on one
+  shouldn't also hand over the address, name or delivery phone on a lucky guess.
 - **Admin panel** (`/admin`, NextAuth-protected) — orders (status/courier updates),
   products (create/edit/delete), collections (create/edit/delete), delivery rates
-  per city (inline add/edit/delete), coupons (create/toggle/delete), and an
-  analytics dashboard (revenue trend, orders by status, top products by units
-  sold — see `lib/analytics.ts`). All guarded by `AdminUser` credentials.
+  per city (inline add/edit/delete), coupons (create/toggle/delete), review
+  moderation (approve/delete), and an analytics dashboard (revenue trend, orders
+  by status, top products by units sold — see `lib/analytics.ts`). All guarded by
+  `AdminUser` credentials.
 - **Customer support chatbot** — a floating widget (storefront only, hidden on
   `/admin`) backed by `/api/chat` and the Claude API. It's grounded in the live
   catalog/collections/delivery data pulled fresh from Postgres on every request

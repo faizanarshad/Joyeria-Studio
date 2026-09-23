@@ -4,11 +4,13 @@ import { prisma } from "@/lib/prisma";
 import { checkoutSchema } from "@/lib/validation";
 import { applyFreeDeliveryThreshold } from "@/lib/delivery";
 import { generateOrderNumber } from "@/lib/order-number";
-import { isRateLimited } from "@/lib/rate-limit";
+import { checkRateLimit } from "@/lib/rate-limit";
+import { ADVANCE_PAYMENT_THRESHOLD, codAllowed } from "@/lib/payment";
+import { formatPKR } from "@/lib/format";
 
 export async function POST(req: NextRequest) {
   const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
-  if (isRateLimited(`checkout:${ip}`, 5, 60_000)) {
+  if (await checkRateLimit(`checkout:${ip}`, 5, 60_000)) {
     return NextResponse.json(
       { error: "Too many attempts. Please wait a minute and try again." },
       { status: 429 }
@@ -24,16 +26,66 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  // Honeypot tripped — pretend success so bots don't learn to skip the field.
-  if (parsed.data.website) {
-    return NextResponse.json({ orderNumber: generateOrderNumber() }, { status: 201 });
+  // Honeypot tripped. Previously this feigned a 201 success with a made-up
+  // order number — but some autofill tools do fill display:none fields with
+  // common names like "website", and a real customer catching that trap saw
+  // a fake success page that 404'd, with no real order ever placed. Falling
+  // through to the same generic error every other failure path returns is
+  // safer for that false-positive case and gives a determined bot no more
+  // signal than a slightly-off cart would.
+  if (parsed.data.hp_confirm) {
+    return NextResponse.json(
+      { error: "Something went wrong. Please try again or message us on WhatsApp." },
+      { status: 500 }
+    );
   }
 
   const { items, customerName, phone, address, city, paymentMethod, couponCode, note } =
     parsed.data;
 
+  // orderNumber is a 5-digit random pick (~90k possibilities) — collisions are
+  // rare but not impossible, and re-running the whole request (re-checking
+  // stock, re-pricing, re-touching the coupon) is safer than trying to patch
+  // just the order number in place. Retry a few times with a fresh number
+  // before giving up; every other failure still propagates on the first try.
+  const MAX_ORDER_NUMBER_ATTEMPTS = 3;
+
   try {
-    const result = await prisma.$transaction(async (tx) => {
+    let result: Awaited<ReturnType<typeof placeOrder>> | undefined;
+    for (let attempt = 1; attempt <= MAX_ORDER_NUMBER_ATTEMPTS; attempt++) {
+      try {
+        result = await placeOrder();
+        break;
+      } catch (err) {
+        const isOrderNumberCollision =
+          err instanceof Prisma.PrismaClientKnownRequestError &&
+          err.code === "P2002" &&
+          (err.meta?.target as string[] | undefined)?.includes("orderNumber");
+        if (!isOrderNumberCollision || attempt === MAX_ORDER_NUMBER_ATTEMPTS) throw err;
+      }
+    }
+    if (!result) throw new Error("Unreachable: loop always throws or assigns result");
+
+    // Fire-and-forget admin notification — a slow/failed notification must never fail the order.
+    notifyNewOrder(result).catch((err) => console.error("Order notification failed", err));
+
+    return NextResponse.json({ orderNumber: result.orderNumber }, { status: 201 });
+  } catch (err) {
+    if (err instanceof CheckoutError) {
+      return NextResponse.json({ error: err.message }, { status: 409 });
+    }
+    if (err instanceof Prisma.PrismaClientKnownRequestError && err.code === "P2002") {
+      return NextResponse.json(
+        { error: "Could not place order, please try again." },
+        { status: 409 }
+      );
+    }
+    console.error("Checkout failed", err);
+    return NextResponse.json({ error: "Something went wrong. Please try again." }, { status: 500 });
+  }
+
+  function placeOrder() {
+    return prisma.$transaction(async (tx) => {
       const productIds = items.map((i) => i.productId);
       const products = await tx.product.findMany({
         where: { id: { in: productIds }, isActive: true },
@@ -75,22 +127,32 @@ export async function POST(req: NextRequest) {
       let couponId: string | null = null;
       if (couponCode) {
         const coupon = await tx.coupon.findUnique({ where: { code: couponCode.toUpperCase() } });
-        if (
+        const eligible =
           coupon &&
           coupon.isActive &&
           (!coupon.expiresAt || coupon.expiresAt > new Date()) &&
-          (!coupon.usageLimit || coupon.usedCount < coupon.usageLimit) &&
-          (!coupon.minOrderValue || subtotal >= coupon.minOrderValue)
-        ) {
-          discount =
-            coupon.discountType === "PERCENT"
-              ? Math.round((subtotal * coupon.value) / 100)
-              : Math.min(coupon.value, subtotal);
-          couponId = coupon.id;
-          await tx.coupon.update({
-            where: { id: coupon.id },
+          (!coupon.minOrderValue || subtotal >= coupon.minOrderValue);
+
+        if (coupon && eligible) {
+          // Same lost-update race as stock: checking usedCount < usageLimit and then
+          // incrementing in a separate statement lets two concurrent checkouts both
+          // pass the check before either commits, pushing usedCount past the limit.
+          // Fold the limit into the update's WHERE clause so it's one atomic op.
+          const { count } = await tx.coupon.updateMany({
+            where: {
+              id: coupon.id,
+              ...(coupon.usageLimit !== null ? { usedCount: { lt: coupon.usageLimit } } : {}),
+            },
             data: { usedCount: { increment: 1 } },
           });
+
+          if (count > 0) {
+            discount =
+              coupon.discountType === "PERCENT"
+                ? Math.round((subtotal * coupon.value) / 100)
+                : Math.min(coupon.value, subtotal);
+            couponId = coupon.id;
+          }
         }
       }
 
@@ -103,6 +165,16 @@ export async function POST(req: NextRequest) {
       const deliveryFee = applyFreeDeliveryThreshold(baseDeliveryFee, subtotal);
 
       const total = Math.max(subtotal - discount, 0) + deliveryFee;
+
+      // Enforced on the server total, not the client's — a customer who
+      // stacks a coupon to duck under the threshold client-side would still
+      // get caught here, and one who's just over it after a real discount
+      // correctly wouldn't be.
+      if (paymentMethod === "COD" && !codAllowed(total)) {
+        throw new CheckoutError(
+          `Orders of ${formatPKR(ADVANCE_PAYMENT_THRESHOLD)} or more need advance payment — cash on delivery isn't available above that. Please choose bank transfer, JazzCash or Easypaisa.`
+        );
+      }
 
       const orderNumber = generateOrderNumber();
 
@@ -138,23 +210,6 @@ export async function POST(req: NextRequest) {
 
       return order;
     });
-
-    // Fire-and-forget admin notification — a slow/failed notification must never fail the order.
-    notifyNewOrder(result).catch((err) => console.error("Order notification failed", err));
-
-    return NextResponse.json({ orderNumber: result.orderNumber }, { status: 201 });
-  } catch (err) {
-    if (err instanceof CheckoutError) {
-      return NextResponse.json({ error: err.message }, { status: 409 });
-    }
-    if (err instanceof Prisma.PrismaClientKnownRequestError && err.code === "P2002") {
-      return NextResponse.json(
-        { error: "Could not place order, please try again." },
-        { status: 409 }
-      );
-    }
-    console.error("Checkout failed", err);
-    return NextResponse.json({ error: "Something went wrong. Please try again." }, { status: 500 });
   }
 }
 
