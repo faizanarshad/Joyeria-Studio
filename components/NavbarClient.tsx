@@ -42,7 +42,7 @@ export default function NavbarClient({ links }: { links: NavLink[] }) {
           }`}
         >
           <Link href="/" className="flex items-center gap-2 font-display text-xl tracking-wide text-foreground">
-            <Image src="/logo/icon.png" alt="" width={40} height={24} className="h-6 w-auto" priority />
+            <Image src="/logo/icon.png" alt="" width={25} height={36} className="h-9 w-auto" priority />
             Joyería <span className="text-xs tracking-[0.3em] text-muted">STUDIO</span>
           </Link>
 

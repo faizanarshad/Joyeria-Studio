@@ -17,7 +17,7 @@ export default async function Footer() {
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <p className="flex items-center gap-2 font-display text-lg">
-              <Image src="/logo/icon.png" alt="" width={40} height={24} className="h-6 w-auto" />
+              <Image src="/logo/icon.png" alt="" width={25} height={36} className="h-9 w-auto" />
               Joyería <span className="text-xs tracking-[0.3em] text-white/60">STUDIO</span>
             </p>
             <p className="mt-3 max-w-xs text-sm text-white/70">

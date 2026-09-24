@@ -43,7 +43,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
               <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-4 sm:px-6">
                 <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
                   <Link href="/admin" className="flex items-center gap-2 font-display text-lg text-foreground">
-                    <Image src="/logo/icon.png" alt="" width={33} height={20} className="h-5 w-auto" />
+                    <Image src="/logo/icon.png" alt="" width={20} height={28} className="h-7 w-auto" />
                     Joyería Studio Admin
                   </Link>
                   <nav className="flex flex-wrap gap-4 text-sm">
