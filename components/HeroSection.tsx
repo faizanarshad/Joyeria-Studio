@@ -3,7 +3,14 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useRef } from "react";
-import { motion, useScroll, useTransform, useReducedMotion } from "motion/react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useReducedMotion,
+  useMotionValue,
+  useSpring,
+} from "motion/react";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import AnimatedDiamondIcon from "@/components/motion/AnimatedDiamondIcon";
 import FloatingPetals from "@/components/motion/FloatingPetals";
@@ -18,6 +25,37 @@ const fadeUp = {
 const ROSE_BACKGROUND =
   // unsplash.com/photos/a-bunch-of-yellow-roses-with-green-leaves-CfzNNc7NsnQ — Aleyna Çatak
   "https://images.unsplash.com/photo-1712258091854-ac9460506a76?w=1600&q=80&auto=format&fit=crop";
+
+const MARQUEE_ITEMS = [
+  "Handpicked pieces",
+  "Cash on delivery",
+  "Order on WhatsApp",
+  "Gift-ready packaging",
+  "Minimalist · Western · Bridal",
+];
+
+function RotatingBadge() {
+  return (
+    <div className="absolute -bottom-2 -left-3 z-10 h-24 w-24 sm:-left-8 sm:h-28 sm:w-28">
+      <motion.svg
+        viewBox="0 0 100 100"
+        className="h-full w-full"
+        animate={{ rotate: 360 }}
+        transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
+        aria-hidden
+      >
+        <defs>
+          <path id="badge-circle" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0" />
+        </defs>
+        <circle cx="50" cy="50" r="48" fill="#1f3a2c" fillOpacity="0.92" stroke="#d9b23c" strokeWidth="0.8" />
+        <text fontSize="8" fill="#f7e082" fontFamily="var(--font-sans), sans-serif">
+          <textPath href="#badge-circle" textLength="236" lengthAdjust="spacing">HANDPICKED · GIFT READY · HANDPICKED ·&#160;</textPath>
+        </text>
+      </motion.svg>
+      <AnimatedDiamondIcon className="absolute left-1/2 top-1/2 h-6 w-6 -translate-x-1/2 -translate-y-1/2 text-rose" />
+    </div>
+  );
+}
 
 export default function HeroSection({
   heroImage,
@@ -37,6 +75,20 @@ export default function HeroSection({
   // Background arch moves slower than the foreground photo as the page scrolls.
   const bgY = useTransform(scrollYProgress, [0, 1], reducedMotion ? [0, 0] : [0, 40]);
   const fgY = useTransform(scrollYProgress, [0, 1], reducedMotion ? [0, 0] : [0, 16]);
+
+  // Cursor-driven 3D tilt on the photo cluster.
+  const tiltX = useSpring(useMotionValue(0), { stiffness: 120, damping: 16 });
+  const tiltY = useSpring(useMotionValue(0), { stiffness: 120, damping: 16 });
+  const onTilt = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (reducedMotion) return;
+    const r = e.currentTarget.getBoundingClientRect();
+    tiltY.set(((e.clientX - r.left) / r.width - 0.5) * 14);
+    tiltX.set(-((e.clientY - r.top) / r.height - 0.5) * 14);
+  };
+  const resetTilt = () => {
+    tiltX.set(0);
+    tiltY.set(0);
+  };
 
   return (
     <section className="relative overflow-hidden bg-rose-soft">
@@ -66,7 +118,7 @@ export default function HeroSection({
             transition={{ duration: 0.55 }}
             className="mt-3 font-display text-4xl leading-tight text-white sm:text-5xl"
           >
-            Jewelry for the <span className="text-rose-soft italic">everyday</span> you.
+            Jewelry for the <span className="text-gold-shimmer pr-1 italic">everyday</span> you.
           </motion.h1>
           <motion.p
             variants={fadeUp}
@@ -85,9 +137,6 @@ export default function HeroSection({
             </Link>
             <WhatsAppButton message="Hi! I'd like to know more about your jewelry." variant="outlineLight" />
           </motion.div>
-          <motion.p variants={fadeUp} transition={{ duration: 0.5 }} className="mt-4 text-xs text-white/85">
-            Cash on delivery · Order on WhatsApp · Gift-ready packaging
-          </motion.p>
         </motion.div>
 
         <motion.div
@@ -95,8 +144,13 @@ export default function HeroSection({
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          onMouseMove={onTilt}
+          onMouseLeave={resetTilt}
+          style={{ rotateX: tiltX, rotateY: tiltY, transformPerspective: 900 }}
           className="relative mx-auto aspect-square w-full max-w-sm"
         >
+          <div className="arch pointer-events-none absolute inset-x-3 bottom-0 top-5 border border-rose/60" />
+          <RotatingBadge />
           <motion.div style={{ y: bgY }} className="arch absolute inset-x-8 bottom-0 top-8 bg-green-soft" />
           {secondaryHeroImage && (
             <motion.div
@@ -136,6 +190,20 @@ export default function HeroSection({
             </div>
           )}
         </motion.div>
+      </div>
+      <div className="relative overflow-hidden border-y border-white/15 bg-black/40 py-3" aria-hidden>
+        <div className="marquee-track flex w-max whitespace-nowrap">
+          {[0, 1].map((dup) => (
+            <div key={dup} className="flex shrink-0 items-center">
+              {MARQUEE_ITEMS.map((t) => (
+                <span key={t + dup} className="flex items-center text-xs uppercase tracking-[0.25em] text-white/85">
+                  <span className="px-8">{t}</span>
+                  <span className="text-rose">◆</span>
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
