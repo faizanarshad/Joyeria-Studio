@@ -151,7 +151,7 @@ export default function HeroSection({
         >
           <div className="arch pointer-events-none absolute inset-x-3 bottom-0 top-5 border border-rose/60" />
           <RotatingBadge />
-          <motion.div style={{ y: bgY }} className="arch absolute inset-x-8 bottom-0 top-8 bg-green-soft" />
+          <motion.div style={{ y: bgY }} className="arch absolute inset-x-8 bottom-0 top-8 bg-gradient-to-b from-rose/30 to-transparent" />
           {secondaryHeroImage && (
             <motion.div
               style={{ y: fgY }}
