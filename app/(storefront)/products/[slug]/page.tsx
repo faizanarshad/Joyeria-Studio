@@ -2,10 +2,13 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { formatPKR } from "@/lib/format";
-import { productWhatsAppMessage } from "@/lib/whatsapp";
-import Gallery from "@/components/Gallery";
+import {
+  VariantProvider,
+  VariantGallery,
+  ColorSwatches,
+  VariantWhatsAppButton,
+} from "@/components/ProductVariants";
 import AddToCartControls from "@/components/AddToCartControls";
-import WhatsAppButton from "@/components/WhatsAppButton";
 import ProductCard from "@/components/ProductCard";
 import ProductPolicies from "@/components/ProductPolicies";
 import ReviewList from "@/components/ReviewList";
@@ -20,7 +23,11 @@ type Props = { params: Promise<{ slug: string }> };
 async function getProduct(slug: string) {
   return prisma.product.findUnique({
     where: { slug, isActive: true },
-    include: { images: { orderBy: { sortOrder: "asc" } }, collection: true },
+    include: {
+      images: { orderBy: { sortOrder: "asc" } },
+      variants: { orderBy: { sortOrder: "asc" } },
+      collection: true,
+    },
   });
 }
 
@@ -54,7 +61,10 @@ export default async function ProductPage({ params }: Props) {
             isActive: true,
             id: { not: product.id },
           },
-          include: { images: { orderBy: { sortOrder: "asc" }, take: 2 } },
+          include: {
+            images: { orderBy: { sortOrder: "asc" }, take: 2 },
+            _count: { select: { variants: true } },
+          },
           take: 4,
         })
       : Promise.resolve([]),
@@ -104,86 +114,94 @@ export default async function ProductPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
       />
 
-      <div className="grid gap-10 lg:grid-cols-2">
-        <Gallery images={product.images.map((i) => ({ url: i.url, alt: i.alt }))} />
+      <VariantProvider
+        variants={product.variants.map((v) => ({
+          id: v.id,
+          color: v.color,
+          imageUrl: v.imageUrl,
+          stock: v.stock,
+        }))}
+      >
+        <div className="grid gap-10 lg:grid-cols-2">
+          <VariantGallery images={product.images.map((i) => ({ url: i.url, alt: i.alt }))} />
 
-        <div>
-          <h1 className="font-display text-3xl text-foreground">{product.name}</h1>
+          <div>
+            <h1 className="font-display text-3xl text-foreground">{product.name}</h1>
 
-          {reviewCount > 0 && (
-            <a href="#reviews" className="mt-1 flex items-center gap-1.5 text-sm text-muted">
-              <span className="text-rose">{"★".repeat(Math.round(averageRating))}</span>
-              <span>
-                {averageRating.toFixed(1)} ({reviewCount} review{reviewCount === 1 ? "" : "s"})
-              </span>
-            </a>
-          )}
-
-          <div className="mt-3 flex items-center gap-3">
-            <span className="text-xl text-rose-dark">{formatPKR(product.price)}</span>
-            {product.compareAtPrice && product.compareAtPrice > product.price && (
-              <span className="text-sm text-muted line-through">
-                {formatPKR(product.compareAtPrice)}
-              </span>
+            {reviewCount > 0 && (
+              <a href="#reviews" className="mt-1 flex items-center gap-1.5 text-sm text-muted">
+                <span className="text-rose">{"★".repeat(Math.round(averageRating))}</span>
+                <span>
+                  {averageRating.toFixed(1)} ({reviewCount} review{reviewCount === 1 ? "" : "s"})
+                </span>
+              </a>
             )}
-          </div>
 
-          {product.stock > 0 && product.stock <= 3 && (
-            <p className="mt-2 text-sm text-rose-dark">Only {product.stock} left in stock</p>
-          )}
-
-          <p className="mt-4 whitespace-pre-line text-sm text-foreground/80">
-            {product.description}
-          </p>
-
-          <div className="mt-6 space-y-3">
-            <AddToCartControls
-              productId={product.id}
-              slug={product.slug}
-              name={product.name}
-              price={product.price}
-              image={product.images[0]?.url ?? "/placeholder-jewelry.svg"}
-              stock={product.stock}
-            />
-            {tryOnPlacement && product.tryOnImageUrl && (
-              <ProductTryOnButton
-                item={{
-                  id: product.id,
-                  name: product.name,
-                  slug: product.slug,
-                  placement: tryOnPlacement,
-                  overlayUrl: product.tryOnImageUrl,
-                }}
-              />
-            )}
-            <WhatsAppButton
-              message={productWhatsAppMessage(product.name, product.price)}
-              className="w-full"
-            />
-          </div>
-
-          <dl className="mt-8 space-y-2 border-t border-border pt-6 text-sm">
-            {product.material && (
-              <div className="flex gap-2">
-                <dt className="w-24 text-muted">Material</dt>
-                <dd>{product.material}</dd>
-              </div>
-            )}
-            {product.finish && (
-              <div className="flex gap-2">
-                <dt className="w-24 text-muted">Finish</dt>
-                <dd>{product.finish}</dd>
-              </div>
-            )}
-            <div className="flex gap-2">
-              <dt className="w-24 text-muted">Delivery</dt>
-              <dd>Ships in 2–4 business days.</dd>
+            <div className="mt-3 flex items-center gap-3">
+              <span className="text-xl text-rose-dark">{formatPKR(product.price)}</span>
+              {product.compareAtPrice && product.compareAtPrice > product.price && (
+                <span className="text-sm text-muted line-through">
+                  {formatPKR(product.compareAtPrice)}
+                </span>
+              )}
             </div>
-          </dl>
 
-          <ProductPolicies careNote={product.careNote} />
+            {product.variants.length === 0 && product.stock > 0 && product.stock <= 3 && (
+              <p className="mt-2 text-sm text-rose-dark">Only {product.stock} left in stock</p>
+            )}
+
+            <ColorSwatches />
+
+            <p className="mt-4 whitespace-pre-line text-sm text-foreground/80">
+              {product.description}
+            </p>
+
+            <div className="mt-6 space-y-3">
+              <AddToCartControls
+                productId={product.id}
+                slug={product.slug}
+                name={product.name}
+                price={product.price}
+                image={product.images[0]?.url ?? "/placeholder-jewelry.svg"}
+                stock={product.stock}
+              />
+              {tryOnPlacement && product.tryOnImageUrl && (
+                <ProductTryOnButton
+                  item={{
+                    id: product.id,
+                    name: product.name,
+                    slug: product.slug,
+                    placement: tryOnPlacement,
+                    overlayUrl: product.tryOnImageUrl,
+                  }}
+                />
+              )}
+              <VariantWhatsAppButton name={product.name} price={product.price} />
+            </div>
+
+            <dl className="mt-8 space-y-2 border-t border-border pt-6 text-sm">
+              {product.material && (
+                <div className="flex gap-2">
+                  <dt className="w-24 text-muted">Material</dt>
+                  <dd>{product.material}</dd>
+                </div>
+              )}
+              {product.finish && (
+                <div className="flex gap-2">
+                  <dt className="w-24 text-muted">Finish</dt>
+                  <dd>{product.finish}</dd>
+                </div>
+              )}
+              <div className="flex gap-2">
+                <dt className="w-24 text-muted">Delivery</dt>
+                <dd>Ships in 2–4 business days.</dd>
+              </div>
+            </dl>
+
+            <ProductPolicies careNote={product.careNote} />
+          </div>
         </div>
-      </div>
+      </VariantProvider>
 
       <section id="reviews" className="mx-auto mt-16 max-w-4xl scroll-mt-20">
         <h2 className="font-display text-2xl text-foreground">
@@ -222,6 +240,7 @@ export default async function ProductPage({ params }: Props) {
                   special: p.isFeatured,
                   coverImage: p.images[0]?.url ?? "/placeholder-jewelry.svg",
                   coverImageAlt: p.images[0]?.alt ?? p.name,
+                  colorCount: p._count.variants || undefined,
                 }}
               />
             ))}

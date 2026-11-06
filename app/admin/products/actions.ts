@@ -15,6 +15,20 @@ function parseImages(formData: FormData): { url: string; alt: string }[] {
     .filter((img) => img.url.length > 0);
 }
 
+function parseVariants(formData: FormData): { color: string; stock: string; imageUrl: string }[] {
+  const colors = formData.getAll("variantColor") as string[];
+  const stocks = formData.getAll("variantStock") as string[];
+  const images = formData.getAll("variantImage") as string[];
+  return colors
+    .map((color, i) => ({ color: color.trim(), stock: stocks[i] ?? "0", imageUrl: (images[i] ?? "").trim() }))
+    .filter((v) => v.color.length > 0);
+}
+
+// With colour options, the product's own stock is the total across colours.
+function totalStock(data: { stock: number; variants: { stock: number }[] }): number {
+  return data.variants.length > 0 ? data.variants.reduce((sum, v) => sum + v.stock, 0) : data.stock;
+}
+
 function parseProductForm(formData: FormData) {
   const name = String(formData.get("name") ?? "");
   return productSchema.safeParse({
@@ -37,6 +51,7 @@ function parseProductForm(formData: FormData) {
     isActive: formData.get("isActive") === "on",
     isFeatured: formData.get("isFeatured") === "on",
     images: parseImages(formData),
+    variants: parseVariants(formData),
   });
 }
 
@@ -72,11 +87,12 @@ export async function createProduct(
     }
   }
 
-  const { images, ...data } = parsed.data;
+  const { images, variants, ...data } = parsed.data;
 
   const product = await prisma.product.create({
     data: {
       ...data,
+      stock: totalStock(parsed.data),
       sku: data.sku || null,
       material: data.material || null,
       finish: data.finish || null,
@@ -90,6 +106,14 @@ export async function createProduct(
           url: img.url,
           alt: img.alt,
           isCover: i === 0,
+          sortOrder: i,
+        })),
+      },
+      variants: {
+        create: variants.map((v, i) => ({
+          color: v.color,
+          stock: v.stock,
+          imageUrl: v.imageUrl || null,
           sortOrder: i,
         })),
       },
@@ -136,7 +160,7 @@ export async function updateProduct(
     }
   }
 
-  const { images, ...data } = parsed.data;
+  const { images, variants, ...data } = parsed.data;
   const current = await prisma.product.findUnique({ where: { id: productId } });
   if (!current) return { error: "Product not found" };
 
@@ -145,6 +169,7 @@ export async function updateProduct(
       where: { id: productId },
       data: {
         ...data,
+        stock: totalStock(parsed.data),
         sku: data.sku || null,
         material: data.material || null,
         finish: data.finish || null,
@@ -155,6 +180,18 @@ export async function updateProduct(
         costPrice: data.costPrice ?? null,
       },
     }),
+    // Colours are matched by name and upserted rather than recreated, so an
+    // existing colour keeps its id and past orders can still restock it.
+    prisma.productVariant.deleteMany({
+      where: { productId, color: { notIn: variants.map((v) => v.color) } },
+    }),
+    ...variants.map((v, i) =>
+      prisma.productVariant.upsert({
+        where: { productId_color: { productId, color: v.color } },
+        create: { productId, color: v.color, stock: v.stock, imageUrl: v.imageUrl || null, sortOrder: i },
+        update: { stock: v.stock, imageUrl: v.imageUrl || null, sortOrder: i },
+      })
+    ),
     prisma.productImage.deleteMany({ where: { productId } }),
     prisma.productImage.createMany({
       data: images.map((img, i) => ({

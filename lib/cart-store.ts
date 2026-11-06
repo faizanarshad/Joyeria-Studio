@@ -5,6 +5,10 @@ import { persist } from "zustand/middleware";
 
 export type CartItem = {
   productId: string;
+  // Set when the product has colour options — the same product in two colours
+  // is two separate cart lines.
+  variantId?: string;
+  color?: string;
   slug: string;
   name: string;
   price: number;
@@ -13,11 +17,16 @@ export type CartItem = {
   quantity: number;
 };
 
+// Identifies a cart line: a product, or one colour of a product.
+export function cartLineKey(item: Pick<CartItem, "productId" | "variantId">): string {
+  return item.variantId ? `${item.productId}:${item.variantId}` : item.productId;
+}
+
 type CartState = {
   items: CartItem[];
   addItem: (item: Omit<CartItem, "quantity">, quantity?: number) => void;
-  removeItem: (productId: string) => void;
-  setQuantity: (productId: string, quantity: number) => void;
+  removeItem: (lineKey: string) => void;
+  setQuantity: (lineKey: string, quantity: number) => void;
   clear: () => void;
   subtotal: () => number;
   totalItems: () => number;
@@ -29,12 +38,13 @@ export const useCartStore = create<CartState>()(
       items: [],
       addItem: (item, quantity = 1) => {
         set((state) => {
-          const existing = state.items.find((i) => i.productId === item.productId);
+          const key = cartLineKey(item);
+          const existing = state.items.find((i) => cartLineKey(i) === key);
           if (existing) {
             const nextQty = Math.min(existing.quantity + quantity, item.stock);
             return {
               items: state.items.map((i) =>
-                i.productId === item.productId ? { ...i, quantity: nextQty } : i
+                cartLineKey(i) === key ? { ...i, quantity: nextQty } : i
               ),
             };
           }
@@ -43,12 +53,12 @@ export const useCartStore = create<CartState>()(
           };
         });
       },
-      removeItem: (productId) =>
-        set((state) => ({ items: state.items.filter((i) => i.productId !== productId) })),
-      setQuantity: (productId, quantity) =>
+      removeItem: (lineKey) =>
+        set((state) => ({ items: state.items.filter((i) => cartLineKey(i) !== lineKey) })),
+      setQuantity: (lineKey, quantity) =>
         set((state) => ({
           items: state.items
-            .map((i) => (i.productId === productId ? { ...i, quantity } : i))
+            .map((i) => (cartLineKey(i) === lineKey ? { ...i, quantity } : i))
             .filter((i) => i.quantity > 0),
         })),
       clear: () => set({ items: [] }),

@@ -22,7 +22,7 @@ export async function lookupOrdersByPhone(phone: string) {
       trackingNumber: true,
       createdAt: true,
       items: {
-        select: { id: true, productName: true, quantity: true, price: true },
+        select: { id: true, productName: true, color: true, quantity: true, price: true },
       },
     },
     orderBy: { createdAt: "desc" },
@@ -40,7 +40,7 @@ export function formatOrdersForChat(orders: OrderLookupResult): string {
   }
   return orders
     .map((o) => {
-      const items = o.items.map((i) => `${i.quantity}x ${i.productName} (${formatPKR(i.price)})`).join(", ");
+      const items = o.items.map((i) => `${i.quantity}x ${i.productName}${i.color ? ` (${i.color})` : ""} (${formatPKR(i.price)})`).join(", ");
       const courier =
         o.courierName || o.trackingNumber
           ? ` Courier: ${o.courierName ?? "—"}${o.trackingNumber ? `, tracking ${o.trackingNumber}` : ""}.`

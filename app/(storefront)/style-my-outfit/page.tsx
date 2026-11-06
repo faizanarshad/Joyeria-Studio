@@ -26,6 +26,7 @@ export default async function StyleMyOutfitPage() {
       tryOnImageUrl: true,
       collection: { select: { slug: true } },
       images: { orderBy: { sortOrder: "asc" }, take: 1 },
+      _count: { select: { variants: true } },
     },
     orderBy: { createdAt: "desc" },
   });
@@ -45,6 +46,7 @@ export default async function StyleMyOutfitPage() {
     coverImage: p.images[0]?.url ?? "/placeholder-jewelry.svg",
     coverImageAlt: p.images[0]?.alt ?? p.name,
     collectionSlug: p.collection?.slug ?? null,
+    colorCount: p._count.variants || undefined,
   }));
 
   return (

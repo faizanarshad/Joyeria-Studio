@@ -23,7 +23,7 @@ export async function updateOrderStatus(formData: FormData) {
   await prisma.$transaction(async (tx) => {
     const order = await tx.order.findUniqueOrThrow({
       where: { id: orderId },
-      select: { status: true, items: { select: { productId: true, quantity: true } } },
+      select: { status: true, items: { select: { productId: true, variantId: true, quantity: true } } },
     });
 
     // Checkout decrements stock atomically when an order is placed; nothing
@@ -42,6 +42,12 @@ export async function updateOrderStatus(formData: FormData) {
           where: { id: item.productId },
           data: { stock: { increment: item.quantity } },
         });
+        if (item.variantId) {
+          await tx.productVariant.updateMany({
+            where: { id: item.variantId },
+            data: { stock: { increment: item.quantity } },
+          });
+        }
       }
     } else if (wasCancelled && !willBeCancelled) {
       for (const item of order.items) {
@@ -54,6 +60,17 @@ export async function updateOrderStatus(formData: FormData) {
           throw new Error(
             "Not enough stock left to un-cancel this order — restock the product first."
           );
+        }
+        if (item.variantId) {
+          const { count: variantCount } = await tx.productVariant.updateMany({
+            where: { id: item.variantId, stock: { gte: item.quantity } },
+            data: { stock: { decrement: item.quantity } },
+          });
+          if (variantCount === 0) {
+            throw new Error(
+              "Not enough stock left in that colour to un-cancel this order — restock it first."
+            );
+          }
         }
       }
     }
