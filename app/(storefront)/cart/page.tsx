@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useCartStore } from "@/lib/cart-store";
+import { cartLineKey, useCartStore } from "@/lib/cart-store";
 import { useCartHydrated } from "@/lib/use-cart-hydrated";
 import { formatPKR } from "@/lib/format";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
@@ -16,7 +16,10 @@ export default function CartPage() {
   const whatsappMessage =
     items.length > 0
       ? `Hi! I'd like to order:\n${items
-          .map((i) => `- ${i.name} x${i.quantity} (${formatPKR(i.price * i.quantity)})`)
+          .map(
+            (i) =>
+              `- ${i.name}${i.color ? ` (${i.color})` : ""} x${i.quantity} (${formatPKR(i.price * i.quantity)})`
+          )
           .join("\n")}\n\nTotal: ${formatPKR(subtotal())}`
       : "Hi! I'd like to place an order.";
 
@@ -35,17 +38,20 @@ export default function CartPage() {
         <div className="mt-8 grid gap-10 lg:grid-cols-3">
           <div className="space-y-4 lg:col-span-2">
             {items.map((item) => (
-              <div key={item.productId} className="flex gap-4 border-b border-border pb-4">
+              <div key={cartLineKey(item)} className="flex gap-4 border-b border-border pb-4">
                 <div className="relative h-24 w-20 shrink-0 overflow-hidden rounded-md bg-rose-soft">
                   <Image src={item.image} alt={item.name} fill sizes="80px" className="object-cover" />
                 </div>
                 <div className="flex flex-1 flex-col justify-between">
                   <div className="flex justify-between">
-                    <Link href={`/products/${item.slug}`} className="text-sm text-foreground">
-                      {item.name}
-                    </Link>
+                    <div>
+                      <Link href={`/products/${item.slug}`} className="text-sm text-foreground">
+                        {item.name}
+                      </Link>
+                      {item.color && <p className="text-xs text-muted">Colour: {item.color}</p>}
+                    </div>
                     <button
-                      onClick={() => removeItem(item.productId)}
+                      onClick={() => removeItem(cartLineKey(item))}
                       className="text-xs text-muted hover:text-red-600"
                     >
                       Remove
@@ -54,7 +60,7 @@ export default function CartPage() {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center rounded-full border border-border">
                       <button
-                        onClick={() => setQuantity(item.productId, item.quantity - 1)}
+                        onClick={() => setQuantity(cartLineKey(item), item.quantity - 1)}
                         className="px-3 py-1"
                       >
                         −
@@ -62,7 +68,7 @@ export default function CartPage() {
                       <span className="w-8 text-center text-sm">{item.quantity}</span>
                       <button
                         onClick={() =>
-                          setQuantity(item.productId, Math.min(item.stock, item.quantity + 1))
+                          setQuantity(cartLineKey(item), Math.min(item.stock, item.quantity + 1))
                         }
                         className="px-3 py-1"
                       >

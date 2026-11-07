@@ -82,6 +82,7 @@ model Product {
   isFeatured    Boolean   @default(false)
 
   images        ProductImage[]
+  variants      ProductVariant[]
   orderItems    OrderItem[]
   reviews       Review[]
 
@@ -121,6 +122,24 @@ model ProductImage {
   isCover   Boolean  @default(false)
   sortOrder Int      @default(0)
 
+  @@index([productId])
+}
+
+// A colour option of a product (e.g. the same jhumki in Black, Pink, Red).
+// Price is the product's; stock is tracked per colour, and Product.stock is
+// kept as the sum across colours so listings and "sold out" keep working
+// without knowing about variants.
+model ProductVariant {
+  id         String      @id @default(cuid())
+  productId  String
+  product    Product     @relation(fields: [productId], references: [id], onDelete: Cascade)
+  color      String
+  imageUrl   String?
+  stock      Int         @default(0)
+  sortOrder  Int         @default(0)
+  orderItems OrderItem[]
+
+  @@unique([productId, color])
   @@index([productId])
 }
 
@@ -193,8 +212,14 @@ model OrderItem {
   productId   String?
   product     Product? @relation(fields: [productId], references: [id], onDelete: SetNull)
 
+  // Set when the customer picked a colour option; kept so a cancellation can
+  // restock that colour. Nullable for the same reason as productId.
+  variantId   String?
+  variant     ProductVariant? @relation(fields: [variantId], references: [id], onDelete: SetNull)
+
   // Snapshot of the product at purchase time — editing the product later must never rewrite history.
   productName String
+  color       String?
   price       Int
   quantity    Int
   imageUrl    String?

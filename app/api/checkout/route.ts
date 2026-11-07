@@ -89,17 +89,30 @@ export async function POST(req: NextRequest) {
       const productIds = items.map((i) => i.productId);
       const products = await tx.product.findMany({
         where: { id: { in: productIds }, isActive: true },
-        include: { images: { orderBy: { sortOrder: "asc" }, take: 1 } },
+        include: { images: { orderBy: { sortOrder: "asc" }, take: 1 }, variants: true },
       });
 
       const productMap = new Map(products.map((p) => [p.id, p]));
 
       // Server is the source of truth for prices and stock — never trust the client's cart.
       for (const item of items) {
-        if (!productMap.has(item.productId)) {
+        const product = productMap.get(item.productId);
+        if (!product) {
           throw new CheckoutError(`One of the items in your cart is no longer available.`);
         }
+        // A product with colour options must be bought as one of its colours,
+        // and a colour id must belong to the product it's sent with.
+        const hasVariants = product.variants.length > 0;
+        if (hasVariants !== Boolean(item.variantId)) {
+          throw new CheckoutError(`Please choose a colour for "${product.name}" and try again.`);
+        }
+        if (item.variantId && !product.variants.some((v) => v.id === item.variantId)) {
+          throw new CheckoutError(`One of the colours in your cart is no longer available.`);
+        }
       }
+
+      const variantOf = (item: (typeof items)[number]) =>
+        item.variantId ? productMap.get(item.productId)!.variants.find((v) => v.id === item.variantId)! : null;
 
       // Decrement stock with the availability check baked into the WHERE clause, so the
       // check-then-write is a single atomic statement at the database level. Two concurrent
@@ -107,6 +120,19 @@ export async function POST(req: NextRequest) {
       // READ COMMITTED (Postgres's default) that would be a classic lost-update race.
       for (const item of items) {
         const product = productMap.get(item.productId)!;
+        const variant = variantOf(item);
+        if (variant) {
+          const { count: variantCount } = await tx.productVariant.updateMany({
+            where: { id: variant.id, stock: { gte: item.quantity } },
+            data: { stock: { decrement: item.quantity } },
+          });
+          if (variantCount === 0) {
+            throw new CheckoutError(
+              `Only ${variant.stock} left of "${product.name}" in ${variant.color} — please adjust the quantity.`
+            );
+          }
+        }
+        // Product.stock is the total across colours, so it moves with every colour sold.
         const { count } = await tx.product.updateMany({
           where: { id: item.productId, stock: { gte: item.quantity } },
           data: { stock: { decrement: item.quantity } },
@@ -195,12 +221,15 @@ export async function POST(req: NextRequest) {
           items: {
             create: items.map((item) => {
               const product = productMap.get(item.productId)!;
+              const variant = variantOf(item);
               return {
                 productId: product.id,
+                variantId: variant?.id ?? null,
                 productName: product.name,
+                color: variant?.color ?? null,
                 price: product.price,
                 quantity: item.quantity,
-                imageUrl: product.images[0]?.url ?? null,
+                imageUrl: variant?.imageUrl ?? product.images[0]?.url ?? null,
               };
             }),
           },

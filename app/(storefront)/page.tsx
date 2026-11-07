@@ -21,11 +21,15 @@ const OCCASIONS = [
 async function getFeaturedProducts(): Promise<ProductCardData[]> {
   const products = await prisma.product.findMany({
     where: { isActive: true, isFeatured: true },
-    include: { images: { orderBy: { sortOrder: "asc" }, take: 2 } },
+    include: {
+      images: { orderBy: { sortOrder: "asc" }, take: 2 },
+      _count: { select: { variants: true } },
+    },
     orderBy: { createdAt: "desc" },
     take: 8,
   });
   return products.map((p) => ({
+    colorCount: p._count.variants || undefined,
     id: p.id,
     slug: p.slug,
     name: p.name,

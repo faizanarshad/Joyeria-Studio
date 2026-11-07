@@ -8,6 +8,7 @@ export const pakistaniPhoneSchema = z
 
 export const checkoutItemSchema = z.object({
   productId: z.string().min(1),
+  variantId: z.string().min(1).optional(),
   quantity: z.number().int().positive().max(20),
 });
 
@@ -49,6 +50,12 @@ export const productImageSchema = z.object({
   alt: z.string().trim().min(1, "Alt text is required"),
 });
 
+export const productVariantSchema = z.object({
+  color: z.string().trim().min(1, "Colour name is required").max(40),
+  stock: z.coerce.number().int().nonnegative("Stock can't be negative"),
+  imageUrl: imageUrlSchema.optional().or(z.literal("")),
+});
+
 export const productSchema = z
   .object({
     name: z.string().trim().min(2, "Name is required").max(150),
@@ -81,13 +88,19 @@ export const productSchema = z
     isActive: z.coerce.boolean(),
     isFeatured: z.coerce.boolean(),
     images: z.array(productImageSchema),
+    variants: z.array(productVariantSchema).max(20).default([]),
   })
   // A product can be saved as an inactive draft with no photos yet, but it can
   // never go live on the storefront without at least one.
   .refine((data) => !data.isActive || data.images.length > 0, {
     message: "Add at least one image before activating this product",
     path: ["images"],
-  });
+  })
+  .refine(
+    (data) =>
+      new Set(data.variants.map((v) => v.color.toLowerCase())).size === data.variants.length,
+    { message: "Each colour can only be listed once", path: ["variants"] }
+  );
 
 export type ProductInput = z.infer<typeof productSchema>;
 

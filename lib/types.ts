@@ -12,4 +12,6 @@ export type ProductCardData = {
   hoverImage?: string;
   /** Featured pieces get a subtle sparkle on hover. */
   special?: boolean;
+  /** Number of colour options — when set, the card sends shoppers to pick one instead of adding to bag. */
+  colorCount?: number;
 };

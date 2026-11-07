@@ -17,7 +17,7 @@ type Order = {
   courierName: string | null;
   trackingNumber: string | null;
   createdAt: string;
-  items: { productName: string; quantity: number }[];
+  items: { productName: string; color: string | null; quantity: number }[];
 };
 
 export default function OrderRow({ order }: { order: Order }) {
@@ -44,7 +44,8 @@ export default function OrderRow({ order }: { order: Order }) {
         <ul className="mt-2 text-xs text-foreground/80">
           {order.items.map((item, i) => (
             <li key={i}>
-              {item.productName} x{item.quantity}
+              {item.productName}
+              {item.color ? ` (${item.color})` : ""} x{item.quantity}
             </li>
           ))}
         </ul>

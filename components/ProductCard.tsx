@@ -88,6 +88,9 @@ export default function ProductCard({ product }: { product: ProductCardData }) {
         <Link href={`/products/${product.slug}`} className="block text-sm text-foreground">
           {product.name}
         </Link>
+        {!!product.colorCount && (
+          <p className="text-xs text-muted">Available in {product.colorCount} colours</p>
+        )}
         <div className="flex items-center justify-between gap-2 pt-1">
           <div className="flex items-baseline gap-2">
             <span className="text-sm font-medium text-rose">{formatPKR(product.price)}</span>
@@ -97,14 +100,23 @@ export default function ProductCard({ product }: { product: ProductCardData }) {
               </span>
             )}
           </div>
-          <AddToBagButton
-            productId={product.id}
-            slug={product.slug}
-            name={product.name}
-            price={product.price}
-            image={product.coverImage}
-            stock={product.stock}
-          />
+          {product.colorCount && product.stock > 0 ? (
+            <Link
+              href={`/products/${product.slug}`}
+              className="flex h-[26px] items-center justify-center rounded-full border border-green px-3 text-xs text-green-dark hover:bg-green hover:text-white"
+            >
+              Choose colour
+            </Link>
+          ) : (
+            <AddToBagButton
+              productId={product.id}
+              slug={product.slug}
+              name={product.name}
+              price={product.price}
+              image={product.coverImage}
+              stock={product.stock}
+            />
+          )}
         </div>
       </div>
     </motion.div>

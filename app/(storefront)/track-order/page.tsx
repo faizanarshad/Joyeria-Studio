@@ -12,7 +12,7 @@ type Order = {
   courierName: string | null;
   trackingNumber: string | null;
   createdAt: string;
-  items: { id: string; productName: string; quantity: number; price: number }[];
+  items: { id: string; productName: string; color: string | null; quantity: number; price: number }[];
 };
 
 const STATUS_LABEL: Record<string, string> = {
@@ -99,7 +99,8 @@ export default function TrackOrderPage() {
             <ul className="mt-2 text-sm text-foreground/80">
               {order.items.map((item) => (
                 <li key={item.id}>
-                  {item.productName} x{item.quantity}
+                  {item.productName}
+                  {item.color ? ` (${item.color})` : ""} x{item.quantity}
                 </li>
               ))}
             </ul>

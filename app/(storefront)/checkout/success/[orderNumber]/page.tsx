@@ -30,7 +30,8 @@ export default async function OrderSuccessPage({ params }: Props) {
         {order.items.map((item) => (
           <div key={item.id} className="flex justify-between border-b border-border py-2 text-sm last:border-0">
             <span>
-              {item.productName} x{item.quantity}
+              {item.productName}
+              {item.color ? ` (${item.color})` : ""} x{item.quantity}
             </span>
             <span>{formatPKR(item.price * item.quantity)}</span>
           </div>

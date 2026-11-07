@@ -4,14 +4,15 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "motion/react";
 import { useCartStore } from "@/lib/cart-store";
+import { useSelectedVariant } from "@/components/ProductVariants";
 
 export default function AddToCartControls({
   productId,
   slug,
   name,
   price,
-  image,
-  stock,
+  image: productImage,
+  stock: productStock,
 }: {
   productId: string;
   slug: string;
@@ -24,6 +25,12 @@ export default function AddToCartControls({
   const [added, setAdded] = useState(false);
   const addItem = useCartStore((s) => s.addItem);
   const router = useRouter();
+
+  // With colour options, stock and photo come from the chosen colour.
+  const variant = useSelectedVariant()?.selected ?? null;
+  const stock = variant ? variant.stock : productStock;
+  const image = variant?.imageUrl ?? productImage;
+  const line = { productId, slug, name, price, image, stock, variantId: variant?.id, color: variant?.color };
 
   if (stock === 0) {
     return (
@@ -58,7 +65,7 @@ export default function AddToCartControls({
         </div>
         <button
           onClick={() => {
-            addItem({ productId, slug, name, price, image, stock }, quantity);
+            addItem(line, Math.min(quantity, stock));
             setAdded(true);
             setTimeout(() => setAdded(false), 1500);
           }}
@@ -80,7 +87,7 @@ export default function AddToCartControls({
       </div>
       <button
         onClick={() => {
-          addItem({ productId, slug, name, price, image, stock }, quantity);
+          addItem(line, Math.min(quantity, stock));
           router.push("/cart");
         }}
         className="w-full rounded-full border border-green px-6 py-3 text-sm text-green-dark hover:bg-green hover:text-white"

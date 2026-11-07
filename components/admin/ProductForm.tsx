@@ -6,6 +6,7 @@ import type { ProductFormState } from "@/app/admin/products/actions";
 import { PRODUCT_CATEGORIES, PRODUCT_OCCASION_TAGS, PRODUCT_COLOR_TAGS } from "@/lib/categories";
 
 type ImageInput = { url: string; alt: string; uploading?: boolean; error?: string };
+type VariantInput = { color: string; stock: number; imageUrl: string };
 
 type Props = {
   action: (state: ProductFormState, formData: FormData) => Promise<ProductFormState>;
@@ -30,6 +31,7 @@ type Props = {
     isActive: boolean;
     isFeatured: boolean;
     images: ImageInput[];
+    variants?: VariantInput[];
   };
   submitLabel?: string;
 };
@@ -60,6 +62,7 @@ export default function ProductForm({ action, collections, initial, submitLabel 
   });
   const [occasionTags, setOccasionTags] = useState<string[]>(initial?.occasionTags ?? []);
   const [colorTags, setColorTags] = useState<string[]>(initial?.colorTags ?? []);
+  const [variants, setVariants] = useState<VariantInput[]>(initial?.variants ?? []);
   const fileInputs = useRef<(HTMLInputElement | null)[]>([]);
   const tryOnFileInput = useRef<HTMLInputElement | null>(null);
 
@@ -264,8 +267,88 @@ export default function ProductForm({ action, collections, initial, submitLabel 
           />
         </Field>
         <Field label="Stock" error={err("stock")}>
-          <input name="stock" type="number" min={0} required defaultValue={initial?.stock ?? 0} className="input" />
+          {variants.length > 0 ? (
+            <>
+              <input type="hidden" name="stock" value={0} />
+              <input
+                value={variants.reduce((sum, v) => sum + (Number(v.stock) || 0), 0)}
+                readOnly
+                className="input bg-black/5"
+                title="Total of the colour options below"
+              />
+            </>
+          ) : (
+            <input name="stock" type="number" min={0} required defaultValue={initial?.stock ?? 0} className="input" />
+          )}
         </Field>
+      </div>
+
+      <div>
+        <div className="flex items-center justify-between">
+          <span className="text-sm font-medium text-foreground">Colour Options</span>
+          <button
+            type="button"
+            onClick={() => setVariants((vs) => [...vs, { color: "", stock: 0, imageUrl: "" }])}
+            className="text-xs text-rose-dark hover:underline"
+          >
+            + Add colour
+          </button>
+        </div>
+        <p className="mt-1 text-xs text-muted">
+          Optional. Add one row per colour this piece comes in — shoppers pick a colour on the product page, and
+          each colour has its own stock (the product&apos;s stock becomes their total). The photo is shown when
+          that colour is picked.
+        </p>
+        {err("variants") && <p className="mt-1 text-sm text-red-600">{err("variants")}</p>}
+        <div className="mt-2 space-y-2">
+          {variants.map((v, i) => (
+            <div key={i} className="flex items-center gap-2 rounded-lg border border-border p-2">
+              {v.imageUrl ? (
+                // eslint-disable-next-line @next/next/no-img-element -- admin-only preview of an arbitrary URL, not a storefront asset
+                <img src={v.imageUrl} alt="" className="h-12 w-12 shrink-0 rounded-md object-cover" />
+              ) : (
+                <span className="h-12 w-12 shrink-0 rounded-md border border-dashed border-border" />
+              )}
+              <input
+                name="variantColor"
+                value={v.color}
+                onChange={(e) =>
+                  setVariants((vs) => vs.map((x, j) => (j === i ? { ...x, color: e.target.value } : x)))
+                }
+                placeholder="Colour, e.g. Black"
+                className="input w-36 text-xs"
+              />
+              <input
+                name="variantStock"
+                type="number"
+                min={0}
+                value={v.stock}
+                onChange={(e) =>
+                  setVariants((vs) => vs.map((x, j) => (j === i ? { ...x, stock: Number(e.target.value) } : x)))
+                }
+                className="input w-20 text-xs"
+                aria-label="Stock"
+              />
+              <input
+                name="variantImage"
+                value={v.imageUrl}
+                onChange={(e) =>
+                  setVariants((vs) => vs.map((x, j) => (j === i ? { ...x, imageUrl: e.target.value } : x)))
+                }
+                placeholder="Photo URL (optional)"
+                className="input flex-1 text-xs"
+              />
+              <button
+                type="button"
+                onClick={() => setVariants((vs) => vs.filter((_, j) => j !== i))}
+                className="px-2 text-sm text-muted hover:text-red-600"
+                aria-label="Remove colour"
+              >
+                ✕
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
 
       <div>

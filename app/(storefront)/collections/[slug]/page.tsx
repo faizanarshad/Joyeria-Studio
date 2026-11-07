@@ -48,7 +48,10 @@ export default async function CollectionPage({ params, searchParams }: Props) {
       isActive: true,
       ...(category ? { category } : {}),
     },
-    include: { images: { orderBy: { sortOrder: "asc" }, take: 2 } },
+    include: {
+      images: { orderBy: { sortOrder: "asc" }, take: 2 },
+      _count: { select: { variants: true } },
+    },
     orderBy,
   });
 
@@ -95,6 +98,7 @@ export default async function CollectionPage({ params, searchParams }: Props) {
               special: product.isFeatured,
               coverImage: product.images[0]?.url ?? "/placeholder-jewelry.svg",
               coverImageAlt: product.images[0]?.alt ?? product.name,
+              colorCount: product._count.variants || undefined,
             }}
           />
         ))}

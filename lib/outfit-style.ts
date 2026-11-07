@@ -175,6 +175,7 @@ export type StyleProduct = {
   coverImage: string;
   coverImageAlt: string;
   collectionSlug: string | null;
+  colorCount?: number;
 };
 
 function finishWarmth(finish: string | null): Warmth {
