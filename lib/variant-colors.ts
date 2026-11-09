@@ -2,6 +2,7 @@
 // so an admin can add a new colour without touching this file.
 const SWATCHES: Record<string, string> = {
   multicolour: "conic-gradient(#1f1f22, #0e8e48, #b81028, #9be0c4, #e8699e, #1f1f22)",
+  "ruby & emerald": "linear-gradient(135deg, #b81028 50%, #0e8e48 50%)",
   black: "#1f1f22",
   pink: "#e8699e",
   red: "#b81028",
