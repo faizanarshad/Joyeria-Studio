@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import ProductCard from "@/components/ProductCard";
 import CollectionFilters from "@/components/CollectionFilters";
+import { tabsFor } from "@/lib/collection-tabs";
 
 export const revalidate = 300;
 
@@ -11,6 +12,7 @@ type Props = {
   searchParams: Promise<{
     sort?: string;
     category?: string;
+    tab?: string;
   }>;
 };
 
@@ -30,10 +32,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function CollectionPage({ params, searchParams }: Props) {
   const { slug } = await params;
-  const { sort, category } = await searchParams;
+  const { sort, category, tab } = await searchParams;
 
   const collection = await getCollection(slug);
   if (!collection) notFound();
+
+  const tabs = tabsFor(slug);
+  const activeTab = tabs.find((t) => t.slug === tab);
 
   const orderBy =
     sort === "price-asc"
@@ -47,6 +52,7 @@ export default async function CollectionPage({ params, searchParams }: Props) {
       collectionId: collection.id,
       isActive: true,
       ...(category ? { category } : {}),
+      ...(activeTab ? { AND: [activeTab.where] } : {}),
     },
     include: {
       images: { orderBy: { sortOrder: "asc" }, take: 2 },
@@ -58,17 +64,17 @@ export default async function CollectionPage({ params, searchParams }: Props) {
   const sortChips = [
     {
       label: "Newest",
-      href: buildHref(slug, { category }),
+      href: buildHref(slug, { category, tab: activeTab?.slug }),
       active: sort !== "price-asc" && sort !== "price-desc",
     },
     {
       label: "Price ↑",
-      href: buildHref(slug, { sort: "price-asc", category }),
+      href: buildHref(slug, { sort: "price-asc", category, tab: activeTab?.slug }),
       active: sort === "price-asc",
     },
     {
       label: "Price ↓",
-      href: buildHref(slug, { sort: "price-desc", category }),
+      href: buildHref(slug, { sort: "price-desc", category, tab: activeTab?.slug }),
       active: sort === "price-desc",
     },
   ];
@@ -78,6 +84,16 @@ export default async function CollectionPage({ params, searchParams }: Props) {
       <h1 className="font-display text-3xl text-foreground">{collection.name}</h1>
       {collection.description && (
         <p className="mt-2 max-w-2xl text-muted">{collection.description}</p>
+      )}
+
+      {activeTab && (
+        <p className="mt-4 text-sm text-foreground">
+          Showing <span className="font-medium">{activeTab.label}</span>
+          <span className="mx-2 text-muted">·</span>
+          <a href={buildHref(slug, { sort, category })} className="text-rose hover:underline">
+            See all {collection.name}
+          </a>
+        </p>
       )}
 
       <CollectionFilters sortChips={sortChips} />
@@ -106,9 +122,11 @@ export default async function CollectionPage({ params, searchParams }: Props) {
 
       {products.length === 0 && (
         <p className="mt-10 text-sm text-muted">
-          No products match these filters.{" "}
+          {activeTab && !category
+            ? `New ${activeTab.label.toLowerCase()} pieces are coming soon.`
+            : "No products match these filters."}{" "}
           <a href={`/collections/${slug}`} className="text-rose hover:underline">
-            Clear filters
+            {activeTab && !category ? `See all ${collection.name}` : "Clear filters"}
           </a>
         </p>
       )}

@@ -13,7 +13,7 @@ export const PRODUCT_CATEGORIES = [
 ] as const;
 
 // Occasion labels an admin can attach to a product from the admin panel.
-export const PRODUCT_OCCASION_TAGS = ["Daily", "Office", "Party Wear", "Wedding"] as const;
+export const PRODUCT_OCCASION_TAGS = ["Daily", "Office", "Party Wear", "Mehndi", "Wedding"] as const;
 
 // Color labels an admin can attach to a product from the admin panel — the
 // piece's own visible color(s), not the outfit palette it's matched against.

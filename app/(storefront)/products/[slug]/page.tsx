@@ -192,6 +192,12 @@ export default async function ProductPage({ params }: Props) {
                   <dd>{product.finish}</dd>
                 </div>
               )}
+              {product.occasionTags.length > 0 && (
+                <div className="flex gap-2">
+                  <dt className="w-24 text-muted">Occasion</dt>
+                  <dd>{product.occasionTags.join(", ")}</dd>
+                </div>
+              )}
               <div className="flex gap-2">
                 <dt className="w-24 text-muted">Delivery</dt>
                 <dd>Ships in 2–4 business days.</dd>

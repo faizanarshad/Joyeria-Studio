@@ -2,6 +2,7 @@ import { prisma } from "@/lib/prisma";
 import { formatPKR } from "@/lib/format";
 import { FREE_DELIVERY_THRESHOLD } from "@/lib/delivery";
 import { sortCategories } from "@/lib/categories";
+import { tabsFor } from "@/lib/collection-tabs";
 import NavbarClient from "@/components/NavbarClient";
 
 export default async function Navbar() {
@@ -16,6 +17,36 @@ export default async function Navbar() {
 
   const menus = await Promise.all(
     collections.map(async (c) => {
+      // Collections with their own categories (e.g. Bridal: Mehndi, Heavy Sets…)
+      // use those as the dropdown's tabs; others group by jewelry type.
+      const customTabs = tabsFor(c.slug);
+      if (customTabs.length > 0) {
+        const tabs = await Promise.all(
+          customTabs.map(async (t) => {
+            const products = await prisma.product.findMany({
+              where: { collectionId: c.id, isActive: true, AND: [t.where] },
+              include: { images: { orderBy: { sortOrder: "asc" }, take: 1 } },
+              orderBy: [{ isFeatured: "desc" }, { createdAt: "desc" }],
+              // Three tiles plus "View all" keep the dropdown to a single row.
+              take: 3,
+            });
+            return {
+              label: t.label,
+              href: `/collections/${c.slug}?tab=${t.slug}`,
+              items: products
+                .filter((p) => p.images[0]?.url)
+                .map((p) => ({
+                  href: `/products/${p.slug}`,
+                  image: p.images[0]!.url,
+                  alt: p.images[0]!.alt,
+                  label: p.name,
+                })),
+            };
+          })
+        );
+        return { slug: c.slug, name: c.name, tabs };
+      }
+
       const products = await prisma.product.findMany({
         where: { collectionId: c.id, isActive: true, category: { not: null } },
         include: { images: { orderBy: { sortOrder: "asc" }, take: 1 } },
