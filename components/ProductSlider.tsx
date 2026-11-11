@@ -40,22 +40,13 @@ export default function ProductSlider({ products }: { products: ProductCardData[
 
   return (
     <div className="relative">
-      {/* Edge fades hint that the row keeps going, without needing dots for
-          up to 8 items — a hard cutoff there reads as the row simply ending. */}
-      <div
-        className={`pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r from-background to-transparent transition-opacity duration-300 ${
-          atStart ? "opacity-0" : "opacity-100"
-        }`}
-      />
-      <div
-        className={`pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-background to-transparent transition-opacity duration-300 ${
-          atEnd ? "opacity-0" : "opacity-100"
-        }`}
-      />
-
+      {/* Cards are sized to fit the row exactly from sm up (3, then 4), so no
+          card is ever half-cut or washed out by an edge fade; the arrows say
+          the row continues. Phones keep a peek of the next card, since they
+          have no arrows and the peek is what invites a swipe. */}
       <div
         ref={trackRef}
-        className="scrollbar-hide -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-4 pb-2 sm:gap-5"
+        className="scrollbar-hide flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-2 sm:gap-5"
       >
         {products.map((product, i) => (
           <motion.div
@@ -64,7 +55,7 @@ export default function ProductSlider({ products }: { products: ProductCardData[
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.45, delay: reducedMotion ? 0 : Math.min(i, 4) * 0.08, ease: [0.22, 1, 0.36, 1] }}
-            className="w-[46%] shrink-0 snap-start sm:w-[31%] lg:w-[23%]"
+            className="w-[46%] shrink-0 snap-start sm:w-[calc((100%_-_2.5rem)/3)] lg:w-[calc((100%_-_3.75rem)/4)]"
           >
             <ProductCard product={product} />
           </motion.div>

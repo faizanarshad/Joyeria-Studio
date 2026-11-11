@@ -99,9 +99,18 @@ export default async function Home() {
           <div className="mx-auto max-w-6xl px-4 text-center sm:px-6">
             <p className="text-xs font-medium uppercase tracking-[0.2em] text-rose">Browse</p>
             <h2 className="mt-2 font-display text-3xl text-foreground">Shop by category</h2>
-            <div className="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
+            {/* Flex-wrap rather than a fixed grid, so any number of collections
+                sits centred: three fill the row instead of leaving a fourth slot
+                empty, and an odd last tile on mobile is centred, not stranded. */}
+            <div className="mt-10 flex flex-wrap justify-center gap-6">
               {collections.map((c, i) => (
-                <Link key={c.slug} href={`/collections/${c.slug}`} className="group text-left">
+                <Link
+                  key={c.slug}
+                  href={`/collections/${c.slug}`}
+                  className={`group w-[calc((100%_-_1.5rem)/2)] text-left sm:w-[calc((100%_-_3rem)/3)] ${
+                    collections.length > 3 ? "lg:w-[calc((100%_-_4.5rem)/4)]" : ""
+                  }`}
+                >
                   <div
                     className={`arch relative aspect-square overflow-hidden ${
                       i % 2 === 0 ? "bg-rose-soft" : "bg-green-soft"
