@@ -8,10 +8,12 @@ required.
 
 | | |
 |---|---|
-| ![Home page](docs/screenshots/home.png) | ![Collection page with segmented sort](docs/screenshots/collection-sort.png) |
-| Home — hero, category shortcuts | Collection page — Newest / Price ↑ / Price ↓ sort |
-| ![Product detail page](docs/screenshots/product-detail.png) | ![Style My Outfit](docs/screenshots/style-my-outfit.png) |
-| Product page — Try it on button next to Add to Cart | Style My Outfit — upload a photo, get matched jewelry |
+| ![Home page](docs/screenshots/home.png) | ![Bridal collection page](docs/screenshots/collection-sort.png) |
+| Home — hero, category shortcuts | Bridal collection — branded product photos, Newest / Price ↑ / Price ↓ sort |
+| ![Product page with colour options](docs/screenshots/product-detail.png) | ![Bridal dropdown menu](docs/screenshots/bridal-menu.png) |
+| Product page — colour swatches swap the photo; the chosen colour goes to the cart | Bridal dropdown — Mehndi, Party Wear, Heavy Sets, Heavy Jhumkay, Golden Bangles |
+| ![Style My Outfit](docs/screenshots/style-my-outfit.png) | |
+| Style My Outfit — upload a photo, get matched jewelry | |
 | ![Virtual Try-On](docs/screenshots/try-on.png) | ![3D bridal showcase on Our Story](docs/screenshots/our-story-3d.png) |
 | Virtual Try-On — live AR camera view | Our Story — 3D bridal showcase beside the pull-quote |
 
@@ -28,7 +30,29 @@ Motion (Framer Motion) · Three.js · MediaPipe (FaceLandmarker) · Anthropic Cl
   rather than an in-page filter bar (`?category=` on the collection route still
   works, it's just not exposed as its own filter UI anymore) — an earlier
   material-filter + price-range-slider bar was simplified away in favor of this,
-  since sort covers what shoppers actually reached for.
+  since sort covers what shoppers actually reached for. Product pages also show
+  the piece's occasion tags (e.g. "Mehndi, Party Wear").
+- **Collection categories** — a collection can define its own categories in
+  `lib/collection-tabs.ts`, shown as the tabs of its navbar dropdown instead of
+  the default grouping by jewelry type. Bridal uses this for Mehndi, Party Wear,
+  Heavy Sets, Heavy Jhumkay and Golden Bangles. Each category is a filter over
+  fields products already have (occasion tags and type), so a new product lands
+  in the right one straight from the admin form; `/collections/bridal?tab=mehndi`
+  opens a single category, with a "Showing Mehndi · See all Bridal" note.
+- **Colour options** — a product can come in several colours (`ProductVariant`:
+  colour, photo, stock). The product page shows swatches that swap the gallery to
+  that colour's photo; the cart keeps one line per product + colour; checkout
+  requires a colour for such products and stock-checks and decrements that colour
+  as well as the product total; the colour is saved on the order and shown on the
+  confirmation page, order tracking, admin orders and WhatsApp messages. Cards for
+  these products say "Available in N colours" with a **Choose colour** button
+  instead of Add to bag, so nothing reaches the cart without a colour.
+- **Product photography** — Bridal and Daily Wear use real styled photos in
+  `public/products/`, each carrying the small gold Joyería logo in the
+  bottom-right corner, placed to stay inside the 4:5 crop product cards use.
+  Some single-colour photos of the Navrang jhumkis are digital recolours of the
+  yellow photo rather than separate shots. Western still uses Unsplash stock
+  photos.
 - **Virtual Try-On** (`/try-on`, plus a "Try it on" button next to Add to Cart on
   any product page with a try-on cutout set) — live AR earrings/tikka/necklace
   placement on the shopper's own camera feed, powered by MediaPipe's
@@ -93,8 +117,11 @@ Motion (Framer Motion) · Three.js · MediaPipe (FaceLandmarker) · Anthropic Cl
   shouldn't also hand over the address, name or delivery phone on a lucky guess.
 - **Admin panel** (`/admin`, NextAuth-protected) — orders (status/courier updates),
   products (create/edit/delete, with image upload straight to Cloudinary or a
-  pasted URL, occasion tags — Daily/Office/Party Wear/Wedding — and color tags,
-  both free-multi-select on the product form), collections (create/edit/delete),
+  pasted image address — a full URL or a site path such as
+  `/products/set.jpg` for photos in `public/` — occasion tags —
+  Daily/Office/Party Wear/Mehndi/Wedding — color tags, both free-multi-select,
+  and a Colour Options section for adding colours with their own stock and
+  photo; the product's stock becomes their total), collections (create/edit/delete),
   an Inventory view (`/admin/inventory` — item code, type, description and cost
   per product, plus total stock value and a missing-cost-price count), delivery
   rates per city (inline add/edit/delete), coupons (create/toggle/delete), review
@@ -107,6 +134,7 @@ Motion (Framer Motion) · Three.js · MediaPipe (FaceLandmarker) · Anthropic Cl
   it reserved at checkout (and re-reserves it, gated the same way a fresh
   checkout is, if un-cancelled) — cancellation is the normal way a refused or
   fake COD order gets filtered out, so this runs constantly, not as an edge case.
+  For a product with colour options, the chosen colour's stock moves with it.
 - **Customer support chatbot** — a floating widget (storefront only, hidden on
   `/admin`) backed by `/api/chat` and the Claude API, with a `track_order` tool
   Claude calls when a customer asks about an existing order — it looks the order
@@ -167,11 +195,30 @@ npm run dev
 
 Open http://localhost:3000.
 
+`npm run db:seed` loads the original sample catalogue. It upserts products by
+slug, so running it again recreates sample products that were deleted in the
+admin — skip it once the real catalogue is in.
+
+After pulling changes that touch `prisma/schema.prisma` (for example the colour
+options, which added `ProductVariant` and two `OrderItem` fields), run
+`npm run db:push` again, and restart `npm run dev` so it loads the regenerated
+Prisma client.
+
 ### Local database
 
-For local development you can run Postgres via Homebrew (`brew install
-postgresql@16`) or Docker. Point `DATABASE_URL` at it. For production, use a free
-[Neon](https://neon.tech) Postgres database — just swap the connection string.
+For local development you can run Postgres via [Postgres.app](https://postgresapp.com),
+Homebrew (`brew install postgresql@16`) or Docker. Point `DATABASE_URL` at it.
+On macOS versions Homebrew no longer ships prebuilt packages for, Postgres.app
+is the quickest option. Postgres doesn't start on its own after a restart —
+start it from Postgres.app (or enable its start-at-login setting) before
+`npm run dev`, or every page that reads the catalogue returns a 500.
+
+For production, use a free [Neon](https://neon.tech) Postgres database — just
+swap the connection string.
+
+If pages fail with a `next/font` "Module not found" error after the dev server
+was stopped uncleanly, stop it, delete `.next/dev` (build cache only) and run
+`npm run dev` again.
 
 ### Environment variables
 
@@ -207,9 +254,12 @@ before it shows anything on the storefront.
 ## Data model notes
 
 - Prices are whole PKR integers — no float rounding anywhere.
-- `OrderItem` snapshots `productName` and `price` at purchase time, and
-  `productId` is nullable, so deleting or repricing a product never rewrites past
-  orders.
+- `OrderItem` snapshots `productName`, `price` and the chosen `color` at
+  purchase time, and `productId`/`variantId` are nullable, so deleting or
+  repricing a product never rewrites past orders.
+- For a product with colour options, `Product.stock` is kept as the sum of its
+  `ProductVariant` stocks (the admin form sets it on save), so listings and
+  sold-out states work without knowing about colours.
 - `Product.costPrice` is never selected on any storefront query — admin-only,
   surfaced in the Inventory page's stock-value total.
 - Every order starts `PENDING`. The plan is to confirm real orders over WhatsApp
@@ -225,6 +275,12 @@ before it shows anything on the storefront.
 2. Bank transfer / JazzCash / Easypaisa with screenshot upload (`Order.paymentProofUrl`
    already exists for this).
 3. Coupon UI in the checkout form (the backend already validates `couponCode`).
-4. Real product photography — swap the plain-background placeholder SVGs in
-   `public/products/` for actual shots via the admin.
-5. Deploy: Vercel + Neon + Cloudinary + Resend, `prisma migrate deploy` on release.
+4. Real product photography for the Western collection (Bridal and Daily Wear
+   already have it), and real photos of each Navrang jhumki colour to replace
+   the digital recolours.
+5. Golden Bangles — the Bridal category exists and shows "coming soon" until
+   products of type Bangles are added to Bridal.
+6. Deploy: Vercel + Neon + Cloudinary + Resend, `prisma migrate deploy` on release.
+   The current Bridal and Daily Wear catalogue (products, prices, colours) was
+   set up in the local database, so it has to be recreated in production through
+   the admin panel, using the photo paths in `public/products/`.
