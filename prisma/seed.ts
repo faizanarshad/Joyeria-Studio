@@ -154,6 +154,20 @@ async function main() {
 
   console.log(`Seeded ${products.length} products across ${collections.length} collections.`);
 
+  // `npm run db:seed -- --prune` also deletes products that aren't in the
+  // catalogue (e.g. old sample products), so the database matches it exactly.
+  // Past orders keep their own product snapshot, so order history is unaffected.
+  if (process.argv.includes("--prune")) {
+    const keep = products.map((p) => p.slug);
+    const stale = await prisma.product.findMany({ where: { slug: { notIn: keep } }, select: { name: true } });
+    await prisma.product.deleteMany({ where: { slug: { notIn: keep } } });
+    console.log(
+      stale.length > 0
+        ? `Pruned ${stale.length} product(s) not in the catalogue: ${stale.map((p) => p.name).join(", ")}`
+        : "Pruned 0 products — the database already matches the catalogue."
+    );
+  }
+
   const adminEmail = process.env.ADMIN_EMAIL ?? "admin@joyeriastudio.com";
   const adminPassword = process.env.ADMIN_PASSWORD ?? "changeme123";
   await prisma.adminUser.upsert({

@@ -211,11 +211,17 @@ After changing products in the admin, run `npm run db:export-catalog` to write
 the database's catalogue back to `prisma/catalog.json`, and commit it, so the
 repo stays the source for setting up any other database.
 
-To load everything into the production database (e.g. Neon):
+Add `-- --prune` to also delete products that aren't in the catalogue (such as
+the old sample products — Kundan Choker Set, Polki Jhumka Earrings and the
+rest), so the database matches `prisma/catalog.json` exactly. Past orders keep
+their own copy of each product's name and price, so order history survives.
+
+To load everything into the production database (e.g. Neon), removing the old
+sample products:
 
 ```bash
 DATABASE_URL="<production connection string>" npm run db:push
-DATABASE_URL="<production connection string>" npm run db:seed
+DATABASE_URL="<production connection string>" npm run db:seed -- --prune
 ```
 
 After pulling changes that touch `prisma/schema.prisma` (for example the colour
