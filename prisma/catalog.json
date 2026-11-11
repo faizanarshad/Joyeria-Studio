@@ -1,0 +1,588 @@
+[
+  {
+    "name": "Navrang Mini Jhumki Earrings",
+    "slug": "navrang-mini-jhumki-earrings",
+    "sku": "JS-EAR-001",
+    "collectionSlug": "daily-wear",
+    "category": "Earrings",
+    "description": "Petite gold-plated jhumkis set with glossy teardrop stones and finished with a ring of pearl drops. Choose yellow, ruby & emerald, black, pink, red, orange, green or blue. Light enough for all-day wear, on easy hook fittings.",
+    "material": "Coloured Stones & Pearl",
+    "finish": "Gold-plated",
+    "careNote": "Keep away from water and perfume, and store in a pouch so the stones and pearls do not scratch.",
+    "price": 850,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 8,
+    "occasionTags": [
+      "Daily"
+    ],
+    "colorTags": [
+      "Gold",
+      "Multicolor",
+      "Black",
+      "Pink",
+      "Red",
+      "Green",
+      "Blue"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/navrang-mini-jhumki-earrings-yellow-v2-logo.jpg",
+        "alt": "Pair of gold-plated mini jhumki earrings with yellow stones and pearl drops hanging from a branch"
+      }
+    ],
+    "variants": [
+      {
+        "color": "Yellow",
+        "imageUrl": "/products/navrang-mini-jhumki-earrings-yellow-v2-logo.jpg",
+        "stock": 1
+      },
+      {
+        "color": "Ruby & Emerald",
+        "imageUrl": "/products/navrang-mini-jhumki-earrings-multicolour-v2-logo.jpg",
+        "stock": 1
+      },
+      {
+        "color": "Black",
+        "imageUrl": "/products/navrang-mini-jhumki-earrings-black-v2-logo.jpg",
+        "stock": 1
+      },
+      {
+        "color": "Pink",
+        "imageUrl": "/products/navrang-mini-jhumki-earrings-pink-v2-logo.jpg",
+        "stock": 1
+      },
+      {
+        "color": "Red",
+        "imageUrl": "/products/navrang-mini-jhumki-earrings-red-v2-logo.jpg",
+        "stock": 1
+      },
+      {
+        "color": "Orange",
+        "imageUrl": "/products/navrang-mini-jhumki-earrings-orange-v2-logo.jpg",
+        "stock": 1
+      },
+      {
+        "color": "Green",
+        "imageUrl": "/products/navrang-mini-jhumki-earrings-green-v2-logo.jpg",
+        "stock": 1
+      },
+      {
+        "color": "Blue",
+        "imageUrl": "/products/navrang-mini-jhumki-earrings-blue-v2-logo.jpg",
+        "stock": 1
+      }
+    ]
+  },
+  {
+    "name": "Layered Chain Necklace",
+    "slug": "layered-chain-necklace",
+    "sku": null,
+    "collectionSlug": "western",
+    "category": "Necklaces",
+    "description": "Triple-layer gold-plated chain necklace — an easy way to dress up a plain kurta or western top.",
+    "material": "Alloy",
+    "finish": "Gold-plated",
+    "careNote": "Remove before sleeping or showering.",
+    "price": 1450,
+    "compareAtPrice": 1800,
+    "costPrice": 620,
+    "stock": 6,
+    "occasionTags": [],
+    "colorTags": [],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": true,
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1602527418517-f33773c47f8a?w=1000&q=80&auto=format&fit=crop",
+        "alt": "Gold necklace displayed on neutral fabric"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Statement Hoop Earrings",
+    "slug": "statement-hoop-earrings",
+    "sku": null,
+    "collectionSlug": "western",
+    "category": "Earrings",
+    "description": "Large gold-plated hoops that make a plain outfit look finished.",
+    "material": "Alloy",
+    "finish": "Gold-plated",
+    "careNote": "Avoid pulling by the hoop — hold the post when removing.",
+    "price": 1100,
+    "compareAtPrice": null,
+    "costPrice": 420,
+    "stock": 10,
+    "occasionTags": [],
+    "colorTags": [],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1634390618228-2fe329fc7546?w=1000&q=80&auto=format&fit=crop",
+        "alt": "Large statement gold hoop earrings on plain background"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Chunky Cuff Bracelet",
+    "slug": "chunky-cuff-bracelet",
+    "sku": null,
+    "collectionSlug": "western",
+    "category": "Bracelets",
+    "description": "Open-back gold-plated cuff that fits most wrist sizes — a strong statement piece.",
+    "material": "Alloy",
+    "finish": "Gold-plated",
+    "careNote": "Gently squeeze to adjust fit, don't overbend.",
+    "price": 1350,
+    "compareAtPrice": null,
+    "costPrice": 540,
+    "stock": 5,
+    "occasionTags": [],
+    "colorTags": [],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=1000&q=80&auto=format&fit=crop",
+        "alt": "Bracelet on a dark reflective surface"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Crystal Drop Necklace",
+    "slug": "crystal-drop-necklace",
+    "sku": null,
+    "collectionSlug": "western",
+    "category": "Necklaces",
+    "description": "Gold-plated necklace with a clear crystal drop pendant — catches the light beautifully at night events.",
+    "material": "Crystal",
+    "finish": "Gold-plated",
+    "careNote": "Keep dry, store flat to protect the stone setting.",
+    "price": 1650,
+    "compareAtPrice": null,
+    "costPrice": 700,
+    "stock": 7,
+    "occasionTags": [],
+    "colorTags": [],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1602527418517-f33773c47f8a?w=1000&q=80&auto=format&fit=crop",
+        "alt": "Gold necklace displayed on neutral fabric"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Textured Inlay Bangles",
+    "slug": "textured-inlay-bangles",
+    "sku": null,
+    "collectionSlug": "western",
+    "category": "Bangles",
+    "description": "A pair of bold, textured bangles with dark oval inlays — a statement for an evening out.",
+    "material": "Alloy",
+    "finish": "Gold-plated",
+    "careNote": "Avoid knocks against hard surfaces; store the pair together.",
+    "price": 1750,
+    "compareAtPrice": null,
+    "costPrice": 700,
+    "stock": 8,
+    "occasionTags": [],
+    "colorTags": [],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1787769499046-8a94b2de1f62?w=1000&q=80&auto=format&fit=crop",
+        "alt": "Pair of textured gold bangles with dark inlays on a reflective surface"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Signet Statement Ring",
+    "slug": "signet-statement-ring",
+    "sku": null,
+    "collectionSlug": "western",
+    "category": "Rings",
+    "description": "A chunky engraved signet-style ring that turns a plain outfit into a look.",
+    "material": "Alloy",
+    "finish": "Gold-plated",
+    "careNote": "Avoid contact with water and perfume.",
+    "price": 1250,
+    "compareAtPrice": null,
+    "costPrice": 480,
+    "stock": 9,
+    "occasionTags": [],
+    "colorTags": [],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1705326455036-0fab8ecba04d?w=1000&q=80&auto=format&fit=crop",
+        "alt": "Engraved gold signet ring on a white surface"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Blush Stone Cocktail Ring",
+    "slug": "blush-stone-cocktail-ring",
+    "sku": null,
+    "collectionSlug": "western",
+    "category": "Rings",
+    "description": "A cushion-cut blush stone in a slim rose-gold-plated band with a sparkling halo.",
+    "material": "Crystal",
+    "finish": "Rose gold-plated",
+    "careNote": "Store in the ring box; keep the stone dry and clean.",
+    "price": 1400,
+    "compareAtPrice": null,
+    "costPrice": 560,
+    "stock": 6,
+    "occasionTags": [],
+    "colorTags": [],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1603561596973-8166e9e089d1?w=1000&q=80&auto=format&fit=crop",
+        "alt": "Rose gold ring with a blush cushion-cut stone"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Link Chain Bracelet",
+    "slug": "link-chain-bracelet",
+    "sku": null,
+    "collectionSlug": "western",
+    "category": "Bracelets",
+    "description": "A polished gold-plated link bracelet with a secure lobster clasp.",
+    "material": "Alloy",
+    "finish": "Gold-plated",
+    "careNote": "Wipe with a dry cloth after wear.",
+    "price": 1150,
+    "compareAtPrice": null,
+    "costPrice": 450,
+    "stock": 10,
+    "occasionTags": [],
+    "colorTags": [],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=1000&q=80&auto=format&fit=crop",
+        "alt": "Gold bracelet on a dark reflective surface"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Shahi Polki Pearl Bridal Set",
+    "slug": "shahi-polki-pearl-bridal-set",
+    "sku": "JS-SET-001",
+    "collectionSlug": "bridal",
+    "category": "Sets",
+    "description": "A grand five-piece bridal set for the baraat and walima: a wide gold-plated choker lined with polki-style medallions and layered pearl fringe, matching statement earrings with pearl-chain sahare, a maang tikka, and a jhoomar (passa). Comes gift-boxed.",
+    "material": "Polki & Pearl",
+    "finish": "Gold-plated",
+    "careNote": "Store flat in the box, keep away from moisture and perfume, and wipe gently with a soft dry cloth after wear.",
+    "price": 12000,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 1,
+    "occasionTags": [
+      "Wedding"
+    ],
+    "colorTags": [
+      "Gold",
+      "White"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/shahi-polki-pearl-bridal-set-velvet.jpg",
+        "alt": "Polki and pearl bridal set with medallion choker, statement earrings, maang tikka and jhoomar on green silk"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Mehtab Pearl Kundan Bridal Set",
+    "slug": "mehtab-pearl-kundan-bridal-set",
+    "sku": "JS-SET-002",
+    "collectionSlug": "bridal",
+    "category": "Sets",
+    "description": "A crescent-shaped bridal necklace in gold-plated filigree, set with kundan-style stones and finished with a full fringe of pearl clusters and teardrop pearls. Comes with matching earrings, a maang tikka on a pearl string, and a three-strand pearl jhoomar (passa) for a complete baraat or nikkah look.",
+    "material": "Kundan & Pearl",
+    "finish": "Gold-plated",
+    "careNote": "Store flat in the box, keep away from moisture and perfume, and wipe gently with a soft dry cloth after wear.",
+    "price": 15000,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 1,
+    "occasionTags": [
+      "Wedding"
+    ],
+    "colorTags": [
+      "Gold",
+      "White"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/mehtab-pearl-kundan-bridal-set-velvet.jpg",
+        "alt": "Gold-plated kundan and pearl bridal set with crescent necklace, earrings, maang tikka and jhoomar on green velvet"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Sunehri Champagne Jhumka Bridal Set",
+    "slug": "sunehri-champagne-jhumka-bridal-set",
+    "sku": "JS-SET-004",
+    "collectionSlug": "bridal",
+    "category": "Sets",
+    "description": "An antique-gold bridal choker of engraved floral medallions and square champagne stones, finished with a full fringe of faceted champagne crystal beads. Comes with statement jhumkas on beaded sahare (ear chains), a maang tikka, and a jhoomar (passa) for a soft, golden walima or nikkah look.",
+    "material": "Kundan & Crystal Beads",
+    "finish": "Antique gold-plated",
+    "careNote": "Store flat in the box, keep away from moisture and perfume, and wipe gently with a soft dry cloth after wear.",
+    "price": 14000,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 1,
+    "occasionTags": [
+      "Wedding"
+    ],
+    "colorTags": [
+      "Gold"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/sunehri-champagne-jhumka-bridal-set-closeup-logo.jpg",
+        "alt": "Antique gold-plated bridal set with champagne beads: choker, jhumkas with sahare, maang tikka and jhoomar on green velvet"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Sadaf Pearl Shell Necklace Set",
+    "slug": "sadaf-pearl-shell-necklace-set",
+    "sku": "JS-SET-005",
+    "collectionSlug": "bridal",
+    "category": "Sets",
+    "description": "An elegant gold-plated necklace of lustrous mother-of-pearl stones, each framed in a halo of sparkling zircons with delicate gold swirls, finishing in a pearl-drop pendant. Comes with matching stud earrings with pearl drops, for a refined nikkah, walima or reception look.",
+    "material": "Mother-of-pearl & Zircon",
+    "finish": "Gold-plated",
+    "careNote": "Store flat in the box, keep away from moisture and perfume, and wipe gently with a soft dry cloth after wear.",
+    "price": 12000,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 1,
+    "occasionTags": [
+      "Wedding",
+      "Party Wear"
+    ],
+    "colorTags": [
+      "Gold",
+      "White"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/sadaf-pearl-shell-necklace-set-logo.jpg",
+        "alt": "Gold-plated mother-of-pearl and zircon necklace with matching stud earrings on a green velvet bust"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Zareen Filigree Long Necklace Set",
+    "slug": "zareen-filigree-long-necklace-set",
+    "sku": "JS-SET-006",
+    "collectionSlug": "bridal",
+    "category": "Sets",
+    "description": "A long gold-plated necklace of fine filigree rosettes and kundan-set links on a delicate chain, leading to a large filigree pendant with a jhumki drop. Comes with matching filigree drop earrings, for mehndi, nikkah or festive wear.",
+    "material": "Kundan",
+    "finish": "Gold-plated",
+    "careNote": "Store flat in the box, keep away from moisture and perfume, and wipe gently with a soft dry cloth after wear.",
+    "price": 12000,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 1,
+    "occasionTags": [
+      "Wedding",
+      "Party Wear"
+    ],
+    "colorTags": [
+      "Gold"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/zareen-filigree-long-necklace-set-logo.jpg",
+        "alt": "Gold-plated filigree long necklace with kundan stones and matching drop earrings on green velvet"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Gulnar Maroon Antique Bridal Set",
+    "slug": "gulnar-maroon-antique-bridal-set",
+    "sku": "JS-SET-003",
+    "collectionSlug": "bridal",
+    "category": "Sets",
+    "description": "A broad antique-gold bridal choker with engraved filigree and polki-style stones, finished with a deep fringe of faceted maroon crystal beads and tied with a traditional red-and-gold dori. Comes with matching earrings, a maang tikka on a gold chain, and a beaded jhoomar (passa) for a rich baraat or mehndi look.",
+    "material": "Polki & Crystal Beads",
+    "finish": "Antique gold-plated",
+    "careNote": "Store flat in the box, keep away from moisture and perfume, and wipe gently with a soft dry cloth after wear.",
+    "price": 16000,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 1,
+    "occasionTags": [
+      "Wedding"
+    ],
+    "colorTags": [
+      "Gold",
+      "Red"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/gulnar-maroon-antique-bridal-set-velvet-logo.jpg",
+        "alt": "Antique gold-plated bridal set with maroon crystal beads: choker, earrings, maang tikka and jhoomar on green velvet"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Noori Kundan Pearl Jhumka Earrings",
+    "slug": "noori-kundan-pearl-jhumka-earrings",
+    "sku": "JS-EAR-002",
+    "collectionSlug": "bridal",
+    "category": "Earrings",
+    "description": "Statement gold-plated jhumkas with a tall top panel of kundan stones framed in sparkling zircons, leading to a stone-studded dome and a full fringe of pearl clusters. Made to be the highlight of a mehndi or party outfit.",
+    "material": "Kundan, Zircon & Pearl",
+    "finish": "Antique gold-plated",
+    "careNote": "Store in the box, keep away from moisture and perfume, and wipe gently with a soft dry cloth after wear.",
+    "price": 3500,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 1,
+    "occasionTags": [
+      "Mehndi",
+      "Party Wear"
+    ],
+    "colorTags": [
+      "Gold",
+      "White"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/noori-kundan-pearl-jhumka-earrings-logo.jpg",
+        "alt": "Gold-plated kundan and pearl jhumka earrings on green velvet"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Basanti Mehndi Choker Set",
+    "slug": "basanti-mehndi-choker-set",
+    "sku": "JS-SET-007",
+    "collectionSlug": "bridal",
+    "category": "Sets",
+    "description": "A bright mehndi choker with five strands of pearls and a central sunflower medallion of yellow stones, edged in pink and green meenakari, with yellow bead drops. Comes with matching jhumka earrings and a maang tikka on a pearl string.",
+    "material": "Kundan, Meenakari & Pearl",
+    "finish": "Gold-plated",
+    "careNote": "Store in the box, keep away from moisture and perfume, and wipe gently with a soft dry cloth after wear.",
+    "price": 8000,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 1,
+    "occasionTags": [
+      "Mehndi",
+      "Party Wear"
+    ],
+    "colorTags": [
+      "Gold",
+      "Multicolor",
+      "White"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/basanti-mehndi-choker-set-logo.jpg",
+        "alt": "Yellow-stone mehndi set with pearl choker, jhumka earrings and maang tikka on green velvet"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Zumurrud Kundan Chandbali Earrings",
+    "slug": "zumurrud-kundan-chandbali-earrings",
+    "sku": "JS-EAR-003",
+    "collectionSlug": "bridal",
+    "category": "Earrings",
+    "description": "Statement gold-plated chandbali earrings set with kundan stones and a pearl-studded floral centre, finished with a fringe of pearls and emerald-green beads. They come on long beaded sahare (ear chains) of pearls and green beads that support the weight and frame the face, for a mehndi, baraat or party look.",
+    "material": "Kundan, Pearl & Green Beads",
+    "finish": "Gold-plated",
+    "careNote": "Store flat in the box so the sahare do not tangle, keep away from moisture and perfume, and wipe gently with a soft dry cloth after wear.",
+    "price": 4500,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 1,
+    "occasionTags": [
+      "Party Wear"
+    ],
+    "colorTags": [
+      "Gold",
+      "White",
+      "Green"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/zumurrud-kundan-chandbali-earrings-logo.jpg",
+        "alt": "Gold-plated kundan chandbali earrings with pearl and green-bead sahare on a maroon velvet stand"
+      }
+    ],
+    "variants": []
+  }
+]

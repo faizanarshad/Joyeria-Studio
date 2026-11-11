@@ -189,15 +189,34 @@ on the storefront — the feature ships empty until that happens.
 npm install
 cp .env.example .env   # fill in DATABASE_URL at minimum
 npm run db:push        # create tables from prisma/schema.prisma
-npm run db:seed        # load sample products, collections, delivery rates, a coupon
+npm run db:seed        # load the catalogue, collections, delivery rates, a coupon
 npm run dev
 ```
 
 Open http://localhost:3000.
 
-`npm run db:seed` loads the original sample catalogue. It upserts products by
-slug, so running it again recreates sample products that were deleted in the
-admin — skip it once the real catalogue is in.
+### Catalogue data
+
+`npm run db:seed` loads the real catalogue from `prisma/catalog.json`: every
+product with its prices, descriptions, occasion/color tags, photos and colour
+options (the photos themselves ship in `public/products/`). It upserts by slug
+and matches colours by name, so it's safe to re-run — existing products are
+updated in place, keep their ids, and nothing else in the database is touched.
+It also creates the collections, per-city delivery rates, a `WELCOME10` coupon
+and the first admin user from `ADMIN_EMAIL`/`ADMIN_PASSWORD` (read from `.env`;
+set a strong password before seeding a live database — an existing admin's
+password is never changed).
+
+After changing products in the admin, run `npm run db:export-catalog` to write
+the database's catalogue back to `prisma/catalog.json`, and commit it, so the
+repo stays the source for setting up any other database.
+
+To load everything into the production database (e.g. Neon):
+
+```bash
+DATABASE_URL="<production connection string>" npm run db:push
+DATABASE_URL="<production connection string>" npm run db:seed
+```
 
 After pulling changes that touch `prisma/schema.prisma` (for example the colour
 options, which added `ProductVariant` and two `OrderItem` fields), run
@@ -281,6 +300,5 @@ before it shows anything on the storefront.
 5. Golden Bangles — the Bridal category exists and shows "coming soon" until
    products of type Bangles are added to Bridal.
 6. Deploy: Vercel + Neon + Cloudinary + Resend, `prisma migrate deploy` on release.
-   The current Bridal and Daily Wear catalogue (products, prices, colours) was
-   set up in the local database, so it has to be recreated in production through
-   the admin panel, using the photo paths in `public/products/`.
+   Load the catalogue into the production database with `npm run db:seed` (see
+   "Catalogue data" above) once its schema is pushed.
