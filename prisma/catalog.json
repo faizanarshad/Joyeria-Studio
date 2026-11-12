@@ -923,5 +923,70 @@
       }
     ],
     "variants": []
+  },
+  {
+    "name": "Medallion Coin Pavé Ring",
+    "slug": "medallion-coin-pave-ring",
+    "sku": "JS-RNG-010",
+    "collectionSlug": "western",
+    "category": "Rings",
+    "description": "A bold engraved coin medallion framed by a halo of sparkling crystals, on a split-shank gold-tone band. Made from stainless steel, so it won't tarnish.",
+    "material": "Stainless Steel",
+    "finish": "Gold-tone, anti-tarnish",
+    "careNote": "Stainless steel with an anti-tarnish finish: it won't fade or darken with everyday wear. Wipe with a soft cloth and store in a pouch.",
+    "price": 550,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 5,
+    "occasionTags": [
+      "Party Wear",
+      "Office"
+    ],
+    "colorTags": [
+      "Gold",
+      "White"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/medallion-coin-pave-ring-logo.jpg",
+        "alt": "Gold-tone coin medallion ring with a crystal halo on sage linen with dried green roses"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Monogram Initial Ring",
+    "slug": "monogram-initial-ring",
+    "sku": "JS-RNG-011",
+    "collectionSlug": "western",
+    "category": "Rings",
+    "description": "A sleek gold-tone band topped with a polished cut-out monogram, a confident everyday statement. Made from stainless steel, so it won't tarnish.",
+    "material": "Stainless Steel",
+    "finish": "Gold-tone, anti-tarnish",
+    "careNote": "Stainless steel with an anti-tarnish finish: it won't fade or darken with everyday wear. Wipe with a soft cloth and store in a pouch.",
+    "price": 450,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 5,
+    "occasionTags": [
+      "Daily",
+      "Party Wear"
+    ],
+    "colorTags": [
+      "Gold"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/monogram-initial-ring-logo.jpg",
+        "alt": "Gold-tone monogram ring on burgundy linen with dried yellow rose petals"
+      }
+    ],
+    "variants": []
   }
 ]

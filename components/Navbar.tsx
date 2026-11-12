@@ -57,7 +57,8 @@ export default async function Navbar() {
       for (const p of products) {
         if (!p.category || !p.images[0]?.url) continue;
         const list = byCategory.get(p.category) ?? [];
-        if (list.length < 4) list.push(p);
+        // Three tiles plus "View all" keep the dropdown to a single row.
+        if (list.length < 3) list.push(p);
         byCategory.set(p.category, list);
       }
 
