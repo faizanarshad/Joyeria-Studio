@@ -690,8 +690,40 @@
     "isFeatured": false,
     "images": [
       {
-        "url": "/products/pista-sahara-chain-earrings-logo.jpg",
+        "url": "/products/pista-sahara-chain-earrings-v2-logo.jpg",
         "alt": "Pair of kundan stud earrings with mint bead drops and gold sahara chains on embroidered green velvet"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Chandni Silver Chain Jhumki Earrings",
+    "slug": "chandni-silver-chain-jhumki-earrings",
+    "sku": "JS-EAR-007",
+    "collectionSlug": "bridal",
+    "category": "Earrings",
+    "description": "Filigree silver-tone studs set with sparkling stones and edged in ghungroo beads, from which long chains fall to clusters of tiny jhumkis. A dramatic, lightweight pair that moves with every turn.",
+    "material": "Alloy & Zircon",
+    "finish": "Silver-tone",
+    "careNote": "Store flat in the box so the chains do not tangle, keep away from moisture and perfume, and wipe gently with a soft dry cloth after wear.",
+    "price": 1200,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 3,
+    "occasionTags": [
+      "Party Wear"
+    ],
+    "colorTags": [
+      "Silver",
+      "White"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/chandni-silver-chain-jhumki-earrings-logo.jpg",
+        "alt": "Pair of long silver-tone chain earrings with filigree studs and jhumki drops against a carved wooden box"
       }
     ],
     "variants": []
