@@ -988,5 +988,37 @@
       }
     ],
     "variants": []
+  },
+  {
+    "name": "Kiran Sunburst Stud Earrings",
+    "slug": "kiran-sunburst-stud-earrings",
+    "sku": "JS-EAR-005",
+    "collectionSlug": "western",
+    "category": "Earrings",
+    "description": "Fine gold-tone rays fan out from a polished stud, so the earring sits along the lobe like a rising sun. Light, minimal and easy to wear every day. Made from stainless steel, so it won't tarnish.",
+    "material": "Stainless Steel",
+    "finish": "Gold-tone, anti-tarnish",
+    "careNote": "Stainless steel with an anti-tarnish finish: it won't fade or darken with everyday wear. Wipe with a soft cloth and store in a pouch.",
+    "price": 450,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 5,
+    "occasionTags": [
+      "Daily",
+      "Office"
+    ],
+    "colorTags": [
+      "Gold"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/kiran-sunburst-stud-earrings-logo.jpg",
+        "alt": "Pair of gold-tone sunburst stud earrings on burgundy velvet with kundan stones"
+      }
+    ],
+    "variants": []
   }
 ]

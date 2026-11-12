@@ -3,6 +3,7 @@ import { formatPKR } from "@/lib/format";
 import { FREE_DELIVERY_THRESHOLD } from "@/lib/delivery";
 import { sortCategories } from "@/lib/categories";
 import { tabsFor } from "@/lib/collection-tabs";
+import { sectionHref, sectionSlug } from "@/lib/collection-sections";
 import NavbarClient from "@/components/NavbarClient";
 
 export default async function Navbar() {
@@ -32,7 +33,7 @@ export default async function Navbar() {
             });
             return {
               label: t.label,
-              href: `/collections/${c.slug}?tab=${t.slug}`,
+              href: sectionHref(c.slug, t.slug),
               items: products
                 .filter((p) => p.images[0]?.url)
                 .map((p) => ({
@@ -64,7 +65,7 @@ export default async function Navbar() {
 
       const tabs = sortCategories([...byCategory.keys()]).map((category) => ({
         label: category,
-        href: `/collections/${c.slug}?category=${encodeURIComponent(category)}`,
+        href: sectionHref(c.slug, sectionSlug(category)),
         items: (byCategory.get(category) ?? []).map((p) => ({
           href: `/products/${p.slug}`,
           image: p.images[0]!.url,

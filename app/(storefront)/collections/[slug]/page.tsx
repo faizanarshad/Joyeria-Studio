@@ -1,9 +1,8 @@
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
-import ProductCard from "@/components/ProductCard";
-import CollectionFilters from "@/components/CollectionFilters";
-import { tabsFor } from "@/lib/collection-tabs";
+import CollectionListing from "@/components/CollectionListing";
+import { resolveSection, sectionHref, sectionSlug } from "@/lib/collection-sections";
 
 export const revalidate = 300;
 
@@ -11,6 +10,7 @@ type Props = {
   params: Promise<{ slug: string }>;
   searchParams: Promise<{
     sort?: string;
+    // Older links filtered the collection page; they now redirect to the category page.
     category?: string;
     tab?: string;
   }>;
@@ -20,14 +20,12 @@ async function getCollection(slug: string) {
   return prisma.collection.findUnique({ where: { slug } });
 }
 
-export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const { category, tab } = await searchParams;
   const collection = await getCollection(slug);
   if (!collection) return {};
-  const section = tabsFor(slug).find((t) => t.slug === tab)?.label ?? category;
   return {
-    title: section ? `${section} · ${collection.name}` : collection.name,
+    title: collection.name,
     description: collection.description ?? `Shop ${collection.name} at Joyería Studio.`,
   };
 }
@@ -39,123 +37,14 @@ export default async function CollectionPage({ params, searchParams }: Props) {
   const collection = await getCollection(slug);
   if (!collection) notFound();
 
-  const tabs = tabsFor(slug);
-  const activeTab = tabs.find((t) => t.slug === tab);
-
-  const orderBy =
-    sort === "price-asc"
-      ? { price: "asc" as const }
-      : sort === "price-desc"
-        ? { price: "desc" as const }
-        : { createdAt: "desc" as const };
-
-  const products = await prisma.product.findMany({
-    where: {
-      collectionId: collection.id,
-      isActive: true,
-      ...(category ? { category } : {}),
-      ...(activeTab ? { AND: [activeTab.where] } : {}),
-    },
-    include: {
-      images: { orderBy: { sortOrder: "asc" }, take: 2 },
-      _count: { select: { variants: true } },
-    },
-    orderBy,
-  });
-
-  const sectionLabel = activeTab?.label ?? category;
-
-  const sortChips = [
-    {
-      label: "Newest",
-      href: buildHref(slug, { category, tab: activeTab?.slug }),
-      active: sort !== "price-asc" && sort !== "price-desc",
-    },
-    {
-      label: "Price ↑",
-      href: buildHref(slug, { sort: "price-asc", category, tab: activeTab?.slug }),
-      active: sort === "price-asc",
-    },
-    {
-      label: "Price ↓",
-      href: buildHref(slug, { sort: "price-desc", category, tab: activeTab?.slug }),
-      active: sort === "price-desc",
-    },
-  ];
-
-  return (
-    <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
-      {sectionLabel ? (
-        // A category or tab (e.g. Western → Rings) gets its own page heading.
-        <>
-          <nav aria-label="Breadcrumb" className="text-xs uppercase tracking-[0.2em] text-muted">
-            <a href={`/collections/${slug}`} className="hover:text-rose">
-              {collection.name}
-            </a>
-            <span className="mx-2">/</span>
-            <span className="text-foreground">{sectionLabel}</span>
-          </nav>
-          <h1 className="mt-2 font-display text-3xl text-foreground">{sectionLabel}</h1>
-          <p className="mt-2 text-sm text-muted">
-            {products.length} {products.length === 1 ? "piece" : "pieces"}
-            <span className="mx-2">·</span>
-            <a href={`/collections/${slug}`} className="text-rose hover:underline">
-              See all {collection.name}
-            </a>
-          </p>
-        </>
-      ) : (
-        <>
-          <h1 className="font-display text-3xl text-foreground">{collection.name}</h1>
-          {collection.description && (
-            <p className="mt-2 max-w-2xl text-muted">{collection.description}</p>
-          )}
-        </>
-      )}
-
-      <CollectionFilters sortChips={sortChips} />
-
-      <div className="mt-8 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:grid-cols-4">
-        {products.map((product) => (
-          <ProductCard
-            key={product.id}
-            product={{
-              id: product.id,
-              slug: product.slug,
-              name: product.name,
-              price: product.price,
-              compareAtPrice: product.compareAtPrice,
-              stock: product.stock,
-              category: product.category,
-              hoverImage: product.images[1]?.url,
-              special: product.isFeatured,
-              coverImage: product.images[0]?.url ?? "/placeholder-jewelry.svg",
-              coverImageAlt: product.images[0]?.alt ?? product.name,
-              colorCount: product._count.variants || undefined,
-            }}
-          />
-        ))}
-      </div>
-
-      {products.length === 0 && (
-        <p className="mt-10 text-sm text-muted">
-          {activeTab && !category
-            ? `New ${activeTab.label.toLowerCase()} pieces are coming soon.`
-            : "No products match these filters."}{" "}
-          <a href={`/collections/${slug}`} className="text-rose hover:underline">
-            {activeTab && !category ? `See all ${collection.name}` : "Clear filters"}
-          </a>
-        </p>
-      )}
-    </div>
-  );
-}
-
-function buildHref(slug: string, params: Record<string, string | undefined>) {
-  const qs = new URLSearchParams();
-  for (const [key, value] of Object.entries(params)) {
-    if (value) qs.set(key, value);
+  const legacy = tab ?? (category ? sectionSlug(category) : undefined);
+  if (legacy) {
+    const section = await resolveSection(collection, legacy);
+    if (section) {
+      const query = sort ? `?sort=${encodeURIComponent(sort)}` : "";
+      permanentRedirect(sectionHref(slug, section.slug) + query);
+    }
   }
-  const query = qs.toString();
-  return query ? `/collections/${slug}?${query}` : `/collections/${slug}`;
+
+  return <CollectionListing collection={collection} section={null} sort={sort} />;
 }
