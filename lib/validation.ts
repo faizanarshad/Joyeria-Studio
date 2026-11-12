@@ -171,3 +171,27 @@ export const reviewSchema = z.object({
 });
 
 export type ReviewInput = z.infer<typeof reviewSchema>;
+
+// bcrypt only hashes the first 72 bytes of a password, so anything past that
+// would silently be ignored — cap there (in bytes, since Urdu or emoji
+// characters take several each) rather than accept a longer password that
+// isn't really as strong as it looks.
+const MAX_PASSWORD_BYTES = 72;
+
+export const changePasswordSchema = z
+  .object({
+    currentPassword: z.string().min(1, "Enter your current password"),
+    newPassword: z
+      .string()
+      .min(10, "Use at least 10 characters")
+      .refine((p) => new TextEncoder().encode(p).length <= MAX_PASSWORD_BYTES, "That's too long — keep it under 72 characters"),
+    confirmPassword: z.string(),
+  })
+  .refine((d) => d.newPassword === d.confirmPassword, {
+    message: "The two new passwords don't match",
+    path: ["confirmPassword"],
+  })
+  .refine((d) => d.newPassword !== d.currentPassword, {
+    message: "Choose a password different from your current one",
+    path: ["newPassword"],
+  });

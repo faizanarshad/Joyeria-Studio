@@ -73,16 +73,21 @@ export default async function AdminLayout({ children }: { children: React.ReactN
                     </Link>
                   </nav>
                 </div>
-                <form
-                  action={async () => {
-                    "use server";
-                    await signOut({ redirectTo: "/admin/login" });
-                  }}
-                >
-                  <button type="submit" className="text-sm text-muted hover:text-red-600">
-                    Sign Out
-                  </button>
-                </form>
+                <div className="flex items-center gap-4">
+                  <Link href="/admin/account" className="text-sm text-muted hover:text-rose">
+                    Change Password
+                  </Link>
+                  <form
+                    action={async () => {
+                      "use server";
+                      await signOut({ redirectTo: "/admin/login" });
+                    }}
+                  >
+                    <button type="submit" className="text-sm text-muted hover:text-red-600">
+                      Sign Out
+                    </button>
+                  </form>
+                </div>
               </div>
             </header>
             <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6">{children}</main>
