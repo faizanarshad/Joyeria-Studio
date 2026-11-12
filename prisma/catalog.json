@@ -78,6 +78,104 @@
     ]
   },
   {
+    "name": "Rangeen Silver Jhumki Earrings",
+    "slug": "rangeen-silver-jhumki-earrings",
+    "sku": "JS-EAR-004",
+    "collectionSlug": "daily-wear",
+    "category": "Earrings",
+    "description": "Oxidised silver jhumkis with an engraved paisley dome and a fringe of matte bead drops. Choose multicolour, or a single shade in yellow, pink, green, black, blue, white, red, maroon, purple or orange. Light enough for all-day wear, on easy hook fittings.",
+    "material": "Oxidised Alloy & Beads",
+    "finish": "Oxidised silver",
+    "careNote": "Keep away from water and perfume, and store in a pouch so the oxidised finish and beads stay fresh.",
+    "price": 850,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 33,
+    "occasionTags": [
+      "Daily"
+    ],
+    "colorTags": [
+      "Silver",
+      "Multicolor",
+      "Yellow",
+      "Pink",
+      "Green",
+      "Black",
+      "Blue",
+      "White",
+      "Red",
+      "Maroon",
+      "Purple",
+      "Orange"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/rangeen-silver-jhumki-earrings-multicolour-logo.jpg",
+        "alt": "Pair of oxidised silver jhumki earrings with multicolour bead drops on a silver stand"
+      }
+    ],
+    "variants": [
+      {
+        "color": "Multicolour",
+        "imageUrl": "/products/rangeen-silver-jhumki-earrings-multicolour-logo.jpg",
+        "stock": 3
+      },
+      {
+        "color": "Yellow",
+        "imageUrl": "/products/rangeen-silver-jhumki-earrings-yellow-logo.jpg",
+        "stock": 3
+      },
+      {
+        "color": "Pink",
+        "imageUrl": "/products/rangeen-silver-jhumki-earrings-pink-logo.jpg",
+        "stock": 3
+      },
+      {
+        "color": "Green",
+        "imageUrl": "/products/rangeen-silver-jhumki-earrings-green-logo.jpg",
+        "stock": 3
+      },
+      {
+        "color": "Black",
+        "imageUrl": "/products/rangeen-silver-jhumki-earrings-black-logo.jpg",
+        "stock": 3
+      },
+      {
+        "color": "Blue",
+        "imageUrl": "/products/rangeen-silver-jhumki-earrings-blue-logo.jpg",
+        "stock": 3
+      },
+      {
+        "color": "White",
+        "imageUrl": "/products/rangeen-silver-jhumki-earrings-white-logo.jpg",
+        "stock": 3
+      },
+      {
+        "color": "Red",
+        "imageUrl": "/products/rangeen-silver-jhumki-earrings-red-logo.jpg",
+        "stock": 3
+      },
+      {
+        "color": "Maroon",
+        "imageUrl": "/products/rangeen-silver-jhumki-earrings-maroon-logo.jpg",
+        "stock": 3
+      },
+      {
+        "color": "Purple",
+        "imageUrl": "/products/rangeen-silver-jhumki-earrings-purple-logo.jpg",
+        "stock": 3
+      },
+      {
+        "color": "Orange",
+        "imageUrl": "/products/rangeen-silver-jhumki-earrings-orange-logo.jpg",
+        "stock": 3
+      }
+    ]
+  },
+  {
     "name": "Layered Chain Necklace",
     "slug": "layered-chain-necklace",
     "sku": null,
