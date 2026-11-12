@@ -763,6 +763,103 @@
     "variants": []
   },
   {
+    "name": "Mor Gold Pearl Chandbali Earrings",
+    "slug": "mor-gold-pearl-chandbali-earrings",
+    "sku": "JS-EAR-008",
+    "collectionSlug": "bridal",
+    "category": "Earrings",
+    "description": "Chandbali earrings hung from a fan-shaped top on a slim bar: a crescent paved with sparkling zircon, cradling a pair of filigree peacocks (mor) and finished with a fringe of pearl drops.",
+    "material": "Zircon & Pearl",
+    "finish": "Gold-plated",
+    "careNote": "Store flat in the box so the pearl drops do not tangle, keep away from moisture and perfume, and wipe gently with a soft dry cloth after wear.",
+    "price": 750,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 3,
+    "occasionTags": [
+      "Party Wear"
+    ],
+    "colorTags": [
+      "Gold",
+      "White"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/mor-gold-pearl-chandbali-earrings-logo.jpg",
+        "alt": "Gold-plated peacock chandbali earrings with zircon and pearl drops on green velvet"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Mor Silver Pearl Chandbali Earrings",
+    "slug": "mor-silver-pearl-chandbali-earrings",
+    "sku": "JS-EAR-009",
+    "collectionSlug": "bridal",
+    "category": "Earrings",
+    "description": "Chandbali earrings hung from a fan-shaped top on a slim bar: a silver-tone crescent paved with sparkling zircon, cradling a pair of filigree peacocks (mor) and finished with a fringe of pearl drops.",
+    "material": "Zircon & Pearl",
+    "finish": "Silver-tone",
+    "careNote": "Store flat in the box so the pearl drops do not tangle, keep away from moisture and perfume, and wipe gently with a soft dry cloth after wear.",
+    "price": 750,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 3,
+    "occasionTags": [
+      "Party Wear"
+    ],
+    "colorTags": [
+      "Silver",
+      "White"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/mor-silver-pearl-chandbali-earrings-logo.jpg",
+        "alt": "Silver-tone peacock chandbali earrings with zircon and pearl drops on green velvet"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Mor Ruby Pearl Chandbali Earrings",
+    "slug": "mor-ruby-pearl-chandbali-earrings",
+    "sku": "JS-EAR-010",
+    "collectionSlug": "bridal",
+    "category": "Earrings",
+    "description": "Chandbali earrings hung from a fan-shaped top on a slim bar: a crescent set with ruby-red stones, cradling a pair of filigree peacocks (mor) and finished with a fringe of pearl drops.",
+    "material": "Ruby-red Stones & Pearl",
+    "finish": "Gold-plated",
+    "careNote": "Store flat in the box so the pearl drops do not tangle, keep away from moisture and perfume, and wipe gently with a soft dry cloth after wear.",
+    "price": 750,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 3,
+    "occasionTags": [
+      "Party Wear"
+    ],
+    "colorTags": [
+      "Red",
+      "Gold",
+      "White"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/mor-ruby-pearl-chandbali-earrings-logo.jpg",
+        "alt": "Gold-plated peacock chandbali earrings with ruby-red stones and pearl drops on green velvet"
+      }
+    ],
+    "variants": []
+  },
+  {
     "name": "Tara Five-Stone Silver Ring",
     "slug": "tara-five-stone-silver-ring",
     "sku": "JS-RNG-001",
