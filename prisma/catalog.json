@@ -663,6 +663,40 @@
     "variants": []
   },
   {
+    "name": "Pista Sahara Chain Earrings",
+    "slug": "pista-sahara-chain-earrings",
+    "sku": "JS-EAR-006",
+    "collectionSlug": "bridal",
+    "category": "Earrings",
+    "description": "Round kundan studs ringed in zircon, set with a flower of pistachio-green stones and finished with tiers of pearl strands and mint bead drops under tiny gold bells. Gold sahara chains, hung with more beads and pearls, sweep back into the hair to take the weight off the ear.",
+    "material": "Kundan, Zircon, Pearl & Mint Beads",
+    "finish": "Gold-plated",
+    "careNote": "Store flat in the box so the sahare do not tangle, keep away from moisture and perfume, and wipe gently with a soft dry cloth after wear.",
+    "price": 1200,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 3,
+    "occasionTags": [
+      "Mehndi",
+      "Party Wear"
+    ],
+    "colorTags": [
+      "Green",
+      "Gold",
+      "White"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/pista-sahara-chain-earrings-logo.jpg",
+        "alt": "Pair of kundan stud earrings with mint bead drops and gold sahara chains on embroidered green velvet"
+      }
+    ],
+    "variants": []
+  },
+  {
     "name": "Tara Five-Stone Silver Ring",
     "slug": "tara-five-stone-silver-ring",
     "sku": "JS-RNG-001",
