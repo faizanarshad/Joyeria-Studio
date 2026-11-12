@@ -682,5 +682,300 @@
       }
     ],
     "variants": []
+  },
+  {
+    "name": "Tara Five-Stone Silver Ring",
+    "slug": "tara-five-stone-silver-ring",
+    "sku": "JS-RNG-001",
+    "collectionSlug": "western",
+    "category": "Rings",
+    "description": "Five sparkling round crystals in claw settings rise along a slim silver-tone band, with a fine row of pavé on the shoulder. Made from stainless steel, so it won't tarnish.",
+    "material": "Stainless Steel",
+    "finish": "Silver-tone, anti-tarnish",
+    "careNote": "Stainless steel with an anti-tarnish finish: it won't fade or darken with everyday wear. Wipe with a soft cloth and store in a pouch.",
+    "price": 550,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 5,
+    "occasionTags": [
+      "Party Wear",
+      "Wedding"
+    ],
+    "colorTags": [
+      "Silver",
+      "White"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/tara-five-stone-silver-ring-logo.jpg",
+        "alt": "Silver-tone five-stone crystal ring standing on a beige backdrop with dried rosebuds"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Bow Baguette Crystal Ring",
+    "slug": "bow-baguette-crystal-ring",
+    "sku": "JS-RNG-002",
+    "collectionSlug": "western",
+    "category": "Rings",
+    "description": "A sculpted bow of baguette-cut crystals tied around a round centre stone, on a polished gold-tone band. Made from stainless steel, so it won't tarnish.",
+    "material": "Stainless Steel",
+    "finish": "Gold-tone, anti-tarnish",
+    "careNote": "Stainless steel with an anti-tarnish finish: it won't fade or darken with everyday wear. Wipe with a soft cloth and store in a pouch.",
+    "price": 550,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 5,
+    "occasionTags": [
+      "Party Wear"
+    ],
+    "colorTags": [
+      "Gold",
+      "White"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/bow-baguette-crystal-ring-logo.jpg",
+        "alt": "Gold-tone bow ring set with baguette crystals beside a dried yellow rose"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Moti Pearl Dome Ring",
+    "slug": "moti-pearl-dome-ring",
+    "sku": "JS-RNG-003",
+    "collectionSlug": "western",
+    "category": "Rings",
+    "description": "A lustrous dome pearl in a smooth bezel on a slim gold-tone band. Adjustable to fit most sizes. Made from stainless steel, so it won't tarnish.",
+    "material": "Stainless Steel",
+    "finish": "Gold-tone, anti-tarnish",
+    "careNote": "Stainless steel with an anti-tarnish finish: it won't fade or darken with everyday wear. Wipe with a soft cloth and store in a pouch.",
+    "price": 450,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 5,
+    "occasionTags": [
+      "Daily",
+      "Office"
+    ],
+    "colorTags": [
+      "Gold",
+      "White"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/moti-pearl-dome-ring-logo.jpg",
+        "alt": "Gold-tone adjustable ring with a large dome pearl among dried rose petals"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Sitara Star Spiral Ring",
+    "slug": "sitara-star-spiral-ring",
+    "sku": "JS-RNG-004",
+    "collectionSlug": "western",
+    "category": "Rings",
+    "description": "A playful triple-coil wrap ring finished with a polished star at one end and a cube at the other. Easy to slip on and adjusts to the finger. Made from stainless steel, so it won't tarnish.",
+    "material": "Stainless Steel",
+    "finish": "Gold-tone, anti-tarnish",
+    "careNote": "Stainless steel with an anti-tarnish finish: it won't fade or darken with everyday wear. Wipe with a soft cloth and store in a pouch.",
+    "price": 400,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 5,
+    "occasionTags": [
+      "Daily",
+      "Party Wear"
+    ],
+    "colorTags": [
+      "Gold"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/sitara-star-spiral-ring-logo.jpg",
+        "alt": "Gold-tone spiral wrap ring with a star and cube end between dried yellow roses"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Surajmukhi Sunflower Shell Ring",
+    "slug": "surajmukhi-sunflower-shell-ring",
+    "sku": "JS-RNG-005",
+    "collectionSlug": "western",
+    "category": "Rings",
+    "description": "Ribbed gold-tone petals open around a round mother-of-pearl shell centre, like a sunflower in bloom. Made from stainless steel, so it won't tarnish.",
+    "material": "Stainless Steel",
+    "finish": "Gold-tone, anti-tarnish",
+    "careNote": "Stainless steel with an anti-tarnish finish: it won't fade or darken with everyday wear. Wipe with a soft cloth and store in a pouch.",
+    "price": 450,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 5,
+    "occasionTags": [
+      "Daily",
+      "Office"
+    ],
+    "colorTags": [
+      "Gold",
+      "White"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/surajmukhi-sunflower-shell-ring-logo.jpg",
+        "alt": "Gold-tone sunflower ring with a mother-of-pearl centre beside a dried yellow rose"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Clover Mother-of-Pearl Ring",
+    "slug": "clover-mother-of-pearl-ring",
+    "sku": "JS-RNG-006",
+    "collectionSlug": "western",
+    "category": "Rings",
+    "description": "A four-leaf clover of iridescent mother-of-pearl framed in beaded gold-tone edging, on a slim polished band. Made from stainless steel, so it won't tarnish.",
+    "material": "Stainless Steel",
+    "finish": "Gold-tone, anti-tarnish",
+    "careNote": "Stainless steel with an anti-tarnish finish: it won't fade or darken with everyday wear. Wipe with a soft cloth and store in a pouch.",
+    "price": 500,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 5,
+    "occasionTags": [
+      "Daily",
+      "Office",
+      "Party Wear"
+    ],
+    "colorTags": [
+      "Gold",
+      "White"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/clover-mother-of-pearl-ring-logo.jpg",
+        "alt": "Gold-tone clover ring with a mother-of-pearl inlay on linen with dried roses and pebbles"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Titli Butterfly Pearl Ring",
+    "slug": "titli-butterfly-pearl-ring",
+    "sku": "JS-RNG-007",
+    "collectionSlug": "western",
+    "category": "Rings",
+    "description": "A textured gold-tone butterfly with a mother-of-pearl body and a tiny pearl at its head. Adjustable to fit most sizes. Made from stainless steel, so it won't tarnish.",
+    "material": "Stainless Steel",
+    "finish": "Gold-tone, anti-tarnish",
+    "careNote": "Stainless steel with an anti-tarnish finish: it won't fade or darken with everyday wear. Wipe with a soft cloth and store in a pouch.",
+    "price": 450,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 5,
+    "occasionTags": [
+      "Daily",
+      "Party Wear"
+    ],
+    "colorTags": [
+      "Gold",
+      "White"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/titli-butterfly-pearl-ring-logo.jpg",
+        "alt": "Gold-tone adjustable butterfly ring with a mother-of-pearl body between dried yellow roses"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Pavé Twin-Disc Open Ring",
+    "slug": "pave-twin-disc-open-ring",
+    "sku": "JS-RNG-008",
+    "collectionSlug": "western",
+    "category": "Rings",
+    "description": "An open-ended band with two polished discs meeting at the front and a shoulder of pavé-set crystals. Made from stainless steel, so it won't tarnish.",
+    "material": "Stainless Steel",
+    "finish": "Gold-tone, anti-tarnish",
+    "careNote": "Stainless steel with an anti-tarnish finish: it won't fade or darken with everyday wear. Wipe with a soft cloth and store in a pouch.",
+    "price": 500,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 5,
+    "occasionTags": [
+      "Office",
+      "Party Wear"
+    ],
+    "colorTags": [
+      "Gold",
+      "White"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/pave-twin-disc-open-ring-logo.jpg",
+        "alt": "Gold-tone open ring with twin discs and pavé crystals on linen with dried roses"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Daisy Trio Crystal Ring",
+    "slug": "daisy-trio-crystal-ring",
+    "sku": "JS-RNG-009",
+    "collectionSlug": "western",
+    "category": "Rings",
+    "description": "Three gold-tone daisies of graduating size climb across a slim band, each with a sparkling crystal heart. Made from stainless steel, so it won't tarnish.",
+    "material": "Stainless Steel",
+    "finish": "Gold-tone, anti-tarnish",
+    "careNote": "Stainless steel with an anti-tarnish finish: it won't fade or darken with everyday wear. Wipe with a soft cloth and store in a pouch.",
+    "price": 350,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 5,
+    "occasionTags": [
+      "Daily"
+    ],
+    "colorTags": [
+      "Gold",
+      "White"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/daisy-trio-crystal-ring-logo.jpg",
+        "alt": "Gold-tone ring with three crystal-centred daisies beside a dried yellow rose"
+      }
+    ],
+    "variants": []
   }
 ]
