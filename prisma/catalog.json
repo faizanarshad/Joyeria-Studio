@@ -668,7 +668,7 @@
     "sku": "JS-EAR-006",
     "collectionSlug": "bridal",
     "category": "Earrings",
-    "description": "Round kundan studs ringed in zircon, set with a flower of pistachio-green stones and finished with tiers of pearl strands and mint bead drops under tiny gold bells. Gold sahara chains, hung with more beads and pearls, sweep back into the hair to take the weight off the ear.",
+    "description": "Round kundan studs with a pistachio-green centre hold chandbali crescents paved in zircon, fringed with pearls and deep green bead drops. Gold sahara chains, hung with pearls and mint beads under tiny gold bells, sweep back into the hair to take the weight off the ear.",
     "material": "Kundan, Zircon, Pearl & Mint Beads",
     "finish": "Gold-plated",
     "careNote": "Store flat in the box so the sahare do not tangle, keep away from moisture and perfume, and wipe gently with a soft dry cloth after wear.",
@@ -690,8 +690,8 @@
     "isFeatured": false,
     "images": [
       {
-        "url": "/products/pista-sahara-chain-earrings-v2-logo.jpg",
-        "alt": "Pair of kundan stud earrings with mint bead drops and gold sahara chains on embroidered green velvet"
+        "url": "/products/pista-sahara-chain-earrings-v3-logo.jpg",
+        "alt": "Pair of kundan chandbali earrings with green bead drops and pearl sahara chains on green silk with yellow roses"
       }
     ],
     "variants": []
@@ -855,6 +855,71 @@
       {
         "url": "/products/mor-ruby-pearl-chandbali-earrings-logo.jpg",
         "alt": "Gold-plated peacock chandbali earrings with ruby-red stones and pearl drops on green velvet"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Dil Gold Heart Pearl Chandbali Earrings",
+    "slug": "dil-gold-heart-pearl-chandbali-earrings",
+    "sku": "JS-EAR-011",
+    "category": "Earrings",
+    "description": "Hammered gold-plated hearts with an engraved floral pattern, under a round stud, over a dense cascade of seed pearls finished with deep green bead drops. Bold, festive and lighter than they look.",
+    "material": "Pearl & Green Beads",
+    "finish": "Gold-plated",
+    "price": 750,
+    "colorTags": [
+      "Gold",
+      "White",
+      "Green"
+    ],
+    "collectionSlug": "bridal",
+    "careNote": "Store flat in the box so the strands and drops do not tangle, keep away from moisture and perfume, and wipe gently with a soft dry cloth after wear.",
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 3,
+    "occasionTags": [
+      "Party Wear"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/dil-gold-heart-pearl-chandbali-earrings-logo.jpg",
+        "alt": "Gold heart-shaped chandbali earrings with pearl clusters and green bead drops on a carved wooden box with yellow roses"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Moti Mala Layered Pearl Rani Haar",
+    "slug": "moti-mala-layered-pearl-rani-haar",
+    "sku": "JS-NCK-001",
+    "category": "Necklaces",
+    "description": "A long rani haar of five graduated pearl strands, joined by gold-plated spacers and finished with a square zircon pendant framed in kundan and pearl drops.",
+    "material": "Pearl, Kundan & Zircon",
+    "finish": "Gold-plated",
+    "price": 1500,
+    "colorTags": [
+      "White",
+      "Gold"
+    ],
+    "collectionSlug": "bridal",
+    "careNote": "Store flat in the box so the strands and drops do not tangle, keep away from moisture and perfume, and wipe gently with a soft dry cloth after wear.",
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 3,
+    "occasionTags": [
+      "Party Wear"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/moti-mala-layered-pearl-rani-haar-logo.jpg",
+        "alt": "Five-strand layered pearl rani haar necklace with a square zircon pendant on green silk with yellow roses"
       }
     ],
     "variants": []
