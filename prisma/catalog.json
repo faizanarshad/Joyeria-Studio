@@ -630,6 +630,39 @@
     "variants": []
   },
   {
+    "name": "Gulabi Kundan Chandbali & Tikka Set",
+    "slug": "gulabi-kundan-chandbali-tikka-set",
+    "sku": "JS-SET-008",
+    "collectionSlug": "bridal",
+    "category": "Sets",
+    "description": "Statement chandbali earrings with a matching maang tikka in soft blush pink. Filigree gold-plated crescents are set with kundan petals and zircon pavé, edged in pink stones and finished with a fringe of pink and pearl drops. The tikka hangs from a pearl string.",
+    "material": "Kundan, Zircon & Pink Beads",
+    "finish": "Gold-plated",
+    "careNote": "Store flat in the box so the drops do not tangle, keep away from moisture and perfume, and wipe gently with a soft dry cloth after wear.",
+    "price": 1200,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 3,
+    "occasionTags": [
+      "Party Wear"
+    ],
+    "colorTags": [
+      "Pink",
+      "Gold",
+      "White"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/gulabi-kundan-chandbali-tikka-set-logo.jpg",
+        "alt": "Pink kundan chandbali earrings and matching maang tikka with pearl drops on green velvet"
+      }
+    ],
+    "variants": []
+  },
+  {
     "name": "Tara Five-Stone Silver Ring",
     "slug": "tara-five-stone-silver-ring",
     "sku": "JS-RNG-001",
