@@ -7,7 +7,8 @@ import { motion, useReducedMotion, AnimatePresence } from "motion/react";
 
 type Occasion = {
   name: string;
-  collectionSlug: string;
+  // The page the tile opens, e.g. /collections/bridal/mehndi.
+  href: string;
   image: string;
 };
 
@@ -118,7 +119,7 @@ export default function OccasionSlider({ items }: { items: Occasion[] }) {
             className="w-[78%] shrink-0 snap-start sm:w-[46%] lg:w-[31%]"
           >
             <Link
-              href={`/collections/${o.collectionSlug}`}
+              href={o.href}
               className="group relative block aspect-4/5 overflow-hidden rounded-2xl shadow-sm transition-shadow duration-300 hover:shadow-xl"
             >
               <Image

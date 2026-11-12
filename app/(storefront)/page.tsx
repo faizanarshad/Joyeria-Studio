@@ -11,11 +11,12 @@ import type { ProductCardData } from "@/lib/types";
 
 export const revalidate = 300;
 
+// Each occasion tile opens the page that matches it.
 const OCCASIONS = [
-  { name: "Everyday", collectionSlug: "daily-wear", image: "/occasions/everyday.webp" },
-  { name: "Office", collectionSlug: "daily-wear", image: "/occasions/office.webp" },
-  { name: "Mehndi", collectionSlug: "bridal", image: "/occasions/mehndi.webp" },
-  { name: "Nikkah", collectionSlug: "bridal", image: "/occasions/nikkah.webp" },
+  { name: "Everyday", href: "/collections/daily-wear", image: "/occasions/everyday.webp" },
+  { name: "Office", href: "/collections/western", image: "/occasions/office.webp" },
+  { name: "Mehndi", href: "/collections/bridal/mehndi", image: "/occasions/mehndi.webp" },
+  { name: "Nikkah", href: "/collections/bridal/party-wear", image: "/occasions/nikkah.webp" },
 ];
 
 async function getFeaturedProducts(): Promise<ProductCardData[]> {
