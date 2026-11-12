@@ -311,60 +311,6 @@
     "variants": []
   },
   {
-    "name": "Signet Statement Ring",
-    "slug": "signet-statement-ring",
-    "sku": null,
-    "collectionSlug": "western",
-    "category": "Rings",
-    "description": "A chunky engraved signet-style ring that turns a plain outfit into a look.",
-    "material": "Alloy",
-    "finish": "Gold-plated",
-    "careNote": "Avoid contact with water and perfume.",
-    "price": 1250,
-    "compareAtPrice": null,
-    "costPrice": 480,
-    "stock": 9,
-    "occasionTags": [],
-    "colorTags": [],
-    "tryOnImageUrl": null,
-    "isActive": true,
-    "isFeatured": false,
-    "images": [
-      {
-        "url": "https://images.unsplash.com/photo-1705326455036-0fab8ecba04d?w=1000&q=80&auto=format&fit=crop",
-        "alt": "Engraved gold signet ring on a white surface"
-      }
-    ],
-    "variants": []
-  },
-  {
-    "name": "Blush Stone Cocktail Ring",
-    "slug": "blush-stone-cocktail-ring",
-    "sku": null,
-    "collectionSlug": "western",
-    "category": "Rings",
-    "description": "A cushion-cut blush stone in a slim rose-gold-plated band with a sparkling halo.",
-    "material": "Crystal",
-    "finish": "Rose gold-plated",
-    "careNote": "Store in the ring box; keep the stone dry and clean.",
-    "price": 1400,
-    "compareAtPrice": null,
-    "costPrice": 560,
-    "stock": 6,
-    "occasionTags": [],
-    "colorTags": [],
-    "tryOnImageUrl": null,
-    "isActive": true,
-    "isFeatured": false,
-    "images": [
-      {
-        "url": "https://images.unsplash.com/photo-1603561596973-8166e9e089d1?w=1000&q=80&auto=format&fit=crop",
-        "alt": "Rose gold ring with a blush cushion-cut stone"
-      }
-    ],
-    "variants": []
-  },
-  {
     "name": "Link Chain Bracelet",
     "slug": "link-chain-bracelet",
     "sku": null,
