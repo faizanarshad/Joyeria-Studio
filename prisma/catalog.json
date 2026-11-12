@@ -729,6 +729,40 @@
     "variants": []
   },
   {
+    "name": "Rangoli Kundan Chandbali & Tikka Set",
+    "slug": "rangoli-kundan-chandbali-tikka-set",
+    "sku": "JS-SET-009",
+    "collectionSlug": "bridal",
+    "category": "Sets",
+    "description": "Bright chandbali earrings with a matching maang tikka, made for mehndi. Open gold-plated crescents carry bands of pink, green, turquoise and black stones around ruby-red kundan petals, each topped with a flower stud and finished with pearl clusters and deep maroon drops. The tikka hangs from a pearl string.",
+    "material": "Kundan, Coloured Stones & Pearl",
+    "finish": "Gold-plated",
+    "careNote": "Store flat in the box so the drops do not tangle, keep away from moisture and perfume, and wipe gently with a soft dry cloth after wear.",
+    "price": 1400,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 3,
+    "occasionTags": [
+      "Mehndi"
+    ],
+    "colorTags": [
+      "Multicolor",
+      "Red",
+      "Gold",
+      "White"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/rangoli-kundan-chandbali-tikka-set-logo.jpg",
+        "alt": "Multicolour kundan chandbali earrings and matching maang tikka with pearl and maroon drops on a carved wooden box"
+      }
+    ],
+    "variants": []
+  },
+  {
     "name": "Tara Five-Stone Silver Ring",
     "slug": "tara-five-stone-silver-ring",
     "sku": "JS-RNG-001",
