@@ -796,6 +796,68 @@
     "variants": []
   },
   {
+    "name": "Jaal Gold Filigree Long Haar Set",
+    "slug": "jaal-gold-filigree-long-haar-set",
+    "sku": "JS-SET-011",
+    "collectionSlug": "bridal",
+    "category": "Sets",
+    "description": "A long haar of openwork gold-plated filigree links (jaal) on a fine chain, finished with a large square pendant and a teardrop drop. Comes with matching square filigree earrings with teardrop danglers. All gold, so it goes with any colour.",
+    "material": "Alloy",
+    "finish": "Gold-plated",
+    "careNote": "Store flat in the box so the chain does not tangle, keep away from moisture and perfume, and wipe gently with a soft dry cloth after wear.",
+    "price": 1200,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 3,
+    "occasionTags": [
+      "Party Wear"
+    ],
+    "colorTags": [
+      "Gold"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/jaal-gold-filigree-long-haar-set-logo.jpg",
+        "alt": "Long gold filigree haar necklace with a square pendant and matching earrings on green silk with jasmine buds"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Gulzar Gold Filigree Haar Set",
+    "slug": "gulzar-gold-filigree-haar-set",
+    "sku": "JS-SET-012",
+    "collectionSlug": "bridal",
+    "category": "Sets",
+    "description": "A haar of gold-plated filigree flowers, each set with a small coloured stone, on a fine chain, finished with a domed filigree pendant and a teardrop drop. Comes with matching domed filigree earrings with tasselled drops.",
+    "material": "Alloy & Coloured Stones",
+    "finish": "Gold-plated",
+    "careNote": "Store flat in the box so the chain does not tangle, keep away from moisture and perfume, and wipe gently with a soft dry cloth after wear.",
+    "price": 1200,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 3,
+    "occasionTags": [
+      "Party Wear"
+    ],
+    "colorTags": [
+      "Gold"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/gulzar-gold-filigree-haar-set-logo.jpg",
+        "alt": "Gold filigree flower haar necklace with a domed pendant and matching earrings beside a carved wooden box of gemstones"
+      }
+    ],
+    "variants": []
+  },
+  {
     "name": "Tara Five-Stone Silver Ring",
     "slug": "tara-five-stone-silver-ring",
     "sku": "JS-RNG-001",
