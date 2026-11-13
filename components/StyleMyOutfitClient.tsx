@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { motion } from "motion/react";
 import {
   extractPalette,
+  outfitColorFamilies,
   rankProducts,
   OCCASION_OPTIONS,
   type Occasion,
@@ -100,7 +101,8 @@ export default function StyleMyOutfitClient({ products }: { products: StyleProdu
     setOccasionSource(null);
   }
 
-  const matches = occasion ? rankProducts(products, occasion, palette).slice(0, 12) : [];
+  const outfitColors = outfitColorFamilies(vision?.colors ?? [], palette);
+  const matches = occasion ? rankProducts(products, occasion, { palette, colors: outfitColors }).slice(0, 12) : [];
   const paletteLabel = palette ? PALETTE_LABEL[`${palette.warmth}-${palette.depth}`] : null;
 
   return (
@@ -152,6 +154,11 @@ export default function StyleMyOutfitClient({ products }: { products: StyleProdu
               ) : vision ? (
                 <>
                   <p className="text-sm text-foreground">{vision.reason}</p>
+                  {vision.colors.length > 0 && (
+                    <p className="mt-1 text-xs text-muted">
+                      Colours: <span className="font-medium text-foreground">{vision.colors.join(", ")}</span>
+                    </p>
+                  )}
                   {palette && palette.swatches.length > 0 && (
                     <>
                       <p className="mt-1 text-xs text-muted">
@@ -180,10 +187,16 @@ export default function StyleMyOutfitClient({ products }: { products: StyleProdu
         )}
       </div>
 
-      {photoUrl && occasion && (
+      {/* Always offered, so a customer can still shop by occasion when there's no
+          photo or it couldn't be read. */}
+      {!analyzing && (
         <div className="mx-auto mt-8 max-w-xl text-center">
           <p className="text-sm font-medium text-foreground">
-            {occasionSource === "auto" ? "Occasion (detected from your photo)" : "Occasion"}
+            {occasionSource === "auto"
+              ? "Occasion (detected from your photo)"
+              : photoUrl
+                ? "Occasion"
+                : "Or pick the occasion"}
           </p>
           <div className="mt-3 flex flex-wrap justify-center gap-2">
             {OCCASION_OPTIONS.map((o) => (
@@ -208,7 +221,8 @@ export default function StyleMyOutfitClient({ products }: { products: StyleProdu
 
       {!occasion && !analyzing && (
         <p className="mt-10 text-center text-sm text-muted">
-          Upload a photo above and we&apos;ll figure out the occasion and match it for you.
+          Upload a photo above and we&apos;ll work out the occasion and colours for you, or pick an occasion to
+          browse.
         </p>
       )}
 

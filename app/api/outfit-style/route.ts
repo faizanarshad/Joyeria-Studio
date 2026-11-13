@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import Anthropic from "@anthropic-ai/sdk";
+import { zodOutputFormat } from "@anthropic-ai/sdk/helpers/zod";
+import { z } from "zod";
 import { checkRateLimit } from "@/lib/rate-limit";
-
-const VALID_OCCASIONS = ["daily", "party", "bridal"] as const;
-type Occasion = (typeof VALID_OCCASIONS)[number];
+import { OCCASIONS } from "@/lib/outfit-style";
 
 const ALLOWED_TYPES: Record<string, "image/jpeg" | "image/png" | "image/webp"> = {
   "image/jpeg": "image/jpeg",
@@ -11,20 +11,29 @@ const ALLOWED_TYPES: Record<string, "image/jpeg" | "image/png" | "image/webp"> =
   "image/webp": "image/webp",
 };
 
-const PROMPT = `Look at this photo of an outfit (a dress, a styled flatlay, or clothing on a hanger/rack). Classify which occasion it best suits, picking exactly one:
-- "daily": everyday or office wear — simple, minimal or professional styling, plain or lightly patterned fabric, however many separate items (blazers, shirts, trousers, shoes, bags, accessories) are in the shot. A neatly arranged flatlay of ordinary office/casual clothing is still "daily", not "party" or "bridal" — judge the garment itself, not how many objects are in the photo.
-- "party": going-out or festive wear — noticeably dressier or more embellished than daily wear (embroidery, sequins, zari, richer fabric), but not full bridal/wedding formality.
-- "bridal": wedding or the most heavily embellished traditional wear — dense embroidery/stonework/zari coverage, clearly bridal-grade.
+// Structured output: the API constrains the reply to this schema, so there's
+// no JSON to fish out of free text.
+const OutfitReading = z.object({
+  occasion: z.enum(OCCASIONS),
+  colors: z.array(z.string()),
+  reason: z.string(),
+});
 
-Also name 2-3 of the outfit's actual dominant colors in plain English (e.g. "purple", "gold embroidery", "navy blue").
+const PROMPT = `Look at this photo of an outfit (worn, on a hanger, or laid out as a flatlay). Pick the one occasion it suits best:
+- "daily": everyday or office wear. Simple, minimal or professional styling in plain or lightly patterned fabric, however many separate items are in the shot. Judge the garment, not how many objects are in the photo.
+- "party": going-out or festive wear (dinners, parties, Eid, a wedding guest look). Dressier than daily wear, with some embroidery, sequins, zari or rich fabric, but not bridal.
+- "mehndi": a mehndi, haldi or dholki look. Bright festive colours (yellow, green, orange, hot pink or multicolour), often with gota, mirror work or floral prints.
+- "bridal": the bride's own wedding outfit (baraat, nikkah, walima). Dense embroidery, stonework or zari on heavy fabric, clearly bridal-grade.
 
-Respond with ONLY compact JSON, no markdown fences, no other text: {"occasion": "daily"|"party"|"bridal", "colors": ["..."], "reason": "one short sentence explaining the pick"}`;
+List the 1-3 main colours of the garment itself, in plain English (for example "maroon", "mint green", "gold embroidery"); ignore the background and props.
+
+Give a short, friendly reason (one sentence, under 25 words) that a shopper will read.`;
 
 export async function POST(req: NextRequest) {
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) {
     return NextResponse.json(
-      { error: "Outfit matching isn't set up yet — pick an occasion yourself below instead." },
+      { error: "Outfit matching isn't set up yet. Pick an occasion yourself below instead." },
       { status: 503 }
     );
   }
@@ -51,9 +60,11 @@ export async function POST(req: NextRequest) {
     const buffer = Buffer.from(await file.arrayBuffer());
     const anthropic = new Anthropic({ apiKey });
 
-    const response = await anthropic.messages.create({
-      model: "claude-haiku-4-5-20251001",
-      max_tokens: 200,
+    const response = await anthropic.messages.parse({
+      // A fast, low-cost vision model: the shopper is waiting on this.
+      model: "claude-haiku-5-5",
+      max_tokens: 4000,
+      output_config: { effort: "low", format: zodOutputFormat(OutfitReading) },
       messages: [
         {
           role: "user",
@@ -65,27 +76,18 @@ export async function POST(req: NextRequest) {
       ],
     });
 
-    const text = response.content
-      .filter((b): b is Anthropic.TextBlock => b.type === "text")
-      .map((b) => b.text)
-      .join("")
-      .trim();
-
-    const jsonMatch = text.match(/\{[\s\S]*\}/);
-    if (!jsonMatch) throw new Error(`No JSON in response: ${text}`);
-    const parsed = JSON.parse(jsonMatch[0]) as { occasion?: string; colors?: unknown; reason?: string };
-
-    if (!VALID_OCCASIONS.includes(parsed.occasion as Occasion)) {
-      throw new Error(`Invalid occasion: ${parsed.occasion}`);
+    if (response.stop_reason === "refusal" || !response.parsed_output) {
+      throw new Error(`No outfit reading (stop_reason: ${response.stop_reason})`);
     }
-
-    const colors = Array.isArray(parsed.colors) ? parsed.colors.filter((c) => typeof c === "string").slice(0, 3) : [];
-
-    return NextResponse.json({ occasion: parsed.occasion, colors, reason: parsed.reason ?? "" });
+    const { occasion, colors, reason } = response.parsed_output;
+    return NextResponse.json({ occasion, colors: colors.slice(0, 3), reason });
   } catch (err) {
+    if (err instanceof Anthropic.RateLimitError) {
+      return NextResponse.json({ error: "We're busy right now. Please try again in a moment." }, { status: 429 });
+    }
     console.error("Outfit style classification failed", err);
     return NextResponse.json(
-      { error: "Couldn't read that photo — please try again or pick an occasion yourself below." },
+      { error: "Couldn't read that photo. Please try again or pick an occasion yourself below." },
       { status: 502 }
     );
   }

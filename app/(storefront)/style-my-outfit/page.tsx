@@ -24,6 +24,8 @@ export default async function StyleMyOutfitPage() {
       finish: true,
       isFeatured: true,
       tryOnImageUrl: true,
+      occasionTags: true,
+      colorTags: true,
       collection: { select: { slug: true } },
       images: { orderBy: { sortOrder: "asc" }, take: 1 },
       _count: { select: { variants: true } },
@@ -46,6 +48,8 @@ export default async function StyleMyOutfitPage() {
     coverImage: p.images[0]?.url ?? "/placeholder-jewelry.svg",
     coverImageAlt: p.images[0]?.alt ?? p.name,
     collectionSlug: p.collection?.slug ?? null,
+    occasionTags: p.occasionTags,
+    colorTags: p.colorTags,
     colorCount: p._count.variants || undefined,
   }));
 
@@ -55,8 +59,8 @@ export default async function StyleMyOutfitPage() {
         <p className="text-xs font-medium uppercase tracking-[0.2em] text-rose">Style My Outfit</p>
         <h1 className="mt-2 font-display text-3xl text-foreground">Match it before you wear it</h1>
         <p className="mt-2 text-sm text-foreground/70">
-          Upload a photo of your outfit — we&apos;ll pick out its colors and how dressy it looks, and suggest
-          jewelry to match. You can always pick the occasion yourself instead.
+          Upload a photo of your outfit. We&apos;ll read its colours and how dressy it is, and suggest jewellery to
+          match. You can also just pick the occasion yourself.
         </p>
       </div>
 

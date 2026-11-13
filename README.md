@@ -64,14 +64,16 @@ Motion (Framer Motion) · Three.js · MediaPipe (FaceLandmarker) · Anthropic Cl
   cutout for it (`Product.tryOnImageUrl`) — the regular catalog photo isn't
   reused, since overlaying it live would show as a pasted rectangle.
 - **Style My Outfit** (`/style-my-outfit`) — upload a photo of an outfit and get
-  a grid of matching jewelry, addable straight to cart or try-on. Occasion
-  (daily/office, party, or bridal/wedding) is classified by sending the photo to
-  Claude vision (`/api/outfit-style`) rather than a hand-tuned heuristic — an
-  earlier pixel-edge-density approach couldn't tell a busy multi-item flatlay
-  from genuinely embellished fabric, so real image understanding replaced it.
-  Dominant colors are extracted client-side with a small from-scratch k-means
-  pass (`lib/outfit-style.ts`) as a secondary tie-breaker. The detected occasion
-  is always editable via chips if it's wrong.
+  a grid of matching jewelry, addable straight to cart or try-on. The photo goes
+  to Claude vision (`/api/outfit-style`, `claude-haiku-5-5` with structured JSON
+  output), which reads the occasion (Daily & Office, Party Wear, Mehndi or
+  Wedding) and the garment's main colours. Pieces are then ranked in
+  `lib/outfit-style.ts`: products tagged for that occasion in the admin come
+  first, and within them pieces whose colour tags match the outfit's colours
+  (e.g. a maroon outfit brings up ruby/maroon pieces). Colour swatches extracted
+  client-side with a small k-means pass are a fallback when there's no reading.
+  Shoppers can also skip the photo and pick an occasion directly, or correct the
+  detected one. Needs `ANTHROPIC_API_KEY`; without it the occasion buttons still work.
 - **Our Story** (`/our-story`) — brand narrative, values, a bridal callout, and a
   real-time 3D bridal jewelry showcase (Three.js, `components/motion/BridalShowcase3D.tsx`)
   rendered beside the page's pull-quote rather than behind it. The copy is

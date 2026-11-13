@@ -148,17 +148,15 @@ export function extractPalette(img: HTMLImageElement, k = 5): OutfitPalette {
   return { warmth, depth, swatches: clusters.slice(0, 5).map((c) => toHex(c.color)) };
 }
 
-export type Occasion = "daily" | "party" | "bridal";
+export const OCCASIONS = ["daily", "party", "mehndi", "bridal"] as const;
+export type Occasion = (typeof OCCASIONS)[number];
 
-export const OCCASION_OPTIONS: { value: Occasion; label: string; collectionSlug: string }[] = [
-  { value: "daily", label: "Daily & Office", collectionSlug: "daily-wear" },
-  { value: "party", label: "Party & Going Out", collectionSlug: "western" },
-  { value: "bridal", label: "Wedding & Traditional", collectionSlug: "bridal" },
+export const OCCASION_OPTIONS: { value: Occasion; label: string }[] = [
+  { value: "daily", label: "Daily & Office" },
+  { value: "party", label: "Party Wear" },
+  { value: "mehndi", label: "Mehndi" },
+  { value: "bridal", label: "Wedding" },
 ];
-
-// Office wear specifically favors the smaller, quieter categories within
-// Daily Wear over its bangles/sets — a subtle nudge, not a hard filter.
-const OFFICE_LEANING_CATEGORIES = new Set(["earrings", "rings", "pendants", "necklaces"]);
 
 export type StyleProduct = {
   id: string;
@@ -175,7 +173,69 @@ export type StyleProduct = {
   coverImage: string;
   coverImageAlt: string;
   collectionSlug: string | null;
+  occasionTags: string[];
+  colorTags: string[];
   colorCount?: number;
+};
+
+// --- Colour families -------------------------------------------------------
+// Outfit colours arrive as free text from the photo reading ("mint green",
+// "maroon") or as hex swatches; products carry colour tags from the admin
+// ("Green", "Red", "Multicolor"). Both are reduced to the same few families.
+
+export type ColorFamily =
+  | "red" | "pink" | "orange" | "yellow" | "green" | "blue" | "purple"
+  | "black" | "white" | "gold" | "silver" | "multicolor";
+
+const FAMILY_WORDS: [ColorFamily, string[]][] = [
+  ["multicolor", ["multi", "rainbow"]],
+  ["gold", ["gold", "golden", "zari"]],
+  ["silver", ["silver", "grey", "gray", "metallic"]],
+  ["pink", ["pink", "blush", "rose", "magenta", "fuchsia", "peach"]],
+  ["red", ["red", "maroon", "burgundy", "wine", "ruby", "crimson", "rust"]],
+  ["orange", ["orange", "coral", "saffron", "tangerine"]],
+  ["yellow", ["yellow", "mustard", "lemon", "haldi"]],
+  ["green", ["green", "emerald", "mint", "olive", "sage", "pista", "bottle"]],
+  ["blue", ["blue", "navy", "teal", "turquoise", "aqua", "sky", "cobalt"]],
+  ["purple", ["purple", "lilac", "lavender", "violet", "plum", "mauve"]],
+  ["black", ["black", "charcoal", "jet"]],
+  ["white", ["white", "ivory", "cream", "off-white", "pearl", "beige"]],
+];
+
+export function colorFamilyOf(name: string): ColorFamily | null {
+  const n = name.toLowerCase();
+  for (const [family, words] of FAMILY_WORDS) {
+    if (words.some((w) => n.includes(w))) return family;
+  }
+  return null;
+}
+
+/** Families for hex swatches, used when there's no photo reading to go on. */
+export function colorFamilyOfHex(hex: string): ColorFamily | null {
+  const v = parseInt(hex.replace("#", ""), 16);
+  if (Number.isNaN(v)) return null;
+  const { h, s, l } = rgbToHsl({ r: (v >> 16) & 255, g: (v >> 8) & 255, b: v & 255 });
+  if (l < 0.15) return "black";
+  if (l > 0.88 || s < 0.12) return l > 0.6 ? "white" : null;
+  if (h < 15 || h >= 345) return l > 0.7 ? "pink" : "red";
+  if (h < 40) return "orange";
+  if (h < 65) return "yellow";
+  if (h < 170) return "green";
+  if (h < 255) return "blue";
+  if (h < 290) return "purple";
+  return "pink";
+}
+
+// --- Scoring ---------------------------------------------------------------
+
+// What each occasion looks for. Occasion tags are what the shop sets on each
+// product (Daily, Office, Party Wear, Mehndi, Wedding); the collection is a
+// weaker hint for pieces that haven't been tagged.
+const OCCASION_RULES: Record<Occasion, { tags: string[]; collections: string[]; avoidCollections: string[] }> = {
+  daily: { tags: ["Daily", "Office"], collections: ["daily-wear", "western"], avoidCollections: ["bridal"] },
+  party: { tags: ["Party Wear"], collections: ["western", "bridal"], avoidCollections: [] },
+  mehndi: { tags: ["Mehndi"], collections: ["bridal"], avoidCollections: [] },
+  bridal: { tags: ["Wedding"], collections: ["bridal"], avoidCollections: ["daily-wear", "western"] },
 };
 
 function finishWarmth(finish: string | null): Warmth {
@@ -187,50 +247,65 @@ function finishWarmth(finish: string | null): Warmth {
 
 function materialDepth(material: string | null): Depth {
   const m = (material ?? "").toLowerCase();
-  if (["pearl", "zircon", "crystal", "polki"].includes(m)) return "light";
-  if (m.includes("oxidized")) return "dark";
+  if (m.includes("oxid")) return "dark";
+  if (["pearl", "zircon", "crystal", "polki", "shell"].some((w) => m.includes(w))) return "light";
   return "medium";
 }
 
-/** Rule-based, transparent scoring — not a black-box model. Occasion (which
- * collection the piece belongs to) is the dominant signal, since a bridal
- * set is wrong for a daily look regardless of color; the outfit's palette
- * only breaks ties within that. Both fall back to a small "pairs with
- * anything" bonus rather than excluding a piece outright. */
-export function scoreProduct(p: StyleProduct, occasion: Occasion, palette: OutfitPalette | null): number {
+export type OutfitSignals = {
+  palette: OutfitPalette | null;
+  // Colour families of the outfit itself, most prominent first.
+  colors: ColorFamily[];
+};
+
+/** Rule-based, transparent scoring. Occasion is the dominant signal, since a
+ * bridal set is wrong for an office look whatever its colour; the outfit's
+ * colours then pick the best pieces within it. Nothing is excluded outright,
+ * so a small catalogue still fills the grid. */
+export function scoreProduct(p: StyleProduct, occasion: Occasion, signals: OutfitSignals): number {
+  const rule = OCCASION_RULES[occasion];
   let score = 0;
 
-  const wantedCollection = OCCASION_OPTIONS.find((o) => o.value === occasion)?.collectionSlug;
-  if (p.collectionSlug && wantedCollection && p.collectionSlug === wantedCollection) score += 6;
-  else if (!p.collectionSlug) score += 1;
+  if (p.occasionTags.some((t) => rule.tags.includes(t))) score += 8;
+  if (p.collectionSlug && rule.collections.includes(p.collectionSlug)) score += 2;
+  if (p.collectionSlug && rule.avoidCollections.includes(p.collectionSlug)) score -= 6;
 
-  if (occasion === "daily" && OFFICE_LEANING_CATEGORIES.has((p.category ?? "").toLowerCase())) {
-    score += 1;
-  }
+  // Gold is the near-universal choice for festive and bridal jewellery here,
+  // whatever the outfit's own colour.
+  if (occasion !== "daily" && finishWarmth(p.finish) === "warm") score += 1.5;
 
-  // Gold is the near-universal convention for festive/bridal jewelry in this
-  // market regardless of the outfit's own color — a purple or blue party
-  // outfit is still paired with gold far more often than silver.
-  if ((occasion === "party" || occasion === "bridal") && finishWarmth(p.finish) === "warm") {
-    score += 2;
-  }
+  // Colour: a piece that carries one of the outfit's colours ties the look
+  // together; multicolour pieces suit bright, mixed outfits.
+  const tagFamilies = new Set(p.colorTags.map(colorFamilyOf).filter((f): f is ColorFamily => !!f));
+  const accents = signals.colors.filter((f) => f !== "gold" && f !== "silver");
+  accents.forEach((f, i) => {
+    if (tagFamilies.has(f)) score += i === 0 ? 4 : 2.5;
+  });
+  if (tagFamilies.has("multicolor") && (accents.length >= 2 || occasion === "mehndi")) score += 1.5;
+  if (signals.colors.includes("silver") && finishWarmth(p.finish) === "cool") score += 2;
 
-  if (palette) {
+  if (signals.palette) {
     const fw = finishWarmth(p.finish);
-    if (fw === palette.warmth) score += 3;
-    else if (fw === "neutral") score += 1;
-
-    const md = materialDepth(p.material);
-    if (md === palette.depth) score += 2;
-    else if (md === "medium") score += 1;
+    if (fw === signals.palette.warmth) score += 1;
+    if (materialDepth(p.material) === signals.palette.depth) score += 0.5;
   }
 
   if (p.isFeatured) score += 0.5;
   return score;
 }
 
-export function rankProducts(products: StyleProduct[], occasion: Occasion, palette: OutfitPalette | null): StyleProduct[] {
-  return [...products]
+export function rankProducts(products: StyleProduct[], occasion: Occasion, signals: OutfitSignals): StyleProduct[] {
+  return products
     .filter((p) => p.stock > 0)
-    .sort((a, b) => scoreProduct(b, occasion, palette) - scoreProduct(a, occasion, palette));
+    .map((p) => ({ p, s: scoreProduct(p, occasion, signals) }))
+    .sort((a, b) => b.s - a.s)
+    .map(({ p }) => p);
+}
+
+/** The outfit's colour families: from the photo reading when there is one,
+ * otherwise from the extracted swatches. */
+export function outfitColorFamilies(readColors: string[], palette: OutfitPalette | null): ColorFamily[] {
+  const fromText = readColors.map(colorFamilyOf).filter((f): f is ColorFamily => !!f);
+  const fromHex = readColors.length > 0 ? [] : (palette?.swatches ?? []).map(colorFamilyOfHex).filter((f): f is ColorFamily => !!f);
+  return [...new Set([...fromText, ...fromHex])];
 }
