@@ -62,6 +62,8 @@ export default function TrackOrderPage() {
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
           placeholder="03001234567"
+          type="tel"
+          inputMode="tel"
           className="flex-1 rounded-md border border-border px-3 py-2 text-sm"
         />
         <button

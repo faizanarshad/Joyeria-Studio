@@ -1,10 +1,20 @@
 import { z } from "zod";
 
+// Customers type the same mobile number many ways — "+92 300 1234567",
+// "0300-1234567", "923001234567". Reduce them all to the one stored form,
+// 03XXXXXXXXX, so checkout accepts them and Track Order finds the order
+// whichever way the number is typed later.
+export function normalizePakistaniPhone(input: string): string {
+  const digits = input.replace(/[\s\-().]/g, "");
+  const local = digits.replace(/^(?:\+|00)?92(?=3\d{9}$)/, "0");
+  return /^3\d{9}$/.test(local) ? `0${local}` : local;
+}
+
 // Pakistani mobile format: 03XXXXXXXXX (11 digits, starts with 03)
 export const pakistaniPhoneSchema = z
   .string()
-  .trim()
-  .regex(/^03\d{9}$/, "Enter a valid phone number, e.g. 03001234567");
+  .transform(normalizePakistaniPhone)
+  .pipe(z.string().regex(/^03\d{9}$/, "Enter a valid mobile number, e.g. 0300 1234567"));
 
 export const checkoutItemSchema = z.object({
   productId: z.string().min(1),

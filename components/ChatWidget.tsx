@@ -94,13 +94,17 @@ export default function ChatWidget({
     void sendMessage(input.trim());
   }
 
+  // The checkout form runs full-width below the lg breakpoint, so the floating
+  // launcher would sit on top of its fields and the Place Order button.
+  const hideOnSmallScreens = pathname === "/checkout" && !open;
+
   const lastUserMessage = [...messages].reverse().find((m) => m.role === "user")?.content;
   const whatsAppMessage = lastUserMessage
     ? `Hi! I have a question: ${lastUserMessage}`
     : "Hi! I have a question.";
 
   return (
-    <div className="fixed bottom-5 right-5 z-50">
+    <div className={`fixed bottom-5 right-5 z-50 ${hideOnSmallScreens ? "hidden lg:block" : ""}`}>
       {open && (
         <div className="mb-3 flex h-[28rem] w-80 flex-col overflow-hidden rounded-2xl border border-border bg-surface shadow-xl sm:w-96">
           <div className="flex items-center justify-between bg-green px-4 py-3 text-white">

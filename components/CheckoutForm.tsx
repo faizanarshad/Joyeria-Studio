@@ -30,6 +30,7 @@ export default function CheckoutForm({
   const [hpConfirm, setHpConfirm] = useState(""); // honeypot
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string[] | undefined>>({});
 
   const baseDeliveryFee = cities.find((c) => c.city === city)?.fee ?? cities[0]?.fee ?? 250;
   const freeDelivery = subtotal() >= freeDeliveryThreshold;
@@ -53,6 +54,7 @@ export default function CheckoutForm({
     e.preventDefault();
     setSubmitting(true);
     setError(null);
+    setFieldErrors({});
 
     try {
       const res = await fetch("/api/checkout", {
@@ -72,7 +74,16 @@ export default function CheckoutForm({
 
       const data = await res.json();
       if (!res.ok) {
-        setError(data.error ?? "Something went wrong. Please try again.");
+        // A 400 names the fields that failed validation — show each message
+        // under its own field instead of one vague line at the bottom.
+        const fields: Record<string, string[] | undefined> = data.issues?.fieldErrors ?? {};
+        const hasFieldErrors = ["customerName", "phone", "address", "city"].some((f) => fields[f]?.length);
+        setFieldErrors(fields);
+        setError(
+          hasFieldErrors
+            ? "Please fix the highlighted fields and try again."
+            : (data.error ?? "Something went wrong. Please try again.")
+        );
         setSubmitting(false);
         return;
       }
@@ -102,7 +113,7 @@ export default function CheckoutForm({
           autoComplete="off"
         />
 
-        <Field label="Full Name">
+        <Field label="Full Name" error={fieldErrors.customerName?.[0]}>
           <input
             required
             value={customerName}
@@ -110,16 +121,19 @@ export default function CheckoutForm({
             className="input"
           />
         </Field>
-        <Field label="Phone Number" hint="03XXXXXXXXX">
+        <Field label="Phone Number" hint="03XXXXXXXXX" error={fieldErrors.phone?.[0]}>
           <input
             required
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             placeholder="03001234567"
+            type="tel"
+            inputMode="tel"
+            autoComplete="tel"
             className="input"
           />
         </Field>
-        <Field label="Delivery Address">
+        <Field label="Delivery Address" error={fieldErrors.address?.[0]}>
           <textarea
             required
             rows={3}
@@ -128,7 +142,7 @@ export default function CheckoutForm({
             className="input"
           />
         </Field>
-        <Field label="City">
+        <Field label="City" error={fieldErrors.city?.[0]}>
           <select value={city} onChange={(e) => setCity(e.target.value)} className="input">
             {cities.map((c) => (
               <option key={c.city} value={c.city}>
@@ -242,10 +256,12 @@ export default function CheckoutForm({
 function Field({
   label,
   hint,
+  error,
   children,
 }: {
   label: string;
   hint?: string;
+  error?: string;
   children: React.ReactNode;
 }) {
   return (
@@ -254,6 +270,11 @@ function Field({
         {label} {hint && <span className="font-normal text-muted">({hint})</span>}
       </span>
       {children}
+      {error && (
+        <span role="alert" className="mt-1 block text-xs text-red-600">
+          {error}
+        </span>
+      )}
     </label>
   );
 }

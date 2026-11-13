@@ -1,10 +1,13 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
 import { authenticate } from "@/app/admin/login/actions";
 
 export default function LoginForm() {
   const [errorMessage, formAction, isPending] = useActionState(authenticate, undefined);
+  // Controlled, because React resets uncontrolled fields after a form action —
+  // a wrong password would otherwise wipe the email too.
+  const [email, setEmail] = useState("");
 
   return (
     <form action={formAction} className="space-y-4">
@@ -14,6 +17,9 @@ export default function LoginForm() {
           name="email"
           type="email"
           required
+          autoComplete="username"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           className="w-full rounded-md border border-border px-3 py-2 text-sm"
         />
       </div>
@@ -23,6 +29,7 @@ export default function LoginForm() {
           name="password"
           type="password"
           required
+          autoComplete="current-password"
           className="w-full rounded-md border border-border px-3 py-2 text-sm"
         />
       </div>
