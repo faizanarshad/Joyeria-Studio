@@ -1248,5 +1248,109 @@
       }
     ],
     "variants": []
+  },
+  {
+    "name": "Laleh Pink Tulip Pendant Necklace",
+    "slug": "laleh-pink-tulip-pendant-necklace",
+    "sku": "JS-NCK-002",
+    "collectionSlug": "western",
+    "category": "Necklaces",
+    "description": "A round pendant with a scalloped gold-tone edge, enamelled in soft pink and cream, with three pearl tulips on green enamel leaves. On a fine cable chain. Made from stainless steel, so it won't tarnish.",
+    "material": "Stainless Steel",
+    "finish": "Gold-tone, anti-tarnish",
+    "careNote": "Stainless steel with an anti-tarnish finish: it won't fade or darken with everyday wear. Wipe with a soft cloth and store in a pouch.",
+    "price": 550,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 5,
+    "occasionTags": [
+      "Daily",
+      "Office"
+    ],
+    "colorTags": [
+      "Pink",
+      "White",
+      "Gold"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/laleh-pink-tulip-pendant-necklace-logo.jpg",
+        "alt": "Round pink and cream enamel pendant with pearl tulips on a gold-tone chain, on green velvet with a yellow rose"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Firoza Pearl Bloom Pendant Necklace",
+    "slug": "firoza-pearl-bloom-pendant-necklace",
+    "sku": "JS-NCK-003",
+    "collectionSlug": "western",
+    "category": "Necklaces",
+    "description": "A wavy turquoise-enamel pendant with a gold-tone swirl, a single pearl bloom on gold leaves and a tiny red accent stone. On a fine cable chain. Made from stainless steel, so it won't tarnish.",
+    "material": "Stainless Steel",
+    "finish": "Gold-tone, anti-tarnish",
+    "careNote": "Stainless steel with an anti-tarnish finish: it won't fade or darken with everyday wear. Wipe with a soft cloth and store in a pouch.",
+    "price": 550,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 5,
+    "occasionTags": [
+      "Daily",
+      "Office"
+    ],
+    "colorTags": [
+      "Blue",
+      "White",
+      "Gold"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/firoza-pearl-bloom-pendant-necklace-logo.jpg",
+        "alt": "Turquoise enamel pendant with a pearl bloom on gold-tone leaves and chain, on green velvet with loose pearls"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Mehrab Framed Pearl Pendant Necklace",
+    "slug": "mehrab-framed-pearl-pendant-necklace",
+    "sku": "JS-NCK-004",
+    "collectionSlug": "western",
+    "category": "Necklaces",
+    "description": "A rectangular gold-tone frame filled with marbled pink and lilac enamel, set with a pearl tulip on green enamel leaves. On a fine cable chain. Made from stainless steel, so it won't tarnish.",
+    "material": "Stainless Steel",
+    "finish": "Gold-tone, anti-tarnish",
+    "careNote": "Stainless steel with an anti-tarnish finish: it won't fade or darken with everyday wear. Wipe with a soft cloth and store in a pouch.",
+    "price": 550,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 5,
+    "occasionTags": [
+      "Daily",
+      "Office"
+    ],
+    "colorTags": [
+      "Pink",
+      "Purple",
+      "Green",
+      "White",
+      "Gold"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/mehrab-framed-pearl-pendant-necklace-logo.jpg",
+        "alt": "Rectangular framed pendant with pink and lilac enamel and a pearl tulip on a gold-tone chain, on green velvet with a yellow rose"
+      }
+    ],
+    "variants": []
   }
 ]
