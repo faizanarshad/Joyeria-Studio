@@ -1,6 +1,6 @@
 import Link from "next/link";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import { buildWhatsAppLink } from "@/lib/whatsapp";
+import { buildWhatsAppLink, STUDIO_WHATSAPP_DISPLAY, STUDIO_WHATSAPP_NUMBER } from "@/lib/whatsapp";
 
 export const metadata = {
   title: "Contact Us",
@@ -29,6 +29,12 @@ export default function ContactPage() {
           <p className="mt-1 text-sm text-muted">
             The fastest way to reach us — order questions, sizing, custom requests, complaints.
           </p>
+          <a
+            href={`tel:+${STUDIO_WHATSAPP_NUMBER}`}
+            className="mt-2 inline-block text-sm font-medium tracking-wide text-foreground hover:text-rose"
+          >
+            {STUDIO_WHATSAPP_DISPLAY}
+          </a>
           <WhatsAppButton message="Hi! I'd like to get in touch." className="mt-4 w-full">
             Chat on WhatsApp
           </WhatsAppButton>

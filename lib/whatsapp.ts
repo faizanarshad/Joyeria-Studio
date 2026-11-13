@@ -1,7 +1,10 @@
-const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "923001234567";
+// The studio's WhatsApp Business number. Every "Order on WhatsApp", chat and
+// order-confirmation link on the site points here.
+export const STUDIO_WHATSAPP_NUMBER = "923394101341"; // international form, digits only
+export const STUDIO_WHATSAPP_DISPLAY = "0339 4101341"; // how it's shown to customers
 
 export function buildWhatsAppLink(message: string): string {
-  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+  return `https://wa.me/${STUDIO_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
 
 export function productWhatsAppMessage(productName: string, price: number): string {

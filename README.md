@@ -249,12 +249,12 @@ was stopped uncleanly, stop it, delete `.next/dev` (build cache only) and run
 
 ### Environment variables
 
-See `.env.example`. The two that matter immediately:
+See `.env.example`. The one that matters immediately:
 
 - `DATABASE_URL` — your Postgres connection string.
-- `NEXT_PUBLIC_WHATSAPP_NUMBER` — the number "Order on WhatsApp" and order
-  confirmation messages point at (digits only, with country code, e.g.
-  `923001234567`).
+- The studio's WhatsApp Business number (0339 4101341) is set in
+  `lib/whatsapp.ts`; every "Order on WhatsApp", chat and order-confirmation
+  link points there.
 
 `ORDER_NOTIFY_WEBHOOK_URL` is optional — point it at a Slack/Discord incoming
 webhook and every new order posts a one-line summary there.
