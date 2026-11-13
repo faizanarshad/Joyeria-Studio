@@ -1830,5 +1830,38 @@
       }
     ],
     "variants": []
+  },
+  {
+    "name": "Bel Pink Crystal Vine Y-Necklace",
+    "slug": "bel-pink-crystal-vine-y-necklace",
+    "sku": "JS-NCK-005",
+    "collectionSlug": "western",
+    "category": "Necklaces",
+    "description": "A delicate gold-tone vine (bel) that meets in a Y, set with blush-pink oval crystals and marquise-crystal leaves, finished with a single pink drop. On a fine cable chain.",
+    "material": "Alloy & Pink Crystal",
+    "finish": "Gold-tone",
+    "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store in a pouch so the chain doesn't tangle.",
+    "price": 850,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 5,
+    "occasionTags": [
+      "Daily",
+      "Party Wear"
+    ],
+    "colorTags": [
+      "Pink",
+      "Gold"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/bel-pink-crystal-vine-y-necklace-logo.jpg",
+        "alt": "Gold-tone vine Y-necklace with pink oval and leaf crystals on green velvet with dried roses and tiger's eye stones"
+      }
+    ],
+    "variants": []
   }
 ]
