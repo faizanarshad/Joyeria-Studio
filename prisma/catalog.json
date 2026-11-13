@@ -272,6 +272,197 @@
     "variants": []
   },
   {
+    "name": "Moti Baguette V Stud Earrings",
+    "slug": "moti-baguette-v-stud-earrings",
+    "sku": "JS-EAR-012",
+    "collectionSlug": "daily-wear",
+    "category": "Earrings",
+    "description": "Silver-tone V-shaped studs lined with baguette-cut crystals, each finished with a round pearl. Minimal and polished for every day or the office.",
+    "material": "Alloy, Crystal & Pearl",
+    "finish": "Silver-tone",
+    "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store in a pouch.",
+    "price": 550,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 5,
+    "occasionTags": [
+      "Daily",
+      "Office"
+    ],
+    "colorTags": [
+      "Silver",
+      "White"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/moti-baguette-v-stud-earrings-logo.jpg",
+        "alt": "Silver-tone V-shaped baguette crystal stud earrings with pearls on a wooden board"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Neelam Pearl Bow Stud Earrings",
+    "slug": "neelam-pearl-bow-stud-earrings",
+    "sku": "JS-EAR-013",
+    "collectionSlug": "daily-wear",
+    "category": "Earrings",
+    "description": "Pavé crystal bow studs with a flower of tiny pearls around a sapphire-blue (neelam) stone at the centre.",
+    "material": "Alloy, Crystal, Pearl & Blue Stone",
+    "finish": "Silver-tone",
+    "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store in a pouch.",
+    "price": 650,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 5,
+    "occasionTags": [
+      "Daily",
+      "Office"
+    ],
+    "colorTags": [
+      "Silver",
+      "White",
+      "Blue"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/neelam-pearl-bow-stud-earrings-logo.jpg",
+        "alt": "Silver-tone crystal bow stud earrings with pearl flowers and blue stones on rustic wood"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Lehar Pearl Ribbon Stud Earrings",
+    "slug": "lehar-pearl-ribbon-stud-earrings",
+    "sku": "JS-EAR-014",
+    "collectionSlug": "daily-wear",
+    "category": "Earrings",
+    "description": "A twisted silver-tone ribbon (lehar) set with baguette crystals, topped with a round pearl. A light, easy stud for everyday wear.",
+    "material": "Alloy, Crystal & Pearl",
+    "finish": "Silver-tone",
+    "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store in a pouch.",
+    "price": 450,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 5,
+    "occasionTags": [
+      "Daily",
+      "Office"
+    ],
+    "colorTags": [
+      "Silver",
+      "White"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/lehar-pearl-ribbon-stud-earrings-logo.jpg",
+        "alt": "Silver-tone pearl ribbon stud earring with baguette crystals on green suede"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Rangla Beaded Hoop Earrings",
+    "slug": "rangla-beaded-hoop-earrings",
+    "sku": "JS-EAR-015",
+    "collectionSlug": "daily-wear",
+    "category": "Earrings",
+    "description": "Playful half-hoops of glossy rondelle beads on silver-tone posts. Choose red, yellow, orange, green, blue, pink, purple, maroon, white or black to match your outfit.",
+    "material": "Glossy Beads",
+    "finish": "Silver-tone",
+    "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store in a pouch.",
+    "price": 500,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 30,
+    "occasionTags": [
+      "Daily"
+    ],
+    "colorTags": [
+      "Multicolor",
+      "Red",
+      "Yellow",
+      "Orange",
+      "Green",
+      "Blue",
+      "Pink",
+      "Purple",
+      "White",
+      "Black"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/rangla-beaded-hoop-earrings-red-logo.jpg",
+        "alt": "Pair of glossy red beaded half-hoop earrings on dark wood"
+      }
+    ],
+    "variants": [
+      {
+        "color": "Red",
+        "imageUrl": "/products/rangla-beaded-hoop-earrings-red-logo.jpg",
+        "stock": 3
+      },
+      {
+        "color": "Yellow",
+        "imageUrl": "/products/rangla-beaded-hoop-earrings-yellow-logo.jpg",
+        "stock": 3
+      },
+      {
+        "color": "Orange",
+        "imageUrl": "/products/rangla-beaded-hoop-earrings-orange-logo.jpg",
+        "stock": 3
+      },
+      {
+        "color": "Green",
+        "imageUrl": "/products/rangla-beaded-hoop-earrings-green-logo.jpg",
+        "stock": 3
+      },
+      {
+        "color": "Blue",
+        "imageUrl": "/products/rangla-beaded-hoop-earrings-blue-logo.jpg",
+        "stock": 3
+      },
+      {
+        "color": "Pink",
+        "imageUrl": "/products/rangla-beaded-hoop-earrings-pink-logo.jpg",
+        "stock": 3
+      },
+      {
+        "color": "Purple",
+        "imageUrl": "/products/rangla-beaded-hoop-earrings-purple-logo.jpg",
+        "stock": 3
+      },
+      {
+        "color": "Maroon",
+        "imageUrl": "/products/rangla-beaded-hoop-earrings-maroon-logo.jpg",
+        "stock": 3
+      },
+      {
+        "color": "White",
+        "imageUrl": "/products/rangla-beaded-hoop-earrings-white-logo.jpg",
+        "stock": 3
+      },
+      {
+        "color": "Black",
+        "imageUrl": "/products/rangla-beaded-hoop-earrings-black-logo.jpg",
+        "stock": 3
+      }
+    ]
+  },
+  {
     "name": "Shahi Polki Pearl Bridal Set",
     "slug": "shahi-polki-pearl-bridal-set",
     "sku": "JS-SET-001",
