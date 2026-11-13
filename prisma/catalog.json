@@ -1113,6 +1113,38 @@
     "variants": []
   },
   {
+    "name": "Shabnam Pearl Kundan Rani Haar Set",
+    "slug": "shabnam-pearl-kundan-rani-haar-set",
+    "sku": "JS-SET-013",
+    "collectionSlug": "bridal",
+    "category": "Sets",
+    "description": "A long rani haar of five pearl strands meeting at a large silver-tone kundan medallion ringed in pearls, with matching statement earrings and a maang tikka on a pearl string, all finished with pearl drops.",
+    "material": "Kundan & Pearl",
+    "finish": "Silver-tone",
+    "careNote": "Store flat in the box so the pearl strands do not tangle, keep away from moisture and perfume, and wipe gently with a soft dry cloth after wear.",
+    "price": 1500,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 3,
+    "occasionTags": [
+      "Party Wear"
+    ],
+    "colorTags": [
+      "White",
+      "Silver"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/shabnam-pearl-kundan-rani-haar-set-logo.jpg",
+        "alt": "Silver-tone pearl and kundan rani haar with matching earrings and maang tikka on green velvet with yellow roses"
+      }
+    ],
+    "variants": []
+  },
+  {
     "name": "Tara Five-Stone Silver Ring",
     "slug": "tara-five-stone-silver-ring",
     "sku": "JS-RNG-001",
