@@ -2326,5 +2326,137 @@
       }
     ],
     "variants": []
+  },
+  {
+    "name": "Moti Ribbon Pearl Drop Brooch",
+    "slug": "moti-ribbon-pearl-drop-brooch",
+    "sku": "JS-BRH-001",
+    "collectionSlug": "western",
+    "category": "Brooches",
+    "description": "A looping gold-tone ribbon spray with a textured leaf, finished with two teardrop pearls (moti) in tulip caps.",
+    "material": "Alloy & Pearl",
+    "finish": "Gold-tone",
+    "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store in a pouch so the finish doesn't scratch.",
+    "price": 450,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 5,
+    "occasionTags": [
+      "Office",
+      "Party Wear"
+    ],
+    "colorTags": [
+      "White",
+      "Gold"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/moti-ribbon-pearl-drop-brooch-logo.jpg",
+        "alt": "Gold-tone ribbon brooch with two teardrop pearls on grey satin"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Gul Pearl Cluster Ribbon Brooch",
+    "slug": "gul-pearl-cluster-ribbon-brooch",
+    "sku": "JS-BRH-002",
+    "collectionSlug": "western",
+    "category": "Brooches",
+    "description": "A flower (gul) of curling gold-tone ribbons around a cluster of three round pearls.",
+    "material": "Alloy & Pearl",
+    "finish": "Gold-tone",
+    "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store in a pouch so the finish doesn't scratch.",
+    "price": 350,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 5,
+    "occasionTags": [
+      "Office",
+      "Party Wear"
+    ],
+    "colorTags": [
+      "White",
+      "Gold"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/gul-pearl-cluster-ribbon-brooch-logo.jpg",
+        "alt": "Gold-tone ribbon flower brooch with a cluster of three pearls on grey slate"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Calla Gold Crystal Bouquet Brooch",
+    "slug": "calla-gold-crystal-bouquet-brooch",
+    "sku": "JS-BRH-003",
+    "collectionSlug": "western",
+    "category": "Brooches",
+    "description": "A bouquet of three gold-tone calla lilies with sparkling crystal centres, tied with a crystal-set bow.",
+    "material": "Alloy & Crystal",
+    "finish": "Gold-tone",
+    "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store in a pouch so the finish doesn't scratch.",
+    "price": 550,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 5,
+    "occasionTags": [
+      "Office",
+      "Party Wear"
+    ],
+    "colorTags": [
+      "Gold",
+      "White"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/calla-gold-crystal-bouquet-brooch-logo.jpg",
+        "alt": "Gold-tone calla lily bouquet brooch with crystals on grey satin"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Calla Silver Crystal Bouquet Brooch",
+    "slug": "calla-silver-crystal-bouquet-brooch",
+    "sku": "JS-BRH-004",
+    "collectionSlug": "western",
+    "category": "Brooches",
+    "description": "A bouquet of three silver-tone calla lilies paved with crystals, tied with a crystal-set bow.",
+    "material": "Alloy & Crystal",
+    "finish": "Silver-tone",
+    "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store in a pouch so the finish doesn't scratch.",
+    "price": 550,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 5,
+    "occasionTags": [
+      "Office",
+      "Party Wear"
+    ],
+    "colorTags": [
+      "Silver",
+      "White"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/calla-silver-crystal-bouquet-brooch-logo.jpg",
+        "alt": "Silver-tone calla lily bouquet brooch paved with crystals on grey velvet"
+      }
+    ],
+    "variants": []
   }
 ]

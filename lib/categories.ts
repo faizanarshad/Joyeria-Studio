@@ -10,6 +10,7 @@ export const PRODUCT_CATEGORIES = [
   "Pendants",
   "Sets",
   "Tikka",
+  "Brooches",
 ] as const;
 
 // Occasion labels an admin can attach to a product from the admin panel.
