@@ -38,10 +38,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: product.name,
     description: product.description,
+    // Shared product links preview the product's own photo; the brand card
+    // is the fallback when a product has no photo.
     openGraph: {
+      type: "website",
+      siteName: "Joyería Studio",
+      locale: "en_PK",
+      url: `/products/${slug}`,
+      title: `${product.name} · Rs ${product.price.toLocaleString("en-PK")}`,
+      description: product.description,
+      images: product.images[0]
+        ? [{ url: product.images[0].url, alt: product.images[0].alt || product.name }]
+        : ["/og/joyeria-studio-share.jpg"],
+    },
+    twitter: {
+      card: "summary_large_image",
       title: product.name,
       description: product.description,
-      images: product.images[0] ? [product.images[0].url] : [],
+      images: [product.images[0]?.url ?? "/og/joyeria-studio-share.jpg"],
     },
   };
 }
