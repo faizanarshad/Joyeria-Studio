@@ -2561,5 +2561,104 @@
       }
     ],
     "variants": []
+  },
+  {
+    "name": "Phool Crystal Ear Climber",
+    "slug": "phool-crystal-ear-climber",
+    "sku": "JS-EAR-019",
+    "collectionSlug": "western",
+    "category": "Earrings",
+    "description": "A single ear climber of tiny crystal flowers (phool) that follows the curve of your ear, with pops of blue, pink and green. Sold as one piece.",
+    "material": "Alloy & Coloured Crystals",
+    "finish": "Gold-tone",
+    "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store in a pouch so the stones don't scratch.",
+    "price": 450,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 5,
+    "occasionTags": [
+      "Daily",
+      "Party Wear"
+    ],
+    "colorTags": [
+      "Gold",
+      "White",
+      "Multicolor"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/phool-crystal-ear-climber-logo.jpg",
+        "alt": "Single gold-tone crystal flower ear climber with coloured stones on green velvet"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Taj Crystal Ear Cuff with Chain",
+    "slug": "taj-crystal-ear-cuff-with-chain",
+    "sku": "JS-EAR-020",
+    "collectionSlug": "western",
+    "category": "Earrings",
+    "description": "A single ear cuff crowned with baguette crystals (taj), with a fine draped chain. No piercing needed; it slips onto the ear. Sold as one piece.",
+    "material": "Alloy & Crystal",
+    "finish": "Gold-tone",
+    "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store in a pouch so the stones don't scratch.",
+    "price": 400,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 5,
+    "occasionTags": [
+      "Party Wear"
+    ],
+    "colorTags": [
+      "Gold",
+      "White"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/taj-crystal-ear-cuff-with-chain-logo.jpg",
+        "alt": "Single gold-tone ear cuff with baguette crystals and a draped chain in a black ring box"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Noor Kundan Teardrop Single Earring",
+    "slug": "noor-kundan-teardrop-single-earring",
+    "sku": "JS-EAR-021",
+    "collectionSlug": "western",
+    "category": "Earrings",
+    "description": "A single statement drop: a kundan teardrop ringed in zircon, finished with a ruby-red pendant drop on a hoop fitting. Sold as one piece, to wear on its own.",
+    "material": "Kundan, Zircon & Ruby-red Stone",
+    "finish": "Gold-tone",
+    "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store in a pouch so the stones don't scratch.",
+    "price": 450,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 5,
+    "occasionTags": [
+      "Party Wear"
+    ],
+    "colorTags": [
+      "Gold",
+      "White",
+      "Red"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/noor-kundan-teardrop-single-earring-logo.jpg",
+        "alt": "Single gold-tone kundan teardrop earring with a ruby-red drop on green velvet with jasmine"
+      }
+    ],
+    "variants": []
   }
 ]
