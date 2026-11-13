@@ -464,6 +464,75 @@
     "variants": []
   },
   {
+    "name": "Gulrang Jhumki Earrings",
+    "slug": "gulrang-jhumki-earrings",
+    "sku": "JS-EAR-017",
+    "collectionSlug": "daily-wear",
+    "category": "Earrings",
+    "description": "Petite matte enamel jhumkis with a carved paisley dome and a fringe of bead drops, on gold-tone hooks. Choose pink, red, yellow or black, white with pearl drops, or white with multicolour beads.",
+    "material": "Enamelled Alloy & Beads",
+    "finish": "Matte enamel, gold-tone hooks",
+    "careNote": "Keep away from water and perfume, and store in a pouch so the enamel and beads do not chip.",
+    "price": 650,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 18,
+    "occasionTags": [
+      "Daily",
+      "Mehndi"
+    ],
+    "colorTags": [
+      "Pink",
+      "White",
+      "Multicolor",
+      "Red",
+      "Yellow",
+      "Black",
+      "Gold"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/gulrang-jhumki-earrings-pink-logo.jpg",
+        "alt": "Pair of pink matte enamel jhumki earrings with bead drops on green velvet"
+      }
+    ],
+    "variants": [
+      {
+        "color": "Pink",
+        "imageUrl": "/products/gulrang-jhumki-earrings-pink-logo.jpg",
+        "stock": 3
+      },
+      {
+        "color": "White",
+        "imageUrl": "/products/gulrang-jhumki-earrings-white-logo.jpg",
+        "stock": 3
+      },
+      {
+        "color": "Multicolour",
+        "imageUrl": "/products/gulrang-jhumki-earrings-multicolour-logo.jpg",
+        "stock": 3
+      },
+      {
+        "color": "Red",
+        "imageUrl": "/products/gulrang-jhumki-earrings-red-logo.jpg",
+        "stock": 3
+      },
+      {
+        "color": "Yellow",
+        "imageUrl": "/products/gulrang-jhumki-earrings-yellow-logo.jpg",
+        "stock": 3
+      },
+      {
+        "color": "Black",
+        "imageUrl": "/products/gulrang-jhumki-earrings-black-logo.jpg",
+        "stock": 3
+      }
+    ]
+  },
+  {
     "name": "Shahi Polki Pearl Bridal Set",
     "slug": "shahi-polki-pearl-bridal-set",
     "sku": "JS-SET-001",
