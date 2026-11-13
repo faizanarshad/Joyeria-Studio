@@ -2059,5 +2059,234 @@
       }
     ],
     "variants": []
+  },
+  {
+    "name": "Jaali Gold Lattice Bangle",
+    "slug": "jaali-gold-lattice-bangle",
+    "sku": "JS-BNG-006",
+    "collectionSlug": "western",
+    "category": "Bangles",
+    "description": "A polished gold-tone bangle of openwork lattice (jaali) links. Light, modern and easy to stack.",
+    "material": "Alloy",
+    "finish": "Gold-tone",
+    "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store in a pouch so the finish doesn't scratch.",
+    "price": 550,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 5,
+    "occasionTags": [
+      "Daily",
+      "Office"
+    ],
+    "colorTags": [
+      "Gold"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/jaali-gold-lattice-bangle-logo.jpg",
+        "alt": "Gold-tone openwork lattice bangle on a jade block"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Lehar Gold Wavy Bangle Pair",
+    "slug": "lehar-gold-wavy-bangle-pair",
+    "sku": "JS-BNG-007",
+    "collectionSlug": "western",
+    "category": "Bangles",
+    "description": "A pair of slim, wavy gold-tone wire bangles (lehar) with a soft organic shape. Minimal and stackable.",
+    "material": "Alloy",
+    "finish": "Gold-tone",
+    "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store in a pouch so the finish doesn't scratch.",
+    "price": 450,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 5,
+    "occasionTags": [
+      "Daily",
+      "Office"
+    ],
+    "colorTags": [
+      "Gold"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/lehar-gold-wavy-bangle-pair-logo.jpg",
+        "alt": "Pair of slim wavy gold-tone bangles on jade and citrine blocks"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Bal Twisted Gold Cuff Pair",
+    "slug": "bal-twisted-gold-cuff-pair",
+    "sku": "JS-BNG-008",
+    "collectionSlug": "western",
+    "category": "Bangles",
+    "description": "A pair of open, adjustable twisted-rope cuffs (bal) with polished ball ends. Slip on and squeeze to fit.",
+    "material": "Alloy",
+    "finish": "Gold-tone",
+    "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store in a pouch so the finish doesn't scratch.",
+    "price": 500,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 5,
+    "occasionTags": [
+      "Daily",
+      "Party Wear"
+    ],
+    "colorTags": [
+      "Gold"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/bal-twisted-gold-cuff-pair-logo.jpg",
+        "alt": "Pair of twisted gold-tone open cuffs with ball ends on a jade block"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Clover Black Hinged Bangle",
+    "slug": "clover-black-hinged-bangle",
+    "sku": "JS-BNG-009",
+    "collectionSlug": "western",
+    "category": "Bangles",
+    "description": "A gold-tone hinged bangle lined with four-leaf clovers, alternating black enamel and open gold. Opens on a spring hinge for easy wear.",
+    "material": "Alloy & Black Enamel",
+    "finish": "Gold-tone",
+    "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store in a pouch so the finish doesn't scratch.",
+    "price": 650,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 5,
+    "occasionTags": [
+      "Daily",
+      "Party Wear"
+    ],
+    "colorTags": [
+      "Black",
+      "Gold"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/clover-black-hinged-bangle-logo.jpg",
+        "alt": "Gold-tone hinged bangle with black and open clover motifs on a jade block"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Clover Crystal Hinged Bangle",
+    "slug": "clover-crystal-hinged-bangle",
+    "sku": "JS-BNG-010",
+    "collectionSlug": "western",
+    "category": "Bangles",
+    "description": "A slim, split gold-tone hinged bangle with a single black enamel clover and two bezel-set crystals.",
+    "material": "Alloy, Black Enamel & Crystal",
+    "finish": "Gold-tone",
+    "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store in a pouch so the finish doesn't scratch.",
+    "price": 600,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 5,
+    "occasionTags": [
+      "Daily",
+      "Office"
+    ],
+    "colorTags": [
+      "Black",
+      "Gold",
+      "White"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/clover-crystal-hinged-bangle-logo.jpg",
+        "alt": "Gold-tone hinged bangle with a black clover and two crystals on a jade block"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Raat Black Stone Silver Bangle Pair",
+    "slug": "raat-black-stone-silver-bangle-pair",
+    "sku": "JS-BNG-011",
+    "collectionSlug": "western",
+    "category": "Bangles",
+    "description": "A pair of silver-tone bangles set all the way round with square black stones in a zigzag line, for a sleek after-dark (raat) sparkle.",
+    "material": "Alloy & Black Stones",
+    "finish": "Silver-tone",
+    "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store in a pouch so the finish doesn't scratch.",
+    "price": 550,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 5,
+    "occasionTags": [
+      "Party Wear"
+    ],
+    "colorTags": [
+      "Black",
+      "Silver"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/raat-black-stone-silver-bangle-pair-logo.jpg",
+        "alt": "Pair of silver-tone bangles set with square black stones on a jade block"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Waqt Gold Watch Bangle",
+    "slug": "waqt-gold-watch-bangle",
+    "sku": "JS-BNG-012",
+    "collectionSlug": "western",
+    "category": "Bangles",
+    "description": "A ribbed gold-tone bangle with a small watch face: black dial, Roman numerals and a crystal-set frame. Jewellery and watch in one.",
+    "material": "Alloy & Crystal",
+    "finish": "Gold-tone",
+    "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store in a pouch so the finish doesn't scratch.",
+    "price": 650,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 5,
+    "occasionTags": [
+      "Daily",
+      "Office"
+    ],
+    "colorTags": [
+      "Gold",
+      "Black",
+      "White"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/waqt-gold-watch-bangle-logo.jpg",
+        "alt": "Ribbed gold-tone watch bangle with a black dial and crystal frame on a jade block"
+      }
+    ],
+    "variants": []
   }
 ]
