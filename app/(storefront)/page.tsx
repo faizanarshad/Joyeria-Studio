@@ -64,8 +64,33 @@ async function getCollectionsWithCover() {
   }));
 }
 
+// Photos for the hero slideshow: featured pieces first, then the newest, with
+// collections interleaved so the rotation shows bridal, western and daily wear.
+async function getHeroSlides() {
+  const products = await prisma.product.findMany({
+    where: { isActive: true, images: { some: {} } },
+    include: { images: { orderBy: { sortOrder: "asc" }, take: 1 }, collection: { select: { slug: true } } },
+    orderBy: [{ isFeatured: "desc" }, { createdAt: "desc" }],
+    take: 40,
+  });
+  const byCollection = new Map<string, typeof products>();
+  for (const p of products) {
+    const key = p.collection?.slug ?? "other";
+    byCollection.set(key, [...(byCollection.get(key) ?? []), p]);
+  }
+  const queues = [...byCollection.values()];
+  const picked: typeof products = [];
+  while (picked.length < 8 && queues.some((q) => q.length > 0)) {
+    for (const q of queues) {
+      const p = q.shift();
+      if (p && picked.length < 8) picked.push(p);
+    }
+  }
+  return picked.map((p) => ({ src: p.images[0].url, alt: p.images[0].alt || p.name, href: `/products/${p.slug}` }));
+}
+
 export default async function Home() {
-  const [featured, collections, bridalHero, recentImages] = await Promise.all([
+  const [featured, collections, bridalHero, recentImages, heroSlides] = await Promise.all([
     getFeaturedProducts(),
     getCollectionsWithCover(),
     prisma.product.findFirst({
@@ -78,21 +103,15 @@ export default async function Home() {
       take: 6,
       select: { url: true, alt: true },
     }),
+    getHeroSlides(),
   ]);
 
-  const heroImage = featured[0]?.coverImage ?? featured[1]?.coverImage ?? null;
-  const heroImageAlt = featured[0]?.coverImageAlt ?? "Featured piece";
-  const secondaryHeroImage = featured[1]?.coverImage ?? featured[0]?.coverImage ?? null;
 
   const instagramUrl = process.env.NEXT_PUBLIC_INSTAGRAM_URL;
 
   return (
     <div>
-      <HeroSection
-        heroImage={heroImage}
-        heroImageAlt={heroImageAlt}
-        secondaryHeroImage={secondaryHeroImage}
-      />
+      <HeroSection slides={heroSlides} />
 
       {/* Shop by category */}
       {collections.length > 0 && (

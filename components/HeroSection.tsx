@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
+  AnimatePresence,
   motion,
   useScroll,
   useTransform,
@@ -63,15 +64,12 @@ function RotatingBadge() {
   );
 }
 
-export default function HeroSection({
-  heroImage,
-  heroImageAlt,
-  secondaryHeroImage,
-}: {
-  heroImage: string | null;
-  heroImageAlt: string;
-  secondaryHeroImage: string | null;
-}) {
+export type HeroSlide = { src: string; alt: string; href: string };
+
+// How long each photo stays before the hero moves to the next one.
+const SLIDE_MS = 4500;
+
+export default function HeroSection({ slides }: { slides: HeroSlide[] }) {
   const imageWrapRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: imageWrapRef,
@@ -95,6 +93,20 @@ export default function HeroSection({
     tiltX.set(0);
     tiltY.set(0);
   };
+
+  // Slideshow: the arch shows the current piece and the small circle previews
+  // the next one. Pauses while hovered, and doesn't auto-advance for visitors
+  // who prefer reduced motion (the dots still work).
+  const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const count = slides.length;
+  useEffect(() => {
+    if (count < 2 || paused || reducedMotion) return;
+    const id = setInterval(() => setIndex((i) => (i + 1) % count), SLIDE_MS);
+    return () => clearInterval(id);
+  }, [count, paused, reducedMotion]);
+  const current = count > 0 ? slides[index % count] : null;
+  const next = count > 1 ? slides[(index + 1) % count] : null;
 
   return (
     <section className="relative overflow-hidden bg-rose-soft">
@@ -151,48 +163,86 @@ export default function HeroSection({
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           onMouseMove={onTilt}
-          onMouseLeave={resetTilt}
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => {
+            resetTilt();
+            setPaused(false);
+          }}
           style={{ rotateX: tiltX, rotateY: tiltY, transformPerspective: 900 }}
           className="relative mx-auto aspect-square w-full max-w-sm"
         >
           <div className="arch pointer-events-none absolute inset-x-3 bottom-0 top-5 border border-rose/60" />
           <RotatingBadge />
           <motion.div style={{ y: bgY }} className="arch absolute inset-x-8 bottom-0 top-8 bg-gradient-to-b from-rose/30 to-transparent" />
-          {secondaryHeroImage && (
+          {next && (
             <motion.div
               style={{ y: fgY }}
-              className="absolute right-0 top-0 h-28 w-28 overflow-hidden rounded-full sm:h-36 sm:w-36"
+              className="absolute right-0 top-0 z-10 h-28 w-28 overflow-hidden rounded-full ring-2 ring-rose/40 sm:h-36 sm:w-36"
             >
-              <Image
-                src={secondaryHeroImage}
-                alt=""
-                fill
-                sizes="(min-width: 640px) 144px, 112px"
-                className="object-cover"
-              />
+              <AnimatePresence initial={false}>
+                <motion.div
+                  key={next.src}
+                  initial={{ opacity: 0, scale: 1.08 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.8, ease: "easeOut" }}
+                  className="absolute inset-0"
+                >
+                  <Image src={next.src} alt="" fill sizes="(min-width: 640px) 144px, 112px" className="object-cover" />
+                </motion.div>
+              </AnimatePresence>
             </motion.div>
           )}
-          {heroImage ? (
+          {current ? (
             <motion.div style={{ y: fgY }} className="arch absolute inset-x-0 bottom-0 top-16 overflow-hidden">
-              <Image
-                src={heroImage}
-                alt={heroImageAlt}
-                fill
-                sizes="(min-width: 640px) 384px, 100vw"
-                className="object-cover"
-                priority
-              />
-              {/* A one-time light sweep across the piece, like a glint catching the metal. */}
-              <motion.div
-                initial={{ x: "-120%" }}
-                animate={{ x: "220%" }}
-                transition={{ duration: 1.4, delay: 0.9, ease: "easeInOut" }}
-                className="pointer-events-none absolute inset-y-0 w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-white/40 to-transparent"
-              />
+              <AnimatePresence initial={false}>
+                <motion.div
+                  key={current.src}
+                  initial={{ opacity: 0, scale: 1.04 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+                  className="absolute inset-0"
+                >
+                  <Link href={current.href} aria-label={current.alt} className="absolute inset-0">
+                    <Image
+                      src={current.src}
+                      alt={current.alt}
+                      fill
+                      sizes="(min-width: 640px) 384px, 100vw"
+                      className="object-cover"
+                      priority={index === 0}
+                    />
+                  </Link>
+                  {/* A light sweep across each new piece, like a glint catching the metal. */}
+                  <motion.div
+                    initial={{ x: "-120%" }}
+                    animate={{ x: "220%" }}
+                    transition={{ duration: 1.4, delay: 0.5, ease: "easeInOut" }}
+                    className="pointer-events-none absolute inset-y-0 w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-white/40 to-transparent"
+                  />
+                </motion.div>
+              </AnimatePresence>
             </motion.div>
           ) : (
             <div className="arch absolute inset-x-0 bottom-0 top-16 flex items-center justify-center bg-rose-soft">
               <AnimatedDiamondIcon className="h-10 w-10 text-rose" />
+            </div>
+          )}
+          {count > 1 && (
+            <div className="absolute -bottom-7 left-1/2 z-10 flex -translate-x-1/2 gap-1.5">
+              {slides.map((s, i) => (
+                <button
+                  key={s.src}
+                  type="button"
+                  onClick={() => setIndex(i)}
+                  aria-label={`Show photo ${i + 1} of ${count}`}
+                  aria-current={i === index % count}
+                  className={`h-1.5 rounded-full transition-all duration-300 ${
+                    i === index % count ? "w-5 bg-rose" : "w-1.5 bg-white/50 hover:bg-white/80"
+                  }`}
+                />
+              ))}
             </div>
           )}
         </motion.div>
