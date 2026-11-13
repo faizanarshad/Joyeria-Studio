@@ -2527,5 +2527,39 @@
       }
     ],
     "variants": []
+  },
+  {
+    "name": "Clover Black Double Drop Earrings",
+    "slug": "clover-black-double-drop-earrings",
+    "sku": "JS-EAR-018",
+    "collectionSlug": "western",
+    "category": "Earrings",
+    "description": "Two round gold-tone discs, each set with a black enamel four-leaf clover, joined by a sparkling bezel-set crystal. A polished drop that goes from desk to dinner.",
+    "material": "Alloy, Black Enamel & Crystal",
+    "finish": "Gold-tone",
+    "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store in a pouch so the enamel doesn't scratch.",
+    "price": 650,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 5,
+    "occasionTags": [
+      "Daily",
+      "Office",
+      "Party Wear"
+    ],
+    "colorTags": [
+      "Black",
+      "Gold"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/clover-black-double-drop-earrings-logo.jpg",
+        "alt": "Gold-tone double drop earrings with black clover discs and a crystal link on a wooden table"
+      }
+    ],
+    "variants": []
   }
 ]
