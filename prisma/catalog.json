@@ -858,6 +858,165 @@
     "variants": []
   },
   {
+    "name": "Heera Gold Zircon Bangle Pair",
+    "slug": "heera-gold-zircon-bangle-pair",
+    "sku": "JS-BNG-001",
+    "collectionSlug": "bridal",
+    "category": "Bangles",
+    "description": "A pair of gold-plated bangles set all the way round with diamond-shaped zircon stones in a zigzag line, for full sparkle from every angle.",
+    "material": "Alloy & Zircon",
+    "finish": "Gold-plated",
+    "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store each bangle in its box so the stones don't scratch.",
+    "price": 550,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 3,
+    "occasionTags": [
+      "Wedding"
+    ],
+    "colorTags": [
+      "Gold",
+      "White"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/heera-gold-zircon-bangle-pair-logo.jpg",
+        "alt": "Pair of gold-plated bangles set with diamond-shaped zircon stones on green velvet"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Ghungroo Gold Kada Pair",
+    "slug": "ghungroo-gold-kada-pair",
+    "sku": "JS-BNG-002",
+    "collectionSlug": "bridal",
+    "category": "Bangles",
+    "description": "A pair of open, adjustable gold-plated kadas strung with ribbed gold beads, centred on a zircon-paved dome and finished with tiny ghungroo bells.",
+    "material": "Alloy & Zircon",
+    "finish": "Gold-plated",
+    "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store each bangle in its box so the stones don't scratch.",
+    "price": 500,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 3,
+    "occasionTags": [
+      "Wedding"
+    ],
+    "colorTags": [
+      "Gold",
+      "White"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/ghungroo-gold-kada-pair-logo.jpg",
+        "alt": "Pair of adjustable gold-plated beaded kadas with zircon domes and ghungroo bells on green velvet"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Patti Gold Leaf Bangle",
+    "slug": "patti-gold-leaf-bangle",
+    "sku": "JS-BNG-003",
+    "collectionSlug": "bridal",
+    "category": "Bangles",
+    "description": "A single gold-plated bangle of openwork leaves (patti) linked all the way round. Polished and light, it stacks well with your other bangles.",
+    "material": "Alloy",
+    "finish": "Gold-plated",
+    "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store each bangle in its box so the stones don't scratch.",
+    "price": 450,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 3,
+    "occasionTags": [
+      "Wedding"
+    ],
+    "colorTags": [
+      "Gold"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/patti-gold-leaf-bangle-logo.jpg",
+        "alt": "Gold-plated openwork leaf bangle on green velvet"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Yaqoot Ruby Silver Bangle Pair",
+    "slug": "yaqoot-ruby-silver-bangle-pair",
+    "sku": "JS-BNG-004",
+    "collectionSlug": "bridal",
+    "category": "Bangles",
+    "description": "A pair of silver-tone bangles set with deep ruby-red (yaqoot) square stones in a zigzag line, rimmed with tiny silver beads.",
+    "material": "Alloy & Ruby-red Stones",
+    "finish": "Silver-tone",
+    "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store each bangle in its box so the stones don't scratch.",
+    "price": 550,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 3,
+    "occasionTags": [
+      "Wedding"
+    ],
+    "colorTags": [
+      "Red",
+      "Silver"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/yaqoot-ruby-silver-bangle-pair-logo.jpg",
+        "alt": "Pair of silver-tone bangles set with ruby-red square stones on green velvet"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Almas Silver Zircon Bangle Pair",
+    "slug": "almas-silver-zircon-bangle-pair",
+    "sku": "JS-BNG-005",
+    "collectionSlug": "bridal",
+    "category": "Bangles",
+    "description": "A pair of silver-tone bangles set with diamond-shaped zircon stones (almas) in a zigzag line, for an icy, all-white sparkle.",
+    "material": "Alloy & Zircon",
+    "finish": "Silver-tone",
+    "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store each bangle in its box so the stones don't scratch.",
+    "price": 550,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 3,
+    "occasionTags": [
+      "Wedding"
+    ],
+    "colorTags": [
+      "Silver",
+      "White"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/almas-silver-zircon-bangle-pair-logo.jpg",
+        "alt": "Pair of silver-tone bangles set with diamond-shaped zircon stones on green velvet"
+      }
+    ],
+    "variants": []
+  },
+  {
     "name": "Tara Five-Stone Silver Ring",
     "slug": "tara-five-stone-silver-ring",
     "sku": "JS-RNG-001",
