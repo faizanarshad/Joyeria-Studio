@@ -176,6 +176,102 @@
     ]
   },
   {
+    "name": "Haath Phool Heart Crystal Hand Chain",
+    "slug": "haath-phool-heart-crystal-hand-chain",
+    "sku": "JS-BRC-001",
+    "collectionSlug": "daily-wear",
+    "category": "Bracelets",
+    "description": "A delicate haath phool: a fine gold chain bracelet joined to an adjustable ring with a heart-shaped crystal, with two more heart crystals and small gold beads along the chain.",
+    "material": "Alloy & Crystal",
+    "finish": "Gold-plated",
+    "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store in a pouch so the chain doesn't tangle.",
+    "price": 530,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 5,
+    "occasionTags": [
+      "Daily"
+    ],
+    "colorTags": [
+      "Gold",
+      "White"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/haath-phool-heart-crystal-hand-chain-logo.jpg",
+        "alt": "Gold hand chain bracelet joined to a heart crystal ring, on green velvet with a yellow rose"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Moti Square Pearl Link Bracelet",
+    "slug": "moti-square-pearl-link-bracelet",
+    "sku": "JS-BRC-002",
+    "collectionSlug": "daily-wear",
+    "category": "Bracelets",
+    "description": "Five cushion-cut square pearls in gold bezels, linked by a fine chain with an adjustable clasp. Elegant enough for the office, easy enough for every day.",
+    "material": "Alloy & Pearl",
+    "finish": "Gold-plated",
+    "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store in a pouch so the chain doesn't tangle.",
+    "price": 480,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 5,
+    "occasionTags": [
+      "Daily",
+      "Office"
+    ],
+    "colorTags": [
+      "White",
+      "Gold"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/moti-square-pearl-link-bracelet-logo.jpg",
+        "alt": "Gold bracelet of square pearls in gold bezels on green velvet beside a leather book and yellow rose petals"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Rassi Gold Rope Chain Bracelet",
+    "slug": "rassi-gold-rope-chain-bracelet",
+    "sku": "JS-BRC-003",
+    "collectionSlug": "daily-wear",
+    "category": "Bracelets",
+    "description": "A classic twisted rope chain (rassi) bracelet with a bright gold finish. Wear it on its own or stack it with your bangles.",
+    "material": "Alloy",
+    "finish": "Gold-plated",
+    "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store in a pouch so the chain doesn't tangle.",
+    "price": 430,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 5,
+    "occasionTags": [
+      "Daily"
+    ],
+    "colorTags": [
+      "Gold"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/rassi-gold-rope-chain-bracelet-logo.jpg",
+        "alt": "Gold twisted rope chain bracelet on green velvet with a yellow rose"
+      }
+    ],
+    "variants": []
+  },
+  {
     "name": "Shahi Polki Pearl Bridal Set",
     "slug": "shahi-polki-pearl-bridal-set",
     "sku": "JS-SET-001",
