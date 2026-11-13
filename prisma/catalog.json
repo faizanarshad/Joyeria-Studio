@@ -1336,6 +1336,72 @@
     "variants": []
   },
   {
+    "name": "Zaitoon Silver Leaf Wreath Ring",
+    "slug": "zaitoon-silver-leaf-wreath-ring",
+    "sku": "JS-RNG-012",
+    "collectionSlug": "bridal",
+    "category": "Rings",
+    "description": "An open wreath of olive leaves (zaitoon) paved in marquise-cut crystals, curving around the finger for a bold, sparkling statement.",
+    "material": "Alloy & Crystal",
+    "finish": "Silver-tone",
+    "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store in a pouch so the stones don't scratch.",
+    "price": 650,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 5,
+    "occasionTags": [
+      "Party Wear",
+      "Wedding"
+    ],
+    "colorTags": [
+      "Silver",
+      "White"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/zaitoon-silver-leaf-wreath-ring-logo.jpg",
+        "alt": "Silver-tone open leaf wreath ring set with marquise crystals on green velvet"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Zaitoon Gold Leaf Wreath Ring",
+    "slug": "zaitoon-gold-leaf-wreath-ring",
+    "sku": "JS-RNG-013",
+    "collectionSlug": "bridal",
+    "category": "Rings",
+    "description": "An open wreath of olive leaves (zaitoon) paved in marquise-cut crystals on a gold-tone band, curving around the finger for a bold, sparkling statement.",
+    "material": "Alloy & Crystal",
+    "finish": "Gold-tone",
+    "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store in a pouch so the stones don't scratch.",
+    "price": 650,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 5,
+    "occasionTags": [
+      "Party Wear",
+      "Wedding"
+    ],
+    "colorTags": [
+      "Gold",
+      "White"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/zaitoon-gold-leaf-wreath-ring-logo.jpg",
+        "alt": "Gold-tone open leaf wreath ring set with marquise crystals on green velvet with dried roses"
+      }
+    ],
+    "variants": []
+  },
+  {
     "name": "Tara Five-Stone Silver Ring",
     "slug": "tara-five-stone-silver-ring",
     "sku": "JS-RNG-001",
@@ -1860,6 +1926,136 @@
       {
         "url": "/products/bel-pink-crystal-vine-y-necklace-logo.jpg",
         "alt": "Gold-tone vine Y-necklace with pink oval and leaf crystals on green velvet with dried roses and tiger's eye stones"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Shab Black Square Signet Ring",
+    "slug": "shab-black-square-signet-ring",
+    "sku": "JS-RNG-014",
+    "collectionSlug": "western",
+    "category": "Rings",
+    "description": "A bold gold-tone signet with a square black stone face and a textured band. Smart and modern.",
+    "material": "Alloy & Black Stone",
+    "finish": "Gold-tone",
+    "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store in a pouch so the stones don't scratch.",
+    "price": 600,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 5,
+    "occasionTags": [
+      "Daily",
+      "Office"
+    ],
+    "colorTags": [
+      "Black",
+      "Gold"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/shab-black-square-signet-ring-logo.jpg",
+        "alt": "Gold-tone signet ring with a square black stone on green velvet"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Sikka Gold Disc Open Ring",
+    "slug": "sikka-gold-disc-open-ring",
+    "sku": "JS-RNG-015",
+    "collectionSlug": "western",
+    "category": "Rings",
+    "description": "An open, adjustable ring of linked gold-tone rings meeting at a round, textured disc (sikka).",
+    "material": "Alloy",
+    "finish": "Gold-tone",
+    "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store in a pouch so the stones don't scratch.",
+    "price": 550,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 5,
+    "occasionTags": [
+      "Daily"
+    ],
+    "colorTags": [
+      "Gold"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/sikka-gold-disc-open-ring-logo.jpg",
+        "alt": "Gold-tone open ring of linked circles with a textured disc on green velvet"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Kala Enamel Charm Band Ring",
+    "slug": "kala-enamel-charm-band-ring",
+    "sku": "JS-RNG-016",
+    "collectionSlug": "western",
+    "category": "Rings",
+    "description": "A gold-tone band with a sleek black enamel inlay and a small round dangling charm.",
+    "material": "Alloy & Black Enamel",
+    "finish": "Gold-tone",
+    "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store in a pouch so the stones don't scratch.",
+    "price": 600,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 5,
+    "occasionTags": [
+      "Daily",
+      "Office"
+    ],
+    "colorTags": [
+      "Black",
+      "Gold"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/kala-enamel-charm-band-ring-logo.jpg",
+        "alt": "Gold-tone band ring with black enamel and a round charm on green velvet"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Clover Black Stacking Ring Set",
+    "slug": "clover-black-stacking-ring-set",
+    "sku": "JS-RNG-017",
+    "collectionSlug": "western",
+    "category": "Rings",
+    "description": "A set of slim gold-tone stacking rings, two topped with black enamel four-leaf clovers. Wear them together or split them up.",
+    "material": "Alloy & Black Enamel",
+    "finish": "Gold-tone",
+    "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store in a pouch so the stones don't scratch.",
+    "price": 650,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 5,
+    "occasionTags": [
+      "Daily",
+      "Party Wear"
+    ],
+    "colorTags": [
+      "Black",
+      "Gold"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/clover-black-stacking-ring-set-logo.jpg",
+        "alt": "Set of gold-tone stacking rings with black clover motifs on a carved wooden stand"
       }
     ],
     "variants": []

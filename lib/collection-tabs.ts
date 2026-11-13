@@ -21,6 +21,7 @@ const TABS: Record<string, CollectionTab[]> = {
     },
     { slug: "heavy-jhumkay", label: "Heavy Jhumkay", where: { category: "Earrings" } },
     { slug: "golden-bangles", label: "Golden Bangles", where: { category: "Bangles" } },
+    { slug: "rings", label: "Rings", where: { category: "Rings" } },
   ],
 };
 
