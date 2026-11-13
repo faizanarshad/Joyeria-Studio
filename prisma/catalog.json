@@ -176,38 +176,6 @@
     ]
   },
   {
-    "name": "Haath Phool Heart Crystal Hand Chain",
-    "slug": "haath-phool-heart-crystal-hand-chain",
-    "sku": "JS-BRC-001",
-    "collectionSlug": "daily-wear",
-    "category": "Bracelets",
-    "description": "A delicate haath phool: a fine gold chain bracelet joined to an adjustable ring with a heart-shaped crystal, with two more heart crystals and small gold beads along the chain.",
-    "material": "Alloy & Crystal",
-    "finish": "Gold-plated",
-    "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store in a pouch so the chain doesn't tangle.",
-    "price": 530,
-    "compareAtPrice": null,
-    "costPrice": null,
-    "stock": 5,
-    "occasionTags": [
-      "Daily"
-    ],
-    "colorTags": [
-      "Gold",
-      "White"
-    ],
-    "tryOnImageUrl": null,
-    "isActive": true,
-    "isFeatured": false,
-    "images": [
-      {
-        "url": "/products/haath-phool-heart-crystal-hand-chain-logo.jpg",
-        "alt": "Gold hand chain bracelet joined to a heart crystal ring, on green velvet with a yellow rose"
-      }
-    ],
-    "variants": []
-  },
-  {
     "name": "Moti Square Pearl Link Bracelet",
     "slug": "moti-square-pearl-link-bracelet",
     "sku": "JS-BRC-002",
@@ -461,6 +429,39 @@
         "stock": 3
       }
     ]
+  },
+  {
+    "name": "Roz Gold Earring Set of 6",
+    "slug": "roz-gold-earring-set-of-6",
+    "sku": "JS-EAR-016",
+    "collectionSlug": "daily-wear",
+    "category": "Earrings",
+    "description": "Six pairs for every day (roz) in one set: gold ball studs, pearl studs with a beaded rim, sparkling crystal studs, twisted rope hoops, textured hoops and star ear climbers. Mix and match through the week.",
+    "material": "Alloy, Pearl & Crystal",
+    "finish": "Gold-tone",
+    "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store each pair separately so they don't scratch.",
+    "price": 850,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 5,
+    "occasionTags": [
+      "Daily",
+      "Office"
+    ],
+    "colorTags": [
+      "Gold",
+      "White"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/roz-gold-earring-set-of-6-logo.jpg",
+        "alt": "Set of six gold-tone earring pairs: ball, pearl and crystal studs, twisted and textured hoops and star climbers on a wooden table"
+      }
+    ],
+    "variants": []
   },
   {
     "name": "Shahi Polki Pearl Bridal Set",
@@ -2285,6 +2286,43 @@
       {
         "url": "/products/waqt-gold-watch-bangle-logo.jpg",
         "alt": "Ribbed gold-tone watch bangle with a black dial and crystal frame on a jade block"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Mohabbat Heart Crystal Haath Phool",
+    "slug": "mohabbat-heart-crystal-haath-phool",
+    "sku": "JS-BRC-004",
+    "collectionSlug": "western",
+    "category": "Bracelets",
+    "description": "A fine gold-tone chain bracelet joined to an adjustable heart-crystal ring, with two more heart crystals and small gold beads along the chain and an extender to fit any wrist. Made from stainless steel, so it won't tarnish.",
+    "material": "Stainless Steel & Crystal",
+    "finish": "Gold-tone, anti-tarnish",
+    "careNote": "Stainless steel with an anti-tarnish finish: it won't fade or darken with everyday wear. Wipe with a soft cloth and store in a pouch.",
+    "price": 530,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 5,
+    "occasionTags": [
+      "Daily",
+      "Party Wear"
+    ],
+    "colorTags": [
+      "Gold",
+      "White"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/mohabbat-heart-crystal-haath-phool-logo.jpg",
+        "alt": "Gold-tone heart crystal hand chain joined to a matching ring on green velvet with a yellow rose"
+      },
+      {
+        "url": "/products/haath-phool-heart-crystal-hand-chain-logo.jpg",
+        "alt": "Gold hand chain bracelet joined to a heart crystal ring, on green velvet with a yellow rose"
       }
     ],
     "variants": []
