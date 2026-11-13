@@ -763,6 +763,39 @@
     "variants": []
   },
   {
+    "name": "Phool Kundan Maroon Pearl Necklace Set",
+    "slug": "phool-kundan-maroon-pearl-necklace-set",
+    "sku": "JS-SET-010",
+    "collectionSlug": "bridal",
+    "category": "Sets",
+    "description": "A necklace of kundan flowers, each with a maroon centre stone, linked by clusters of seed pearls and edged with maroon bead drops. Comes with matching flower stud earrings and a maang tikka on a fine gold chain.",
+    "material": "Kundan, Pearl & Maroon Beads",
+    "finish": "Gold-plated",
+    "careNote": "Store flat in the box so the pearls and drops do not tangle, keep away from moisture and perfume, and wipe gently with a soft dry cloth after wear.",
+    "price": 1200,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 3,
+    "occasionTags": [
+      "Party Wear"
+    ],
+    "colorTags": [
+      "Red",
+      "Gold",
+      "White"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/phool-kundan-maroon-pearl-necklace-set-logo.jpg",
+        "alt": "Kundan flower necklace with maroon stones and pearls, matching stud earrings and maang tikka on dark velvet"
+      }
+    ],
+    "variants": []
+  },
+  {
     "name": "Tara Five-Stone Silver Ring",
     "slug": "tara-five-stone-silver-ring",
     "sku": "JS-RNG-001",
