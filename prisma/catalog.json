@@ -2660,5 +2660,101 @@
       }
     ],
     "variants": []
+  },
+  {
+    "name": "Bel Vine Bracelet",
+    "slug": "bel-vine-bracelet",
+    "sku": "JS-BRC-005",
+    "collectionSlug": "western",
+    "category": "Bracelets",
+    "description": "A delicate vine (bel) bracelet of oval stones between tiny leaves, on a gold-tone chain with a secure fold-over clasp. Choose from 11 stone colours: rose quartz, mint, sapphire, lavender, opal white, ruby, champagne, crystal, blush, smoky quartz or emerald. Made from stainless steel, so it won't tarnish.",
+    "material": "Stainless Steel & Coloured Stones",
+    "finish": "Gold-tone, anti-tarnish",
+    "careNote": "Stainless steel with an anti-tarnish finish: it won't fade or darken with everyday wear. Wipe with a soft cloth and store in a pouch.",
+    "price": 750,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 33,
+    "occasionTags": [
+      "Daily",
+      "Office",
+      "Party Wear"
+    ],
+    "colorTags": [
+      "Gold",
+      "Pink",
+      "Green",
+      "Blue",
+      "Purple",
+      "White",
+      "Red",
+      "Multicolor"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/bel-vine-bracelet-rose-quartz-logo.jpg",
+        "alt": "Gold-tone vine bracelet with rose quartz stones on green velvet with yellow roses"
+      }
+    ],
+    "variants": [
+      {
+        "color": "Rose Quartz",
+        "imageUrl": "/products/bel-vine-bracelet-rose-quartz-logo.jpg",
+        "stock": 3
+      },
+      {
+        "color": "Mint",
+        "imageUrl": "/products/bel-vine-bracelet-mint-logo.jpg",
+        "stock": 3
+      },
+      {
+        "color": "Sapphire",
+        "imageUrl": "/products/bel-vine-bracelet-sapphire-logo.jpg",
+        "stock": 3
+      },
+      {
+        "color": "Lavender & Green",
+        "imageUrl": "/products/bel-vine-bracelet-lavender-green-logo.jpg",
+        "stock": 3
+      },
+      {
+        "color": "Opal White",
+        "imageUrl": "/products/bel-vine-bracelet-opal-white-logo.jpg",
+        "stock": 3
+      },
+      {
+        "color": "Ruby",
+        "imageUrl": "/products/bel-vine-bracelet-ruby-logo.jpg",
+        "stock": 3
+      },
+      {
+        "color": "Champagne",
+        "imageUrl": "/products/bel-vine-bracelet-champagne-logo.jpg",
+        "stock": 3
+      },
+      {
+        "color": "Crystal & Green",
+        "imageUrl": "/products/bel-vine-bracelet-crystal-green-logo.jpg",
+        "stock": 3
+      },
+      {
+        "color": "Blush",
+        "imageUrl": "/products/bel-vine-bracelet-blush-logo.jpg",
+        "stock": 3
+      },
+      {
+        "color": "Smoky Quartz",
+        "imageUrl": "/products/bel-vine-bracelet-smoky-quartz-logo.jpg",
+        "stock": 3
+      },
+      {
+        "color": "Emerald",
+        "imageUrl": "/products/bel-vine-bracelet-emerald-logo.jpg",
+        "stock": 3
+      }
+    ]
   }
 ]

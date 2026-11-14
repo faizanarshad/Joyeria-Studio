@@ -15,6 +15,18 @@ const SWATCHES: Record<string, string> = {
   silver: "#c0c0c0",
   purple: "#6b3fa0",
   maroon: "#6d1a2a",
+  // Stone colours (e.g. the Bel vine bracelet)
+  "rose quartz": "#e9b9bf",
+  mint: "#7fcfab",
+  sapphire: "#2f4fa8",
+  "lavender & green": "linear-gradient(135deg, #d8cbe6 50%, #1e8a4c 50%)",
+  "opal white": "#ece6ee",
+  ruby: "#a3133a",
+  champagne: "#e7c3a1",
+  "crystal & green": "linear-gradient(135deg, #f2f2f2 50%, #1e8a4c 50%)",
+  blush: "#f0c4c6",
+  "smoky quartz": "#b9b4a8",
+  emerald: "#127a46",
 };
 
 export function swatchFor(color: string): string {
