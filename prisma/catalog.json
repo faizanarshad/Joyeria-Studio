@@ -1240,7 +1240,7 @@
     "isFeatured": false,
     "images": [
       {
-        "url": "/products/heera-gold-zircon-bangle-pair-logo.jpg",
+        "url": "/products/heera-gold-zircon-bangle-pair-hd-logo.jpg",
         "alt": "Pair of gold-plated bangles set with diamond-shaped zircon stones on green velvet"
       }
     ],
@@ -1272,7 +1272,7 @@
     "isFeatured": false,
     "images": [
       {
-        "url": "/products/ghungroo-gold-kada-pair-logo.jpg",
+        "url": "/products/ghungroo-gold-kada-pair-hd-logo.jpg",
         "alt": "Pair of adjustable gold-plated beaded kadas with zircon domes and ghungroo bells on green velvet"
       }
     ],
@@ -1303,7 +1303,7 @@
     "isFeatured": false,
     "images": [
       {
-        "url": "/products/patti-gold-leaf-bangle-logo.jpg",
+        "url": "/products/patti-gold-leaf-bangle-hd-logo.jpg",
         "alt": "Gold-plated openwork leaf bangle on green velvet"
       }
     ],
@@ -1335,7 +1335,7 @@
     "isFeatured": false,
     "images": [
       {
-        "url": "/products/yaqoot-ruby-silver-bangle-pair-logo.jpg",
+        "url": "/products/yaqoot-ruby-silver-bangle-pair-hd-logo.jpg",
         "alt": "Pair of silver-tone bangles set with ruby-red square stones on green velvet"
       }
     ],
@@ -1367,7 +1367,7 @@
     "isFeatured": false,
     "images": [
       {
-        "url": "/products/almas-silver-zircon-bangle-pair-logo.jpg",
+        "url": "/products/almas-silver-zircon-bangle-pair-hd-logo.jpg",
         "alt": "Pair of silver-tone bangles set with diamond-shaped zircon stones on green velvet"
       }
     ],
@@ -1530,7 +1530,7 @@
     "isFeatured": false,
     "images": [
       {
-        "url": "/products/gulrez-beaded-jhumki-bangle-logo.jpg",
+        "url": "/products/gulrez-beaded-jhumki-bangle-hd-logo.jpg",
         "alt": "Multicolour beaded bridal bangle with jhumki drops on green velvet with dried roses"
       }
     ],
@@ -1564,7 +1564,7 @@
     "isFeatured": false,
     "images": [
       {
-        "url": "/products/shahana-kundan-stone-bangle-set-logo.jpg",
+        "url": "/products/shahana-kundan-stone-bangle-set-hd-logo.jpg",
         "alt": "Stacked set of gold-plated kundan and pearl-edged bangles on a carved wooden panel"
       }
     ],
@@ -1600,7 +1600,7 @@
     "isFeatured": false,
     "images": [
       {
-        "url": "/products/rangeen-stripe-choori-set-logo.jpg",
+        "url": "/products/rangeen-stripe-choori-set-hd-logo.jpg",
         "alt": "Set of slim gold choori bangles striped in red, green and blue on carved wood"
       }
     ],
@@ -1632,8 +1632,8 @@
     "isFeatured": false,
     "images": [
       {
-        "url": "/products/moti-dana-gold-bangle-set-logo.jpg",
-        "alt": "Stack of gold-plated beaded bangles on a white quartz stone"
+        "url": "/products/moti-dana-gold-bangle-set-v2-hd-logo.jpg",
+        "alt": "Stack of gold-plated beaded bangles on green velvet with dried roses, in a gold frame"
       }
     ],
     "variants": []
@@ -1666,8 +1666,12 @@
     "isFeatured": false,
     "images": [
       {
-        "url": "/products/lalima-ruby-stone-gold-bangle-set-logo.jpg",
-        "alt": "Set of gold-plated bangles with zircon and ruby-red stones on a white quartz stone"
+        "url": "/products/lalima-ruby-stone-gold-bangle-set-v2-hd-logo.jpg",
+        "alt": "Gold-plated bangles with zircon and ruby-red stones on green velvet with roses"
+      },
+      {
+        "url": "/products/lalima-ruby-stone-gold-bangle-set-v2b-hd-logo.jpg",
+        "alt": "Gold-plated bangles with zircon and ruby-red stones fanned out on green velvet"
       }
     ],
     "variants": []
@@ -1697,8 +1701,8 @@
     "isFeatured": false,
     "images": [
       {
-        "url": "/products/bel-bunai-gold-bangle-set-logo.jpg",
-        "alt": "Set of braided gold-plated bangles on a white quartz stone"
+        "url": "/products/bel-bunai-gold-bangle-set-v2-hd-logo.jpg",
+        "alt": "Stack of braided gold-plated bangles on green velvet with dried roses"
       }
     ],
     "variants": []
