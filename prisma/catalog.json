@@ -2788,5 +2788,39 @@
         "stock": 3
       }
     ]
+  },
+  {
+    "name": "Silver Screw Motif Crystal Bangle",
+    "slug": "silver-screw-motif-crystal-bangle",
+    "sku": "JS-BRC-006",
+    "collectionSlug": "western",
+    "category": "Bracelets",
+    "description": "A sleek, polished silver-tone oval bangle with screw-head motifs and bezel-set crystals around the band. Opens on a side hinge.",
+    "material": "Alloy & Crystal",
+    "finish": "Silver-tone",
+    "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store in a pouch so the polish doesn't scratch.",
+    "price": 650,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 5,
+    "occasionTags": [
+      "Daily",
+      "Office",
+      "Party Wear"
+    ],
+    "colorTags": [
+      "Silver",
+      "White"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/silver-screw-motif-crystal-bangle-logo.jpg",
+        "alt": "Polished silver-tone bangle with screw motifs and crystals on green velvet with a yellow rose"
+      }
+    ],
+    "variants": []
   }
 ]
