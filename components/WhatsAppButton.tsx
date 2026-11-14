@@ -1,4 +1,4 @@
-import { buildWhatsAppLink } from "@/lib/whatsapp";
+import { buildWhatsAppLink, STUDIO_WHATSAPP_DISPLAY } from "@/lib/whatsapp";
 
 const VARIANTS = {
   solid: "bg-[#25D366] text-white hover:brightness-95",
@@ -12,7 +12,15 @@ export default function WhatsAppButton({
   message,
   className = "",
   variant = "solid",
-  children = "Order on WhatsApp",
+  children = (
+    <>
+      Order on WhatsApp
+      <span aria-hidden className="opacity-60">
+        ·
+      </span>
+      <span className="whitespace-nowrap">{STUDIO_WHATSAPP_DISPLAY}</span>
+    </>
+  ),
 }: {
   message: string;
   className?: string;

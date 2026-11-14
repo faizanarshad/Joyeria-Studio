@@ -5,7 +5,7 @@ import Link from "next/link";
 import { cartLineKey, useCartStore } from "@/lib/cart-store";
 import { useCartHydrated } from "@/lib/use-cart-hydrated";
 import { formatPKR } from "@/lib/format";
-import { buildWhatsAppLink } from "@/lib/whatsapp";
+import { buildWhatsAppLink, STUDIO_WHATSAPP_DISPLAY } from "@/lib/whatsapp";
 
 export default function CartPage() {
   const { items, setQuantity, removeItem, subtotal } = useCartStore();
@@ -103,7 +103,8 @@ export default function CartPage() {
               rel="noopener noreferrer"
               className="mt-3 block rounded-full bg-[#25D366] px-6 py-3 text-center text-sm text-white hover:brightness-95"
             >
-              Order on WhatsApp
+              Order on WhatsApp <span className="opacity-60">·</span>{" "}
+              <span className="whitespace-nowrap">{STUDIO_WHATSAPP_DISPLAY}</span>
             </a>
           </div>
         </div>
