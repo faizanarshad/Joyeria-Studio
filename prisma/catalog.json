@@ -1472,6 +1472,38 @@
     "variants": []
   },
   {
+    "name": "Do Phool Gold Filigree Ring",
+    "slug": "do-phool-gold-filigree-ring",
+    "sku": "JS-RNG-018",
+    "collectionSlug": "bridal",
+    "category": "Rings",
+    "description": "A wide wraparound ring of beaded gold-plated bands, crossed by two filigree flowers (do phool) with diamond-cut petals that catch the light.",
+    "material": "Alloy",
+    "finish": "Gold-plated",
+    "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store in a pouch so the finish doesn't scratch.",
+    "price": 550,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 5,
+    "occasionTags": [
+      "Party Wear",
+      "Wedding"
+    ],
+    "colorTags": [
+      "Gold"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/do-phool-gold-filigree-ring-logo.jpg",
+        "alt": "Gold-plated wraparound filigree ring with two flowers on green velvet with yellow roses"
+      }
+    ],
+    "variants": []
+  },
+  {
     "name": "Tara Five-Stone Silver Ring",
     "slug": "tara-five-stone-silver-ring",
     "sku": "JS-RNG-001",
