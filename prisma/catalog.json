@@ -1504,6 +1504,109 @@
     "variants": []
   },
   {
+    "name": "Gulrez Beaded Jhumki Bangle",
+    "slug": "gulrez-beaded-jhumki-bangle",
+    "sku": "JS-BNG-013",
+    "collectionSlug": "bridal",
+    "category": "Bangles",
+    "description": "A statement bridal bangle densely worked in pink, green, red and gold beads with pearl accents, hung with matching beaded jhumki drops. Priced per bangle.",
+    "material": "Beads, Pearls & Stones",
+    "finish": "Gold-plated",
+    "careNote": "Keep away from water and perfume, wipe gently with a soft dry cloth after wear, and store in the box so the stones and beads don't catch.",
+    "price": 2000,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 3,
+    "occasionTags": [
+      "Mehndi",
+      "Party Wear"
+    ],
+    "colorTags": [
+      "Multicolor",
+      "Gold"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/gulrez-beaded-jhumki-bangle-logo.jpg",
+        "alt": "Multicolour beaded bridal bangle with jhumki drops on green velvet with dried roses"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Shahana Kundan Stone Bangle Set",
+    "slug": "shahana-kundan-stone-bangle-set",
+    "sku": "JS-BNG-014",
+    "collectionSlug": "bridal",
+    "category": "Bangles",
+    "description": "A stacked set of gold-plated bangles: kundan-and-stone bangles in pink, turquoise and green framed by pearl-edged and textured gold bangles.",
+    "material": "Kundan, Stones & Pearl",
+    "finish": "Gold-plated",
+    "careNote": "Keep away from water and perfume, wipe gently with a soft dry cloth after wear, and store in the box so the stones and beads don't catch.",
+    "price": 1000,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 3,
+    "occasionTags": [
+      "Wedding",
+      "Party Wear"
+    ],
+    "colorTags": [
+      "Gold",
+      "White",
+      "Multicolor"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/shahana-kundan-stone-bangle-set-logo.jpg",
+        "alt": "Stacked set of gold-plated kundan and pearl-edged bangles on a carved wooden panel"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Rangeen Stripe Choori Set",
+    "slug": "rangeen-stripe-choori-set",
+    "sku": "JS-BNG-015",
+    "collectionSlug": "bridal",
+    "category": "Bangles",
+    "description": "A full set of slim choorian striped in red, green and blue enamel between textured gold bangles, stacked for a classic festive look.",
+    "material": "Alloy & Enamel",
+    "finish": "Gold-plated",
+    "careNote": "Keep away from water and perfume, wipe gently with a soft dry cloth after wear, and store in the box so the stones and beads don't catch.",
+    "price": 1200,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 3,
+    "occasionTags": [
+      "Mehndi",
+      "Wedding"
+    ],
+    "colorTags": [
+      "Multicolor",
+      "Red",
+      "Green",
+      "Blue",
+      "Gold"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/rangeen-stripe-choori-set-logo.jpg",
+        "alt": "Set of slim gold choori bangles striped in red, green and blue on carved wood"
+      }
+    ],
+    "variants": []
+  },
+  {
     "name": "Tara Five-Stone Silver Ring",
     "slug": "tara-five-stone-silver-ring",
     "sku": "JS-RNG-001",
