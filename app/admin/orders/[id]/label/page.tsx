@@ -6,6 +6,8 @@ import { auth } from "@/lib/auth";
 import { formatPKR } from "@/lib/format";
 import { STUDIO_NAME, STUDIO_PHONE_DISPLAY, studioReturnAddress } from "@/lib/studio";
 import PrintButton from "@/components/admin/PrintButton";
+import LabelComments from "@/components/admin/LabelComments";
+import { buildWhatsAppLink } from "@/lib/whatsapp";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Parcel Label" };
@@ -33,12 +35,19 @@ export default async function OrderLabelPage({ params }: Props) {
 
   const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, "");
   const trackUrl = `${siteUrl}/track-order?phone=${order.phone}`;
-  const qrSvg = await QRCode.toString(trackUrl, { type: "svg", margin: 0, errorCorrectionLevel: "M" });
+  // Second code: opens a WhatsApp chat with the studio, pre-filled with the
+  // order number, so the customer can send feedback in one scan.
+  const feedbackUrl = buildWhatsAppLink(`Feedback for order ${order.orderNumber}: `);
+  const qrOptions = { type: "svg", margin: 0, errorCorrectionLevel: "M" } as const;
+  const [qrSvg, feedbackQrSvg] = await Promise.all([
+    QRCode.toString(trackUrl, qrOptions),
+    QRCode.toString(feedbackUrl, qrOptions),
+  ]);
 
   const isCod = order.paymentMethod === "COD";
   const totalPieces = order.items.reduce((sum, item) => sum + item.quantity, 0);
   // Long orders drop to a smaller item font so the label still fits one page.
-  const compact = order.items.length > 4;
+  const compact = order.items.length > 3;
   const returnAddress = studioReturnAddress();
   const placed = order.createdAt.toLocaleDateString("en-PK", {
     timeZone: "Asia/Karachi",
@@ -115,11 +124,11 @@ export default async function OrderLabelPage({ params }: Props) {
               <tbody>
                 {order.items.map((item) => (
                   <tr key={item.id} className="border-b border-black/20 align-top last:border-0">
-                    <td className={`pr-2 ${compact ? "py-px" : "py-0.5"}`}>
+                    <td className={`pr-2 ${compact ? "py-0 leading-tight" : "py-0.5"}`}>
                       {item.productName}
                       {item.color ? ` — ${item.color}` : ""}
                     </td>
-                    <td className={`text-right font-bold ${compact ? "py-px" : "py-0.5"}`}>{item.quantity}</td>
+                    <td className={`text-right font-bold ${compact ? "py-0 leading-tight" : "py-0.5"}`}>{item.quantity}</td>
                   </tr>
                 ))}
               </tbody>
@@ -127,15 +136,21 @@ export default async function OrderLabelPage({ params }: Props) {
             {order.note && <p className="mt-1 text-[8.5pt] italic">Note: {order.note}</p>}
           </div>
 
-          {/* Payment + tracking QR */}
+          {/* Comments — typed before printing, or handwritten afterwards */}
+          <div className="border-b-2 border-black px-3 py-1">
+            <p className="text-[7.5pt] font-semibold uppercase tracking-widest">Comments</p>
+            <LabelComments />
+          </div>
+
+          {/* Payment + tracking and feedback QR codes */}
           <div className="flex items-stretch">
             <div className="flex flex-1 flex-col justify-center px-3 py-1.5">
               {isCod ? (
                 <>
-                  <p className="text-[8pt] font-semibold uppercase tracking-widest">
+                  <p className="text-[7.5pt] font-semibold uppercase tracking-wider">
                     Cash on delivery — collect
                   </p>
-                  <p className="text-[20pt] font-bold leading-none">{formatPKR(order.total)}</p>
+                  <p className="mt-0.5 text-[18pt] font-bold leading-none">{formatPKR(order.total)}</p>
                 </>
               ) : (
                 <>
@@ -153,16 +168,31 @@ export default async function OrderLabelPage({ params }: Props) {
                 </p>
               )}
             </div>
-            <div className="flex w-[26mm] flex-col items-center border-l-2 border-black p-1.5">
+            {[
+              { svg: qrSvg, caption: "Scan to track", label: `QR code to track order ${order.orderNumber}` },
+              { svg: feedbackQrSvg, caption: "Give feedback", label: "QR code to send feedback on WhatsApp" },
+            ].map((code) => (
               <div
-                className="h-[20mm] w-[20mm]"
-                role="img"
-                aria-label={`QR code to track order ${order.orderNumber}`}
-                dangerouslySetInnerHTML={{ __html: qrSvg }}
-              />
-              <p className="mt-0.5 text-center text-[6.5pt] uppercase tracking-wider">Scan to track</p>
-            </div>
+                key={code.caption}
+                className="flex w-[22mm] flex-col items-center border-l-2 border-black p-1"
+              >
+                <div
+                  className="h-[18mm] w-[18mm]"
+                  role="img"
+                  aria-label={code.label}
+                  dangerouslySetInnerHTML={{ __html: code.svg }}
+                />
+                <p className="mt-0.5 text-center text-[6pt] font-semibold uppercase tracking-wider">
+                  {code.caption}
+                </p>
+              </div>
+            ))}
           </div>
+
+          {/* Feedback invitation for the customer */}
+          <p className="border-t-2 border-black px-2 py-1 text-center text-[7.5pt]">
+            Thank you! Happy with your order? Scan <b>Give feedback</b> to tell us.
+          </p>
         </div>
       </div>
     </div>
