@@ -1607,6 +1607,103 @@
     "variants": []
   },
   {
+    "name": "Moti Dana Gold Bangle Set",
+    "slug": "moti-dana-gold-bangle-set",
+    "sku": "JS-BNG-016",
+    "collectionSlug": "bridal",
+    "category": "Bangles",
+    "description": "A stack of gold-plated bangles lined with ribbed gold beads (moti dana) and openwork between them, for a rich, full bridal look.",
+    "material": "Alloy",
+    "finish": "Gold-plated",
+    "careNote": "Keep away from water and perfume, wipe gently with a soft dry cloth after wear, and store in the box so the finish doesn't scratch.",
+    "price": 1300,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 3,
+    "occasionTags": [
+      "Wedding",
+      "Party Wear"
+    ],
+    "colorTags": [
+      "Gold"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/moti-dana-gold-bangle-set-logo.jpg",
+        "alt": "Stack of gold-plated beaded bangles on a white quartz stone"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Lalima Ruby Stone Gold Bangle Set",
+    "slug": "lalima-ruby-stone-gold-bangle-set",
+    "sku": "JS-BNG-017",
+    "collectionSlug": "bridal",
+    "category": "Bangles",
+    "description": "Textured gold-plated bangles set with sparkling zircon and square ruby-red stones (lalima), stacked for a festive bridal glow.",
+    "material": "Alloy, Zircon & Ruby-red Stones",
+    "finish": "Gold-plated",
+    "careNote": "Keep away from water and perfume, wipe gently with a soft dry cloth after wear, and store in the box so the finish doesn't scratch.",
+    "price": 1500,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 3,
+    "occasionTags": [
+      "Wedding",
+      "Party Wear"
+    ],
+    "colorTags": [
+      "Gold",
+      "Red",
+      "White"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/lalima-ruby-stone-gold-bangle-set-logo.jpg",
+        "alt": "Set of gold-plated bangles with zircon and ruby-red stones on a white quartz stone"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Bel Bunai Gold Bangle Set",
+    "slug": "bel-bunai-gold-bangle-set",
+    "sku": "JS-BNG-018",
+    "collectionSlug": "bridal",
+    "category": "Bangles",
+    "description": "A set of gold-plated bangles with a braided (bunai) texture between granulated gold bands, stacked for a classic bridal look.",
+    "material": "Alloy",
+    "finish": "Gold-plated",
+    "careNote": "Keep away from water and perfume, wipe gently with a soft dry cloth after wear, and store in the box so the finish doesn't scratch.",
+    "price": 1200,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 3,
+    "occasionTags": [
+      "Wedding"
+    ],
+    "colorTags": [
+      "Gold"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/bel-bunai-gold-bangle-set-logo.jpg",
+        "alt": "Set of braided gold-plated bangles on a white quartz stone"
+      }
+    ],
+    "variants": []
+  },
+  {
     "name": "Tara Five-Stone Silver Ring",
     "slug": "tara-five-stone-silver-ring",
     "sku": "JS-RNG-001",
