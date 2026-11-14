@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { formatPKR } from "@/lib/format";
 import { updateOrderStatus } from "@/app/admin/orders/actions";
 
@@ -157,6 +158,13 @@ export default function OrderRow({ order }: { order: Order }) {
         >
           Save
         </button>
+        <Link
+          href={`/admin/orders/${order.id}/label`}
+          target="_blank"
+          className="rounded-md border border-border px-4 py-1.5 text-sm text-foreground hover:border-foreground"
+        >
+          Print label
+        </Link>
       </form>
     </div>
   );

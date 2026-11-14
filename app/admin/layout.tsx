@@ -38,8 +38,8 @@ export default async function AdminLayout({ children }: { children: React.ReactN
           // requests to every other /admin route here, so this is a plain pass-through.
           <div className="min-h-screen bg-background">{children}</div>
         ) : (
-          <div className="min-h-screen bg-rose-soft/30">
-            <header className="border-b border-border bg-surface">
+          <div className="min-h-screen bg-rose-soft/30 print:min-h-0 print:bg-white">
+            <header className="border-b border-border bg-surface print:hidden">
               <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-4 sm:px-6">
                 <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
                   <Link href="/admin" className="flex items-center gap-2 font-display text-lg text-foreground">
@@ -90,7 +90,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
                 </div>
               </div>
             </header>
-            <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6">{children}</main>
+            <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6 print:m-0 print:max-w-none print:p-0">{children}</main>
           </div>
         )}
       </body>

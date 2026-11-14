@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { formatPKR } from "@/lib/format";
 
 type Order = {
@@ -29,8 +29,12 @@ export default function TrackOrderPage() {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
-  async function handleSubmit(e: React.FormEvent) {
+  function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    void search(phone);
+  }
+
+  async function search(phone: string) {
     setLoading(true);
     setError(null);
     setOrders(null);
@@ -48,6 +52,17 @@ export default function TrackOrderPage() {
       setLoading(false);
     }
   }
+
+  // The QR code on a parcel label links here with the phone number filled in,
+  // so scanning it shows the order without any typing.
+  useEffect(() => {
+    const fromLink = new URLSearchParams(window.location.search).get("phone");
+    if (!fromLink) return;
+    void Promise.resolve().then(() => {
+      setPhone(fromLink);
+      return search(fromLink);
+    });
+  }, []);
 
   return (
     <div className="mx-auto max-w-xl px-4 py-10 sm:px-6">
