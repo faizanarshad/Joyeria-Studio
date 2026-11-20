@@ -169,15 +169,15 @@ export default function HeroSection({ slides }: { slides: HeroSlide[] }) {
             setPaused(false);
           }}
           style={{ rotateX: tiltX, rotateY: tiltY, transformPerspective: 900 }}
-          className="relative mx-auto aspect-square w-full max-w-sm"
+          className="relative mx-auto aspect-[4/5] w-full max-w-xs sm:max-w-sm"
         >
-          <div className="arch pointer-events-none absolute inset-x-3 bottom-0 top-5 border border-rose/60" />
+          <div className="arch pointer-events-none absolute inset-0 border border-rose/60" />
           <RotatingBadge />
-          <motion.div style={{ y: bgY }} className="arch absolute inset-x-8 bottom-0 top-8 bg-gradient-to-b from-rose/30 to-transparent" />
+          <motion.div style={{ y: bgY }} className="arch absolute inset-x-8 bottom-0 top-2 bg-gradient-to-b from-rose/30 to-transparent" />
           {next && (
             <motion.div
               style={{ y: fgY }}
-              className="absolute right-0 top-0 z-10 h-28 w-28 overflow-hidden rounded-full ring-2 ring-rose/40 sm:h-36 sm:w-36"
+              className="absolute -right-4 top-6 z-10 h-28 w-28 overflow-hidden rounded-full ring-2 ring-rose/40 sm:h-36 sm:w-36"
             >
               <AnimatePresence initial={false}>
                 <motion.div
@@ -194,7 +194,7 @@ export default function HeroSection({ slides }: { slides: HeroSlide[] }) {
             </motion.div>
           )}
           {current ? (
-            <motion.div style={{ y: fgY }} className="arch absolute inset-x-0 bottom-0 top-16 overflow-hidden">
+            <motion.div style={{ y: fgY }} className="arch absolute inset-x-4 bottom-0 top-4 overflow-hidden">
               <AnimatePresence initial={false}>
                 <motion.div
                   key={current.src}
@@ -209,7 +209,7 @@ export default function HeroSection({ slides }: { slides: HeroSlide[] }) {
                       src={current.src}
                       alt={current.alt}
                       fill
-                      sizes="(min-width: 640px) 384px, 100vw"
+                      sizes="(min-width: 640px) 352px, 288px"
                       className="object-cover"
                       priority={index === 0}
                     />
@@ -225,7 +225,7 @@ export default function HeroSection({ slides }: { slides: HeroSlide[] }) {
               </AnimatePresence>
             </motion.div>
           ) : (
-            <div className="arch absolute inset-x-0 bottom-0 top-16 flex items-center justify-center bg-rose-soft">
+            <div className="arch absolute inset-x-4 bottom-0 top-4 flex items-center justify-center bg-rose-soft">
               <AnimatedDiamondIcon className="h-10 w-10 text-rose" />
             </div>
           )}
