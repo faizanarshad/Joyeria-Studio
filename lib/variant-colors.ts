@@ -27,6 +27,8 @@ const SWATCHES: Record<string, string> = {
   blush: "#f0c4c6",
   "smoky quartz": "#b9b4a8",
   emerald: "#127a46",
+  "pink & green": "linear-gradient(135deg, #f0b8c8 50%, #1e8a4c 50%)",
+  "silver sapphire": "linear-gradient(135deg, #c8c8cc 50%, #1d3f9e 50%)",
 };
 
 const key = (name: string) => name.trim().toLowerCase().replace("multicolor", "multicolour");
