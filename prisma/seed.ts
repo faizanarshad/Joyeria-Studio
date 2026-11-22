@@ -121,9 +121,13 @@ async function main() {
       // With colour options, the product's stock is their total.
       stock: variants.length > 0 ? variants.reduce((sum, v) => sum + v.stock, 0) : p.stock,
     };
+    // Cost prices are private and this repo is public, so catalog.json leaves
+    // costPrice null and the real figures live only in the database (set via
+    // the admin or directly). A null here must not wipe them on re-seed.
+    const { costPrice, ...updateData } = data;
     const product = await prisma.product.upsert({
       where: { slug },
-      update: data,
+      update: costPrice == null ? updateData : data,
       create: { slug, ...data },
     });
 
