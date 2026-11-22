@@ -8,6 +8,7 @@ import AnimatedDiamondIcon from "@/components/motion/AnimatedDiamondIcon";
 import FloatingPetals from "@/components/motion/FloatingPetals";
 import OccasionSlider from "@/components/OccasionSlider";
 import type { ProductCardData } from "@/lib/types";
+import { optionKindFor } from "@/lib/variant-colors";
 
 export const revalidate = 300;
 
@@ -24,13 +25,14 @@ async function getFeaturedProducts(): Promise<ProductCardData[]> {
     where: { isActive: true, isFeatured: true },
     include: {
       images: { orderBy: { sortOrder: "asc" }, take: 2 },
-      _count: { select: { variants: true } },
+      variants: { select: { color: true } },
     },
     orderBy: { createdAt: "desc" },
     take: 8,
   });
   return products.map((p) => ({
-    colorCount: p._count.variants || undefined,
+    colorCount: p.variants.length || undefined,
+    optionKind: optionKindFor(p.variants.map((o) => o.color)),
     id: p.id,
     slug: p.slug,
     name: p.name,

@@ -20,6 +20,7 @@ export default function OutfitMatchCard({ product }: { product: StyleProduct }) 
           coverImage: product.coverImage,
           coverImageAlt: product.coverImageAlt,
           colorCount: product.colorCount,
+          optionKind: product.optionKind,
         }}
       />
       {placement && product.tryOnImageUrl && (

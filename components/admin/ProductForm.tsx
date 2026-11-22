@@ -285,7 +285,7 @@ export default function ProductForm({ action, collections, initial, submitLabel 
 
       <div>
         <div className="flex items-center justify-between">
-          <span className="text-sm font-medium text-foreground">Colour Options</span>
+          <span className="text-sm font-medium text-foreground">Colour / Design Options</span>
           <button
             type="button"
             onClick={() => setVariants((vs) => [...vs, { color: "", stock: 0, imageUrl: "" }])}
@@ -315,7 +315,7 @@ export default function ProductForm({ action, collections, initial, submitLabel 
                 onChange={(e) =>
                   setVariants((vs) => vs.map((x, j) => (j === i ? { ...x, color: e.target.value } : x)))
                 }
-                placeholder="Colour, e.g. Black"
+                placeholder="Colour or design, e.g. Black or Heart"
                 className="input w-36 text-xs"
               />
               <input

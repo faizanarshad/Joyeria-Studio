@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import type { StyleProduct } from "@/lib/outfit-style";
 import StyleMyOutfitClient from "@/components/StyleMyOutfitClient";
+import { optionKindFor } from "@/lib/variant-colors";
 
 export const revalidate = 300;
 
@@ -28,7 +29,7 @@ export default async function StyleMyOutfitPage() {
       colorTags: true,
       collection: { select: { slug: true } },
       images: { orderBy: { sortOrder: "asc" }, take: 1 },
-      _count: { select: { variants: true } },
+      variants: { select: { color: true } },
     },
     orderBy: { createdAt: "desc" },
   });
@@ -50,7 +51,8 @@ export default async function StyleMyOutfitPage() {
     collectionSlug: p.collection?.slug ?? null,
     occasionTags: p.occasionTags,
     colorTags: p.colorTags,
-    colorCount: p._count.variants || undefined,
+    colorCount: p.variants.length || undefined,
+    optionKind: optionKindFor(p.variants.map((o) => o.color)),
   }));
 
   return (

@@ -48,7 +48,7 @@ export default function CartPage() {
                       <Link href={`/products/${item.slug}`} className="text-sm text-foreground">
                         {item.name}
                       </Link>
-                      {item.color && <p className="text-xs text-muted">Colour: {item.color}</p>}
+                      {item.color && <p className="text-xs text-muted">{item.color}</p>}
                     </div>
                     <button
                       onClick={() => removeItem(cartLineKey(item))}

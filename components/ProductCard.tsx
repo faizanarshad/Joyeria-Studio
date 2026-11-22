@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import { formatPKR } from "@/lib/format";
 import type { ProductCardData } from "@/lib/types";
+import { optionNoun } from "@/lib/variant-colors";
 import AddToBagButton from "@/components/AddToBagButton";
 
 const SPARKLES = [
@@ -89,7 +90,9 @@ export default function ProductCard({ product }: { product: ProductCardData }) {
           {product.name}
         </Link>
         {!!product.colorCount && (
-          <p className="text-xs text-muted">Available in {product.colorCount} colours</p>
+          <p className="text-xs text-muted">
+            Available in {product.colorCount} {optionNoun(product.optionKind ?? "colour", true)}
+          </p>
         )}
         <div className="flex items-center justify-between gap-2 pt-1">
           <div className="flex items-baseline gap-2">
@@ -105,7 +108,7 @@ export default function ProductCard({ product }: { product: ProductCardData }) {
               href={`/products/${product.slug}`}
               className="flex h-[26px] items-center justify-center rounded-full border border-green px-3 text-xs text-green-dark hover:bg-green hover:text-white"
             >
-              Choose colour
+              Choose {optionNoun(product.optionKind ?? "colour")}
             </Link>
           ) : (
             <AddToBagButton

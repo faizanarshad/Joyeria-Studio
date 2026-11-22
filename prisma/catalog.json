@@ -500,6 +500,121 @@
     ]
   },
   {
+    "name": "Safaid Moti Pearl Rings",
+    "slug": "safaid-moti-pearl-rings",
+    "sku": "JS-RNG-019",
+    "collectionSlug": "daily-wear",
+    "category": "Rings",
+    "description": "Dainty gold-plated adjustable rings finished with white pearls and fine zircon pavé, in six designs: a single pearl on a pavé wrap, a pearl initial, a pearl bar, a stacked pearl band, a pearl chain band and an open row of pearls. Light enough to wear every day, alone or stacked.",
+    "material": "Pearl & Zircon",
+    "finish": "Gold-plated",
+    "careNote": "Keep away from water and perfume, take off before washing hands, and store in a pouch so the stones and pearls do not scratch.",
+    "price": 260,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 18,
+    "occasionTags": [
+      "Daily"
+    ],
+    "colorTags": [
+      "Gold",
+      "White"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/safaid-moti-pearl-rings-solitaire-logo.jpg",
+        "alt": "Gold-plated pavé wrap ring with a single white pearl on rose petals"
+      }
+    ],
+    "variants": [
+      {
+        "color": "Pearl Solitaire",
+        "imageUrl": "/products/safaid-moti-pearl-rings-solitaire-logo.jpg",
+        "stock": 3
+      },
+      {
+        "color": "Pearl Initial",
+        "imageUrl": "/products/safaid-moti-pearl-rings-initial-logo.jpg",
+        "stock": 3
+      },
+      {
+        "color": "Pearl Bar",
+        "imageUrl": "/products/safaid-moti-pearl-rings-bar-logo.jpg",
+        "stock": 3
+      },
+      {
+        "color": "Stacked Pearl Band",
+        "imageUrl": "/products/safaid-moti-pearl-rings-stack-logo.jpg",
+        "stock": 3
+      },
+      {
+        "color": "Pearl Chain Band",
+        "imageUrl": "/products/safaid-moti-pearl-rings-chain-logo.jpg",
+        "stock": 3
+      },
+      {
+        "color": "Pearl Row",
+        "imageUrl": "/products/safaid-moti-pearl-rings-row-logo.jpg",
+        "stock": 3
+      }
+    ]
+  },
+  {
+    "name": "Nanhi Kids Crystal Rings",
+    "slug": "nanhi-kids-crystal-rings",
+    "sku": "JS-RNG-020",
+    "collectionSlug": "daily-wear",
+    "category": "Rings",
+    "description": "Small gold-plated adjustable rings for little hands, set with sparkling zircon, in four designs: butterfly, heart, flower and twin disc. Sized for kids, easy to slip on, and pretty enough for Eid and family gatherings.",
+    "material": "Zircon",
+    "finish": "Gold-plated",
+    "careNote": "Keep away from water and perfume, take off before washing hands, and store in a pouch so the stones and pearls do not scratch.",
+    "price": 182,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 12,
+    "occasionTags": [
+      "Daily"
+    ],
+    "colorTags": [
+      "Gold"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/nanhi-crystal-rings-butterfly-logo.jpg",
+        "alt": "Small gold-plated zircon butterfly ring on rose petals"
+      }
+    ],
+    "variants": [
+      {
+        "color": "Butterfly",
+        "imageUrl": "/products/nanhi-crystal-rings-butterfly-logo.jpg",
+        "stock": 3
+      },
+      {
+        "color": "Heart",
+        "imageUrl": "/products/nanhi-crystal-rings-heart-logo.jpg",
+        "stock": 3
+      },
+      {
+        "color": "Flower",
+        "imageUrl": "/products/nanhi-crystal-rings-flower-logo.jpg",
+        "stock": 3
+      },
+      {
+        "color": "Twin Disc",
+        "imageUrl": "/products/nanhi-crystal-rings-twin-disc-logo.jpg",
+        "stock": 3
+      }
+    ]
+  },
+  {
     "name": "Shahi Polki Pearl Bridal Set",
     "slug": "shahi-polki-pearl-bridal-set",
     "sku": "JS-SET-001",

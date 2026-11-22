@@ -104,7 +104,7 @@ export async function POST(req: NextRequest) {
         // and a colour id must belong to the product it's sent with.
         const hasVariants = product.variants.length > 0;
         if (hasVariants !== Boolean(item.variantId)) {
-          throw new CheckoutError(`Please choose a colour for "${product.name}" and try again.`);
+          throw new CheckoutError(`Please choose a colour or design for "${product.name}" and try again.`);
         }
         if (item.variantId && !product.variants.some((v) => v.id === item.variantId)) {
           throw new CheckoutError(`One of the colours in your cart is no longer available.`);

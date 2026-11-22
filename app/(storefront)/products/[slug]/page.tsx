@@ -15,6 +15,7 @@ import ReviewList from "@/components/ReviewList";
 import ReviewForm from "@/components/ReviewForm";
 import ProductTryOnButton from "@/components/ProductTryOnButton";
 import { tryOnPlacementFor } from "@/lib/tryon";
+import { optionKindFor } from "@/lib/variant-colors";
 
 export const revalidate = 300;
 
@@ -77,7 +78,7 @@ export default async function ProductPage({ params }: Props) {
           },
           include: {
             images: { orderBy: { sortOrder: "asc" }, take: 2 },
-            _count: { select: { variants: true } },
+            variants: { select: { color: true } },
           },
           take: 4,
         })
@@ -260,7 +261,8 @@ export default async function ProductPage({ params }: Props) {
                   special: p.isFeatured,
                   coverImage: p.images[0]?.url ?? "/placeholder-jewelry.svg",
                   coverImageAlt: p.images[0]?.alt ?? p.name,
-                  colorCount: p._count.variants || undefined,
+                  colorCount: p.variants.length || undefined,
+                  optionKind: optionKindFor(p.variants.map((o) => o.color)),
                 }}
               />
             ))}

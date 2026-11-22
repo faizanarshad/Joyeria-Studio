@@ -29,6 +29,22 @@ const SWATCHES: Record<string, string> = {
   emerald: "#127a46",
 };
 
+const key = (name: string) => name.trim().toLowerCase().replace("multicolor", "multicolour");
+
 export function swatchFor(color: string): string {
-  return SWATCHES[color.trim().toLowerCase().replace("multicolor", "multicolour")] ?? "#b8b2a8";
+  return SWATCHES[key(color)] ?? "#b8b2a8";
 }
+
+// Options can be colours (Navrang: Black, Pink…) or designs (a set of rings:
+// Heart, Butterfly…). A product counts as a colour product if any option is a
+// known colour, so a colour list with one unlisted shade still reads as
+// colours; only when none is a colour does it switch to styles, which show as
+// photo thumbnails instead of grey dots.
+export type OptionKind = "colour" | "style";
+
+export function optionKindFor(names: string[]): OptionKind {
+  return names.some((n) => key(n) in SWATCHES) ? "colour" : "style";
+}
+
+export const optionNoun = (kind: OptionKind, plural = false) =>
+  kind === "colour" ? (plural ? "colours" : "colour") : plural ? "designs" : "design";

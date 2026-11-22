@@ -1,3 +1,5 @@
+import type { OptionKind } from "@/lib/variant-colors";
+
 export type RGB = { r: number; g: number; b: number };
 export type Warmth = "warm" | "cool" | "neutral";
 export type Depth = "light" | "dark" | "medium";
@@ -176,6 +178,7 @@ export type StyleProduct = {
   occasionTags: string[];
   colorTags: string[];
   colorCount?: number;
+  optionKind?: OptionKind;
 };
 
 // --- Colour families -------------------------------------------------------

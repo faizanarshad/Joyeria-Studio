@@ -1,10 +1,11 @@
 "use client";
 
 import { createContext, useContext, useState } from "react";
+import Image from "next/image";
 import Gallery from "@/components/Gallery";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { productWhatsAppMessage } from "@/lib/whatsapp";
-import { swatchFor } from "@/lib/variant-colors";
+import { optionKindFor, swatchFor } from "@/lib/variant-colors";
 
 export type VariantOption = {
   id: string;
@@ -64,16 +65,41 @@ export function ColorSwatches() {
   const state = useSelectedVariant();
   if (!state || state.variants.length === 0) return null;
   const { variants, selected, select } = state;
+  const kind = optionKindFor(variants.map((v) => v.color));
+  const label = kind === "colour" ? "Colour" : "Design";
 
   return (
     <div className="mt-5">
       <p className="text-sm text-foreground">
-        Colour: <span className="font-medium">{selected?.color}</span>
+        {label}: <span className="font-medium">{selected?.color}</span>
         {selected && selected.stock === 0 && <span className="ml-2 text-muted">(sold out)</span>}
       </p>
-      <div className="mt-2 flex flex-wrap gap-2" role="radiogroup" aria-label="Colour">
+      <div className="mt-2 flex flex-wrap gap-2" role="radiogroup" aria-label={label}>
         {variants.map((v) => {
           const isSelected = v.id === selected?.id;
+          if (kind === "style") {
+            // Designs have no colour to show, so the button is the design's photo.
+            return (
+              <button
+                key={v.id}
+                type="button"
+                role="radio"
+                aria-checked={isSelected}
+                aria-label={`${v.color}${v.stock === 0 ? " (sold out)" : ""}`}
+                title={v.color}
+                onClick={() => select(v.id)}
+                className={`relative h-[60px] w-12 overflow-hidden rounded-md border-2 bg-rose-soft transition ${
+                  isSelected ? "border-foreground" : "border-border hover:border-foreground/40"
+                } ${v.stock === 0 ? "opacity-40" : ""}`}
+              >
+                {v.imageUrl ? (
+                  <Image src={v.imageUrl} alt="" fill sizes="48px" className="object-cover" />
+                ) : (
+                  <span className="text-[10px] leading-tight">{v.color}</span>
+                )}
+              </button>
+            );
+          }
           return (
             <button
               key={v.id}

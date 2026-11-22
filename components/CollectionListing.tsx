@@ -4,6 +4,7 @@ import ProductCard from "@/components/ProductCard";
 import CollectionFilters from "@/components/CollectionFilters";
 import type { CollectionTab } from "@/lib/collection-tabs";
 import { sectionHref } from "@/lib/collection-sections";
+import { optionKindFor } from "@/lib/variant-colors";
 
 type Props = {
   collection: { id: string; slug: string; name: string; description: string | null };
@@ -31,7 +32,7 @@ export default async function CollectionListing({ collection, section, sort }: P
     },
     include: {
       images: { orderBy: { sortOrder: "asc" }, take: 2 },
-      _count: { select: { variants: true } },
+      variants: { select: { color: true } },
     },
     orderBy,
   });
@@ -87,7 +88,8 @@ export default async function CollectionListing({ collection, section, sort }: P
               special: product.isFeatured,
               coverImage: product.images[0]?.url ?? "/placeholder-jewelry.svg",
               coverImageAlt: product.images[0]?.alt ?? product.name,
-              colorCount: product._count.variants || undefined,
+              colorCount: product.variants.length || undefined,
+              optionKind: optionKindFor(product.variants.map((o) => o.color)),
             }}
           />
         ))}
