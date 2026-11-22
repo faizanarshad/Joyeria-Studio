@@ -505,14 +505,14 @@
     "sku": "JS-RNG-019",
     "collectionSlug": "daily-wear",
     "category": "Rings",
-    "description": "Dainty gold-plated adjustable rings finished with white pearls and fine zircon pavé, in six designs: a single pearl on a pavé wrap, a pearl initial, a pearl bar, a stacked pearl band, a pearl chain band and an open row of pearls. Light enough to wear every day, alone or stacked.",
+    "description": "Dainty gold-plated adjustable rings finished with white pearls and fine zircon pavé, in seven designs: a single pearl on a pavé wrap, a pearl chain band, a pearl-studded crescent and star, a pearl initial, a pearl bar, a stacked pearl band and an open row of pearls. Light enough to wear every day, alone or stacked.",
     "material": "Pearl & Zircon",
     "finish": "Gold-plated",
     "careNote": "Keep away from water and perfume, take off before washing hands, and store in a pouch so the stones and pearls do not scratch.",
     "price": 260,
     "compareAtPrice": null,
     "costPrice": null,
-    "stock": 18,
+    "stock": 21,
     "occasionTags": [
       "Daily"
     ],
@@ -525,14 +525,24 @@
     "isFeatured": false,
     "images": [
       {
-        "url": "/products/safaid-moti-pearl-rings-solitaire-logo.jpg",
-        "alt": "Gold-plated pavé wrap ring with a single white pearl on rose petals"
+        "url": "/products/safaid-moti-pearl-rings-solitaire-styled-logo.jpg",
+        "alt": "Gold-plated pavé wrap ring with a single white pearl on burlap with dried roses and loose pearls"
       }
     ],
     "variants": [
       {
         "color": "Pearl Solitaire",
-        "imageUrl": "/products/safaid-moti-pearl-rings-solitaire-logo.jpg",
+        "imageUrl": "/products/safaid-moti-pearl-rings-solitaire-styled-logo.jpg",
+        "stock": 3
+      },
+      {
+        "color": "Pearl Chain Band",
+        "imageUrl": "/products/safaid-moti-pearl-rings-chain-styled-logo.jpg",
+        "stock": 3
+      },
+      {
+        "color": "Crescent & Star",
+        "imageUrl": "/products/safaid-moti-pearl-rings-crescent-star-styled-logo.jpg",
         "stock": 3
       },
       {
@@ -548,11 +558,6 @@
       {
         "color": "Stacked Pearl Band",
         "imageUrl": "/products/safaid-moti-pearl-rings-stack-logo.jpg",
-        "stock": 3
-      },
-      {
-        "color": "Pearl Chain Band",
-        "imageUrl": "/products/safaid-moti-pearl-rings-chain-logo.jpg",
         "stock": 3
       },
       {
