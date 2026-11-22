@@ -9,7 +9,7 @@
     "material": "Coloured Stones & Pearl",
     "finish": "Gold-plated",
     "careNote": "Keep away from water and perfume, and store in a pouch so the stones and pearls do not scratch.",
-    "price": 850,
+    "price": 390,
     "compareAtPrice": null,
     "costPrice": null,
     "stock": 8,
@@ -87,7 +87,7 @@
     "material": "Oxidised Alloy & Beads",
     "finish": "Oxidised silver",
     "careNote": "Keep away from water and perfume, and store in a pouch so the oxidised finish and beads stay fresh.",
-    "price": 850,
+    "price": 390,
     "compareAtPrice": null,
     "costPrice": null,
     "stock": 33,
@@ -185,7 +185,7 @@
     "material": "Alloy & Pearl",
     "finish": "Gold-plated",
     "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store in a pouch so the chain doesn't tangle.",
-    "price": 480,
+    "price": 780,
     "compareAtPrice": null,
     "costPrice": null,
     "stock": 5,
@@ -218,7 +218,7 @@
     "material": "Alloy",
     "finish": "Gold-plated",
     "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store in a pouch so the chain doesn't tangle.",
-    "price": 430,
+    "price": 460,
     "compareAtPrice": null,
     "costPrice": null,
     "stock": 5,
@@ -249,7 +249,7 @@
     "material": "Alloy, Crystal & Pearl",
     "finish": "Silver-tone",
     "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store in a pouch.",
-    "price": 550,
+    "price": 400,
     "compareAtPrice": null,
     "costPrice": null,
     "stock": 5,
@@ -302,39 +302,6 @@
       {
         "url": "/products/neelam-pearl-bow-stud-earrings-logo.jpg",
         "alt": "Silver-tone crystal bow stud earrings with pearl flowers and blue stones on rustic wood"
-      }
-    ],
-    "variants": []
-  },
-  {
-    "name": "Lehar Pearl Ribbon Stud Earrings",
-    "slug": "lehar-pearl-ribbon-stud-earrings",
-    "sku": "JS-EAR-014",
-    "collectionSlug": "daily-wear",
-    "category": "Earrings",
-    "description": "A twisted silver-tone ribbon (lehar) set with baguette crystals, topped with a round pearl. A light, easy stud for everyday wear.",
-    "material": "Alloy, Crystal & Pearl",
-    "finish": "Silver-tone",
-    "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store in a pouch.",
-    "price": 450,
-    "compareAtPrice": null,
-    "costPrice": null,
-    "stock": 5,
-    "occasionTags": [
-      "Daily",
-      "Office"
-    ],
-    "colorTags": [
-      "Silver",
-      "White"
-    ],
-    "tryOnImageUrl": null,
-    "isActive": true,
-    "isFeatured": false,
-    "images": [
-      {
-        "url": "/products/lehar-pearl-ribbon-stud-earrings-logo.jpg",
-        "alt": "Silver-tone pearl ribbon stud earring with baguette crystals on green suede"
       }
     ],
     "variants": []
@@ -440,7 +407,7 @@
     "material": "Alloy, Pearl & Crystal",
     "finish": "Gold-tone",
     "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store each pair separately so they don't scratch.",
-    "price": 850,
+    "price": 470,
     "compareAtPrice": null,
     "costPrice": null,
     "stock": 5,
@@ -473,7 +440,7 @@
     "material": "Enamelled Alloy & Beads",
     "finish": "Matte enamel, gold-tone hooks",
     "careNote": "Keep away from water and perfume, and store in a pouch so the enamel and beads do not chip.",
-    "price": 650,
+    "price": 350,
     "compareAtPrice": null,
     "costPrice": null,
     "stock": 18,
