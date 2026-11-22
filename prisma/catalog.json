@@ -546,18 +546,18 @@
         "stock": 3
       },
       {
-        "color": "Pearl Initial",
-        "imageUrl": "/products/safaid-moti-pearl-rings-initial-logo.jpg",
-        "stock": 3
-      },
-      {
         "color": "Pearl Bar",
-        "imageUrl": "/products/safaid-moti-pearl-rings-bar-logo.jpg",
+        "imageUrl": "/products/safaid-moti-pearl-rings-bar-styled-logo.jpg",
         "stock": 3
       },
       {
         "color": "Stacked Pearl Band",
-        "imageUrl": "/products/safaid-moti-pearl-rings-stack-logo.jpg",
+        "imageUrl": "/products/safaid-moti-pearl-rings-stack-styled-logo.jpg",
+        "stock": 3
+      },
+      {
+        "color": "Pearl Initial",
+        "imageUrl": "/products/safaid-moti-pearl-rings-initial-logo.jpg",
         "stock": 3
       },
       {
