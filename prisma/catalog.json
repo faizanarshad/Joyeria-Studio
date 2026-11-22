@@ -568,14 +568,14 @@
     "sku": "JS-RNG-020",
     "collectionSlug": "daily-wear",
     "category": "Rings",
-    "description": "Small gold-plated adjustable rings for little hands, set with sparkling zircon, in four designs: butterfly, heart, flower and twin disc. Sized for kids, easy to slip on, and pretty enough for Eid and family gatherings.",
+    "description": "Small gold-plated adjustable rings for little hands, set with sparkling zircon, in five designs: butterfly, heart, open hearts, flower and twin disc. Sized for kids, easy to slip on, and pretty enough for Eid and family gatherings.",
     "material": "Zircon",
     "finish": "Gold-plated",
     "careNote": "Keep away from water and perfume, take off before washing hands, and store in a pouch so the stones and pearls do not scratch.",
     "price": 182,
     "compareAtPrice": null,
     "costPrice": null,
-    "stock": 12,
+    "stock": 15,
     "occasionTags": [
       "Daily"
     ],
@@ -587,19 +587,24 @@
     "isFeatured": false,
     "images": [
       {
-        "url": "/products/nanhi-crystal-rings-butterfly-logo.jpg",
-        "alt": "Small gold-plated zircon butterfly ring on rose petals"
+        "url": "/products/nanhi-crystal-rings-butterfly-hd-logo.jpg",
+        "alt": "Small gold-plated zircon butterfly ring"
       }
     ],
     "variants": [
       {
         "color": "Butterfly",
-        "imageUrl": "/products/nanhi-crystal-rings-butterfly-logo.jpg",
+        "imageUrl": "/products/nanhi-crystal-rings-butterfly-hd-logo.jpg",
         "stock": 3
       },
       {
         "color": "Heart",
-        "imageUrl": "/products/nanhi-crystal-rings-heart-logo.jpg",
+        "imageUrl": "/products/nanhi-crystal-rings-heart-hd-logo.jpg",
+        "stock": 3
+      },
+      {
+        "color": "Open Hearts",
+        "imageUrl": "/products/nanhi-crystal-rings-open-hearts-hd-logo.jpg",
         "stock": 3
       },
       {
@@ -609,7 +614,7 @@
       },
       {
         "color": "Twin Disc",
-        "imageUrl": "/products/nanhi-crystal-rings-twin-disc-logo.jpg",
+        "imageUrl": "/products/nanhi-crystal-rings-twin-disc-hd-logo.jpg",
         "stock": 3
       }
     ]
