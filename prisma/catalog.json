@@ -505,14 +505,14 @@
     "sku": "JS-RNG-019",
     "collectionSlug": "daily-wear",
     "category": "Rings",
-    "description": "Dainty gold-plated adjustable rings finished with white pearls and fine zircon pavé, in eight designs: a single pearl on a pavé wrap, a pearl chain band, a pearl-studded crescent and star, a pearl bar, a stacked pearl band, an open row of pearls, a pearl-and-pavé wing with a pearl drop, and a pearl initial. Light enough to wear every day, alone or stacked.",
+    "description": "Dainty gold-plated adjustable rings finished with white pearls and fine zircon pavé, in nine designs: a single pearl on a pavé wrap, a pearl chain band, a pearl-studded crescent and star, a pearl bar, a stacked pearl band, an open row of pearls, a pearl-and-pavé wing with a pearl drop, a cluster of mixed-size pearls, and a pearl initial. Light enough to wear every day, alone or stacked.",
     "material": "Pearl & Zircon",
     "finish": "Gold-plated",
     "careNote": "Keep away from water and perfume, take off before washing hands, and store in a pouch so the stones and pearls do not scratch.",
     "price": 260,
     "compareAtPrice": null,
     "costPrice": null,
-    "stock": 24,
+    "stock": 27,
     "occasionTags": [
       "Daily"
     ],
@@ -563,6 +563,11 @@
       {
         "color": "Pearl Wing",
         "imageUrl": "/products/safaid-moti-pearl-rings-wing-styled-logo.jpg",
+        "stock": 3
+      },
+      {
+        "color": "Pearl Cluster",
+        "imageUrl": "/products/safaid-moti-pearl-rings-cluster-styled-logo.jpg",
         "stock": 3
       },
       {
