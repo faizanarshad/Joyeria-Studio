@@ -587,34 +587,34 @@
     "isFeatured": false,
     "images": [
       {
-        "url": "/products/nanhi-crystal-rings-butterfly-hd-logo.jpg",
-        "alt": "Small gold-plated zircon butterfly ring"
+        "url": "/products/nanhi-crystal-rings-butterfly-styled-logo.jpg",
+        "alt": "Small gold-plated zircon butterfly ring in a green velvet ring box with a dried yellow rose"
       }
     ],
     "variants": [
       {
         "color": "Butterfly",
-        "imageUrl": "/products/nanhi-crystal-rings-butterfly-hd-logo.jpg",
+        "imageUrl": "/products/nanhi-crystal-rings-butterfly-styled-logo.jpg",
         "stock": 3
       },
       {
         "color": "Heart",
-        "imageUrl": "/products/nanhi-crystal-rings-heart-hd-logo.jpg",
+        "imageUrl": "/products/nanhi-crystal-rings-heart-styled-logo.jpg",
         "stock": 3
       },
       {
         "color": "Open Hearts",
-        "imageUrl": "/products/nanhi-crystal-rings-open-hearts-hd-logo.jpg",
+        "imageUrl": "/products/nanhi-crystal-rings-open-hearts-styled-logo.jpg",
         "stock": 3
       },
       {
         "color": "Flower",
-        "imageUrl": "/products/nanhi-crystal-rings-flower-hd-logo.jpg",
+        "imageUrl": "/products/nanhi-crystal-rings-flower-styled-logo.jpg",
         "stock": 3
       },
       {
         "color": "Twin Disc",
-        "imageUrl": "/products/nanhi-crystal-rings-twin-disc-hd-logo.jpg",
+        "imageUrl": "/products/nanhi-crystal-rings-twin-disc-styled-logo.jpg",
         "stock": 3
       }
     ]
