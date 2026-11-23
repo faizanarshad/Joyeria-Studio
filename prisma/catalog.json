@@ -1867,6 +1867,38 @@
     "variants": []
   },
   {
+    "name": "Riwayat Beaded Gold Bangle Set",
+    "slug": "riwayat-beaded-gold-bangle-set",
+    "sku": "JS-BNG-020",
+    "collectionSlug": "bridal",
+    "category": "Bangles",
+    "description": "A set of four gold-plated bangles worked all over in fine granulated beads (dana), with ribbed bead bands and small plain gold accents. A traditional look for weddings, mehndi and Eid.",
+    "material": "Alloy",
+    "finish": "Polished gold-plated",
+    "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store each bangle in its box so the beadwork doesn't scratch.",
+    "price": 2730,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 3,
+    "occasionTags": [
+      "Wedding",
+      "Mehndi"
+    ],
+    "colorTags": [
+      "Gold"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/riwayat-beaded-gold-bangle-set-logo.jpg",
+        "alt": "Four gold bangles with granulated bead work on green velvet with dried flowers"
+      }
+    ],
+    "variants": []
+  },
+  {
     "name": "Tara Five-Stone Silver Ring",
     "slug": "tara-five-stone-silver-ring",
     "sku": "JS-RNG-001",
