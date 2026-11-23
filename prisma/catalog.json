@@ -443,7 +443,7 @@
     "price": 350,
     "compareAtPrice": null,
     "costPrice": null,
-    "stock": 18,
+    "stock": 17,
     "occasionTags": [
       "Daily",
       "Mehndi"
@@ -495,7 +495,7 @@
       {
         "color": "Black",
         "imageUrl": "/products/gulrang-jhumki-earrings-black-v2-logo.jpg",
-        "stock": 3
+        "stock": 2
       }
     ]
   },
