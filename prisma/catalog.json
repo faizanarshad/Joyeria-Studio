@@ -1839,6 +1839,37 @@
     "variants": []
   },
   {
+    "name": "Sona Brushed Gold Bangle Set",
+    "slug": "sona-brushed-gold-bangle-set",
+    "sku": "JS-BNG-019",
+    "collectionSlug": "bridal",
+    "category": "Bangles",
+    "description": "A set of six plain gold-plated bangles with a soft brushed finish that catches the light. Classic and versatile: wear the full stack with bridal or festive outfits, or split them between both wrists.",
+    "material": "Alloy",
+    "finish": "Brushed gold-plated",
+    "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store the set in its box so the finish doesn't scratch.",
+    "price": 2231,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 3,
+    "occasionTags": [
+      "Wedding"
+    ],
+    "colorTags": [
+      "Gold"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/sona-brushed-gold-bangle-set-logo.jpg",
+        "alt": "Stack of six brushed gold bangles on green velvet with dried flowers"
+      }
+    ],
+    "variants": []
+  },
+  {
     "name": "Tara Five-Stone Silver Ring",
     "slug": "tara-five-stone-silver-ring",
     "sku": "JS-RNG-001",
