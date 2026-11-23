@@ -2529,39 +2529,6 @@
     "variants": []
   },
   {
-    "name": "Jodi Crystal Open Ring",
-    "slug": "jodi-crystal-open-ring",
-    "sku": "JS-RNG-021",
-    "collectionSlug": "western",
-    "category": "Rings",
-    "description": "A modern two-stone open ring: a round brilliant-cut crystal and a small square-cut crystal face each other across a slim gold-tone band. Adjustable to fit, and striking on its own or stacked.",
-    "material": "Stainless Steel & Zircon",
-    "finish": "Gold-tone, anti-tarnish",
-    "careNote": "Stainless steel with an anti-tarnish finish: it won't fade or darken with everyday wear. Wipe with a soft cloth and store in a pouch.",
-    "price": 520,
-    "compareAtPrice": null,
-    "costPrice": null,
-    "stock": 3,
-    "occasionTags": [
-      "Daily",
-      "Party Wear"
-    ],
-    "colorTags": [
-      "Gold",
-      "White"
-    ],
-    "tryOnImageUrl": null,
-    "isActive": true,
-    "isFeatured": false,
-    "images": [
-      {
-        "url": "/products/jodi-crystal-open-ring-logo.jpg",
-        "alt": "Gold-tone open ring with a round crystal and a small square crystal on a wooden table beside a dried yellow rose"
-      }
-    ],
-    "variants": []
-  },
-  {
     "name": "Jaali Gold Lattice Bangle",
     "slug": "jaali-gold-lattice-bangle",
     "sku": "JS-BNG-006",
@@ -3088,6 +3055,39 @@
       {
         "url": "/products/noor-kundan-teardrop-single-earring-logo.jpg",
         "alt": "Single gold-tone kundan teardrop earring with a ruby-red drop on green velvet with jasmine"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Jodi Crystal Single Earring",
+    "slug": "jodi-crystal-single-earring",
+    "sku": "JS-EAR-022",
+    "collectionSlug": "western",
+    "category": "Earrings",
+    "description": "A modern two-stone earring: a round brilliant-cut crystal and a small square-cut crystal face each other across a slim gold-tone open hoop. Sold as one piece, to wear on its own or mixed with another earring.",
+    "material": "Stainless Steel & Zircon",
+    "finish": "Gold-tone, anti-tarnish",
+    "careNote": "Stainless steel with an anti-tarnish finish: it won't fade or darken with everyday wear. Wipe with a soft cloth and store in a pouch.",
+    "price": 520,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 3,
+    "occasionTags": [
+      "Daily",
+      "Party Wear"
+    ],
+    "colorTags": [
+      "Gold",
+      "White"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/jodi-crystal-single-earring-logo.jpg",
+        "alt": "Gold-tone open hoop earring with a round crystal and a small square crystal on a wooden table beside a dried yellow rose"
       }
     ],
     "variants": []
