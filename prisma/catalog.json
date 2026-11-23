@@ -642,7 +642,7 @@
     "price": 15535,
     "compareAtPrice": null,
     "costPrice": null,
-    "stock": 1,
+    "stock": 3,
     "occasionTags": [
       "Wedding"
     ],
@@ -674,7 +674,7 @@
     "price": 11297,
     "compareAtPrice": null,
     "costPrice": null,
-    "stock": 1,
+    "stock": 3,
     "occasionTags": [
       "Wedding"
     ],
@@ -706,7 +706,7 @@
     "price": 15574,
     "compareAtPrice": null,
     "costPrice": null,
-    "stock": 1,
+    "stock": 3,
     "occasionTags": [
       "Wedding"
     ],
@@ -737,7 +737,7 @@
     "price": 2028,
     "compareAtPrice": null,
     "costPrice": null,
-    "stock": 1,
+    "stock": 3,
     "occasionTags": [
       "Wedding",
       "Party Wear"
@@ -770,7 +770,7 @@
     "price": 1040,
     "compareAtPrice": null,
     "costPrice": null,
-    "stock": 1,
+    "stock": 3,
     "occasionTags": [
       "Wedding",
       "Party Wear"
@@ -802,7 +802,7 @@
     "price": 13624,
     "compareAtPrice": null,
     "costPrice": null,
-    "stock": 1,
+    "stock": 3,
     "occasionTags": [
       "Wedding"
     ],
@@ -834,7 +834,7 @@
     "price": 1950,
     "compareAtPrice": null,
     "costPrice": null,
-    "stock": 1,
+    "stock": 3,
     "occasionTags": [
       "Mehndi",
       "Party Wear"
@@ -867,7 +867,7 @@
     "price": 3250,
     "compareAtPrice": null,
     "costPrice": null,
-    "stock": 1,
+    "stock": 3,
     "occasionTags": [
       "Mehndi",
       "Party Wear"
@@ -1517,7 +1517,7 @@
     "price": 4420,
     "compareAtPrice": null,
     "costPrice": null,
-    "stock": 3,
+    "stock": 2,
     "occasionTags": [
       "Party Wear"
     ],
@@ -2074,7 +2074,7 @@
     "price": 676,
     "compareAtPrice": null,
     "costPrice": null,
-    "stock": 5,
+    "stock": 4,
     "occasionTags": [
       "Daily",
       "Office",
