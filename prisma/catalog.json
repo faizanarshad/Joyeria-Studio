@@ -1738,47 +1738,15 @@
     "variants": []
   },
   {
-    "name": "Moti Dana Gold Bangle Set",
-    "slug": "moti-dana-gold-bangle-set",
+    "name": "Gulposh Crystal Gold Bangle Set",
+    "slug": "gulposh-crystal-gold-bangle-set",
     "sku": "JS-BNG-016",
     "collectionSlug": "bridal",
     "category": "Bangles",
-    "description": "A stack of gold-plated bangles lined with ribbed gold beads (moti dana) and openwork between them, for a rich, full bridal look.",
-    "material": "Alloy",
-    "finish": "Gold-plated",
-    "careNote": "Keep away from water and perfume, wipe gently with a soft dry cloth after wear, and store in the box so the finish doesn't scratch.",
-    "price": 2730,
-    "compareAtPrice": null,
-    "costPrice": null,
-    "stock": 3,
-    "occasionTags": [
-      "Wedding",
-      "Party Wear"
-    ],
-    "colorTags": [
-      "Gold"
-    ],
-    "tryOnImageUrl": null,
-    "isActive": true,
-    "isFeatured": false,
-    "images": [
-      {
-        "url": "/products/moti-dana-gold-bangle-set-v2-hd-logo.jpg",
-        "alt": "Stack of gold-plated beaded bangles on green velvet with dried roses, in a gold frame"
-      }
-    ],
-    "variants": []
-  },
-  {
-    "name": "Lalima Ruby Stone Gold Bangle Set",
-    "slug": "lalima-ruby-stone-gold-bangle-set",
-    "sku": "JS-BNG-017",
-    "collectionSlug": "bridal",
-    "category": "Bangles",
-    "description": "Textured gold-plated bangles set with sparkling zircon and square ruby-red stones (lalima), stacked for a festive bridal glow.",
-    "material": "Alloy, Zircon & Ruby-red Stones",
-    "finish": "Gold-plated",
-    "careNote": "Keep away from water and perfume, wipe gently with a soft dry cloth after wear, and store in the box so the finish doesn't scratch.",
+    "description": "A set of four gold-plated bangles thickly set with clusters of crystal flowers and twisted silver-tone accents, edged in tiny beads. Rich and sparkling for barat, walima and festive evenings.",
+    "material": "Alloy with crystal stones",
+    "finish": "Gold-plated with silver-tone accents",
+    "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store each bangle in its box so the stones don't scratch.",
     "price": 2730,
     "compareAtPrice": null,
     "costPrice": null,
@@ -1789,7 +1757,7 @@
     ],
     "colorTags": [
       "Gold",
-      "Red",
+      "Silver",
       "White"
     ],
     "tryOnImageUrl": null,
@@ -1797,26 +1765,22 @@
     "isFeatured": false,
     "images": [
       {
-        "url": "/products/lalima-ruby-stone-gold-bangle-set-v2-hd-logo.jpg",
-        "alt": "Gold-plated bangles with zircon and ruby-red stones on green velvet with roses"
-      },
-      {
-        "url": "/products/lalima-ruby-stone-gold-bangle-set-v2b-hd-logo.jpg",
-        "alt": "Gold-plated bangles with zircon and ruby-red stones fanned out on green velvet"
+        "url": "/products/gulposh-crystal-gold-bangle-set-logo.jpg",
+        "alt": "Four gold bangles set with crystal flower clusters on green velvet with dried roses"
       }
     ],
     "variants": []
   },
   {
-    "name": "Bel Bunai Gold Bangle Set",
-    "slug": "bel-bunai-gold-bangle-set",
-    "sku": "JS-BNG-018",
+    "name": "Nazakat Filigree Gold Bangle Set",
+    "slug": "nazakat-filigree-gold-bangle-set",
+    "sku": "JS-BNG-017",
     "collectionSlug": "bridal",
     "category": "Bangles",
-    "description": "A set of gold-plated bangles with a braided (bunai) texture between granulated gold bands, stacked for a classic bridal look.",
+    "description": "A set of six gold-plated bangles made of linked filigree ovals with a fine mesh (jaali) texture. Light, bright and traditional; stack them all or share them between both wrists.",
     "material": "Alloy",
-    "finish": "Gold-plated",
-    "careNote": "Keep away from water and perfume, wipe gently with a soft dry cloth after wear, and store in the box so the finish doesn't scratch.",
+    "finish": "Polished gold-plated",
+    "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store each bangle in its box so the stones don't scratch.",
     "price": 2730,
     "compareAtPrice": null,
     "costPrice": null,
@@ -1832,8 +1796,41 @@
     "isFeatured": false,
     "images": [
       {
-        "url": "/products/bel-bunai-gold-bangle-set-v2-hd-logo.jpg",
-        "alt": "Stack of braided gold-plated bangles on green velvet with dried roses"
+        "url": "/products/nazakat-filigree-gold-bangle-set-logo.jpg",
+        "alt": "Six gold filigree bangles of linked mesh ovals on green velvet with dried flowers"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Shahkar Antique Stone Bangle Set",
+    "slug": "shahkar-antique-stone-bangle-set",
+    "sku": "JS-BNG-018",
+    "collectionSlug": "bridal",
+    "category": "Bangles",
+    "description": "A set of six antique-gold bangles carved in an openwork pattern and banded with diagonal rows of silver-tone stones. A regal, heirloom look for weddings and formal dawats.",
+    "material": "Alloy with crystal stones",
+    "finish": "Antique gold-plated",
+    "careNote": "Keep away from water and perfume, wipe with a soft dry cloth after wear, and store each bangle in its box so the stones don't scratch.",
+    "price": 2730,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 3,
+    "occasionTags": [
+      "Wedding",
+      "Party Wear"
+    ],
+    "colorTags": [
+      "Gold",
+      "Silver"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/shahkar-antique-stone-bangle-set-logo.jpg",
+        "alt": "Six antique gold bangles with diagonal rows of silver stones on green velvet with dried roses"
       }
     ],
     "variants": []
