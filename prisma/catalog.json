@@ -3255,5 +3255,135 @@
       }
     ],
     "variants": []
+  },
+  {
+    "name": "Resham Gold Snake Chain Bracelet",
+    "slug": "resham-gold-snake-chain-bracelet",
+    "sku": "JS-BRC-007",
+    "collectionSlug": "western",
+    "category": "Bracelets",
+    "description": "A sleek, fluid snake chain that lies smooth on the wrist like silk (resham), with an adjustable extender chain. Minimal and polished; perfect for everyday wear or layering.",
+    "material": "Stainless Steel",
+    "finish": "Gold-tone, anti-tarnish",
+    "careNote": "Stainless steel with an anti-tarnish finish: it won't fade or darken with everyday wear. Wipe with a soft cloth and store in a pouch.",
+    "price": 650,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 3,
+    "occasionTags": [
+      "Daily",
+      "Office"
+    ],
+    "colorTags": [
+      "Gold"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/resham-gold-snake-chain-bracelet-logo.jpg",
+        "alt": "Thin gold snake chain bracelet on an open vintage book with dried yellow roses"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Shajar Tree of Life Bracelet",
+    "slug": "shajar-tree-of-life-bracelet",
+    "sku": "JS-BRC-008",
+    "collectionSlug": "western",
+    "category": "Bracelets",
+    "description": "A fine gold-tone chain set with a pavé-edged tree of life (shajar) disc between two open circles, with an adjustable extender. A meaningful, delicate piece for everyday wear or gifting.",
+    "material": "Stainless Steel & Zircon",
+    "finish": "Gold-tone, anti-tarnish",
+    "careNote": "Stainless steel with an anti-tarnish finish: it won't fade or darken with everyday wear. Wipe with a soft cloth and store in a pouch.",
+    "price": 650,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 3,
+    "occasionTags": [
+      "Daily",
+      "Office"
+    ],
+    "colorTags": [
+      "Gold"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/shajar-tree-of-life-bracelet-logo.jpg",
+        "alt": "Gold chain bracelet with a tree of life disc between two open circles on wood beside green velvet and yellow flowers"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Durr Pearl Station Bracelet",
+    "slug": "durr-pearl-station-bracelet",
+    "sku": "JS-BRC-009",
+    "collectionSlug": "western",
+    "category": "Bracelets",
+    "description": "Six bezel-set faux pearls (durr) spaced along a fine gold-tone chain, with an adjustable extender. Soft and elegant for office days, dawats and weddings.",
+    "material": "Stainless Steel & Faux Pearl",
+    "finish": "Gold-tone, anti-tarnish",
+    "careNote": "Stainless steel with an anti-tarnish finish: it won't fade or darken with everyday wear. Wipe with a soft cloth and store in a pouch.",
+    "price": 650,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 3,
+    "occasionTags": [
+      "Daily",
+      "Office",
+      "Party Wear"
+    ],
+    "colorTags": [
+      "Gold",
+      "White"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/durr-pearl-station-bracelet-logo.jpg",
+        "alt": "Gold chain bracelet set with six white pearls on green velvet and wood with dried yellow roses"
+      }
+    ],
+    "variants": []
+  },
+  {
+    "name": "Zanjeer Gold Curb Chain Bracelet",
+    "slug": "zanjeer-gold-curb-chain-bracelet",
+    "sku": "JS-BRC-010",
+    "collectionSlug": "western",
+    "category": "Bracelets",
+    "description": "A bold gold-tone curb chain (zanjeer) with flat, polished links and a sturdy lobster clasp. A confident statement worn alone or stacked with finer chains.",
+    "material": "Stainless Steel",
+    "finish": "Gold-tone, anti-tarnish",
+    "careNote": "Stainless steel with an anti-tarnish finish: it won't fade or darken with everyday wear. Wipe with a soft cloth and store in a pouch.",
+    "price": 650,
+    "compareAtPrice": null,
+    "costPrice": null,
+    "stock": 3,
+    "occasionTags": [
+      "Daily",
+      "Party Wear"
+    ],
+    "colorTags": [
+      "Gold"
+    ],
+    "tryOnImageUrl": null,
+    "isActive": true,
+    "isFeatured": false,
+    "images": [
+      {
+        "url": "/products/zanjeer-gold-curb-chain-bracelet-logo.jpg",
+        "alt": "Chunky gold curb chain bracelet on wood beside green velvet and dried yellow flowers"
+      }
+    ],
+    "variants": []
   }
 ]
