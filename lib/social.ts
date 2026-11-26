@@ -2,7 +2,7 @@
 // them (e.g. for a test deploy); otherwise the studio's own accounts are used,
 // so the links work without any hosting configuration.
 export const INSTAGRAM_URL =
-  process.env.NEXT_PUBLIC_INSTAGRAM_URL || "https://www.instagram.com/joyeriastudio22/";
+  process.env.NEXT_PUBLIC_INSTAGRAM_URL || "https://www.instagram.com/joyeria.studio/";
 
 export const FACEBOOK_URL = process.env.NEXT_PUBLIC_FACEBOOK_URL || "";
 
