@@ -9,6 +9,7 @@ import FloatingPetals from "@/components/motion/FloatingPetals";
 import OccasionSlider from "@/components/OccasionSlider";
 import type { ProductCardData } from "@/lib/types";
 import { optionKindFor } from "@/lib/variant-colors";
+import { INSTAGRAM_URL, instagramHandle } from "@/lib/social";
 
 export const revalidate = 300;
 
@@ -109,7 +110,7 @@ export default async function Home() {
   ]);
 
 
-  const instagramUrl = process.env.NEXT_PUBLIC_INSTAGRAM_URL;
+  const instagramUrl = INSTAGRAM_URL;
 
   return (
     <div>
@@ -279,7 +280,7 @@ export default async function Home() {
             rel="noopener noreferrer"
             className="mt-2 inline-block font-display text-2xl text-foreground hover:text-rose"
           >
-            @joyeriastudio on Instagram
+            {instagramHandle(instagramUrl)} on Instagram
           </a>
           <div className="mt-8 grid grid-cols-3 gap-2 sm:grid-cols-6">
             {recentImages.map((img, i) => (

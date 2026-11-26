@@ -1,6 +1,7 @@
 import Link from "next/link";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { buildWhatsAppLink, STUDIO_WHATSAPP_DISPLAY, STUDIO_WHATSAPP_NUMBER } from "@/lib/whatsapp";
+import { INSTAGRAM_URL, FACEBOOK_URL } from "@/lib/social";
 
 export const metadata = {
   title: "Contact Us",
@@ -8,8 +9,8 @@ export const metadata = {
 };
 
 export default function ContactPage() {
-  const instagramUrl = process.env.NEXT_PUBLIC_INSTAGRAM_URL;
-  const facebookUrl = process.env.NEXT_PUBLIC_FACEBOOK_URL;
+  const instagramUrl = INSTAGRAM_URL;
+  const facebookUrl = FACEBOOK_URL;
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6">

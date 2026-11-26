@@ -2,14 +2,15 @@ import Link from "next/link";
 import Image from "next/image";
 import { prisma } from "@/lib/prisma";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
+import { INSTAGRAM_URL, FACEBOOK_URL } from "@/lib/social";
 
 export default async function Footer() {
   const collections = await prisma.collection
     .findMany({ orderBy: { sortOrder: "asc" }, take: 6, select: { name: true, slug: true } })
     .catch(() => []);
 
-  const instagramUrl = process.env.NEXT_PUBLIC_INSTAGRAM_URL;
-  const facebookUrl = process.env.NEXT_PUBLIC_FACEBOOK_URL;
+  const instagramUrl = INSTAGRAM_URL;
+  const facebookUrl = FACEBOOK_URL;
 
   return (
     <footer className="bg-green text-white">
